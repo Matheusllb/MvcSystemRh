@@ -21,19 +21,19 @@ namespace Sistema.Entidades
             _estadoCivil = estadoCivil;
         }
 
-        virtual public int GetIdPessoa() { return _id; }
-        virtual public string GetEnderecoPessoa() { return _endereco; }
-        virtual public string GetNomePessoa() { return _nome; }
-        virtual public string GetCpfPessoa() { return _cpf; }
-        virtual public DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
-        virtual public EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
+        public virtual int GetIdPessoa() { return _id; }
+        public virtual string GetEnderecoPessoa() { return _endereco; }
+        public virtual string GetNomePessoa() { return _nome; }
+        public virtual string GetCpfPessoa() { return _cpf; }
+        public virtual DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
+        public virtual EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
 
-        virtual public void SetIdPessoa(int id) { _id = id; }
-        virtual public void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
-        virtual public void SetNomePessoa(string nome) { _nome = nome; }
-        virtual public void SetCpfPessoa(string cpf) { _cpf = cpf; }
-        virtual public void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
-        virtual public void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
+        public virtual void SetIdPessoa(int id) { _id = id; }
+        public virtual void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
+        public virtual void SetNomePessoa(string nome) { _nome = nome; }
+        public virtual void SetCpfPessoa(string cpf) { _cpf = cpf; }
+        public virtual void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
+        public virtual void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
 
     }
 }

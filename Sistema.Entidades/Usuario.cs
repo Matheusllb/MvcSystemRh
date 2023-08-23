@@ -22,12 +22,12 @@ namespace Sistema.Entidades
             _senha = senha;
         }
 
-        override public int GetIdPessoa() { return _id; }
-        override public string GetEnderecoPessoa() { return _endereco; }
-        override public string GetNomePessoa() { return _nome; }
-        override public string GetCpfPessoa() { return _cpf; }
-        override public DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
-        override public EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
+        public override int GetIdPessoa() { return _id; }
+        public override string GetEnderecoPessoa() { return _endereco; }
+        public override string GetNomePessoa() { return _nome; }
+        public override string GetCpfPessoa() { return _cpf; }
+        public override DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
+        public override EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
         public bool GetStatusUsuario() { return _inativo; }
         public List<Usuario> GetUsuariosUsuario() { return _usuarios; }
         public List<Empresa> GetEmpresasUsuario() { return _empresas; }
@@ -35,12 +35,12 @@ namespace Sistema.Entidades
         public List<FolhaPagamento> GetFolhasDePagamentoUsuario() { return _folhas; }
 
 
-        override public void SetIdPessoa(int id) { _id = id; }
-        override public void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
-        override public void SetNomePessoa(string nome) { _nome = nome; }
-        override public void SetCpfPessoa(string cpf) { _cpf = cpf; }
-        override public void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
-        override public void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
+        public override void SetIdPessoa(int id) { _id = id; }
+        public override void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
+        public override void SetNomePessoa(string nome) { _nome = nome; }
+        public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
+        public override void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
+        public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
         public void SetStatusUsuario(bool status) { _inativo = status; }
         public void SetUsuariosUsuario(List<Usuario> usuarios) { _usuarios = usuarios; }
         public void SetEmpresaUsuario(List<Empresa> empresas) { _empresas = empresas; }

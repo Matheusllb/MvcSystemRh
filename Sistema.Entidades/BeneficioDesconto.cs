@@ -49,6 +49,7 @@ namespace Sistema.Entidades
         public void RemoverDesconto(BeneficioDesconto des) { _listaDesconto.Remove(des); }
         public int QuantidadeBeneficio() { return _listaBeneficio.Count(); }
         public int QuantidadeDesconto() { return _listaDesconto.Count(); }
+
         public void CalculaTotalBeneficio()
         {
             foreach (BeneficioDesconto item in _listaBeneficio)
@@ -69,24 +70,6 @@ namespace Sistema.Entidades
                 }
             }
         }
-
-        /*public void CalculaTotal()
-        {
-            foreach(BeneficioDesconto item in ListaBenDes) 
-            {
-                if (item.Valor != 0)
-                {
-                    if(item.Desconto is true)
-                    {
-                        DescontoTotal += item.Valor;
-                    }
-                    else
-                    {
-                        BeneficioTotal += item.Valor;
-                    }
-                }
-            }
-        }*/
 
     }
 }
