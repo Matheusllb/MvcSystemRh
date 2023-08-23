@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.View", "Sistema.View\Sistema.View.csproj", "{FF22BBCF-2B29-4872-BBE8-97B2DD1418BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.DAO", "Sistema.DAO\Sistema.DAO.csproj", "{C2DFD894-6EDB-41D6-AF21-3A69F95E0E78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Controller", "Sistema.DAO\Sistema.Controller.csproj", "{C2DFD894-6EDB-41D6-AF21-3A69F95E0E78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Model", "Sistema.Model\Sistema.Model.csproj", "{34DADF2D-F9FC-40F2-AE9E-AF0E187192F5}"
 EndProject
