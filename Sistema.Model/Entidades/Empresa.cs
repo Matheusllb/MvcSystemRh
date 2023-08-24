@@ -1,4 +1,4 @@
-﻿namespace Sistema.Entidades
+﻿namespace Sistema.Model.Entidades
 {
     public class Empresa
     {

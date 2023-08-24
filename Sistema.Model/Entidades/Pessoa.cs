@@ -1,6 +1,7 @@
 ﻿using System;
+using Sistema.Model.Entidades.Enum;
 
-namespace Sistema.Entidades
+namespace Sistema.Model.Entidades
 {
     abstract public class Pessoa
     {

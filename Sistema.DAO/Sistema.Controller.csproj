@@ -48,6 +48,14 @@
       <Project>{34dadf2d-f9fc-40f2-ae9e-af0e187192f5}</Project>
       <Name>Sistema.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sistema.ViewDesktop\Sistema.ViewDesktop.csproj">
+      <Project>{9fbc1bcb-26a7-41bf-ad75-421df1522173}</Project>
+      <Name>Sistema.ViewDesktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sistema.ViewWeb\Sistema.ViewWeb.csproj">
+      <Project>{a42bf6e9-7b0b-4900-9b24-8786af92f3df}</Project>
+      <Name>Sistema.ViewWeb</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Desktop\" />

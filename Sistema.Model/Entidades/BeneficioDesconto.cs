@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Sistema.Entidades
+namespace Sistema.Model.Entidades
 {
     public class BeneficioDesconto
     {

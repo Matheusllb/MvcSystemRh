@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
+using Sistema.Model.Entidades.Enum;
 
-namespace Sistema.Entidades
+namespace Sistema.Model.Entidades
 {
     public class Funcionario : Pessoa
     {

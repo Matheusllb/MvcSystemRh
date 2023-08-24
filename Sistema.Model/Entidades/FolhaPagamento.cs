@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
-namespace Sistema.Entidades
+namespace Sistema.Model.Entidades
 {
     public class FolhaPagamento
     {

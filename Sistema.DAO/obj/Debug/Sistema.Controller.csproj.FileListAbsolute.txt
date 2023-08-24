@@ -1,0 +1,9 @@
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\bin\Debug\Sistema.DAO.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\bin\Debug\Sistema.DAO.pdb
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\bin\Debug\Sistema.Model.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\bin\Debug\Sistema.Model.pdb
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\obj\Debug\Sistema.Controller.csproj.AssemblyReference.cache
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\obj\Debug\Sistema.Controller.csproj.CoreCompileInputs.cache
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\obj\Debug\Sistema.Controller.csproj.CopyComplete
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\obj\Debug\Sistema.DAO.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.DAO\obj\Debug\Sistema.DAO.pdb
