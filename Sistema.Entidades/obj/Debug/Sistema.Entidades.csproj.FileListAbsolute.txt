@@ -1,0 +1,11 @@
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\bin\Debug\Sistema.Entidades.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\bin\Debug\Sistema.Entidades.pdb
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\bin\Debug\Sistema.DAO.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\bin\Debug\Sistema.Model.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\bin\Debug\Sistema.DAO.pdb
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\bin\Debug\Sistema.Model.pdb
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\obj\Debug\Sistema.Entidades.csproj.AssemblyReference.cache
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\obj\Debug\Sistema.Entidades.csproj.CoreCompileInputs.cache
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\obj\Debug\Sistema.Entidades.csproj.CopyComplete
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\obj\Debug\Sistema.Entidades.dll
+D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Entidades\obj\Debug\Sistema.Entidades.pdb
