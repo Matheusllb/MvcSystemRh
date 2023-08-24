@@ -43,11 +43,5 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sistema.Entidades\Sistema.Entidades.csproj">
-      <Project>{d2c44723-95b6-44cf-ac94-dff46935e4f5}</Project>
-      <Name>Sistema.Entidades</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
