@@ -45,17 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sistema.DAO\Sistema.Controller.csproj">
-      <Project>{c2dfd894-6edb-41d6-af21-3a69f95e0e78}</Project>
-      <Name>Sistema.Controller</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sistema.Entidades\Sistema.Entidades.csproj">
-      <Project>{d2c44723-95b6-44cf-ac94-dff46935e4f5}</Project>
-      <Name>Sistema.Entidades</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="DAO\" />
+    <Folder Include="Entidades\" />
+    <Folder Include="Servicos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
