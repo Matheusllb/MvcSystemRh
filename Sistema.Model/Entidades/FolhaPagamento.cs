@@ -5,17 +5,17 @@ namespace Sistema.Model.Entidades
     public class FolhaPagamento
     {
         private int _id;
-        private Empresa _empresa;
+        private Empresa _empresa.GetIdEmpresa();
         private DateTime _dataFechamento;
         private DateTime _dataPagamento;
         private decimal _totalVencimentos;
         private decimal _totalDescontos;
         private decimal _totalLiquido;
-        private Funcionario _funcionario;
+        private Funcionario _funcionario.GetIdPessoa();
         private decimal _salarioINSS;
         private decimal _valorFGTS;
         private decimal _valorIRRF;
-        private BeneficioDesconto _itens;
+        private BeneficioDesconto _itens.GetIdBeneficioDesconto();
         //private decimal _horaExtra;
         
 

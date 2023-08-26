@@ -9,10 +9,6 @@ namespace Sistema.Model.Entidades
         private string _descricao;
         private bool _desconto;
         private decimal _valor;
-        private decimal _descontoTotal;
-        private decimal _beneficioTotal;
-        private List<BeneficioDesconto> _listaBeneficio = new List<BeneficioDesconto> { };
-        private List<BeneficioDesconto> _listaDesconto = new List<BeneficioDesconto> { };
 
         public BeneficioDesconto(int id, string descricao, bool desconto)
         {
@@ -33,15 +29,11 @@ namespace Sistema.Model.Entidades
         public string GetDescricaoBeneficioDesconto() { return _descricao; }
         public bool GetDescontoBeneficioDesconto() { return _desconto; }
         public decimal GetValorBeneficioDesconto() { return _valor; }
-        public decimal GetBeneficioTotal() { return _beneficioTotal; }
-        public decimal GetDescontoTotal() { return _descontoTotal; }
 
         public void SetIdBeneficioDesconto(int id) { _id = id; }
         public void SetDescricaoBeneficioDesconto(string descricao) { _descricao = descricao; }
         public void SetDescontoBeneficioDesconto(bool desconto) { _desconto = desconto; }
         public void SetValorBeneficioDesconto(decimal valor) { _valor = valor; }
-        public void SetBeneficioTotal(decimal beneficioTotal) { _beneficioTotal = beneficioTotal; }
-        public void SetDescontoTotal(decimal descontoTotal) { _descontoTotal = descontoTotal; }
 
         public void AdicionarBeneficio(BeneficioDesconto ben) { _listaBeneficio.Add(ben); }
         public void AdicionaroDesconto(BeneficioDesconto des) { _listaDesconto.Add(des); }
