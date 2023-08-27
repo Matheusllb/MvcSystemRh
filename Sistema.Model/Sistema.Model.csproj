@@ -52,6 +52,7 @@
     <Compile Include="Entidades\Enum\EstadoCivil.cs" />
     <Compile Include="Entidades\FolhaPagamento.cs" />
     <Compile Include="Entidades\Funcionario.cs" />
+    <Compile Include="Entidades\BDFuncionario.cs" />
     <Compile Include="Entidades\Pessoa.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

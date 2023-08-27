@@ -1,68 +1,65 @@
 ﻿using System;
+using System.Collection.Generics;
 
 namespace Sistema.Model.Entidades
 {
     public class FolhaPagamento
     {
         private int _id;
-        private Empresa _empresa.GetIdEmpresa();
+        private int _idEmpresa;
         private DateTime _dataFechamento;
         private DateTime _dataPagamento;
         private decimal _totalVencimentos;
         private decimal _totalDescontos;
         private decimal _totalLiquido;
-        private Funcionario _funcionario.GetIdPessoa();
+        private Funcionario _funcionario;
         private decimal _salarioINSS;
         private decimal _valorFGTS;
         private decimal _valorIRRF;
-        private BeneficioDesconto _itens.GetIdBeneficioDesconto();
-        //private decimal _horaExtra;
+        private List<string> _itens = new List<string> { };
         
 
-        public FolhaPagamento(int id, Empresa empresa, DateTime pagamento,
-         decimal salarioBruto, /*decimal horaExtra,*/ BeneficioDesconto itens)
+        public FolhaPagamento(int id, int empresa, DateTime pagamento,
+         Funcionario funcionario)
         {
             _id = id;
             _empresa = empresa;
             _dataFechamento = DateTime.Now;
             _dataPagamento = pagamento;
-            _funcionario.SetSalarioBrutoFuncionario(salarioBruto);
-            _itens = itens;
+            _funcionario = funcionario;
             _salarioINSS = CalculaINSS();
             _valorFGTS = CalculaFGTS();
             _valorIRRF = CalculaIRRF();
             _totalVencimentos = CalculaTotalVencimentos();
             _totalDescontos = CalculaTotalDescontos();
             _totalLiquido = CalculaTotalLiquido();
-            //_horaExtra = horaExtra;
-
         }
 
         public int GetIdEmFolha() { return _id; }
-        public Empresa GetEmpresaEmFolha() { return _empresa; }
+        public int GetIdEmpresaEmFolha() { return _idEmpresa; }
         public DateTime GetDataFechamentoEmFolha() { return _dataFechamento; }
         public DateTime GetDataPagamentoEmFolha() { return _dataPagamento; }
         public decimal GetTotalVencimentosEmFolha() { return _totalVencimentos; }
         public decimal GetTotalDescontosEmFolha() { return _totalDescontos; }
         public decimal GetTotalLiquidoEmFolha() { return _totalLiquido; }
-        public Funcionario GetFuncionarioEmFolha() { return _funcionario; }
+        public int GetIdFuncionarioEmFolha() { return _funcionario.GetIdPessoa(); }
         public decimal GetSalarioINSSEmFolha() { return _salarioINSS; }
         public decimal GetValorFGTSEmFolha() { return _valorFGTS; }
         public decimal GetValorIRRFEmFolha() { return _valorIRRF; }
-        public BeneficioDesconto GetItensEmFolha() { return _itens; }
+        public List<string> GetItensEmFolha() { return _itens; }
 
         public void SetIdEmFolha(int id) { _id = id; }
-        public void SetEmpresaEmFolha(Empresa empresa) { _empresa = empresa; }
+        public void SetIdEmpresaEmFolha(int idEmpresa) { _idEmpresa = idEmpresa; }
         public void SetDataFechamentoEmFolha(DateTime dataFechamento) { _dataFechamento = dataFechamento; }
         public void SetDataPagamentoEmFolha(DateTime dataPagamento) { _dataPagamento = dataPagamento; }
         public void SetTotalVencimentosEmFolha(decimal totalVencimentos) { _totalVencimentos = totalVencimentos; }
         public void SetTotalDescontosEmFolha(decimal totalDescontos) { _totalDescontos = totalDescontos; }
         public void SetTotalLiquidoEmFolha(decimal totalLiquido) { _totalLiquido = totalLiquido; }
-        public void SetFuncionarioEmFolha(Funcionario funcionario) { _funcionario = funcionario; }
+        public void SetIdFuncionarioEmFolha(int funcionario) { _funcionario = funcionario; }
         public void SetSalarioINSSEmFolha(decimal salarioINSS) { _salarioINSS = salarioINSS; }
         public void SetFValorFGTSEmFolha(decimal valorFGTS) { _valorFGTS = valorFGTS; }
         public void SetValorIRRFEmFolha(decimal valorIRRF) { _valorIRRF = valorIRRF; }
-        public void SetItensEmFolha(BeneficioDesconto itens) { _itens = itens; }
+        public void SetItensEmFolha(List<string> itens) { _itens = itens; }
 
         public decimal CalculaFGTS()
         {
@@ -110,14 +107,23 @@ namespace Sistema.Model.Entidades
             return _valorIRRF;
         }
 
+        public decimal CalculaTotalBenefico()
+        {
+            return 0;
+        }
+        public decimal CalculaTotalDesconto()
+        {
+            return 0;
+        }
+
         public decimal CalculaTotalVencimentos()
         {
-            return _totalVencimentos = _funcionario.GetSalarioBrutoFuncionario() + _itens.GetBeneficioTotal() /*+ _horaExtra*/;
+            return _totalVencimentos = _funcionario.GetSalarioBrutoFuncionario() + CalculaTotalBenefico();
 
         }
         public decimal CalculaTotalDescontos()
         {
-            return _totalDescontos = _salarioINSS + _valorIRRF + _itens.GetDescontoTotal();
+            return _totalDescontos = _salarioINSS + _valorIRRF + CalculaTotalDesconto();
         }
         public decimal CalculaTotalLiquido()
         {
