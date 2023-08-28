@@ -10,5 +10,7 @@ namespace Sistema.Model.DAO
 {
     internal class BeneficioDesconto
     {
+
     }
 }
+
