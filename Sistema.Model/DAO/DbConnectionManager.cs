@@ -12,7 +12,7 @@ namespace Sistema.Model.DAO
     public class DbConnectionManager
     {
         private SqlConnection connection;
-        private string connectionString = "Data Source=DESKTOP-ROV30US;Initial Catalog=MvcSystemRh;User ID=DESKTOP-ROV30US\mathe;Password="; //Trocar para suas informações
+        private string connectionString = @"Data Source=YourServerName;Initial Catalog=YourDatabaseName;User ID=YourUsername;Password=YourPassword"; //Trocar para suas informações
 
         public DbConnectionManager()
         {
@@ -40,3 +40,4 @@ namespace Sistema.Model.DAO
             }
         }
     }
+}
