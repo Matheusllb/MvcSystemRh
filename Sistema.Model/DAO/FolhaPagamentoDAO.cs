@@ -10,5 +10,6 @@ namespace Sistema.Model.DAO
 {
     internal class FolhaPagamentoDAO
     {
+
     }
 }

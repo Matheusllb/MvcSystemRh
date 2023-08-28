@@ -107,13 +107,13 @@ namespace Sistema.Model.Entidades
             return _valorIRRF;
         }
 
-        public decimal CalculaTotalBenefico()
+        public decimal CalculaTotalBenefico(decimal[] beneficios)
         {
-            return 0;
+            //Recebe valor da classe FolhaDAO (banco de dados)
         }
-        public decimal CalculaTotalDesconto()
+        public decimal CalculaTotalDesconto(decimal[] descontos)
         {
-            return 0;
+            //Recebe valor da classe FolhaDAO (banco de dados)
         }
 
         public decimal CalculaTotalVencimentos()

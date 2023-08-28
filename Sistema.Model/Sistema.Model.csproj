@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\BeneficioDescontoDAO.cs" />
+    <Compile Include="DAO\DbConnectionManager.cs" />
     <Compile Include="DAO\EmpresaDAO.cs" />
     <Compile Include="DAO\FolhaPagamentoDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />

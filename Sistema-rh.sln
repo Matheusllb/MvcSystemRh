@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Model", "Sistema.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.ViewDesktop", "Sistema.ViewDesktop\Sistema.ViewDesktop.csproj", "{9FBC1BCB-26A7-41BF-AD75-421DF1522173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.ViewWeb", "Sistema.ViewWeb\Sistema.ViewWeb.csproj", "{A42BF6E9-7B0B-4900-9B24-8786AF92F3DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema.ViewWeb", "Sistema.ViewWeb\Sistema.ViewWeb.csproj", "{A42BF6E9-7B0B-4900-9B24-8786AF92F3DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
