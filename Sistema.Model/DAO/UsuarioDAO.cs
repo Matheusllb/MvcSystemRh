@@ -36,7 +36,7 @@ namespace Sistema.Model.DAO
                     {
                         Usuario usuario = new Usuario
                         {
-                            _id = Convert.ToInt32(reader["u.IdPessoa"]),
+                            _idPessoa = Convert.ToInt32(reader["u.IdPessoa"]),
                             _endereco = reader["p.Endereco"].ToString(),
                             _nome = reader["p.Nome"].ToString(),
                             _cpf = reader["p.Cpf"].ToString(),
