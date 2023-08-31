@@ -6,21 +6,23 @@ namespace Sistema.Model.Entidades
 {
     public class Funcionario : Pessoa
     {
+        private int _idFuncionario;
         private bool _ativo;
         private string _email;
         private DateTime _dataAdmissao;
-        private Empresa _empresa;
+        private int _idEmpresa;
         private string _cargo;
         private decimal _salarioBruto;
 
 
-        public Funcionario(int id, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
-            string email, DateTime dataAdimissao, Empresa empresa, string cargo, decimal salario) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
+        public Funcionario(int id, int idFuncionario, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
+            string email, DateTime dataAdimissao, int idEmpresa, string cargo, decimal salario) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
         {
+            _idFuncionario = idFuncionario;
             _ativo = status;
             _email = email;
             _dataAdmissao = dataAdimissao;
-            _empresa = empresa;
+            _idEmpresa = idEmpresa;
             _cargo = cargo;
             _salarioBruto = salario;
         }
@@ -31,10 +33,11 @@ namespace Sistema.Model.Entidades
         public override string GetCpfPessoa() { return _cpf; }
         public override DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
         public override EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
+        public int GetIdFuncionario() { return _idFuncionario; }
         public string GetEmailFuncionario() { return _email; }
         public bool GetStatusFuncionario() { return _ativo; }
         public DateTime GetDataAdmissaoFuncionario() { return _dataAdmissao; }
-        public Empresa GetEmpresaFuncionario() { return _empresa; }
+        public int GetIdEmpresaFuncionario() { return _idEmpresa; }
         public string GetCargoFuncionario() { return _cargo; }
         public decimal GetSalarioBrutoFuncionario() { return _salarioBruto; }
 
@@ -44,10 +47,11 @@ namespace Sistema.Model.Entidades
         public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
         public override void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
         public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
+        public void SetIdFuncionario(int idFuncionario) { _idFuncionario = idFuncionario; }
         public void SetStatusFuncionario(bool status) { _ativo = status; }
         public void SetEmailFuncionario(string email) { _email = email; }
         public void SetDataAdmissaoFuncionario(DateTime dataAdmissao) { _dataAdmissao = dataAdmissao; }
-        public void SetEmpresaFuncionario(Empresa empresa) { _empresa = empresa; }
+        public void SetIdEmpresaFuncionario(int empresa) { _idEmpresa = empresa; }
         public void SetCargoFuncionario(string cargo) { _cargo = cargo; }
         public void SetSalarioBrutoFuncionario(decimal salarioBruto) { _salarioBruto = salarioBruto; } 
 

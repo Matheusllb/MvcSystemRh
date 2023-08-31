@@ -6,7 +6,8 @@ namespace Sistema.Model.Entidades
 {
     public class Usuario : Pessoa
     {
-        private bool _inativo;
+        private int _idUsuario;
+        private bool _ativo;
         private string _login;
         private string _senha;
         private List<Usuario> _usuarios = new List<Usuario>();
@@ -14,10 +15,11 @@ namespace Sistema.Model.Entidades
         private List<Funcionario> _funcionarios = new List<Funcionario>();
         private List<FolhaPagamento> _folhas = new List<FolhaPagamento>();
 
-        public Usuario(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
+        public Usuario(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, bool status, 
             string login, string senha) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
         {
-            _inativo = false;
+            _idUsuario = idUsuario;
+            _ativo = false;
             _login = login;
             _senha = senha;
         }
@@ -28,7 +30,8 @@ namespace Sistema.Model.Entidades
         public override string GetCpfPessoa() { return _cpf; }
         public override DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
         public override EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
-        public bool GetStatusUsuario() { return _inativo; }
+        public int GetIdUsuario() { return _idUsuario; }
+        public bool GetStatusUsuario() { return _ativo; }
         public List<Usuario> GetUsuariosUsuario() { return _usuarios; }
         public List<Empresa> GetEmpresasUsuario() { return _empresas; }
         public List<Funcionario> GetFuncionariosUsuario() { return _funcionarios; }
@@ -41,7 +44,8 @@ namespace Sistema.Model.Entidades
         public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
         public override void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
         public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
-        public void SetStatusUsuario(bool status) { _inativo = status; }
+        public void SetIdUsuario(int idUsuario) { _idUsuario = idUsuario; }
+        public void SetStatusUsuario(bool status) { _ativo = status; }
         public void SetUsuariosUsuario(List<Usuario> usuarios) { _usuarios = usuarios; }
         public void SetEmpresaUsuario(List<Empresa> empresas) { _empresas = empresas; }
         public void SetFuncionariosUsuario(List<Funcionario> funcionarios) { _funcionarios = funcionarios; }
