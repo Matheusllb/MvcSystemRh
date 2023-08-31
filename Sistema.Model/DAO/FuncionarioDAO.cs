@@ -36,7 +36,7 @@ namespace Sistema.Model.DAO
                     {
                         Funcionario funcionario = new Funcionario
                         {
-                            _id = Convert.ToInt32(reader["f.IdPessoa"]),
+                            _idPessoa = Convert.ToInt32(reader["f.IdPessoa"]),
                             _idFuncionario = Convert.ToInt32(reader["f.IdFuncionario"]),
                             _ativo = Convert.ToBoolean(reader["f.Ativo"]),
                             _endereco = reader["p.Endereco"].ToString(),

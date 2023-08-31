@@ -5,7 +5,7 @@ namespace Sistema.Model.Entidades
 {
     public class FolhaPagamento
     {
-        private int _id;
+        private int _idFolha;
         private int _idEmpresa;
         private DateTime _dataFechamento;
         private DateTime _dataPagamento;
@@ -22,8 +22,8 @@ namespace Sistema.Model.Entidades
         public FolhaPagamento(int id, int empresa, DateTime pagamento,
          Funcionario funcionario)
         {
-            _id = id;
-            _empresa = empresa;
+            _idFolha = id;
+            _idEmpresa = empresa;
             _dataFechamento = DateTime.Now;
             _dataPagamento = pagamento;
             _funcionario = funcionario;
@@ -35,7 +35,7 @@ namespace Sistema.Model.Entidades
             _totalLiquido = CalculaTotalLiquido();
         }
 
-        public int GetIdEmFolha() { return _id; }
+        public int GetIdEmFolha() { return _idFolha; }
         public int GetIdEmpresaEmFolha() { return _idEmpresa; }
         public DateTime GetDataFechamentoEmFolha() { return _dataFechamento; }
         public DateTime GetDataPagamentoEmFolha() { return _dataPagamento; }
@@ -48,7 +48,7 @@ namespace Sistema.Model.Entidades
         public decimal GetValorIRRFEmFolha() { return _valorIRRF; }
         public List<string> GetItensEmFolha() { return _itens; }
 
-        public void SetIdEmFolha(int id) { _id = id; }
+        public void SetIdEmFolha(int id) { _idFolha = id; }
         public void SetIdEmpresaEmFolha(int idEmpresa) { _idEmpresa = idEmpresa; }
         public void SetDataFechamentoEmFolha(DateTime dataFechamento) { _dataFechamento = dataFechamento; }
         public void SetDataPagamentoEmFolha(DateTime dataPagamento) { _dataPagamento = dataPagamento; }
