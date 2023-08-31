@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="TelaLogin" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="lblNomeUsuario" Content="Nome de Usuario" HorizontalAlignment="Left" Margin="128,228,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSenha" Content="Senha" HorizontalAlignment="Left" Margin="128,274,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblBemVindo" Content="Bem-Vindo!" HorizontalAlignment="Left" Margin="134,143,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
