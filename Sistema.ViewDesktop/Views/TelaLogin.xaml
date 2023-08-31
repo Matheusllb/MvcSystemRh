@@ -6,10 +6,14 @@
         xmlns:local="clr-namespace:Sistema.ViewDesktop"
         mc:Ignorable="d"
         Title="TelaLogin" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="lblNomeUsuario" Content="Nome de Usuario" HorizontalAlignment="Left" Margin="128,228,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblSenha" Content="Senha" HorizontalAlignment="Left" Margin="128,274,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblBemVindo" Content="Bem-Vindo!" HorizontalAlignment="Left" Margin="134,143,0,0" VerticalAlignment="Top"/>
+    <Grid Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+        <Label x:Name="lblNomeUsuario" Content="Usuário" HorizontalAlignment="Left" Margin="321,163,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lblSenha" Content="Senha" HorizontalAlignment="Left" Margin="321,209,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lblBemVindo" Content="Bem-Vindo!" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Center" Margin="0,284,0,0" VerticalAlignment="Top" Foreground="White" Background="#FFA7A7A7"/>
+        <TextBox x:Name="txbUsuario" HorizontalAlignment="Left" Margin="382,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txbSenha" HorizontalAlignment="Left" Margin="382,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
+ 
