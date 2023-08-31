@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BDFuncionarioDAO.cs" />
     <Compile Include="DAO\BeneficioDescontoDAO.cs" />
     <Compile Include="DAO\DbConnectionManager.cs" />
     <Compile Include="DAO\EmpresaDAO.cs" />

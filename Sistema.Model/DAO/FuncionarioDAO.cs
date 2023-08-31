@@ -38,21 +38,20 @@ namespace Sistema.Model.DAO
                         {
                             _id = Convert.ToInt32(reader["f.IdPessoa"]),
                             _idFuncionario = Convert.ToInt32(reader["f.IdFuncionario"]),
-                            _ativo = reader["Cnpj"].ToString(),
-                            _endereco = reader["Setor"].ToString(),
-                            _nome = reader["Email"].ToString(),
-                            _cpf = reader["Telefone"].ToString(),
-                            _dataNascimento = reader["Endereco"].ToString(),
-                            _estadoCivil = reader["Endereco"].ToString(),
-                            _email = reader["Endereco"].ToString(),
-                            _dataAdmissao = reader["Endereco"].ToString(),
-                            _idEmpresa = reader["Endereco"].ToString(),
-                            _cargo = reader["Endereco"].ToString(),
-                            _salarioBruto = reader["Endereco"].ToString(),
-
+                            _ativo = Convert.ToBoolean(reader["f.Ativo"]),
+                            _endereco = reader["p.Endereco"].ToString(),
+                            _nome = reader["p.Nome"].ToString(),
+                            _cpf = reader["p.Cpf"].ToString(),
+                            _dataNascimento = Convert.ToDateTime(reader["p.DataNascimento"]),
+                            _estadoCivil = reader["p.EstadoCivil"].ToString(),
+                            _email = reader["f.Email"].ToString(),
+                            _dataAdmissao = Convert.ToDateTime(reader["f.DataAdmissao"]),
+                            _idEmpresa = Convert.ToInt32(reader["f.IdEmpresa"]),
+                            _cargo = reader["f.Cargo"].ToString(),
+                            _salarioBruto = Convert.ToDecimal(reader["f.SalarioBruto"]),
                         };
 
-                        empresas.Add(empresa);
+                        funcionarios.Add(funcionario);
                     }
 
                     reader.Close();
@@ -62,15 +61,13 @@ namespace Sistema.Model.DAO
                 {
                     Console.WriteLine("An error occured: " + ex.Message);
                 }
-
                 finally
                 {
                     _connectionManager.CloseConnection();
                 }
             }
 
-            return empresas;
-        }
+            return funcionarios;
         }
     }
 }

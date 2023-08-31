@@ -19,7 +19,7 @@ namespace Sistema.Model.Entidades
             string login, string senha) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
         {
             _idUsuario = idUsuario;
-            _ativo = false;
+            _ativo = status;
             _login = login;
             _senha = senha;
         }
