@@ -2,7 +2,7 @@
 {
     public class Empresa
     {
-        private int _id;
+        private int _idEmpresa;
         private string _nome;
         private string _cnpj;
         private string _setor;
@@ -14,7 +14,7 @@
 
         public Empresa(int id, string nome, string cnpj, string setor, string email, string telefone, string endereco)
         {
-            _id = id;
+            _idEmpresa = id;
             _nome = nome;
             _cnpj = cnpj;
             _setor = setor;
@@ -22,7 +22,7 @@
             _telefone = telefone;
             _endereco = endereco;
         }
-        public int GetIdEmpresa() { return _id; }
+        public int GetIdEmpresa() { return _idEmpresa; }
         public string GetNomeEmpresa() { return _nome; }
         public string GetCnpjEmpresa() { return _cnpj; }
         public string GetSetorEmpresa() { return _setor; }
@@ -30,7 +30,7 @@
         public string GetTelefoneEmpresa() { return _telefone; }
         public string GetEnderecoEmpresa() { return _endereco; }
 
-        public void SetIdEmpresa(int id) { _id = id; }
+        public void SetIdEmpresa(int id) { _idEmpresa = id; }
         public void SetNomeEmpresa(string nome) { _nome = nome; }
         public void SetCnpjEmpresa(string cnpj) { _cnpj = cnpj; }
         public void SetSetorEmpresa(string setor) { _setor = setor; }

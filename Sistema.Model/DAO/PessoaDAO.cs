@@ -8,7 +8,19 @@ using System.Text;
 
 namespace Sistema.Model.DAO
 {
-    internal class PessoaDAO
+    public class PessoaDAO
     {
+        private DbConnectionManager connectionManager;
+
+        public PessoaDAO()
+        {
+            connectionManager = new DbConnectionManager();
+        }
+
+        public List<Pessoa> GetAllPessoas() 
+        {
+
+        }
+
     }
 }

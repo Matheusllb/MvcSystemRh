@@ -15,32 +15,32 @@ namespace Sistema.Model.DAO
 {
     public class EmpresaDAO
     {
-        private DbConnectionManager connectionManager;
+        private DbConnectionManager _connectionManager;
 
         public EmpresaDAO(){
-            connectionManager = new DbConnectionManager();
+            _connectionManager = new DbConnectionManager();
         }
 
         public List<Empresa> GetAllEmpresas(){
             List<Empresa> empresas = new List<Empresa>();
 
-            using (SqlConnection connection = connectionManager.GetConnection()){
+            using (SqlConnection connection = _connectionManager.GetConnection()){
                 string query = "SELECT IdEmpresa, Nome, Cnpj, Setor, Email, Telefone, Endereco FROM Empresa";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 try{
-                    connectionManager.OpenConnection();
+                    _connectionManager.OpenConnection();
                     SqlDataReader reader = command.ExecuteReader();
 
                     while(reader.Read()){
                         Empresa empresa = new Empresa{
-                            IdEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
-                            Nome = reader["Nome"].ToString(),
-                            Cnpj = reader["Cnpj"].ToString(),
-                            Setor = reader["Setor"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            Telefone = reader["Telefone"].ToString(),
-                            Endereco = reader["Endereco"].ToString(),
+                            _idEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
+                            _nome = reader["Nome"].ToString(),
+                            _cnpj = reader["Cnpj"].ToString(),
+                            _setor = reader["Setor"].ToString(),
+                            _email = reader["Email"].ToString(),
+                            _telefone = reader["Telefone"].ToString(),
+                            _endereco = reader["Endereco"].ToString(),
 
                         };
 
@@ -55,7 +55,7 @@ namespace Sistema.Model.DAO
                 }
 
                 finally{
-                    connectionManager.CloseConnection();
+                    _connectionManager.CloseConnection();
                 }
             }
 
