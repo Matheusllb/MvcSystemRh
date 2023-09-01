@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Sistema.Model.DAO
 {
-    internal class Teste
+    internal class A
     {
     }
 }

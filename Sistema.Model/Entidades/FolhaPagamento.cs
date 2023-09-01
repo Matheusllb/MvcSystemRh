@@ -19,12 +19,12 @@ namespace Sistema.Model.Entidades
         private List<string> _itens = new List<string> { };
         
 
-        public FolhaPagamento(int id, int empresa, DateTime pagamento,
+        public FolhaPagamento(int id, int empresa, DateTime dataFechamento, DateTime pagamento,
          Funcionario funcionario)
         {
             _idFolha = id;
             _idEmpresa = empresa;
-            _dataFechamento = DateTime.Now;
+            _dataFechamento = dataFechamento;
             _dataPagamento = pagamento;
             _funcionario = funcionario;
             _salarioINSS = CalculaINSS();

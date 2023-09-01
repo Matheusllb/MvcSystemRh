@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Sistema.Model.Entidades;
 
 namespace Sistema.Model.DAO
 {
@@ -61,6 +60,5 @@ namespace Sistema.Model.DAO
                 return bDFuncionarios;
             }
         }
-
     }
 }

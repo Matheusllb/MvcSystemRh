@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\A.cs" />
     <Compile Include="DAO\BDFuncionarioDAO.cs" />
     <Compile Include="DAO\BeneficioDescontoDAO.cs" />
     <Compile Include="DAO\DbConnectionManager.cs" />
@@ -48,7 +49,6 @@
     <Compile Include="DAO\FolhaPagamentoDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\PessoaDAO.cs" />
-    <Compile Include="DAO\Teste.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Entidades\BeneficioDesconto.cs" />
     <Compile Include="Entidades\Empresa.cs" />

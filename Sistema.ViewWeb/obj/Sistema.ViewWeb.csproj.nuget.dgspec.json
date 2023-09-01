@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VisualStudio\\Faculdade\\PIM\\Sistema-rh-MVC\\Sistema-rh\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj": {}
+    "D:\\VisualStudio\\Faculdade\\PIM\\GitHubRepPull\\MVCSystemRH\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj": {}
   },
   "projects": {
-    "D:\\VisualStudio\\Faculdade\\PIM\\Sistema-rh-MVC\\Sistema-rh\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj": {
+    "D:\\VisualStudio\\Faculdade\\PIM\\GitHubRepPull\\MVCSystemRH\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VisualStudio\\Faculdade\\PIM\\Sistema-rh-MVC\\Sistema-rh\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj",
+        "projectUniqueName": "D:\\VisualStudio\\Faculdade\\PIM\\GitHubRepPull\\MVCSystemRH\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj",
         "projectName": "Sistema.ViewWeb",
-        "projectPath": "D:\\VisualStudio\\Faculdade\\PIM\\Sistema-rh-MVC\\Sistema-rh\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj",
+        "projectPath": "D:\\VisualStudio\\Faculdade\\PIM\\GitHubRepPull\\MVCSystemRH\\Sistema.ViewWeb\\Sistema.ViewWeb.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "D:\\VisualStudio\\Faculdade\\PIM\\Sistema-rh-MVC\\Sistema-rh\\Sistema.ViewWeb\\obj\\",
+        "outputPath": "D:\\VisualStudio\\Faculdade\\PIM\\GitHubRepPull\\MVCSystemRH\\Sistema.ViewWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
