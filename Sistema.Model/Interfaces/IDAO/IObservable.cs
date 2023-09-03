@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema.Model.Interfaces.IDAO
 {
-    internal class IObservable
+    public interface IObservable
     {
         void RegisterObserver(IObserver observer);
         void RemoveObserver(IObserver observer);

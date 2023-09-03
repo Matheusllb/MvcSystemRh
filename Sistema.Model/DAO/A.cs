@@ -1,14 +1,1 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-namespace Sistema.Model.DAO
-{
-    internal class A
-    {
-    }
-}
+﻿//Classe não faz parte do projeto em si, ela tá aí só pra resolver temporariamente um B.O ;)

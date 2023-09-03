@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema.Model.Interfaces.IDAO
 {
-    public class IObserver
+    public interface IObserver
     {
         void Update();
     }
