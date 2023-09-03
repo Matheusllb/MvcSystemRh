@@ -23,7 +23,7 @@ namespace Sistema.Model.DAO
 
             using (SqlConnection connection = _connectionManager.GetConnection())
             {
-                string query = "SELECT IdBDFuncionario, IdFuncionario, IdBeneficioDesconto FROM BDFuncionario;"
+                string query = "SELECT IdBDFuncionario, IdFuncionario, IdBeneficioDesconto FROM BDFuncionario";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 try
