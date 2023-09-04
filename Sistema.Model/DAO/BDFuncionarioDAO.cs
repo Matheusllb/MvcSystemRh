@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Sistema.Model.Entidades;
 using Sistema.Model.Interfaces.IDAO;
 
 namespace Sistema.Model.DAO
@@ -12,6 +13,7 @@ namespace Sistema.Model.DAO
     public class BDFuncionarioDAO : IObservable
     {
         private DbConnectionManager _connectionManager;
+        private List<IObserver> _observers = new List<IObserver> ();
 
         public BDFuncionarioDAO()
         {
@@ -56,9 +58,28 @@ namespace Sistema.Model.DAO
                 finally
                 {
                     _connectionManager.CloseConnection();
+                    NotifyObservers();
                 }
 
                 return bDFuncionarios;
+            }
+
+            void RegisterObserver(IObserver observer)
+            {
+                _observers.Add(observer);
+            }
+
+            void RemoveObserver(IObserver observer)
+            {
+                _observers.Remove(observer);
+            }
+
+            void NotifyObservers()
+            {
+                foreach (var observer in _observers)
+                {
+                    observer.Update();
+                }
             }
         }
     }
