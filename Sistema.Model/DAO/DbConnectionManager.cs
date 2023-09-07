@@ -12,7 +12,7 @@ namespace Sistema.Model.DAO
     public class DbConnectionManager
     {
         private SqlConnection connection;
-        private string connectionString = @"Data Source=GUILHERME\SQLEXPRESS;Initial Catalog=MvcSystemRh;User ID=GUILHERME\guilh;Password="; //Trocar para suas informações
+        private string connectionString = @"Data Source=\SQLEXPRESS;Initial Catalog=MvcSystemRh;User ID=GUILHERME\guilh;Password="; //Trocar para suas informações
 
         public DbConnectionManager()
         {

@@ -8,6 +8,7 @@ namespace Sistema.Model.Entidades
         private int _idBeneficioDesconto;
         private string _descricao;
         private bool _desconto;
+        private bool _ativo;
         private decimal _valor;
 
         public BeneficioDesconto(int id, string descricao, bool desconto)
