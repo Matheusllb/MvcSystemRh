@@ -29,5 +29,10 @@ namespace Sistema.Desktop
         {
 
         }
+
+        private void btnEntrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
