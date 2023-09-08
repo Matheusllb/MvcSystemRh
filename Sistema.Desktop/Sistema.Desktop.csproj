@@ -95,7 +95,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="telaLogin.png" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Views\Imagens\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

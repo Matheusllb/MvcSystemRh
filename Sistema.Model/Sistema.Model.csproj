@@ -66,11 +66,5 @@
     <Folder Include="Interfaces\IEntidades\" />
     <Folder Include="Interfaces\IServicos\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sistema.ViewWeb\Sistema.ViewWeb.csproj">
-      <Project>{a42bf6e9-7b0b-4900-9b24-8786af92f3df}</Project>
-      <Name>Sistema.ViewWeb</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

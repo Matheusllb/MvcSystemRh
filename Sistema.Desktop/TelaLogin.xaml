@@ -22,11 +22,8 @@
         </Style>
     </Window.Resources>
 
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="400*"/>
-        </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF64B1FF"/>
@@ -34,14 +31,11 @@
                 <GradientStop Color="#FF0075ED" Offset="0.699"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="lblUsuario" HorizontalAlignment="Left" Margin="58,172,0,0" VerticalAlignment="Top" Content="Usuário" FontFamily="Cascadia Mono SemiBold" FontSize="20" Foreground="White" Height="32" Width="100"/>
-        <Label Content="Senha" HorizontalAlignment="Left" Margin="58,209,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="20" Foreground="White" Background="Transparent" Height="33" Width="69"/>
-        <Label x:Name="lblBemVindo" Content="Bem-Vindo!" HorizontalAlignment="Left" Margin="125,102,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="24" Foreground="White" Height="38" Width="155"/>
-        <Label x:Name="lblSistemaRH" Content="Sistema RH" HorizontalAlignment="Left" Margin="56,60,0,0" VerticalAlignment="Top" Foreground="White" FontSize="48" Width="312" FontFamily="Cascadia Mono SemiBold" Height="66" Grid.Column="1"/>
-        <Image x:Name="imgTelaLogin" Margin="39,147,35,10" Source="/telaLogin.png" Stretch="Fill" Grid.Column="1"/>
-        <TextBox Style="{StaticResource TextBoxEstilo}" x:Name="txbUsuario" HorizontalAlignment="Left" Margin="156,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono SemiLight" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" Height="24" BorderThickness="1,0,1,1" RenderTransformOrigin="0.504,0.585"/>
-        <TextBox Style="{StaticResource TextBoxEstilo}" x:Name="txbSenha" HorizontalAlignment="Left" Margin="156,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono SemiLight" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" BorderThickness="1,0,1,1" Height="25" RenderTransformOrigin="0.504,0.738"/>
-        <Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Center" Margin="0,286,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" Height="27" Width="100" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" Foreground="#FF007EFF" FontSize="20"/>
-
+        <Label x:Name="lblSenha" Content="Senha" HorizontalAlignment="Left" Margin="258,213,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="20" Foreground="White" Background="Transparent" Height="33" Width="69"/>
+        <Label x:Name="lblBemVindo" Content="Bem-Vindo!" Margin="325,106,320,0" FontFamily="Cascadia Mono SemiBold" FontSize="24" Foreground="White" Height="38" VerticalAlignment="Top"/>
+        <TextBox Style="{StaticResource TextBoxEstilo}" x:Name="txbUsuario" HorizontalAlignment="Left" Margin="356,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono SemiLight" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" Height="24" BorderThickness="1,0,1,1" RenderTransformOrigin="0.504,0.585" Grid.ColumnSpan="2"/>
+        <TextBox Style="{StaticResource TextBoxEstilo}" x:Name="txbSenha" HorizontalAlignment="Left" Margin="356,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono SemiLight" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" BorderThickness="1,0,1,1" Height="25" RenderTransformOrigin="0.504,0.738" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Left" Margin="350,290,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" Height="27" Width="100" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" Foreground="#FF007EFF" FontSize="20" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblUsuario" Content="Usuário" HorizontalAlignment="Left" Margin="258,176,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="20" Foreground="White" Background="Transparent" Height="32" Width="93"/>
     </Grid>
 </Window>

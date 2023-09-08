@@ -24,5 +24,10 @@ namespace Sistema.Desktop
         {
             InitializeComponent();
         }
+
+        private void txbUsuario_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
