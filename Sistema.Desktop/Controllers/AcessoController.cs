@@ -9,7 +9,7 @@ namespace Sistema.Desktop.Controllers
 {
     public class AcessoController
     {
-        //private UsuarioDAO _dao;
+        private UsuarioDAO _dao;
 
         public string GetNomeUsuario()
         {
