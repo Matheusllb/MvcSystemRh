@@ -1,5 +1,4 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
+﻿using System.Data.SqlClient;
 using Sistema.Model.Entidades;
 using System;
 using System.Collections.Generic;
@@ -35,21 +34,21 @@ namespace Sistema.Model.DAO
                     while (reader.Read())
                     {
                         Funcionario funcionario = new Funcionario
-                        {
-                            _idPessoa = Convert.ToInt32(reader["f.IdPessoa"]),
-                            _idFuncionario = Convert.ToInt32(reader["f.IdFuncionario"]),
-                            _ativo = Convert.ToBoolean(reader["f.Ativo"]),
-                            _endereco = reader["p.Endereco"].ToString(),
-                            _nome = reader["p.Nome"].ToString(),
-                            _cpf = reader["p.Cpf"].ToString(),
-                            _dataNascimento = Convert.ToDateTime(reader["p.DataNascimento"]),
-                            _estadoCivil = reader["p.EstadoCivil"].ToString(),
-                            _email = reader["f.Email"].ToString(),
-                            _dataAdmissao = Convert.ToDateTime(reader["f.DataAdmissao"]),
-                            _idEmpresa = Convert.ToInt32(reader["f.IdEmpresa"]),
-                            _cargo = reader["f.Cargo"].ToString(),
-                            _salarioBruto = Convert.ToDecimal(reader["f.SalarioBruto"]),
-                        };
+                        (
+                            Convert.ToInt32(reader["f.IdPessoa"]),
+                            Convert.ToInt32(reader["f.IdFuncionario"]),
+                            Convert.ToBoolean(reader["f.Ativo"]),
+                            reader["p.Endereco"].ToString(),
+                            reader["p.Nome"].ToString(),
+                            reader["p.Cpf"].ToString(),
+                            Convert.ToDateTime(reader["p.DataNascimento"]),
+                            reader["p.EstadoCivil"].ToString(),
+                            reader["f.Email"].ToString(),
+                            Convert.ToDateTime(reader["f.DataAdmissao"]),
+                            Convert.ToInt32(reader["f.IdEmpresa"]),
+                            reader["f.Cargo"].ToString(),
+                            Convert.ToDecimal(reader["f.SalarioBruto"])
+                        );
 
                         funcionarios.Add(funcionario);
                     }
@@ -57,7 +56,7 @@ namespace Sistema.Model.DAO
                     reader.Close();
                 }
 
-                catch (Exeption ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine("An error occured: " + ex.Message);
                 }

@@ -12,14 +12,14 @@ namespace Sistema.Model.Entidades
         protected DateTime _dataNascimento;
         protected EstadoCivil _estadoCivil;
 
-        public Pessoa(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil)
+        public Pessoa(int id, string endereco, string nome, string cpf, DateTime dataNascimento, string estadoCivil)
         {
             _idPessoa = id;
             _endereco = endereco;
             _nome = nome;
             _cpf = cpf;
             _dataNascimento = dataNascimento;
-            _estadoCivil = estadoCivil;
+            _estadoCivil = Enum.Parse<EstadoCivil>(estadoCivil);
         }
 
         public virtual int GetIdPessoa() { return _idPessoa; }

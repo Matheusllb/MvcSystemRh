@@ -66,15 +66,5 @@
     <Folder Include="Interfaces\IEntidades\" />
     <Folder Include="Interfaces\IServicos\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sistema.Desktop\Sistema.Desktop.csproj">
-      <Project>{f45d2afe-beed-496f-bdd9-b892ee6c2745}</Project>
-      <Name>Sistema.Desktop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sistema.Web\Sistema.Web.csproj">
-      <Project>{0e355473-13b0-4ef5-9d67-f1749d6b707e}</Project>
-      <Name>Sistema.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

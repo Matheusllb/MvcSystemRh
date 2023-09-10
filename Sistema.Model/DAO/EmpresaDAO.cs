@@ -1,5 +1,4 @@
 ﻿using System.Reflection.Emit;
-using Internal;
 using System.Data;
 using System;
 using System.IO;
@@ -7,8 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
 using Sistema.Model.Entidades;
 
 namespace Sistema.Model.DAO
@@ -33,16 +30,15 @@ namespace Sistema.Model.DAO
                     SqlDataReader reader = command.ExecuteReader();
 
                     while(reader.Read()){
-                        Empresa empresa = new Empresa{
-                            _idEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
-                            _nome = reader["Nome"].ToString(),
-                            _cnpj = reader["Cnpj"].ToString(),
-                            _setor = reader["Setor"].ToString(),
-                            _email = reader["Email"].ToString(),
-                            _telefone = reader["Telefone"].ToString(),
-                            _endereco = reader["Endereco"].ToString(),
-
-                        };
+                        Empresa empresa = new Empresa(
+                            Convert.ToInt32(reader["IdEmpresa"]),
+                            reader["Nome"].ToString(),
+                            reader["Cnpj"].ToString(),
+                            reader["Setor"].ToString(),
+                            reader["Email"].ToString(),
+                            reader["Telefone"].ToString(),
+                            reader["Endereco"].ToString()
+                        );
 
                         empresas.Add(empresa);
                     }
@@ -50,7 +46,7 @@ namespace Sistema.Model.DAO
                     reader.Close();
                 }
 
-                catch(Exeption ex){
+                catch(Exception ex){
                     Console.WriteLine("An error occured: " + ex.Message);
                 }
 

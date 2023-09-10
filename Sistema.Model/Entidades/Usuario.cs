@@ -24,7 +24,7 @@ namespace Sistema.Model.Entidades
             _senha = senha;
         }
 
-        public override int GetIdPessoa() { return _id; }
+        public override int GetIdPessoa() { return _idPessoa; }
         public override string GetEnderecoPessoa() { return _endereco; }
         public override string GetNomePessoa() { return _nome; }
         public override string GetCpfPessoa() { return _cpf; }
@@ -38,7 +38,7 @@ namespace Sistema.Model.Entidades
         public List<FolhaPagamento> GetFolhasDePagamentoUsuario() { return _folhas; }
 
 
-        public override void SetIdPessoa(int id) { _id = id; }
+        public override void SetIdPessoa(int id) { _idPessoa = id; }
         public override void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
         public override void SetNomePessoa(string nome) { _nome = nome; }
         public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
@@ -62,14 +62,14 @@ namespace Sistema.Model.Entidades
 
         public void ProcuraUsuarioPorId(int id)
         {
-            Usuario usuarioEncontrado = _usuarios.Find(u => u._id == id);
+            Usuario usuarioEncontrado = _usuarios.Find(u => u._idPessoa == id);
             if(usuarioEncontrado != null)
             {
-                MessageBox.Show($"Usuário encontrado: {usuarioEncontrado}");
+                Console.WriteLine($"Usuário encontrado: {usuarioEncontrado}");
             }
             else
             {
-                MessageBox.Show("Usuário não encontrado.");
+                Console.WriteLine("Usuário não encontrado.");
             }
         }
 
@@ -79,11 +79,11 @@ namespace Sistema.Model.Entidades
 
             if (usuarioEncontrado != null)
             {
-                MessageBox.Show($"Usuário encontrado: {usuarioEncontrado}");
+                Console.WriteLine($"Usuário encontrado: {usuarioEncontrado}");
             }
             else
             {
-                MessageBox.Show("Usuário não encontrado.");
+                Console.WriteLine("Usuário não encontrado.");
             }
         }
 
@@ -133,11 +133,11 @@ namespace Sistema.Model.Entidades
             Empresa empresaEncontrada = _empresas.Find(e => e.GetIdEmpresa() == id);
             if (empresaEncontrada != null)
             {
-                MessageBox.Show($"Empresa encontrada: {empresaEncontrada}");
+                Console.WriteLine($"Empresa encontrada: {empresaEncontrada}");
             }
             else
             {
-                MessageBox.Show("Empresa não encontrada.");
+                Console.WriteLine("Empresa não encontrada.");
             }
         }
 
@@ -150,7 +150,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Empresa não encontrada.");
+                Console.WriteLine("Empresa não encontrada.");
             }
             return empresasEncontradas;
         }
@@ -180,11 +180,11 @@ namespace Sistema.Model.Entidades
             Funcionario funcionarioEncontrado = _funcionarios.Find(f => f.GetIdPessoa() == id);
             if (funcionarioEncontrado != null)
             {
-                MessageBox.Show($"Funcionário encontrado: {funcionarioEncontrado}");
+                Console.WriteLine($"Funcionário encontrado: {funcionarioEncontrado}");
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
         }
 
@@ -197,7 +197,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -211,7 +211,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -225,7 +225,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -238,7 +238,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -251,7 +251,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -264,12 +264,12 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
 
-        public List<Funcionario> ProcuraFuncionarioPorEmpresa(string nomeEmpresa)
+     /*   public List<Funcionario> ProcuraFuncionarioPorEmpresa(string nomeEmpresa)
         {
             List<Funcionario> funcionariosEncontrados = _funcionarios.FindAll(f => f.GetEmpresaFuncionario().GetNomeEmpresa() == nomeEmpresa);
             if (funcionariosEncontrados != null)
@@ -278,10 +278,10 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
-        }
+        }*/
 
         public List<Funcionario> ProcuraFuncionarioPorEmail(string email)
         {
@@ -292,7 +292,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -306,7 +306,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Funcionário não encontrado.");
+                Console.WriteLine("Funcionário não encontrado.");
             }
             return funcionariosEncontrados;
         }
@@ -320,7 +320,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Salário não encontrado.");
+                Console.WriteLine("Salário não encontrado.");
             }
             return salariosEncontrados;
         }
@@ -339,7 +339,7 @@ namespace Sistema.Model.Entidades
             Folhas.Add(novaFolhaP);
         }*/
 
-        public List<FolhaPagamento> ProcuraFolhaPorEmpresa(string nomeEmpresa)
+        /*public List<FolhaPagamento> ProcuraFolhaPorEmpresa(string nomeEmpresa)
         {
             List<FolhaPagamento> folhasEncontradas = _folhas.FindAll(f => f.GetEmpresaEmFolha().GetNomeEmpresa() == nomeEmpresa);
             if (folhasEncontradas != null)
@@ -348,10 +348,10 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Folha não encontrada.");
+                Console.WriteLine("Folha não encontrada.");
             }
             return folhasEncontradas;
-        }
+        }*/
 
         public List<FolhaPagamento> ProcuraFolhaPorDataFechamento(DateTime fechamento)
         {
@@ -362,7 +362,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Folha não encontrada.");
+                Console.WriteLine("Folha não encontrada.");
             }
             return folhasEncontradas;
         }
@@ -376,7 +376,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Folha não encontrada.");
+                Console.WriteLine("Folha não encontrada.");
             }
             return folhasEncontradas;
         }
@@ -390,7 +390,7 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Folha não encontrada.");
+                Console.WriteLine("Folha não encontrada.");
             }
             return folhasEncontrados;
         }
@@ -403,12 +403,12 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Folha não encontrada.");
+                Console.WriteLine("Folha não encontrada.");
             }
             return folhasEncontrados;
         }
 
-        public List<FolhaPagamento> ProcuraFolhaPorBeneficioDesconto(BeneficioDesconto itens)
+        /*public List<FolhaPagamento> ProcuraFolhaPorBeneficioDesconto(BeneficioDesconto itens)
         {
             List<FolhaPagamento> folhasEncontrados = _folhas.FindAll(f => f.GetItensEmFolha() == itens);
             if (folhasEncontrados != null)
@@ -417,10 +417,10 @@ namespace Sistema.Model.Entidades
             }
             else
             {
-                MessageBox.Show("Folha não encontrada.");
+                Console.WriteLine("Folha não encontrada.");
             }
             return folhasEncontrados;
-        }
+        }*/
 
     }
 

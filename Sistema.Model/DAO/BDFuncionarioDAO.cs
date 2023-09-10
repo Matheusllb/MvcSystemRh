@@ -1,5 +1,4 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +11,21 @@ namespace Sistema.Model.DAO
 {
     public class BDFuncionarioDAO : IObservable
     {
+        public void NotifyObservers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterObserver(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveObserver(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
         private DbConnectionManager _connectionManager;
         private List<IObserver> _observers = new List<IObserver> ();
 
@@ -38,11 +52,11 @@ namespace Sistema.Model.DAO
                     while (reader.Read())
                     {
                         BDFuncionario bDFuncionario = new BDFuncionario
-                        {
-                            _idBD = Convert.ToInt32(reader["IdBDFuncionario "]),
-                            _idFuncionario = Convert.ToInt32(reader["IdFuncionario "]),
-                            _idBeneficioDesconto = Convert.ToInt32(reader["IdBeneficioDesconto"]),
-                        };
+                        (
+                            Convert.ToInt32(reader["IdBDFuncionario "]),
+                            Convert.ToInt32(reader["IdFuncionario "]),
+                            Convert.ToInt32(reader["IdBeneficioDesconto"])
+                        );
 
                         bDFuncionarios.Add(bDFuncionario);
                     }
@@ -64,23 +78,6 @@ namespace Sistema.Model.DAO
                 return bDFuncionarios;
             }
 
-            void RegisterObserver(IObserver observer)
-            {
-                _observers.Add(observer);
-            }
-
-            void RemoveObserver(IObserver observer)
-            {
-                _observers.Remove(observer);
-            }
-
-            void NotifyObservers()
-            {
-                foreach (var observer in _observers)
-                {
-                    observer.Update();
-                }
-            }
         }
     }
 }

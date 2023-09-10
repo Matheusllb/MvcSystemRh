@@ -1,6 +1,4 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,9 +26,9 @@ namespace Sistema.Model.DAO
                 SqlCommand command = new SqlCommand(query, connection);
 
                 // Adicione os parâmetros necessários com os valores do novoBeneficioDesconto
-                command.Parameters.AddWithValue("@Descricao", novoBeneficioDesconto._descricao);
-                command.Parameters.AddWithValue("@Desconto", novoBeneficioDesconto._desconto);
-                command.Parameters.AddWithValue("@Valor", novoBeneficioDesconto._valor);
+                command.Parameters.AddWithValue("@Descricao", novoBeneficioDesconto.GetDescricaoBeneficioDesconto());
+                command.Parameters.AddWithValue("@Desconto", novoBeneficioDesconto.GetDescontoBeneficioDesconto());
+                command.Parameters.AddWithValue("@Valor", novoBeneficioDesconto.GetValorBeneficioDesconto());
 
                 try
                 {
@@ -58,7 +56,7 @@ namespace Sistema.Model.DAO
 
             using (SqlConnection connection = _connectionManager.GetConnection())
             {
-                string query = "SELECT IdBeneficioDesconto, Descricao, Desconto, Valor FROM BeneficioDesconto";
+                string query = "SELECT IdBeneficioDesconto, Descricao, Desconto, Ativo, Valor FROM BeneficioDesconto";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 try
@@ -69,12 +67,13 @@ namespace Sistema.Model.DAO
                     while (reader.Read())
                     {
                         BeneficioDesconto beneficioDesconto = new BeneficioDesconto
-                        {
-                            _idBeneficioDesconto = Convert.ToInt32(reader["IdBeneficioDesconto"]),
-                            _descricao = reader["Descricao"].ToString(),
-                            _desconto = Convert.ToBoolean(reader["Desconto"]),
-                            _valor = Convert.ToDouble(reader["Valor"])
-                        };
+                            (
+                            Convert.ToInt32(reader["IdBeneficioDesconto"]),
+                            reader["Descricao"].ToString(),
+                            Convert.ToBoolean(reader["Desconto"]),
+                            Convert.ToBoolean(reader["Ativo"]),
+                            Convert.ToDecimal(reader["Valor"])
+                            );
 
                         beneficiosDescontos.Add(beneficioDesconto);
                     }
@@ -95,121 +94,119 @@ namespace Sistema.Model.DAO
 
             return beneficiosDescontos;
         }
-    }
-    public List<BeneficioDesconto> GetBeneficiosDescontosPorNomeEAtivo(string nome, bool ativo)
-    {
-        List<BeneficioDesconto> beneficiosDescontos = new List<BeneficioDesconto>();
 
-        using (SqlConnection connection = _connectionManager.GetConnection())
+        public List<BeneficioDesconto> GetBeneficiosDescontosPorNomeEAtivo(string nome, bool ativo)
         {
-            string query = "SELECT IdBeneficioDesconto, Descricao, Desconto, Valor, Ativo FROM BeneficioDesconto WHERE LOWER(Descricao) LIKE @Nome AND Ativo = @Ativo;";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Nome", "%" + nome.ToLower() + "%");
-            command.Parameters.AddWithValue("@Ativo", ativo);
+            List<BeneficioDesconto> beneficiosDescontos = new List<BeneficioDesconto>();
 
-            try
+            using (SqlConnection connection = _connectionManager.GetConnection())
             {
-                _connectionManager.OpenConnection();
-                SqlDataReader reader = command.ExecuteReader();
+                string query = "SELECT IdBeneficioDesconto, Descricao, Desconto, Ativo, Valor, FROM BeneficioDesconto WHERE LOWER(Descricao) LIKE @Nome AND Ativo = @Ativo;";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Nome", "%" + nome.ToLower() + "%");
+                command.Parameters.AddWithValue("@Ativo", ativo);
 
-                while (reader.Read())
+                try
                 {
-                    BeneficioDesconto beneficioDesconto = new BeneficioDesconto
+                    _connectionManager.OpenConnection();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
                     {
-                        _idBeneficioDesconto = Convert.ToInt32(reader["IdBeneficioDesconto"]),
-                        _descricao = reader["Descricao"].ToString(),
-                        _desconto = Convert.ToBoolean(reader["Desconto"]),
-                        _valor = Convert.ToDouble(reader["Valor"]),
-                        _ativo = Convert.ToBoolean(reader["Ativo"])
-                    };
+                        BeneficioDesconto beneficioDesconto = new BeneficioDesconto
+                        (
+                            Convert.ToInt32(reader["IdBeneficioDesconto"]),
+                            reader["Descricao"].ToString(),
+                            Convert.ToBoolean(reader["Desconto"]),
+                            Convert.ToBoolean(reader["Ativo"]),
+                            Convert.ToDecimal(reader["Valor"])
+                        );
 
-                    beneficiosDescontos.Add(beneficioDesconto);
+                        beneficiosDescontos.Add(beneficioDesconto);
+                    }
+
+                    reader.Close();
                 }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred: " + ex.Message);
-            }
-            finally
-            {
-                _connectionManager.CloseConnection();
-            }
-        }
-
-        return beneficiosDescontos;
-    }
-    public List<BeneficioDesconto> GetBeneficiosDescontosInativos()
-    {
-        List<BeneficioDesconto> beneficiosDescontos = new List<BeneficioDesconto>();
-
-        using (SqlConnection connection = _connectionManager.GetConnection())
-        {
-            string query = "SELECT IdBeneficioDesconto, Descricao, Desconto, Valor, Ativo FROM BeneficioDesconto WHERE Ativo = 0;";
-            SqlCommand command = new SqlCommand(query, connection);
-
-            try
-            {
-                _connectionManager.OpenConnection();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                catch (Exception ex)
                 {
-                    BeneficioDesconto beneficioDesconto = new BeneficioDesconto
-                    {
-                        _idBeneficioDesconto = Convert.ToInt32(reader["IdBeneficioDesconto"]),
-                        _descricao = reader["Descricao"].ToString(),
-                        _desconto = Convert.ToBoolean(reader["Desconto"]),
-                        _valor = Convert.ToDouble(reader["Valor"]),
-                        _ativo = Convert.ToBoolean(reader["Ativo"])
-                    };
-
-                    beneficiosDescontos.Add(beneficioDesconto);
+                    Console.WriteLine("An error occurred: " + ex.Message);
                 }
+                finally
+                {
+                    _connectionManager.CloseConnection();
+                }
+            }
 
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred: " + ex.Message);
-            }
-            finally
-            {
-                _connectionManager.CloseConnection();
-            }
+            return beneficiosDescontos;
         }
-
-        return beneficiosDescontos;
-    }
-    public bool InativarBeneficioDesconto(int idBeneficioDesconto)
-    {
-        using (SqlConnection connection = _connectionManager.GetConnection())
+        public List<BeneficioDesconto> GetBeneficiosDescontosInativos()
         {
-            string query = "UPDATE BeneficioDesconto SET Ativo = 0 WHERE IdBeneficioDesconto = @IdBeneficioDesconto;";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@IdBeneficioDesconto", idBeneficioDesconto);
+            List<BeneficioDesconto> beneficiosDescontos = new List<BeneficioDesconto>();
 
-            try
+            using (SqlConnection connection = _connectionManager.GetConnection())
             {
-                _connectionManager.OpenConnection();
-                int rowsAffected = command.ExecuteNonQuery();
+                string query = "SELECT IdBeneficioDesconto, Descricao, Desconto, Ativo, Valor FROM BeneficioDesconto WHERE Ativo = 0;";
+                SqlCommand command = new SqlCommand(query, connection);
 
-                // Se pelo menos uma linha foi afetada, a inativação foi bem-sucedida
-                return rowsAffected > 0;
+                try
+                {
+                    _connectionManager.OpenConnection();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        BeneficioDesconto beneficioDesconto = new BeneficioDesconto
+                        (
+                            Convert.ToInt32(reader["IdBeneficioDesconto"]),
+                            reader["Descricao"].ToString(),
+                            Convert.ToBoolean(reader["Desconto"]),
+                            Convert.ToBoolean(reader["Ativo"]),
+                            Convert.ToDecimal(reader["Valor"])
+                        );
+
+                        beneficiosDescontos.Add(beneficioDesconto);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                }
+                finally
+                {
+                    _connectionManager.CloseConnection();
+                }
             }
-            catch (Exception ex)
+
+            return beneficiosDescontos;
+        }
+        public bool InativarBeneficioDesconto(int idBeneficioDesconto)
+        {
+            using (SqlConnection connection = _connectionManager.GetConnection())
             {
-                Console.WriteLine("An error occurred: " + ex.Message);
-                return false; // Inativação falhou
-            }
-            finally
-            {
-                _connectionManager.CloseConnection();
+                string query = "UPDATE BeneficioDesconto SET Ativo = 0 WHERE IdBeneficioDesconto = @IdBeneficioDesconto;";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@IdBeneficioDesconto", idBeneficioDesconto);
+
+                try
+                {
+                    _connectionManager.OpenConnection();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // Se pelo menos uma linha foi afetada, a inativação foi bem-sucedida
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                    return false; // Inativação falhou
+                }
+                finally
+                {
+                    _connectionManager.CloseConnection();
+                }
             }
         }
     }
-
-
 }
-

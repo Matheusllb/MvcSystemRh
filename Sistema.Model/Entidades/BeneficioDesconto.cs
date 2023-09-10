@@ -11,29 +11,25 @@ namespace Sistema.Model.Entidades
         private bool _ativo;
         private decimal _valor;
 
-        public BeneficioDesconto(int id, string descricao, bool desconto)
+        public BeneficioDesconto(int id, string descricao, bool desconto, bool ativo, decimal valor)
         {
             _idBeneficioDesconto = id;
             _descricao = descricao;
             _desconto = desconto;
-        }
-
-        public BeneficioDesconto(int id, string descricao, bool desconto, decimal valor)
-        {
-            _idBeneficioDesconto = id;
-            _descricao = descricao;
-            _desconto = desconto;
+            _ativo = ativo;
             _valor = valor;
         }
 
         public int GetIdBeneficioDesconto() { return _idBeneficioDesconto; }
         public string GetDescricaoBeneficioDesconto() { return _descricao; }
         public bool GetDescontoBeneficioDesconto() { return _desconto; }
+        public bool GetAtivoBeneficioDesconto() { return _ativo; }
         public decimal GetValorBeneficioDesconto() { return _valor; }
 
         public void SetIdBeneficioDesconto(int id) { _idBeneficioDesconto = id; }
         public void SetDescricaoBeneficioDesconto(string descricao) { _descricao = descricao; }
         public void SetDescontoBeneficioDesconto(bool desconto) { _desconto = desconto; }
+        public void SetAtivoBeneficioDesconto(bool ativo) { _ativo = ativo; }
         public void SetValorBeneficioDesconto(decimal valor) { _valor = valor; }
 
     }

@@ -4,3 +4,5 @@ D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Model\obj\Debug\
 D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Model\obj\Debug\Sistema.Model.csproj.CoreCompileInputs.cache
 D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Model\obj\Debug\Sistema.Model.dll
 D:\VisualStudio\Faculdade\PIM\Sistema-rh-MVC\Sistema-rh\Sistema.Model\obj\Debug\Sistema.Model.pdb
+D:\VisualStudio\Faculdade\PIM\GitHubRepPull\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.csproj.AssemblyReference.cache
+D:\VisualStudio\Faculdade\PIM\GitHubRepPull\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.csproj.CoreCompileInputs.cache

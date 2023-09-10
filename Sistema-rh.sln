@@ -6,8 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Model", "Sistema.Model\Sistema.Model.csproj", "{34DADF2D-F9FC-40F2-AE9E-AF0E187192F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Desktop", "Sistema.Desktop\Sistema.Desktop.csproj", "{F45D2AFE-BEED-496F-BDD9-B892EE6C2745}"
+	ProjectSection(ProjectDependencies) = postProject
+		{34DADF2D-F9FC-40F2-AE9E-AF0E187192F5} = {34DADF2D-F9FC-40F2-AE9E-AF0E187192F5}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Web", "Sistema.Web\Sistema.Web.csproj", "{0E355473-13B0-4EF5-9D67-F1749D6B707E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema.Web", "Sistema.Web\Sistema.Web.csproj", "{0E355473-13B0-4EF5-9D67-F1749D6B707E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{34DADF2D-F9FC-40F2-AE9E-AF0E187192F5} = {34DADF2D-F9FC-40F2-AE9E-AF0E187192F5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

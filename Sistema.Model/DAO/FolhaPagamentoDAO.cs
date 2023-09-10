@@ -1,11 +1,11 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
+﻿using System.Data.SqlClient;
 using Sistema.Model.Entidades;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Sistema.Model.Entidades.Enum;
 
 namespace Sistema.Model.DAO
 {
@@ -35,32 +35,30 @@ namespace Sistema.Model.DAO
                     while (reader.Read())
                     {
                         FolhaPagamento folha = new FolhaPagamento
-                        {
-                            _idFolha = Convert.ToInt32(reader["fP.IdFolhaPag"]),
-                            _idEmpresa = Convert.ToInt32(reader["fP.IdFolhaPag"]),
-                            _dataFechamento = Convert.ToInt32(reader["fP.IdFolhaPag"]),
-                            _dataPagamento = Convert.ToInt32(reader["fP.IdFolhaPag"]),
-                            _funcionario = null,
-                            _itens = Convert.ToString(reader["bD.Descricao"]),
-                        };
+                        (
+                            Convert.ToInt32(reader["fP.IdFolhaPag"]),
+                            Convert.ToInt32(reader["fP.IdEmpresa"]),
+                            Convert.ToDateTime(reader["fP.DataFechamento"]),
+                            Convert.ToDateTime(reader["fP.DataPagamento"])
+                        );
                         Funcionario funcionario = new Funcionario
-                        {
-                            _idPessoa = Convert.ToInt32(reader["f.IdPessoa"]),
-                            _idFuncionario = Convert.ToInt32(reader["f.IdFuncionario"]),
-                            _ativo = Convert.ToBoolean(reader["f.Ativo"]),
-                            _endereco = reader["p.Endereco"].ToString(),
-                            _nome = reader["p.Nome"].ToString(),
-                            _cpf = reader["p.Cpf"].ToString(),
-                            _dataNascimento = Convert.ToDateTime(reader["p.DataNascimento"]),
-                            _estadoCivil = reader["p.EstadoCivil"].ToString(),
-                            _email = reader["f.Email"].ToString(),
-                            _dataAdmissao = Convert.ToDateTime(reader["f.DataAdmissao"]),
-                            _idEmpresa = Convert.ToInt32(reader["f.IdEmpresa"]),
-                            _cargo = reader["f.Cargo"].ToString(),
-                            _salarioBruto = Convert.ToDecimal(reader["f.SalarioBruto"]),
-                        };
+                        (
+                            Convert.ToInt32(reader["f.IdPessoa"]),
+                            Convert.ToInt32(reader["f.IdFuncionario"]),
+                            Convert.ToBoolean(reader["f.Ativo"]),
+                            reader["p.Endereco"].ToString(),
+                            reader["p.Nome"].ToString(),
+                            reader["p.Cpf"].ToString(),
+                            Convert.ToDateTime(reader["p.DataNascimento"]),
+                            reader["p.EstadoCivil"].ToString(),
+                            reader["f.Email"].ToString(),
+                            Convert.ToDateTime(reader["f.DataAdmissao"]),
+                            Convert.ToInt32(reader["f.IdEmpresa"]),
+                            reader["f.Cargo"].ToString(),
+                            Convert.ToDecimal(reader["f.SalarioBruto"])
+                        );
 
-                        folha._funcionario = funcionario;
+                        folha.SetFuncionarioEmFolha(funcionario);
                         folhas.Add(folha);
                     }
 
@@ -68,7 +66,7 @@ namespace Sistema.Model.DAO
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occured: " + ex.Message);
+                    Console.WriteLine("An error occured: " + ex.Message);
                 }
                 finally { _connectionManager.CloseConnection(); }
             }

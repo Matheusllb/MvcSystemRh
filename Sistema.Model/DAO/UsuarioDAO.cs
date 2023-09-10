@@ -1,5 +1,4 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
+﻿using System.Data.SqlClient;
 using Sistema.Model.Entidades;
 using System;
 using System.Collections.Generic;
@@ -35,18 +34,18 @@ namespace Sistema.Model.DAO
                     while (reader.Read())
                     {
                         Usuario usuario = new Usuario
-                        {
-                            _idPessoa = Convert.ToInt32(reader["u.IdPessoa"]),
-                            _endereco = reader["p.Endereco"].ToString(),
-                            _nome = reader["p.Nome"].ToString(),
-                            _cpf = reader["p.Cpf"].ToString(),
-                            _dataNascimento = Convert.ToDateTime(reader["p.DataNascimento"]),
-                            _estadoCivil = reader["p.EstadoCivil"].ToString(),
-                            _idUsuario = Convert.ToInt32(reader["u.IdUsuario"]),
-                            _ativo = Convert.ToBoolean(reader["u.Ativo"]),
-                            _login = reader["u.Login"].ToString(),
-                            _senha = reader["u.Senha"].ToString(),
-                        };
+                        (
+                            Convert.ToInt32(reader["u.IdPessoa"]),
+                            reader["p.Endereco"].ToString(),
+                            reader["p.Nome"].ToString(),
+                            reader["p.Cpf"].ToString(),
+                            Convert.ToDateTime(reader["p.DataNascimento"]),
+                            reader["p.EstadoCivil"].ToString(),
+                            Convert.ToInt32(reader["u.IdUsuario"]),
+                            Convert.ToBoolean(reader["u.Ativo"]),
+                            reader["u.Login"].ToString(),
+                            reader["u.Senha"].ToString()
+                        );
 
                         usuarios.Add(usuario);
                     }
@@ -54,7 +53,7 @@ namespace Sistema.Model.DAO
                     reader.Close();
                 }
 
-                catch (Exeption ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine("An error occured: " + ex.Message);
                 }

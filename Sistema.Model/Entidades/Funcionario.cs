@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collection.Generics;
+using System.Collections.Generic;
 using Sistema.Model.Entidades.Enum;
 
 namespace Sistema.Model.Entidades
@@ -27,7 +27,7 @@ namespace Sistema.Model.Entidades
             _salarioBruto = salario;
         }
 
-        public override int GetIdPessoa() { return _id; }
+        public override int GetIdPessoa() { return _idPessoa; }
         public override string GetEnderecoPessoa() { return _endereco; }
         public override string GetNomePessoa() { return _nome; }
         public override string GetCpfPessoa() { return _cpf; }
@@ -41,7 +41,7 @@ namespace Sistema.Model.Entidades
         public string GetCargoFuncionario() { return _cargo; }
         public decimal GetSalarioBrutoFuncionario() { return _salarioBruto; }
 
-        public override void SetIdPessoa(int id) { _id = id; }
+        public override void SetIdPessoa(int id) { _idPessoa = id; }
         public override void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
         public override void SetNomePessoa(string nome) { _nome = nome; }
         public override void SetCpfPessoa(string cpf) { _cpf = cpf; }

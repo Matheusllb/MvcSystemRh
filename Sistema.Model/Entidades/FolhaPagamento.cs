@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collection.Generics;
+using System.Collections.Generic;
 
 namespace Sistema.Model.Entidades
 {
@@ -34,6 +34,20 @@ namespace Sistema.Model.Entidades
             _totalDescontos = CalculaTotalDescontos();
             _totalLiquido = CalculaTotalLiquido();
         }
+        
+        public FolhaPagamento(int id, int empresa, DateTime dataFechamento, DateTime pagamento)
+        {
+            _idFolha = id;
+            _idEmpresa = empresa;
+            _dataFechamento = dataFechamento;
+            _dataPagamento = pagamento;
+            _salarioINSS = CalculaINSS();
+            _valorFGTS = CalculaFGTS();
+            _valorIRRF = CalculaIRRF();
+            _totalVencimentos = CalculaTotalVencimentos();
+            _totalDescontos = CalculaTotalDescontos();
+            _totalLiquido = CalculaTotalLiquido();
+        }
 
         public int GetIdEmFolha() { return _idFolha; }
         public int GetIdEmpresaEmFolha() { return _idEmpresa; }
@@ -42,7 +56,7 @@ namespace Sistema.Model.Entidades
         public decimal GetTotalVencimentosEmFolha() { return _totalVencimentos; }
         public decimal GetTotalDescontosEmFolha() { return _totalDescontos; }
         public decimal GetTotalLiquidoEmFolha() { return _totalLiquido; }
-        public int GetIdFuncionarioEmFolha() { return _funcionario.GetIdPessoa(); }
+        public Funcionario GetFuncionarioEmFolha() { return _funcionario; }
         public decimal GetSalarioINSSEmFolha() { return _salarioINSS; }
         public decimal GetValorFGTSEmFolha() { return _valorFGTS; }
         public decimal GetValorIRRFEmFolha() { return _valorIRRF; }
@@ -55,7 +69,7 @@ namespace Sistema.Model.Entidades
         public void SetTotalVencimentosEmFolha(decimal totalVencimentos) { _totalVencimentos = totalVencimentos; }
         public void SetTotalDescontosEmFolha(decimal totalDescontos) { _totalDescontos = totalDescontos; }
         public void SetTotalLiquidoEmFolha(decimal totalLiquido) { _totalLiquido = totalLiquido; }
-        public void SetIdFuncionarioEmFolha(int funcionario) { _funcionario = funcionario; }
+        public void SetFuncionarioEmFolha(Funcionario funcionario) { _funcionario = funcionario; }
         public void SetSalarioINSSEmFolha(decimal salarioINSS) { _salarioINSS = salarioINSS; }
         public void SetFValorFGTSEmFolha(decimal valorFGTS) { _valorFGTS = valorFGTS; }
         public void SetValorIRRFEmFolha(decimal valorIRRF) { _valorIRRF = valorIRRF; }
