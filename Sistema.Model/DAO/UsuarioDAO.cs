@@ -66,5 +66,17 @@ namespace Sistema.Model.DAO
 
             return usuarios;
         }
+
+        public bool Logar(string nomeUsuario, string senha)
+        {
+            if(nomeUsuario == "User" && senha == "admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

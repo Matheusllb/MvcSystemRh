@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sistema.Desktop.Controllers;
+using Sistema.Model.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +34,15 @@ namespace Sistema.Desktop
 
         private void btnEntrar_Click(object sender, RoutedEventArgs e)
         {
-
+            AcessoController loginCtrl = new AcessoController();
+            if (loginCtrl.Logar(txbUsuario.Text, txbSenha.Text))
+            {
+                MessageBox.Show("Logado!");
+            }
+            else
+            {
+                MessageBox.Show("Nome de usuário ou senha incorretos!");
+            }
         }
     }
 }

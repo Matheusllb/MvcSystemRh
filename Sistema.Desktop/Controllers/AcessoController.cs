@@ -9,11 +9,13 @@ namespace Sistema.Desktop.Controllers
 {
     public class AcessoController
     {
-        private UsuarioDAO _dao;
+        private UsuarioDAO _dao = new UsuarioDAO();
 
-        public string GetNomeUsuario()
+        public bool Logar(string usuario, string senha)
         {
-            return GetNomeUsuario();
+            return _dao.Logar(usuario, senha);
         }
+
+        
     }
 }
