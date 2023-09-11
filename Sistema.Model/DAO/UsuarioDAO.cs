@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Sistema.Model.Entidades.Enum;
 
 namespace Sistema.Model.DAO
 {
@@ -40,7 +41,7 @@ namespace Sistema.Model.DAO
                             reader["p.Nome"].ToString(),
                             reader["p.Cpf"].ToString(),
                             Convert.ToDateTime(reader["p.DataNascimento"]),
-                            reader["p.EstadoCivil"].ToString(),
+                            (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["p.EstadoCivil"].ToString()),
                             Convert.ToInt32(reader["u.IdUsuario"]),
                             Convert.ToBoolean(reader["u.Ativo"]),
                             reader["u.Login"].ToString(),

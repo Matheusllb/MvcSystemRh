@@ -1,4 +1,6 @@
-﻿namespace Sistema.Model.Entidades.Enum
+﻿using System;
+
+namespace Sistema.Model.Entidades.Enum
 {
     public enum EstadoCivil : int
     {

@@ -50,7 +50,7 @@ namespace Sistema.Model.DAO
                             reader["p.Nome"].ToString(),
                             reader["p.Cpf"].ToString(),
                             Convert.ToDateTime(reader["p.DataNascimento"]),
-                            reader["p.EstadoCivil"].ToString(),
+                            (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["p.EstadoCivil"].ToString()),
                             reader["f.Email"].ToString(),
                             Convert.ToDateTime(reader["f.DataAdmissao"]),
                             Convert.ToInt32(reader["f.IdEmpresa"]),

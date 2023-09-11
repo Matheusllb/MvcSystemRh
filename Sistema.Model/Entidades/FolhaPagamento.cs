@@ -121,23 +121,23 @@ namespace Sistema.Model.Entidades
             return _valorIRRF;
         }
 
-        public decimal CalculaTotalBenefico(decimal[] beneficios)
+        /*public decimal CalculaTotalBenefico(decimal[] beneficios)
         {
             //Recebe valor da classe FolhaDAO (banco de dados)
         }
         public decimal CalculaTotalDesconto(decimal[] descontos)
         {
             //Recebe valor da classe FolhaDAO (banco de dados)
-        }
+        }*/
 
         public decimal CalculaTotalVencimentos()
         {
-            return _totalVencimentos = _funcionario.GetSalarioBrutoFuncionario() + CalculaTotalBenefico();
+            return _totalVencimentos = _funcionario.GetSalarioBrutoFuncionario(); //+ CalculaTotalBenefico();
 
         }
         public decimal CalculaTotalDescontos()
         {
-            return _totalDescontos = _salarioINSS + _valorIRRF + CalculaTotalDesconto();
+            return _totalDescontos = _salarioINSS + _valorIRRF; // + CalculaTotalDesconto();
         }
         public decimal CalculaTotalLiquido()
         {
