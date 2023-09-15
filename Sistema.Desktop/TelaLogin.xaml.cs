@@ -27,15 +27,16 @@ namespace Sistema.Desktop
             InitializeComponent();
         }
 
-        private void txbUsuario_TextChanged(object sender, TextChangedEventArgs e)
+        private void TelaLogin_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
         }
 
-        private void btnEntrar_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             AcessoController loginCtrl = new AcessoController();
-            if (loginCtrl.Logar(txbUsuario.Text, txbSenha.Text))
+            if (loginCtrl.Logar(txbUsername.Text, txbSenha.Password))
             {
                 MessageBox.Show("Logado!");
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Sistema.Model.DAO;
 
 namespace Sistema.Desktop.Controllers
@@ -13,7 +14,16 @@ namespace Sistema.Desktop.Controllers
 
         public bool Logar(string usuario, string senha)
         {
-            return _dao.Logar(usuario, senha);
+            if(usuario == null && senha == null)
+            {
+                MessageBox.Show("Preencha os campos vazios.", "Campo Vazio",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                return false;
+            }
+            else
+            {
+                return _dao.Logar(usuario, senha);
+            }
+            
         }
 
         

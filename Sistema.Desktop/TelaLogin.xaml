@@ -3,39 +3,93 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Sistema.Desktop"
+        xmlns:local="clr-namespace.Sistema.Desktop"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Persona" Height="450" Width="800" Background="#FF60B0FF" Foreground="#FF60B0FF">
-
-    <Window.Resources>
-        <Style x:Key="TextBoxEstilo" TargetType="TextBox">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}" CornerRadius="10">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
-
+        Title="TelaLogin" Height="450" Width="380"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize"
+        MouseDown="TelaLogin_OnMouseDown">
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF64B1FF"/>
-                <GradientStop Color="#FF19538D" Offset="1"/>
-                <GradientStop Color="#FF0075ED" Offset="0.699"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Label x:Name="lblSenha" Content="Senha" HorizontalAlignment="Left" Margin="258,213,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="20" Foreground="White" Background="Transparent" Height="33" Width="69"/>
-        <Label x:Name="lblBemVindo" Content="Bem-Vindo!" Margin="325,106,320,0" FontFamily="Cascadia Mono SemiBold" FontSize="24" Foreground="White" Height="38" VerticalAlignment="Top"/>
-        <TextBox Style="{StaticResource TextBoxEstilo}" x:Name="txbUsuario" HorizontalAlignment="Left" Margin="356,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono SemiLight" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" Height="24" BorderThickness="1,0,1,1" RenderTransformOrigin="0.504,0.585" Grid.ColumnSpan="2" TextChanged="txbUsuario_TextChanged"/>
-        <TextBox Style="{StaticResource TextBoxEstilo}" x:Name="txbSenha" HorizontalAlignment="Left" Margin="356,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono SemiLight" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" BorderThickness="1,0,1,1" Height="25" RenderTransformOrigin="0.504,0.738" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Left" Margin="350,290,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" Height="27" Width="100" Background="#FFF6F6F6" BorderBrush="#FFF6F6F6" Foreground="#FF007EFF" FontSize="20" Grid.ColumnSpan="2" Click="btnEntrar_Click"/>
-        <Label x:Name="lblUsuario" Content="Usuário" HorizontalAlignment="Left" Margin="258,176,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="20" Foreground="White" Background="Transparent" Height="32" Width="93"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Border CornerRadius="10" Grid.RowSpan="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="lblSistemaRH" Text="Sistema de Recursos Humanos"
+                           FontWeight="Light"
+                           FontFamily="helvetica"
+                           FontSize="22"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+
+
+
+            <StackPanel Grid.Row="1" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="txbUsername" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Text="Nome de usuário"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="63,0,0,0"/>
+
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <PasswordBox x:Name="txbSenha" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Password="Senha"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="63,0,0,0"/>
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+                <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
+                    <Button x:Name="btnLogin" Width="100" Height="40" Content="LOGIN" Margin="60,0,60,0" Click="Button_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </Window>
