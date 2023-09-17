@@ -3,6 +3,7 @@ using Sistema.Model.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,7 +26,52 @@ namespace Sistema.Desktop
         public TelaLogin()
         {
             InitializeComponent();
+            txbUsername.GotFocus += TextBox_GotFocus;
+            txbSenha.GotFocus += PasswordBox_GotFocus;
+
+
         }
+        private bool usernameBoxFirstFocus = true;
+        private bool senhaBoxFirstFocus = true;
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            if (textBox != null)
+            {
+                if (textBox.Name == "txbUsername" && usernameBoxFirstFocus)
+                {
+                    textBox.Text = "";
+                    usernameBoxFirstFocus = false;
+                }
+                else if (textBox.Name == "txbSenha" && senhaBoxFirstFocus)
+                {
+                    textBox.Text = "";
+                    senhaBoxFirstFocus = false;
+                }
+            }
+        }
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+
+            if (passwordBox != null)
+            {
+                if (passwordBox.Name == "txbSenha" && senhaBoxFirstFocus)
+                {
+                    passwordBox.Clear();
+                    senhaBoxFirstFocus = false;
+                }
+            }
+        }
+
+
+
+
+
+
+
 
         private void TelaLogin_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -38,6 +84,7 @@ namespace Sistema.Desktop
             AcessoController loginCtrl = new AcessoController();
             if (loginCtrl.Logar(txbUsername.Text, txbSenha.Password))
             {
+                this.Close();   
                 MessageBox.Show("Logado!");
             }
             else
