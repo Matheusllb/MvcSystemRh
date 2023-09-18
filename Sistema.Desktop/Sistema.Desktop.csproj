@@ -104,7 +104,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="View\Funcionario\" />
+    <Folder Include="View\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sistema.Model\Sistema.Model.csproj">

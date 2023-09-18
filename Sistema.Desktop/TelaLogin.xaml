@@ -43,7 +43,6 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="txbUsername" FontFamily="Helvetica"
                              FontWeight="Light"
-                             Text="Nome de usuário"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="White"
@@ -53,7 +52,7 @@
                              HorizontalContentAlignment="Left"
                              Opacity="0.5"
                              Height="25"
-                             Margin="63,0,0,0"/>
+                             Margin="63,0,0,0" Text="Usuário"/>
 
                 </StackPanel>
                 <Border Width="250"
