@@ -27,7 +27,7 @@ namespace Sistema.Desktop
         {
             InitializeComponent();
             txbUsername.GotFocus += TextBox_GotFocus;
-            txbSenha.GotFocus += PasswordBox_GotFocus;
+            pwbSenha.GotFocus += PasswordBox_GotFocus;
 
 
         }
@@ -45,7 +45,7 @@ namespace Sistema.Desktop
                     textBox.Text = "";
                     usernameBoxFirstFocus = false;
                 }
-                else if (textBox.Name == "txbSenha" && senhaBoxFirstFocus)
+                else if (textBox.Name == "pwbSenha" && senhaBoxFirstFocus)
                 {
                     textBox.Text = "";
                     senhaBoxFirstFocus = false;
@@ -58,20 +58,13 @@ namespace Sistema.Desktop
 
             if (passwordBox != null)
             {
-                if (passwordBox.Name == "txbSenha" && senhaBoxFirstFocus)
+                if (passwordBox.Name == "pwbSenha" && senhaBoxFirstFocus)
                 {
                     passwordBox.Clear();
                     senhaBoxFirstFocus = false;
                 }
             }
         }
-
-
-
-
-
-
-
 
         private void TelaLogin_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -82,7 +75,7 @@ namespace Sistema.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AcessoController loginCtrl = new AcessoController();
-            if (loginCtrl.Logar(txbUsername.Text, txbSenha.Password))
+            if (loginCtrl.Logar(txbUsername.Text, pwbSenha.Password))
             {
                 MainMenu mainMenu = new MainMenu();
                 mainMenu.Show();
