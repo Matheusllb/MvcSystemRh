@@ -84,8 +84,11 @@ namespace Sistema.Desktop
             AcessoController loginCtrl = new AcessoController();
             if (loginCtrl.Logar(txbUsername.Text, txbSenha.Password))
             {
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.Show();
                 this.Close();   
-                MessageBox.Show("Logado!");
+                
+              
             }
             else
             {
