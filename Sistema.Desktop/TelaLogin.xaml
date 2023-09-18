@@ -29,7 +29,7 @@
 
 
             <StackPanel VerticalAlignment="Center">
-                <TextBlock x:Name="lblSistemaRH" Text="Sistema de Recursos Humanos"
+                <TextBlock x:Name="lblSistemaRH" Text="Sistema RH"
                            FontWeight="Light"
                            FontFamily="helvetica"
                            FontSize="22"
