@@ -36,7 +36,7 @@ namespace Sistema.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AcessoController loginCtrl = new AcessoController();
-            if (loginCtrl.Logar(txbUsername.Text, txbSenha.Password))
+            if (loginCtrl.Logar(txbUsername.Text, pwbSenha.Password))
             {
                 MessageBox.Show("Logado!");
             }
