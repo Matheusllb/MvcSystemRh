@@ -88,5 +88,10 @@ namespace Sistema.Desktop
                 MessageBox.Show("Nome de usuário ou senha incorretos!");
             }
         }
+
+        private void FecharJanela_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -28,6 +28,17 @@
             </Border>
 
 
+            <StackPanel Orientation="Vertical" Background="Transparent">
+                <Button x:Name="btnFechar" Width="30" Height="30" Content="X" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top"  
+                        Style="{DynamicResource CloseButtonStyle}"
+                        Margin="0,5,5,0"
+                        Click="FecharJanela_Click"
+                        />
+            </StackPanel>
+
+
             <StackPanel VerticalAlignment="Center">
                 <TextBlock x:Name="lblSistemaRH" Text="Sistema RH"
                            FontWeight="Light"
@@ -84,7 +95,7 @@
 
 
                 <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-                    <Button x:Name="btnLogin" Width="100" Height="40" Content="ENTRAR" Margin="140,0,60,0" Click="Button_Click"/>
+                    <Button x:Name="btnLogin" Width="100" Height="40" Content="ENTRAR" Style="{StaticResource ButtonStyle}" Margin="140,0,60,0" Click="Button_Click"/>
                 </StackPanel>
 
             </StackPanel>
