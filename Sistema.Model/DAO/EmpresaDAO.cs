@@ -10,7 +10,7 @@ using Sistema.Model.Entidades;
 
 namespace Sistema.Model.DAO
 {
-    public class EmpresaDAO
+    public class EmpresaDAO : AbstractDAO<Empresa>
     {
         private DbConnectionManager _connectionManager;
 

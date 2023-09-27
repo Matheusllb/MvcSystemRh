@@ -9,7 +9,7 @@ using Sistema.Model.Entidades.Enum;
 
 namespace Sistema.Model.DAO
 {
-    public class FolhaPagamentoDAO
+    public class FolhaPagamentoDAO : AbstractDAO<FolhaPagamento>
     {
         private DbConnectionManager _connectionManager;
 

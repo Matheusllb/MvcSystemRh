@@ -9,7 +9,7 @@ using Sistema.Model.Entidades.Enum;
 
 namespace Sistema.Model.DAO
 {
-    public class FuncionarioDAO
+    public class FuncionarioDAO : AbstractDAO<Funcionario>
     {
         private DbConnectionManager _connectionManager;
 

@@ -9,7 +9,7 @@ using Sistema.Model.Entidades.Enum;
 
 namespace Sistema.Model.DAO
 {
-    public class UsuarioDAO : AbstractDAO<UsuarioDAO>
+    public class UsuarioDAO : AbstractDAO<Usuario>
     {
         public bool Logar(string usuario, string senha)
         {

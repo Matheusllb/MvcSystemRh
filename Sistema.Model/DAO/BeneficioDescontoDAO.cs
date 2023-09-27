@@ -9,7 +9,7 @@ using Sistema.Model.Entidades;
 
 namespace Sistema.Model.DAO
 {
-    public class BeneficioDescontoDAO
+    public class BeneficioDescontoDAO : AbstractDAO<BeneficioDesconto>
     {
         private DbConnectionManager _connectionManager;
 

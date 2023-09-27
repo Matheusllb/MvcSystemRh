@@ -24,8 +24,6 @@ namespace Sistema.Desktop.Controllers
                 return _dao.Logar(usuario, senha);
             }
             
-        }
-
-        
+        } 
     }
 }

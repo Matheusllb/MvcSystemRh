@@ -1,5 +1,4 @@
-﻿using Sistema.Model.Interfaces.IDAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,16 +8,10 @@ using System.Threading.Tasks;
 namespace Sistema.Model.DAO
 {
     // Classe abstrata genérica AbstractDAO<T> que fornece funcionalidade para operações CRUD
-    public abstract class AbstractDAO<T> where T : class
+    public abstract class AbstractDAO<T> where T : class // Definindo que "T" precisa ser uma classe, de modo que outro valor retornará erro
     {
         // Gerenciador de conexão de banco de dados
         protected DbConnectionManager connectionManager;
-
-        // Evento para notificar observadores sobre alterações nos dados
-        public event EventHandler<EventArgs<T>> DataChanged;
-
-        //Lista de observadores adicionados dentro da classe
-        protected List<Observer<T>> observers = new List<Observer<T>>();
 
         // Construtor da classe
         public AbstractDAO()
@@ -71,7 +64,7 @@ namespace Sistema.Model.DAO
                 {
                     connectionManager.CloseConnection();
                     // Notifica observadores sobre a mudança nos dados
-                    OnDataChanged(entidade);
+
                 }
             }
         }
@@ -95,7 +88,7 @@ namespace Sistema.Model.DAO
                             T entity = Activator.CreateInstance<T>(); // Cria uma nova instância de T
                             foreach (var property in typeof(T).GetProperties())
                             {
-                                if (property.Name != "Id") // Ignora a coluna 'Id'
+                                if (property.Name != "Id") // Ignora a coluna 'Id', a atribuição do Id será feita pelo próprio banco
                                 {
                                     // Obtém o valor da coluna correspondente do leitor e define na propriedade da entidade
                                     property.SetValue(entity, reader[property.Name] is DBNull ? null : reader[property.Name]);
@@ -181,7 +174,7 @@ namespace Sistema.Model.DAO
                 // Preenche os parâmetros para as colunas a serem atualizadas
                 foreach (var property in typeof(T).GetProperties())
                 {
-                    if (property.Name != "Id") // Ignora a coluna 'Id'
+                    if (property.Name != "Id") // Ignora a coluna 'Id', a atribuição do Id será feita pelo próprio banco
                     {
                         // Obtém o nome do parâmetro (por exemplo, "@Nome")
                         string paramName = $"@{property.Name}";
@@ -211,7 +204,6 @@ namespace Sistema.Model.DAO
                 {
                     connectionManager.CloseConnection();
                     // Notifica observadores sobre a mudança nos dados
-                    OnDataChanged(entidade);
                 }
             }
         }
@@ -242,16 +234,10 @@ namespace Sistema.Model.DAO
                 {
                     connectionManager.CloseConnection();
                     // Notifica observadores sobre a mudança nos dados
-                    OnDataChanged(entidade);
                 }
             }
         }
 
-        // Método para notificar observadores de alterações nos dados
-        protected virtual void OnDataChanged(T entidade)
-        {
-            DataChanged?.Invoke(this, new EventArgs<T>(entidade));
-        }
 
         // Métodos auxiliares para obter o valor da coluna 'Id' e nomes de colunas para atualização
         protected object GetIdValue(T entidade)
