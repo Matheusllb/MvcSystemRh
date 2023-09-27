@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Sistema.Desktop
+namespace Sistema.Desktop.View.BeneficioDesconto
 {
     /// <summary>
-    /// Lógica interna para MainMenu.xaml
+    /// Lógica interna para BeneficioDesconto.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class BeneficioDesconto : Window
     {
-        public MainMenu()
+        public BeneficioDesconto()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

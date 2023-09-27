@@ -89,7 +89,7 @@ namespace Sistema.Desktop
                 // Se a senha estiver oculta, mostre o TextBox e oculte o PasswordBox
                 txtPasswordBox.Text = pwbSenha.Password;
                 txtPasswordBox.Visibility = Visibility.Visible;
-                pwbSenha.Visibility = Visibility.Collapsed;
+                pwbSenha.Visibility = Visibility.Hidden;
             }
 
             passwordVisible = !passwordVisible;
