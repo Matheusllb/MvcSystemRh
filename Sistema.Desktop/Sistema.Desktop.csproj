@@ -154,6 +154,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\BeneficioDesconto\BeneficioDesconto.xaml.cs">
+      <DependentUpon>BeneficioDesconto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BeneficioDesconto\FormBeneficioDesconto.xaml.cs">
+      <DependentUpon>FormBeneficioDesconto.xaml</DependentUpon>
+    </Compile>
     <Page Include="ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +200,14 @@
       <DependentUpon>TelaLogin.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\BeneficioDesconto\BeneficioDesconto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BeneficioDesconto\FormBeneficioDesconto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -224,10 +238,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Temas\" />
-    <Folder Include="View\BeneficioDesconto\" />
-    <Folder Include="View\FolhaDePagamento\" />
-    <Folder Include="View\Funcionario\" />
-    <Folder Include="View\Usuario\" />
+    <Folder Include="View\BeneficioDesconto\Images\" />
+    <Folder Include="View\Login\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sistema.Model\Sistema.Model.csproj">

@@ -10,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Sistema.Desktop.View.BeneficioDesconto;
 
-namespace Sistema.Desktop
+namespace Sistema.Desktop.View.BeneficioDesconto
 {
     /// <summary>
-    /// Lógica interna para MainMenu.xaml
+    /// Interação lógica para FormBeneficioDesconto.xam
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class FormBeneficioDesconto : Page
     {
-        public MainMenu()
+        public FormBeneficioDesconto()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            BeneficioDesconto beneficioDesconto = new BeneficioDesconto();
-            beneficioDesconto.Show();
+
         }
     }
 }

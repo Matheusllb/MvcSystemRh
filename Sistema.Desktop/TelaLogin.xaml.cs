@@ -81,7 +81,7 @@ namespace Sistema.Desktop
             if (passwordVisible)
             {
                 // Se a senha estiver visível, oculte o TextBox e mostre o PasswordBox
-                txtPasswordBox.Visibility = Visibility.Collapsed;
+                txtPasswordBox.Visibility = Visibility.Hidden;
                 pwbSenha.Visibility = Visibility.Visible;
             }
             else

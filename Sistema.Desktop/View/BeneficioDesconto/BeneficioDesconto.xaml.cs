@@ -23,5 +23,22 @@ namespace Sistema.Desktop.View.BeneficioDesconto
         {
             InitializeComponent();
         }
+
+        private void txtSearchBD_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FormBeneficioDesconto formBeneficioDesconto = new FormBeneficioDesconto();
+            frame.Content = formBeneficioDesconto;
+
+        }
+
+        private void frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
+        }
     }
 }

@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema.Desktop.View.BeneficioDesconto"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="BeneficioDesconto" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" Margin="24,24,0,0" TextWrapping="Wrap" Text="Pesquisar usuário" VerticalAlignment="Top" Width="439" Height="28" SelectionOpacity="0.9" TextChanged="txtSearchBD_TextChanged"/>
+        <Button HorizontalAlignment="Left" Margin="484,24,0,0" VerticalAlignment="Top" Height="28" Width="37" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+            <iconPacks:PackIconMaterial Kind="Magnify" Height="27" Width="24" />
+        </Button>
+        <Button Content="Novo" HorizontalAlignment="Left" Margin="562,24,0,0" VerticalAlignment="Top" Height="28" Width="166" Click="Button_Click"/>
+        <Frame Name="frame" />
     </Grid>
 </Window>
