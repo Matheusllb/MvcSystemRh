@@ -84,7 +84,9 @@
                              PasswordChanged="pwbSenha_PasswordChanged"
                              Style="{DynamicResource PasswordPlaceholderStyle}"/>
 
-                    <Button x:Name="btnMostrarSenha" Style="{DynamicResource ShowPasswordButtonStyle}" Click="btnMostrarSenha_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button x:Name="btnMostrarSenha" Style="{DynamicResource ShowPasswordButtonStyle}" Click="btnMostrarSenha_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <iconPacks:PackIconMaterial Kind="Eye" Foreground="White"/>
+                    </Button>
 
                 </StackPanel>
                 <Border Width="250"
@@ -112,7 +114,7 @@
                      VerticalAlignment="Center"
                      Opacity="0.5"
                      Height="25"
-                     Margin="63,47,0,153" Text=""
+                     Margin="63,46,0,153" Text=""
                      Grid.Row="1">
                 <TextBox.Style>
                     <Style TargetType="TextBox">

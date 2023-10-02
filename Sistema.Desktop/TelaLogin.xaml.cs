@@ -26,8 +26,6 @@ namespace Sistema.Desktop
     public partial class TelaLogin : Window
     {
         private bool passwordVisible = false;
-        private string originalPassword = "";
-        private TextBox tempTextBox;
         public TelaLogin()
         {
             InitializeComponent();
@@ -80,13 +78,16 @@ namespace Sistema.Desktop
         {
             if (passwordVisible)
             {
-                // Se a senha estiver visível, oculte o TextBox e mostre o PasswordBox
+                // Se a senha estiver visível, oculta o TextBox e mostra o PasswordBox
+                btnMostrarSenha.Content = new PackIconMaterial { Kind = PackIconMaterialKind.Eye, Foreground = Brushes.White };
+                pwbSenha.Password = txtPasswordBox.Text;
                 txtPasswordBox.Visibility = Visibility.Hidden;
                 pwbSenha.Visibility = Visibility.Visible;
             }
             else
             {
-                // Se a senha estiver oculta, mostre o TextBox e oculte o PasswordBox
+                // Se a senha estiver oculta, sincroniza o TextBox com o PasswordBox e mostra o TextBox
+                btnMostrarSenha.Content = new PackIconMaterial { Kind = PackIconMaterialKind.EyeOff, Foreground = Brushes.White };
                 txtPasswordBox.Text = pwbSenha.Password;
                 txtPasswordBox.Visibility = Visibility.Visible;
                 pwbSenha.Visibility = Visibility.Hidden;
