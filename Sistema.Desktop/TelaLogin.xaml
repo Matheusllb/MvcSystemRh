@@ -8,6 +8,7 @@
         Title="TelaLogin" Height="450" Width="380"
         AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         MouseDown="TelaLogin_OnMouseDown">
     <Grid x:Name="grid">
         <Grid>
