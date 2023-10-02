@@ -160,11 +160,11 @@
     <Compile Include="View\BeneficioDesconto\FormBeneficioDesconto.xaml.cs">
       <DependentUpon>FormBeneficioDesconto.xaml</DependentUpon>
     </Compile>
-    <Page Include="ButtonStyle.xaml">
+    <Page Include="Estilos\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CloseButtonStyle.xaml">
+    <Page Include="Estilos\CloseButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,15 +172,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PasswordPlaceholderStyle.xaml">
+    <Page Include="Estilos\PasswordPlaceholderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PlaceholderStyle.xaml">
+    <Page Include="Estilos\PlaceholderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ShowPasswordButtonStyle.xaml">
+    <Page Include="Estilos\ShowPasswordButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,7 +237,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Temas\" />
     <Folder Include="View\BeneficioDesconto\Images\" />
     <Folder Include="View\Login\" />
   </ItemGroup>

@@ -1,18 +1,17 @@
 ﻿<Application x:Class="Sistema.Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Sistema.Desktop"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="TelaLogin.xaml"
-             >
+             StartupUri="TelaLogin.xaml">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ButtonStyle.xaml"/>
-                <ResourceDictionary Source="CloseButtonStyle.xaml"/>
-                <ResourceDictionary Source="PlaceholderStyle.xaml"/>
-                <ResourceDictionary Source="PasswordPlaceholderStyle.xaml"/>
-                <ResourceDictionary Source="ShowPasswordButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Sistema.Desktop;component/Estilos/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Sistema.Desktop;component/Estilos/CloseButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Sistema.Desktop;component/Estilos/PlaceholderStyle.xaml"/>
+                <ResourceDictionary Source="/Sistema.Desktop;component/Estilos/PasswordPlaceholderStyle.xaml"/>
+                <ResourceDictionary Source="/Sistema.Desktop;component/Estilos/ShowPasswordButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
