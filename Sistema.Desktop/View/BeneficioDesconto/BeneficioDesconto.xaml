@@ -5,14 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema.Desktop.View.BeneficioDesconto"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        mc:Ignorable="d"
-        Title="BeneficioDesconto" Height="450" Width="800">
+        mc:Ignorable="d" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" Margin="24,24,0,0" TextWrapping="Wrap" Text="Pesquisar usuário" VerticalAlignment="Top" Width="439" Height="28" SelectionOpacity="0.9" TextChanged="txtSearchBD_TextChanged"/>
-        <Button HorizontalAlignment="Left" Margin="484,24,0,0" VerticalAlignment="Top" Height="28" Width="37" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#353535 " Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" 
+                 Margin="24,24,0,0" TextWrapping="Wrap" 
+                 FontFamily="Helvetica"
+                 FontWeight="Light"
+                 FontSize="20"
+                 Foreground="White"
+                 Background="Transparent"
+                 BorderThickness="0" 
+                 VerticalAlignment="Top" 
+                 Width="439" Height="28" 
+                 SelectionOpacity="0.9" 
+                 TextChanged="txtSearchBD_TextChanged" >
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar funcionário" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="White" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+
+        <Button HorizontalAlignment="Left" Margin="484,24,0,0" VerticalAlignment="Top" Height="28" Width="37" Style="{DynamicResource ShowPasswordButtonStyle}">
             <iconPacks:PackIconMaterial Kind="Magnify" Height="27" Width="24" />
         </Button>
-        <Button Content="Novo" HorizontalAlignment="Left" Margin="562,24,0,0" VerticalAlignment="Top" Height="28" Width="166" Click="Button_Click"/>
+        
+        <Button Content="Novo" HorizontalAlignment="Left" Margin="562,24,0,0" VerticalAlignment="Top" Height="28" Width="166" Click="Button_Click" Style="{DynamicResource ButtonStyle}"/>
         <Frame Name="frame" />
     </Grid>
 </Window>

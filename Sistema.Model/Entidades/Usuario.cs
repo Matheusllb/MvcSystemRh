@@ -7,6 +7,7 @@ namespace Sistema.Model.Entidades
     public class Usuario : Pessoa
     {
         private int _idUsuario;
+        private int _idPermissao;
         private bool _ativo;
         private string _login;
         private string _senha;
@@ -15,10 +16,11 @@ namespace Sistema.Model.Entidades
         private List<Funcionario> _funcionarios = new List<Funcionario>();
         private List<FolhaPagamento> _folhas = new List<FolhaPagamento>();
 
-        public Usuario(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, bool status, 
+        public Usuario(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, int idPermissao, bool status, 
             string login, string senha) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
         {
             _idUsuario = idUsuario;
+            _idPermissao = idPermissao;
             _ativo = status;
             _login = login;
             _senha = senha;

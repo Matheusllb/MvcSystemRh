@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sistema.Desktop.View.BeneficioDesconto"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="300"
       Title="FormBeneficioDesconto">
 
     <Grid>
@@ -13,13 +13,29 @@
             <Border>
                 <Border.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="#353535"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                <TextBox x:Name="txtDescricaoBD" TextWrapping="Wrap" Text="TextBox" Margin="119,102,540,318"/>
+                <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" 
+                         Margin="66,0,0,0" TextWrapping="Wrap" 
+                         FontFamily="Helvetica"
+                         FontWeight="Light"
+                         FontSize="20"
+                         Foreground="White"
+                         Background="Transparent"
+                         BorderThickness="0" 
+                         VerticalAlignment="Top" 
+                         Width="234" Height="26">
+
+                </TextBox>
             </Border>
-            <Label Content="Descricao: " Margin="49,101,682,315"></Label>
+            <Label Content="Descricao:"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="20"></Label>
         </Grid>
-        
+
     </Grid>
 </Page>

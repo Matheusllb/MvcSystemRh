@@ -25,7 +25,7 @@ namespace Sistema.Desktop
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Ir_Para_Beneficio_Desconto_Button_Click(object sender, RoutedEventArgs e)
         {
             BeneficioDesconto beneficioDesconto = new BeneficioDesconto();
             beneficioDesconto.Show();

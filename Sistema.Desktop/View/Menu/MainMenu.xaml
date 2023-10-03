@@ -1,0 +1,21 @@
+﻿<Window x:Class="Sistema.Desktop.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sistema.Desktop"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="450" Width="800">
+    <Grid>
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#353535 " Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Button x:Name="btnIrParaBfDs" Content=" Benefícios e descontos" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Ir_Para_Beneficio_Desconto_Button_Click" Style="{DynamicResource ButtonStyle}"/>
+
+    </Grid>
+</Window>
