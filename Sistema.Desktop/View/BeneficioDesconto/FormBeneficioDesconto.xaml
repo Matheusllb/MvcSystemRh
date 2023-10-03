@@ -16,18 +16,12 @@
                         <GradientStop Color="#353535"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" 
-                         Margin="98,0,0,0" TextWrapping="Wrap" 
-                         FontFamily="Helvetica"
-                         FontWeight="Light"
-                         FontSize="20"
-                         Foreground="White"
-                         Background="Transparent"
-                         BorderThickness="0" 
-                         VerticalAlignment="Top" 
-                         Width="202" Height="35">
-
-                </TextBox>
+                <GroupBox Header="Escolha uma opção:" VerticalAlignment="Top" Margin="0,37,150,0" >
+                    <StackPanel >
+                        <RadioButton Content="Benefício" Name="rbBeneficio" />
+                        <RadioButton Content="Desconto" Name="rbDesconto" />
+                    </StackPanel>
+                </GroupBox>
             </Border>
             <Label Content="Descrição:"
                    VerticalAlignment="Top"
@@ -35,7 +29,9 @@
                    FontFamily="Helvetica"
                    FontWeight="Light"
                    FontSize="20"
-                   Foreground="White"></Label>
+                   Foreground="White">
+
+            </Label>
         </Grid>
 
     </Grid>
