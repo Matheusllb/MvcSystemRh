@@ -17,7 +17,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" 
-                         Margin="66,0,0,0" TextWrapping="Wrap" 
+                         Margin="98,0,0,0" TextWrapping="Wrap" 
                          FontFamily="Helvetica"
                          FontWeight="Light"
                          FontSize="20"
@@ -25,16 +25,17 @@
                          Background="Transparent"
                          BorderThickness="0" 
                          VerticalAlignment="Top" 
-                         Width="234" Height="26">
+                         Width="202" Height="35">
 
                 </TextBox>
             </Border>
-            <Label Content="Descricao:"
+            <Label Content="Descrição:"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="20"></Label>
+                   FontSize="20"
+                   Foreground="White"></Label>
         </Grid>
 
     </Grid>
