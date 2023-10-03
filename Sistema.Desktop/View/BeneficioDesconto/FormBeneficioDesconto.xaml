@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sistema.Desktop.View.BeneficioDesconto"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="300"
+      d:DesignHeight="280" d:DesignWidth="300"
       Title="FormBeneficioDesconto">
 
     <Grid>
@@ -16,22 +16,58 @@
                         <GradientStop Color="#353535"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                <GroupBox Header="Escolha uma opção:" VerticalAlignment="Top" Margin="0,37,150,0" >
-                    <StackPanel >
-                        <RadioButton Content="Benefício" Name="rbBeneficio" />
-                        <RadioButton Content="Desconto" Name="rbDesconto" />
-                    </StackPanel>
-                </GroupBox>
             </Border>
+
             <Label Content="Descrição:"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    FontFamily="Helvetica"
                    FontWeight="Light"
                    FontSize="20"
-                   Foreground="White">
-
+                   Foreground="White" Margin="7,55,0,0" Width="101">
             </Label>
+
+            <TextBox Name="txtDescricao" 
+                     VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" 
+                     FontFamily="Helvetica" 
+                     FontWeight="Light"
+                     FontSize="20"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     BorderThickness="0"
+                     Height="35"
+                     Width="182" Margin="108,55,0,0"/>
+
+
+            <GroupBox Header="Escolha uma opção:" VerticalAlignment="Top" Margin="10,103,140,0" >
+                <StackPanel >
+                    <RadioButton Content="Benefício" Name="rbBeneficio" />
+                    <RadioButton Content="Desconto" Name="rbDesconto" />
+                </StackPanel>
+            </GroupBox>
+
+            <Label Content="Valor:"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="20"
+                   Foreground="White" Margin="10,176,0,0">
+            </Label>
+
+            <TextBox Name="txtValor" 
+                     VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" 
+                     FontFamily="Helvetica" 
+                     FontWeight="Light"
+                     FontSize="20"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     BorderThickness="0"
+                     Height="36"
+                     Width="223" Margin="67,175,0,0"/>
+
         </Grid>
 
     </Grid>
