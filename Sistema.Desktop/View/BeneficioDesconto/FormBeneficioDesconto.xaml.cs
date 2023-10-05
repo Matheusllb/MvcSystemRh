@@ -35,7 +35,10 @@ namespace Sistema.Desktop.View.BeneficioDesconto
         {
 
         }
-        
 
+        private void btnRegistrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
