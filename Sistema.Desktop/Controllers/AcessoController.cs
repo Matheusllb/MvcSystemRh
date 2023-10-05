@@ -5,18 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Sistema.Model.DAO;
+using Sistema.Model.Entidades;
 
 namespace Sistema.Desktop.Controllers
 {
     public class AcessoController
     {
-        private UsuarioDAO _dao = new UsuarioDAO();
+        private DbConnectionManager _connectionManager = new DbConnectionManager(); // Crie uma instância de DbConnectionManager ou use a que você já possui.
+        private UsuarioDAO _dao;
+
+        public AcessoController()
+        {
+            _dao = new UsuarioDAO(_connectionManager);
+        }
 
         public bool Logar(string usuario, string senha)
         {
-            if(usuario == null && senha == null)
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(senha))
             {
-                MessageBox.Show("Preencha os campos vazios.", "Campo Vazio",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                MessageBox.Show("Preencha os campos vazios.", "Campo Vazio", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
             else
