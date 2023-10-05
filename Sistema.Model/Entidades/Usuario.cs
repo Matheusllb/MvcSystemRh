@@ -16,6 +16,8 @@ namespace Sistema.Model.Entidades
         private List<Funcionario> _funcionarios = new List<Funcionario>();
         private List<FolhaPagamento> _folhas = new List<FolhaPagamento>();
 
+        public Usuario() : base() { }
+
         public Usuario(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, int idPermissao, bool status, 
             string login, string senha) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
         {
@@ -26,7 +28,6 @@ namespace Sistema.Model.Entidades
             _senha = senha;
         }
 
-        public override int GetIdPessoa() { return _idPessoa; }
         public override string GetEnderecoPessoa() { return _endereco; }
         public override string GetNomePessoa() { return _nome; }
         public override string GetCpfPessoa() { return _cpf; }
@@ -34,13 +35,15 @@ namespace Sistema.Model.Entidades
         public override EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
         public int GetIdUsuario() { return _idUsuario; }
         public bool GetStatusUsuario() { return _ativo; }
+        public int GetIdPermissaoUsuario() { return _idPermissao; }
+        public string GetLogin() { return _login;}
+        public string GetSenha() { return _senha;}
         public List<Usuario> GetUsuariosUsuario() { return _usuarios; }
         public List<Empresa> GetEmpresasUsuario() { return _empresas; }
         public List<Funcionario> GetFuncionariosUsuario() { return _funcionarios; }
         public List<FolhaPagamento> GetFolhasDePagamentoUsuario() { return _folhas; }
 
 
-        public override void SetIdPessoa(int id) { _idPessoa = id; }
         public override void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
         public override void SetNomePessoa(string nome) { _nome = nome; }
         public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
@@ -48,6 +51,9 @@ namespace Sistema.Model.Entidades
         public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
         public void SetIdUsuario(int idUsuario) { _idUsuario = idUsuario; }
         public void SetStatusUsuario(bool status) { _ativo = status; }
+        public void SetIdPermissaoUsuario(int idPermissao) { _idPermissao = idPermissao; }
+        public void SetLoginUsuario(string login) { _login = login; }
+        public void SetSenhaUsuario(string senha) {  _senha = senha; }
         public void SetUsuariosUsuario(List<Usuario> usuarios) { _usuarios = usuarios; }
         public void SetEmpresaUsuario(List<Empresa> empresas) { _empresas = empresas; }
         public void SetFuncionariosUsuario(List<Funcionario> funcionarios) { _funcionarios = funcionarios; }
@@ -64,7 +70,7 @@ namespace Sistema.Model.Entidades
 
         public void ProcuraUsuarioPorId(int id)
         {
-            Usuario usuarioEncontrado = _usuarios.Find(u => u._idPessoa == id);
+            Usuario usuarioEncontrado = _usuarios.Find(u => u.GetIdUsuario() == id);
             if(usuarioEncontrado != null)
             {
                 Console.WriteLine($"Usuário encontrado: {usuarioEncontrado}");
@@ -132,7 +138,7 @@ namespace Sistema.Model.Entidades
 
         public void ProcuraEmpresaPorId(int id)
         {
-            Empresa empresaEncontrada = _empresas.Find(e => e.GetIdEmpresa() == id);
+            Empresa empresaEncontrada = _empresas.Find(e => e.Id == id);
             if (empresaEncontrada != null)
             {
                 Console.WriteLine($"Empresa encontrada: {empresaEncontrada}");
@@ -179,7 +185,7 @@ namespace Sistema.Model.Entidades
 
         public void ProcuraFuncionarioPorId(int id)
         {
-            Funcionario funcionarioEncontrado = _funcionarios.Find(f => f.GetIdPessoa() == id);
+            Funcionario funcionarioEncontrado = _funcionarios.Find(f => f.GetIdFuncionario() == id);
             if (funcionarioEncontrado != null)
             {
                 Console.WriteLine($"Funcionário encontrado: {funcionarioEncontrado}");

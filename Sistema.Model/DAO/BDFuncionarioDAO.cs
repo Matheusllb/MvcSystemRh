@@ -1,15 +1,62 @@
-﻿using System.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using Sistema.Model.DAO;
 using Sistema.Model.Entidades;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
-namespace Sistema.Model.DAO
+public class BDFuncionarioDAO : DAO<BDFuncionario>
 {
-    public class BDFuncionario : AbstractDAO<BDFuncionario>
+    public BDFuncionarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "BDFuncionario")
     {
-        
+        data = LoadDataFromDatabase(connectionManager, "BDFuncionario");
+    }
+
+    public override List<BDFuncionario> FilterData(string searchTerm)
+    {
+        List<BDFuncionario> filteredData = new List<BDFuncionario>();
+
+        using (SqlConnection connection = ConnectionManager.GetConnection())
+        {
+            string query = $"SELECT * FROM BDFuncionario WHERE IdFuncionario = @searchTerm OR IdBeneficioDesconto = @searchTerm";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@searchTerm", searchTerm);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        BDFuncionario bdFuncionario = MapData(reader);
+                        filteredData.Add(bdFuncionario);
+                    }
+                }
+            }
+        }
+
+        return filteredData;
+    }
+
+    public override object[] GetHeaders()
+    {
+        string[] headers = { "IdBDFuncionario", "IdFuncionario", "IdBeneficioDesconto" };
+        return headers;
+    }
+
+    public override void SetData(List<BDFuncionario> data)
+    {
+        this.data = data;
+    }
+
+    protected override BDFuncionario MapData(SqlDataReader reader)
+    {
+        BDFuncionario bdFuncionario = new BDFuncionario
+        {
+            Id = (int)reader["IdBDFuncionario"],
+        };
+
+        bdFuncionario.SetIdBDFuncionario((int)reader["IdFuncionario"]);
+        bdFuncionario.SetIdBDBeneficioDesconto((int)reader["IdBeneficioDesconto"]);
+
+
+        return bdFuncionario;
     }
 }

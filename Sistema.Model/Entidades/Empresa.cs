@@ -1,8 +1,10 @@
-﻿namespace Sistema.Model.Entidades
+﻿using Sistema.Model.Interfaces.IDAO;
+
+namespace Sistema.Model.Entidades
 {
-    public class Empresa
+    public class Empresa : IEntidade
     {
-        private int _idEmpresa;
+        public int Id { get; set; }
         private string _nome;
         private string _cnpj;
         private string _setor;
@@ -14,7 +16,7 @@
 
         public Empresa(int id, string nome, string cnpj, string setor, string email, string telefone, string endereco)
         {
-            _idEmpresa = id;
+            Id = id;
             _nome = nome;
             _cnpj = cnpj;
             _setor = setor;
@@ -22,7 +24,6 @@
             _telefone = telefone;
             _endereco = endereco;
         }
-        public int GetIdEmpresa() { return _idEmpresa; }
         public string GetNomeEmpresa() { return _nome; }
         public string GetCnpjEmpresa() { return _cnpj; }
         public string GetSetorEmpresa() { return _setor; }
@@ -30,7 +31,6 @@
         public string GetTelefoneEmpresa() { return _telefone; }
         public string GetEnderecoEmpresa() { return _endereco; }
 
-        public void SetIdEmpresa(int id) { _idEmpresa = id; }
         public void SetNomeEmpresa(string nome) { _nome = nome; }
         public void SetCnpjEmpresa(string cnpj) { _cnpj = cnpj; }
         public void SetSetorEmpresa(string setor) { _setor = setor; }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Sistema.Model.Interfaces.IDAO;
+using System;
 using System.Collections.Generic;
 
 namespace Sistema.Model.Entidades
 {
-    public class FolhaPagamento
+    public class FolhaPagamento : IEntidade
     {
-        private int _idFolha;
+        public int Id { get; set; }
         private int _idEmpresa;
         private DateTime _dataFechamento;
         private DateTime _dataPagamento;
@@ -16,13 +17,13 @@ namespace Sistema.Model.Entidades
         private decimal _salarioINSS;
         private decimal _valorFGTS;
         private decimal _valorIRRF;
-        private List<string> _itens = new List<string> { };
+        private List<string> _itens = new List<string>();
         
 
         public FolhaPagamento(int id, int empresa, DateTime dataFechamento, DateTime pagamento,
          Funcionario funcionario)
         {
-            _idFolha = id;
+            Id = id;
             _idEmpresa = empresa;
             _dataFechamento = dataFechamento;
             _dataPagamento = pagamento;
@@ -34,22 +35,10 @@ namespace Sistema.Model.Entidades
             _totalDescontos = CalculaTotalDescontos();
             _totalLiquido = CalculaTotalLiquido();
         }
-        
-        public FolhaPagamento(int id, int empresa, DateTime dataFechamento, DateTime pagamento)
+        public FolhaPagamento()
         {
-            _idFolha = id;
-            _idEmpresa = empresa;
-            _dataFechamento = dataFechamento;
-            _dataPagamento = pagamento;
-            _salarioINSS = CalculaINSS();
-            _valorFGTS = CalculaFGTS();
-            _valorIRRF = CalculaIRRF();
-            _totalVencimentos = CalculaTotalVencimentos();
-            _totalDescontos = CalculaTotalDescontos();
-            _totalLiquido = CalculaTotalLiquido();
         }
 
-        public int GetIdEmFolha() { return _idFolha; }
         public int GetIdEmpresaEmFolha() { return _idEmpresa; }
         public DateTime GetDataFechamentoEmFolha() { return _dataFechamento; }
         public DateTime GetDataPagamentoEmFolha() { return _dataPagamento; }
@@ -62,7 +51,6 @@ namespace Sistema.Model.Entidades
         public decimal GetValorIRRFEmFolha() { return _valorIRRF; }
         public List<string> GetItensEmFolha() { return _itens; }
 
-        public void SetIdEmFolha(int id) { _idFolha = id; }
         public void SetIdEmpresaEmFolha(int idEmpresa) { _idEmpresa = idEmpresa; }
         public void SetDataFechamentoEmFolha(DateTime dataFechamento) { _dataFechamento = dataFechamento; }
         public void SetDataPagamentoEmFolha(DateTime dataPagamento) { _dataPagamento = dataPagamento; }

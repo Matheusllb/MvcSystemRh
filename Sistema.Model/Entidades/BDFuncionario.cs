@@ -1,20 +1,27 @@
-﻿namespace Sistema.Model.Entidades
+﻿using Sistema.Model.Interfaces.IDAO;
+
+namespace Sistema.Model.Entidades
 {
-    public class BDFuncionario
+    public class BDFuncionario : IEntidade
     {
-        private int _idBD;
+        public int Id { get; set; }
         private int _idFuncionario;
         private int _idBeneficioDesconto;
 
-        public BDFuncionario(int id, int funcionario, int idBeneficioDesconto)
+        public BDFuncionario()
         {
-            _idBD = id;
-            _idFuncionario = funcionario;
-            _idBeneficioDesconto = idBeneficioDesconto;
         }
 
-        public int GetIdBD() { return _idBD; }
+        public BDFuncionario(int id, int funcionario, int idBeneficioDesconto)
+        {
+            Id = id;
+            _idFuncionario = funcionario;
+            _idBeneficioDesconto = idBeneficioDesconto;
+        } 
+
         public int GetIdBDFuncionario() { return _idFuncionario; }
         public int GetIdBDBeneficioDesconto() { return _idBeneficioDesconto; }
+        public void SetIdBDFuncionario(int idFuncionario) { _idFuncionario = idFuncionario; }
+        public void SetIdBDBeneficioDesconto(int idBeneficioDesconto) { _idBeneficioDesconto = idBeneficioDesconto; }
     }
 }

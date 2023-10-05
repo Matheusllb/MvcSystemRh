@@ -154,6 +154,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\Controller.cs" />
     <Compile Include="View\BeneficioDesconto\BeneficioDesconto.xaml.cs">
       <DependentUpon>BeneficioDesconto.xaml</DependentUpon>
     </Compile>

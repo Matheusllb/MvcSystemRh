@@ -1,46 +1,97 @@
-﻿using System.Data.SqlClient;
-using Sistema.Model.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Sistema.Model.Entidades.Enum;
+using System.Data.SqlClient;
+using Sistema.Model.DAO;
+using Sistema.Model.Entidades;
 
-namespace Sistema.Model.DAO
+public class UsuarioDAO : DAO<Usuario>
 {
-    public class UsuarioDAO : AbstractDAO<Usuario>
+    public UsuarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "Usuario")
     {
-        public bool Logar(string usuario, string senha)
+        data = LoadDataFromDatabase(connectionManager, "Usuario");
+    }
+
+    public bool Logar(string usuario, string senha)
+    {
+        try
         {
-            try
+            using (SqlConnection connection = ConnectionManager.GetConnection())
             {
-                using (SqlConnection connection = connectionManager.GetConnection())
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM Usuario WHERE Login = @user AND Senha = @password AND Inativo = 0";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    connection.Open();
+                    command.Parameters.AddWithValue("@user", usuario); // Atribui o valor do usuário
+                    command.Parameters.AddWithValue("@password", senha); // Atribui o valor da senha
 
-                    string query = "SELECT COUNT(*) FROM Usuario WHERE Login = @user AND Senha = @password";
+                    int count = (int)command.ExecuteScalar();
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    return count > 0; // Retorna true se houver correspondência e o usuário não estiver inativo, senão, retorna false
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred: " + ex.Message);
+            return false;
+        }
+        finally
+        {
+            ConnectionManager.CloseConnection();
+        }
+    }
+
+
+    public override List<Usuario> FilterData(string searchTerm)
+    {
+        List<Usuario> filteredData = new List<Usuario>();
+
+        using (SqlConnection connection = ConnectionManager.GetConnection())
+        {
+            string query = $"SELECT * FROM Usuario WHERE IdUsuario = @searchTerm OR Login = @searchTerm";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@searchTerm", searchTerm);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
                     {
-                        command.Parameters.AddWithValue("@user", usuario); // Atribui o valor do usuário
-                        command.Parameters.AddWithValue("@password", senha); // Atribui o valor da senha
-
-                        int count = (int)command.ExecuteScalar();
-
-                        return count > 0; // Retorna true se houver correspondência, senão, retorna false
+                        Usuario usuario = MapData(reader);
+                        filteredData.Add(usuario);
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                connectionManager.CloseConnection();
-            }
         }
+
+        return filteredData;
+    }
+
+    public override object[] GetHeaders()
+    {
+        string[] headers = { "IdUsuario", "IdPessoa", "IdPermissao", "Inativo", "Login", "Senha" };
+        return headers;
+    }
+
+    public override void SetData(List<Usuario> data)
+    {
+        this.data = data;
+    }
+
+    protected override Usuario MapData(SqlDataReader reader)
+    {
+        Usuario usuario = new Usuario
+        {
+            Id = (int)reader["IdPessoa"]
+        };
+        usuario.SetIdUsuario((int)reader["IdUsuario"]);
+        usuario.SetIdPermissaoUsuario((int)reader["IdPermissao"]);
+        usuario.SetStatusUsuario((bool)reader["Inativo"]);
+        usuario.SetLoginUsuario(reader["Login"].ToString());
+        usuario.SetSenhaUsuario(reader["Senha"].ToString());
+
+        return usuario;
     }
 }

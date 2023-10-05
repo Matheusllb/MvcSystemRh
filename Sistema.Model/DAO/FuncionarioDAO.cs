@@ -1,73 +1,71 @@
-﻿using System.Data.SqlClient;
-using Sistema.Model.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Data.SqlClient;
+using Sistema.Model.DAO;
+using Sistema.Model.Entidades;
 using Sistema.Model.Entidades.Enum;
 
-namespace Sistema.Model.DAO
+public class FuncionarioDAO : DAO<Funcionario>
 {
-    public class FuncionarioDAO : AbstractDAO<Funcionario>
+    public FuncionarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "Funcionario")
     {
-        private DbConnectionManager _connectionManager;
+        data = LoadDataFromDatabase(connectionManager, "Funcionario");
+    }
 
-        public FuncionarioDAO()
+    public override List<Funcionario> FilterData(string searchTerm)
+    {
+        List<Funcionario> filteredData = new List<Funcionario>();
+
+        using (SqlConnection connection = ConnectionManager.GetConnection())
         {
-            _connectionManager = new DbConnectionManager();
-        }
-
-        public List<Funcionario> GetAllFuncionarios()
-        {
-            List<Funcionario> funcionarios = new List<Funcionario> ();
-
-            using (SqlConnection connection = _connectionManager.GetConnection())
+            string query = $"SELECT * FROM Funcionario WHERE IdFuncionario = @searchTerm OR Email = @searchTerm";
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = "SELECT f.IdPessoa, f.IdFuncionario, f.Ativo, p.Endereco, p.Nome, p.Cpf, p.DataNascimento, p.EstadoCivil, f.Email, f.DataAdmissao, f.IdEmpresa, f.Cargo, f.SalarioBruto FROM Funcionario f JOIN Pessoa p ON f.IdPessoa = p.IdPessoa;";
-                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@searchTerm", searchTerm);
 
-                try
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    _connectionManager.OpenConnection();
-                    SqlDataReader reader = command.ExecuteReader();
-
                     while (reader.Read())
                     {
-                        Funcionario funcionario = new Funcionario
-                        (
-                            Convert.ToInt32(reader["f.IdPessoa"]),
-                            Convert.ToInt32(reader["f.IdFuncionario"]),
-                            Convert.ToBoolean(reader["f.Ativo"]),
-                            reader["p.Endereco"].ToString(),
-                            reader["p.Nome"].ToString(),
-                            reader["p.Cpf"].ToString(),
-                            Convert.ToDateTime(reader["p.DataNascimento"]),
-                            (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["p.EstadoCivil"].ToString()),
-                            reader["f.Email"].ToString(),
-                            Convert.ToDateTime(reader["f.DataAdmissao"]),
-                            Convert.ToInt32(reader["f.IdEmpresa"]),
-                            reader["f.Cargo"].ToString(),
-                            Convert.ToDecimal(reader["f.SalarioBruto"])
-                        );
-
-                        funcionarios.Add(funcionario);
+                        Funcionario funcionario = MapData(reader);
+                        filteredData.Add(funcionario);
                     }
-
-                    reader.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occured: " + ex.Message);
-                }
-                finally
-                {
-                    _connectionManager.CloseConnection();
                 }
             }
-
-            return funcionarios;
         }
+
+        return filteredData;
+    }
+
+    public override object[] GetHeaders()
+    {
+        string[] headers = { "IdFuncionario", "IdPessoa", "Email", "DataAdmissao", "IdEmpresa", "Cargo", "SalarioBruto" };
+        return headers;
+    }
+
+    public override void SetData(List<Funcionario> data)
+    {
+        this.data = data;
+    }
+
+    protected override Funcionario MapData(SqlDataReader reader)
+    {
+        Funcionario funcionario = new Funcionario
+        {
+            Id = (int)reader["IdPessoa"],
+        };
+        funcionario.SetIdFuncionario((int)reader["IdFuncionario"]);
+        funcionario.SetAtivo((bool)reader["Ativo"]);
+        funcionario.SetNomePessoa((string)reader["Nome"]);
+        funcionario.SetCpfPessoa((string)reader["Cpf"]);
+        funcionario.SetDataNascimentoPessoa((DateTime)reader["DataNascimento"]);
+        funcionario.SetEstadoCivilPessoa((EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()));
+        funcionario.SetEmailFuncionario((string)reader["Email"]);
+        funcionario.SetDataAdmissaoFuncionario((DateTime)reader["DataAdmissao"]);
+        funcionario.SetIdEmpresaFuncionario((int)reader["IdEmpresa"]);
+        funcionario.SetCargoFuncionario((string)reader["Cargo"]);
+        funcionario.SetSalarioBrutoFuncionario((decimal)reader["SalarioBruto"]);
+
+        return funcionario;
     }
 }
