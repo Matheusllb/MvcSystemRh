@@ -34,7 +34,7 @@ public class Controller<T> where T : IEntidade
         model.SetData(newData);
     }
 
-    public T GetById(object id)
+    public T GetById(int id)
     {
         return model.GetById(id);
     }
@@ -51,7 +51,7 @@ public class Controller<T> where T : IEntidade
         FetchAll();
     }
 
-    public void DeleteOne(object id)
+    public void DeleteOne(int id)
     {
         model.Delete(id);
         FetchAll();
