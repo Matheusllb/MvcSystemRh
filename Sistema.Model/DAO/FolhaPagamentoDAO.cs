@@ -7,11 +7,61 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 
-public class FolhaPagamentoDAO : DAO<FolhaPagamento>
+public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 {
     public FolhaPagamentoDAO(DbConnectionManager connectionManager) : base(connectionManager, "FolhaPagamento")
     {
-        data = LoadDataFromDatabase(connectionManager, "FolhaPagamento");
+        Data = LoadDataFromDatabase(connectionManager, "FolhaPagamento");
+    }
+
+    public List<FolhaPagamento> ProcuraFolhaPorDataFechamento(DateTime fechamento)
+    {
+        List<FolhaPagamento> folhasEncontradas = new List<FolhaPagamento>();
+
+        using (SqlConnection connection = ConnectionManager.GetConnection())
+        {
+            string query = "SELECT * FROM FolhaPagamento WHERE DataFechamento = @DataFechamento;";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@DataFechamento", fechamento);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        FolhaPagamento folhaPagamento = MapData(reader);
+                        folhasEncontradas.Add(folhaPagamento);
+                    }
+                }
+            }
+        }
+
+        return folhasEncontradas;
+    }
+
+    public List<FolhaPagamento> ProcuraFolhaPorDataPagamento(DateTime pagamento)
+    {
+        List<FolhaPagamento> folhasEncontradas = new List<FolhaPagamento>();
+
+        using (SqlConnection connection = ConnectionManager.GetConnection())
+        {
+            string query = "SELECT * FROM FolhaPagamento WHERE DataPagamento = @DataPagamento;";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@DataPagamento", pagamento);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        FolhaPagamento folhaPagamento = MapData(reader);
+                        folhasEncontradas.Add(folhaPagamento);
+                    }
+                }
+            }
+        }
+
+        return folhasEncontradas;
     }
 
     public override List<FolhaPagamento> FilterData(string searchTerm)
@@ -58,7 +108,7 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>
 
     public override void SetData(List<FolhaPagamento> data)
     {
-        this.data = data;
+        Data = data;
     }
 
     protected override FolhaPagamento MapData(SqlDataReader reader)

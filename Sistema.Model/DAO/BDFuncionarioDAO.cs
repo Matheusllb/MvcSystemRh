@@ -7,7 +7,7 @@ public class BDFuncionarioDAO : DAO<BDFuncionario>
 {
     public BDFuncionarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "BDFuncionario")
     {
-        data = LoadDataFromDatabase(connectionManager, "BDFuncionario");
+        Data = LoadDataFromDatabase(connectionManager, "BDFuncionario");
     }
 
     public override List<BDFuncionario> FilterData(string searchTerm)
@@ -43,7 +43,7 @@ public class BDFuncionarioDAO : DAO<BDFuncionario>
 
     public override void SetData(List<BDFuncionario> data)
     {
-        this.data = data;
+        Data = data;
     }
 
     protected override BDFuncionario MapData(SqlDataReader reader)

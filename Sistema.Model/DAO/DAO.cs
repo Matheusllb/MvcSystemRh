@@ -7,11 +7,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 
-public abstract class DAO<T> where T : IEntidade
+public abstract class DAO<T> : IDAO<T> where T : IEntidade
 {
     protected DbConnectionManager ConnectionManager;
     protected string TableName;
-    protected List<T> data = new List<T>();
+    protected List<T> Data = new List<T>();
 
     public DAO(DbConnectionManager connectionManager, string tableName)
     {
@@ -63,7 +63,7 @@ public abstract class DAO<T> where T : IEntidade
         return result;
     }
 
-    public T GetById(object id)
+    public T GetById(int id)
     {
         using (SqlConnection connection = ConnectionManager.GetConnection())
         {
@@ -147,7 +147,7 @@ public abstract class DAO<T> where T : IEntidade
         }
     }
 
-    public void Delete(object id)
+    public void Delete(int id)
     {
         using (SqlConnection connection = ConnectionManager.GetConnection())
         {

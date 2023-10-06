@@ -8,7 +8,7 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
 {
     public BeneficioDescontoDAO(DbConnectionManager connectionManager) : base(connectionManager, "BeneficioDesconto")
     {
-        data = LoadDataFromDatabase(connectionManager, "BeneficioDesconto");
+        Data = LoadDataFromDatabase(connectionManager, "BeneficioDesconto");
     }
 
     public override List<BeneficioDesconto> FilterData(string searchTerm)
@@ -48,7 +48,7 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
 
     public override void SetData(List<BeneficioDesconto> data)
     {
-        this.data = data;
+        Data = data;
     }
 
     protected override BeneficioDesconto MapData(SqlDataReader reader)

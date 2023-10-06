@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Sistema.Model.DAO;
 using Sistema.Model.Entidades;
+using Sistema.Model.Interfaces.IDAO;
 
-public class UsuarioDAO : DAO<Usuario>
+public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
 {
     public UsuarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "Usuario")
     {
-        data = LoadDataFromDatabase(connectionManager, "Usuario");
+        Data = LoadDataFromDatabase(connectionManager, "Usuario");
     }
 
     public bool Logar(string usuario, string senha)
@@ -43,8 +44,40 @@ public class UsuarioDAO : DAO<Usuario>
         }
     }
 
+    public int ObterPermissao(int idUsuario)
+    {
+        try
+        {
+            using (SqlConnection connection = ConnectionManager.GetConnection())
+            {
+                string query = "SELECT IdPermissao FROM Usuario WHERE IdUsuario = @idUsuario";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    ConnectionManager.OpenConnection();
 
-    public override List<Usuario> FilterData(string searchTerm)
+                    var result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return (int)result;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred: " + ex.Message);
+        }
+        finally
+        {
+            ConnectionManager.CloseConnection();
+        }
+
+        return 0; // Retorno padrão se ocorrer um erro ou não encontrar permissão.
+    }
+
+
+public override List<Usuario> FilterData(string searchTerm)
     {
         List<Usuario> filteredData = new List<Usuario>();
 
@@ -77,7 +110,7 @@ public class UsuarioDAO : DAO<Usuario>
 
     public override void SetData(List<Usuario> data)
     {
-        this.data = data;
+        Data = data;
     }
 
     protected override Usuario MapData(SqlDataReader reader)

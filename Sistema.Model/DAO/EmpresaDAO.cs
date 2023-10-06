@@ -12,14 +12,65 @@ namespace Sistema.Model.DAO
 {
     using Sistema.Model.DAO;
     using Sistema.Model.Entidades;
+    using Sistema.Model.Interfaces.IDAO;
     using System.Collections.Generic;
     using System.Data.SqlClient;
 
-    public class EmpresaDAO : DAO<Empresa>
+    public class EmpresaDAO : DAO<Empresa>, IEmpresaDAO
     {
         public EmpresaDAO(DbConnectionManager connectionManager) : base(connectionManager, "Empresa")
         {
-            data = LoadDataFromDatabase(connectionManager, "Empresa"); // inicializa aqui os dados da empresa a partir do banco de dados
+            Data = LoadDataFromDatabase(connectionManager, "Empresa"); // inicializa aqui os dados da empresa a partir do banco de dados
+        }
+
+        public List<Empresa> ProcuraEmpresaPorNome(string nome)
+        {
+            List<Empresa> empresasEncontradas = new List<Empresa>();
+
+            using (SqlConnection connection = ConnectionManager.GetConnection())
+            {
+                string query = "SELECT * FROM Empresa WHERE Nome LIKE @Nome;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Nome", "%" + nome + "%");
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Empresa empresa = MapData(reader);
+                            empresasEncontradas.Add(empresa);
+                        }
+                    }
+                }
+            }
+
+            return empresasEncontradas;
+        }
+
+        public List<Empresa> ProcuraEmpresaPorSetor(string setor)
+        {
+            List<Empresa> empresasEncontradas = new List<Empresa>();
+
+            using (SqlConnection connection = ConnectionManager.GetConnection())
+            {
+                string query = "SELECT * FROM Empresa WHERE Setor = @Setor;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Setor", setor);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Empresa empresa = MapData(reader);
+                            empresasEncontradas.Add(empresa);
+                        }
+                    }
+                }
+            }
+
+            return empresasEncontradas;
         }
 
         public override List<Empresa> FilterData(string searchTerm)
@@ -55,7 +106,7 @@ namespace Sistema.Model.DAO
 
         public override void SetData(List<Empresa> data)
         {
-            this.data = data;
+            Data = data;
         }
 
         protected override Empresa MapData(SqlDataReader reader)
