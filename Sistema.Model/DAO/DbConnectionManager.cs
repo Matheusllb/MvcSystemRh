@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
 
 namespace Sistema.Model.DAO
@@ -10,7 +6,7 @@ namespace Sistema.Model.DAO
     public class DbConnectionManager
     {
         private SqlConnection connection;
-        private string connectionString = @"Server=localhost\leo;Database=MVCSystemRH;Integrated Security=True;"; //Trocar para suas informações
+        private string connectionString = "Server=tcp:mvcsystemrh.database.windows.net,1433;Initial Catalog=MvcSystemRh;Persist Security Info=False;User ID=pim;Password=Ads2023@@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public DbConnectionManager()
         {
@@ -23,10 +19,10 @@ namespace Sistema.Model.DAO
             {
                 return connection;
             }
-            catch(Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 Console.WriteLine("Connection Failed: " + ex.Message);
-                return connection;
+                return null; // Retorna null em caso de falha na conexão
             }
         }
 
@@ -38,7 +34,8 @@ namespace Sistema.Model.DAO
                 {
                     connection.Open();
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Connection Failed: " + ex.Message);
             }

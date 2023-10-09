@@ -26,6 +26,8 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         using (SqlConnection connection = connectionManager.GetConnection())
         {
             string query = $"SELECT * FROM {tableName}";
+            connection.Open();
+
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
