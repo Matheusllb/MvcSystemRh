@@ -7,7 +7,6 @@ public class BDFuncionarioDAO : DAO<BDFuncionario>
 {
     public BDFuncionarioDAO() : base("BDFuncionario")
     {
-        Data = LoadDataFromDatabase("BDFuncionario");
     }
 
     public override List<BDFuncionario> FilterData(string searchTerm)

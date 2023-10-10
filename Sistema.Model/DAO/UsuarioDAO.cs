@@ -9,7 +9,6 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
 {
     public UsuarioDAO() : base("Usuario")
     {
-        Data = LoadDataFromDatabase("Usuario");
     }
 
     public bool Logar(string usuario, string senha)

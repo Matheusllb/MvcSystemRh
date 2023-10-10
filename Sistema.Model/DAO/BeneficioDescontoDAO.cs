@@ -8,7 +8,6 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
 {
     public BeneficioDescontoDAO() : base("BeneficioDesconto")
     {
-        Data = LoadDataFromDatabase("BeneficioDesconto");
     }
 
     public override List<BeneficioDesconto> FilterData(string searchTerm)

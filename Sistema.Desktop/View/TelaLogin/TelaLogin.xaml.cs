@@ -62,7 +62,8 @@ namespace Sistema.Desktop
                 string usuario = txbUsername.Text;
                 string senha = pwbSenha.Password;
 
-                AcessoController loginCtrl = new AcessoController(new UsuarioDAO());
+                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                AcessoController loginCtrl = new AcessoController(usuarioDAO);
 
                 if (loginCtrl.Logar(usuario, senha))
                 {

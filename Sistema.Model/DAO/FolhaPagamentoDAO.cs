@@ -10,8 +10,7 @@ using System.Xml.Linq;
 public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 {
     public FolhaPagamentoDAO() : base("FolhaPagamento")
-    {
-        Data = LoadDataFromDatabase("FolhaPagamento");
+    {    
     }
 
     public List<FolhaPagamento> ProcuraFolhaPorDataFechamento(DateTime fechamento)

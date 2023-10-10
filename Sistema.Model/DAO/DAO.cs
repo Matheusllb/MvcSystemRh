@@ -15,7 +15,9 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
 
     public DAO(string tableName)
     {
+        ConnectionManager = new DbConnectionManager();
         TableName = tableName;
+        Data = LoadDataFromDatabase(tableName);
     }
 
     protected List<T> LoadDataFromDatabase(string tableName)

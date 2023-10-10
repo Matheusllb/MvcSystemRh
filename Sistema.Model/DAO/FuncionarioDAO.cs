@@ -10,7 +10,6 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
 {
     public FuncionarioDAO() : base("Funcionario")
     {
-        Data = LoadDataFromDatabase("Funcionario");
     }
 
     public List<Funcionario> ProcuraFuncionarioPorNome(string nome)

@@ -10,7 +10,6 @@ namespace Sistema.Model.DAO
     {
         public EmpresaDAO() : base("Empresa")
         {
-            Data = LoadDataFromDatabase("Empresa"); // inicializa aqui os dados da empresa a partir do banco de dados
         }
 
         public List<Empresa> ProcuraEmpresaPorNome(string nome)
