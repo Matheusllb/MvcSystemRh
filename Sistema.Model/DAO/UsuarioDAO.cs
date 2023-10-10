@@ -7,9 +7,9 @@ using Sistema.Model.Interfaces.IDAO;
 
 public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
 {
-    public UsuarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "Usuario")
+    public UsuarioDAO() : base("Usuario")
     {
-        Data = LoadDataFromDatabase(connectionManager, "Usuario");
+        Data = LoadDataFromDatabase("Usuario");
     }
 
     public bool Logar(string usuario, string senha)
@@ -33,10 +33,11 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
                 }
             }
         }
-        catch (Exception ex)
+        catch (SqlException ex)
         {
-            Console.WriteLine("An error occurred: " + ex.Message);
-            return false;
+            // Você pode lançar uma exceção personalizada ou retornar um código de erro específico aqui
+            // Por exemplo, lançar uma exceção personalizada com uma mensagem de erro significativa
+            throw new Exception("Erro durante a autenticação: " + ex.Message, ex);
         }
         finally
         {
@@ -64,20 +65,23 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
                 }
             }
         }
-        catch (Exception ex)
+        catch (SqlException ex)
         {
-            Console.WriteLine("An error occurred: " + ex.Message);
+            // Você pode lançar uma exceção personalizada ou retornar um código de erro específico aqui
+            // Por exemplo, lançar uma exceção personalizada com uma mensagem de erro significativa
+            throw new Exception("Erro ao obter permissão: " + ex.Message, ex);
         }
         finally
         {
             ConnectionManager.CloseConnection();
         }
 
-        return 0; // Retorno padrão se ocorrer um erro ou não encontrar permissão.
+        // Indica que não foi encontrada permissão ou ocorreu um erro
+        return -1; // Use um valor especial (por exemplo, -1) para indicar a ausência de permissão ou erro
     }
 
 
-public override List<Usuario> FilterData(string searchTerm)
+    public override List<Usuario> FilterData(string searchTerm)
     {
         List<Usuario> filteredData = new List<Usuario>();
 

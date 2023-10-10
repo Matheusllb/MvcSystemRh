@@ -6,9 +6,9 @@ using Sistema.Model.Entidades;
 
 public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
 {
-    public BeneficioDescontoDAO(DbConnectionManager connectionManager) : base(connectionManager, "BeneficioDesconto")
+    public BeneficioDescontoDAO() : base("BeneficioDesconto")
     {
-        Data = LoadDataFromDatabase(connectionManager, "BeneficioDesconto");
+        Data = LoadDataFromDatabase("BeneficioDesconto");
     }
 
     public override List<BeneficioDesconto> FilterData(string searchTerm)

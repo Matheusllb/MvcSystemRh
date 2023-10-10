@@ -13,17 +13,16 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     protected string TableName;
     protected List<T> Data = new List<T>();
 
-    public DAO(DbConnectionManager connectionManager, string tableName)
+    public DAO(string tableName)
     {
-        ConnectionManager = connectionManager;
         TableName = tableName;
     }
 
-    protected List<T> LoadDataFromDatabase(DbConnectionManager connectionManager, string tableName)
+    protected List<T> LoadDataFromDatabase(string tableName)
     {
         List<T> items = new List<T>();
 
-        using (SqlConnection connection = connectionManager.GetConnection())
+        using (SqlConnection connection = ConnectionManager.GetConnection())
         {
             string query = $"SELECT * FROM {tableName}";
             connection.Open();

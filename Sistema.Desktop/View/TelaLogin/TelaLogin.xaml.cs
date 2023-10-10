@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.IconPacks;
 using Sistema.Desktop.Controllers;
 using Sistema.Model.DAO;
+using Sistema.Model.Interfaces.IDAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,16 +57,22 @@ namespace Sistema.Desktop
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AcessoController loginCtrl = new AcessoController();
-            if (loginCtrl.Logar(txbUsername.Text, pwbSenha.Password))
+            try
             {
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.Show();
-                this.Close();
-            }
-            else
+                string usuario = txbUsername.Text;
+                string senha = pwbSenha.Password;
+
+                AcessoController loginCtrl = new AcessoController(new UsuarioDAO());
+
+                if (loginCtrl.Logar(usuario, senha))
+                {
+                    MainMenu mainMenu = new MainMenu();
+                    mainMenu.Show();
+                    this.Close();
+                }
+            }catch (Exception ex)
             {
-                MessageBox.Show("Nome de usuário ou senha incorretos!");
+                MessageBox.Show("Falha ao entrar: " + ex.Message);
             }
         }
 

@@ -1,26 +1,16 @@
-﻿using System.Reflection.Emit;
-using System.Data;
-using System;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using Sistema.Model.DAO;
+using Sistema.Model.Entidades;
+using Sistema.Model.Interfaces.IDAO;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Sistema.Model.Entidades;
 
 namespace Sistema.Model.DAO
 {
-    using Sistema.Model.DAO;
-    using Sistema.Model.Entidades;
-    using Sistema.Model.Interfaces.IDAO;
-    using System.Collections.Generic;
-    using System.Data.SqlClient;
-
     public class EmpresaDAO : DAO<Empresa>, IEmpresaDAO
     {
-        public EmpresaDAO(DbConnectionManager connectionManager) : base(connectionManager, "Empresa")
+        public EmpresaDAO() : base("Empresa")
         {
-            Data = LoadDataFromDatabase(connectionManager, "Empresa"); // inicializa aqui os dados da empresa a partir do banco de dados
+            Data = LoadDataFromDatabase("Empresa"); // inicializa aqui os dados da empresa a partir do banco de dados
         }
 
         public List<Empresa> ProcuraEmpresaPorNome(string nome)

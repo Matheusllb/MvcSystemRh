@@ -9,9 +9,9 @@ using System.Xml.Linq;
 
 public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 {
-    public FolhaPagamentoDAO(DbConnectionManager connectionManager) : base(connectionManager, "FolhaPagamento")
+    public FolhaPagamentoDAO() : base("FolhaPagamento")
     {
-        Data = LoadDataFromDatabase(connectionManager, "FolhaPagamento");
+        Data = LoadDataFromDatabase("FolhaPagamento");
     }
 
     public List<FolhaPagamento> ProcuraFolhaPorDataFechamento(DateTime fechamento)

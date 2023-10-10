@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 public class BDFuncionarioDAO : DAO<BDFuncionario>
 {
-    public BDFuncionarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "BDFuncionario")
+    public BDFuncionarioDAO() : base("BDFuncionario")
     {
-        Data = LoadDataFromDatabase(connectionManager, "BDFuncionario");
+        Data = LoadDataFromDatabase("BDFuncionario");
     }
 
     public override List<BDFuncionario> FilterData(string searchTerm)

@@ -6,29 +6,36 @@ using System.Threading.Tasks;
 using System.Windows;
 using Sistema.Model.DAO;
 using Sistema.Model.Entidades;
+using Sistema.Model.Interfaces.IDAO;
 
 namespace Sistema.Desktop.Controllers
 {
     public class AcessoController
     {
-        private DbConnectionManager _connectionManager = new DbConnectionManager(); // Crie uma instância de DbConnectionManager ou use a que você já possui.
-        private UsuarioDAO _dao;
+        private IUsuarioDAO _dao;
 
-        public AcessoController()
+        public AcessoController(IUsuarioDAO usuarioDAO)
         {
-            _dao = new UsuarioDAO(_connectionManager);
+            _dao = usuarioDAO;
         }
 
         public bool Logar(string usuario, string senha)
         {
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(senha))
+            try
             {
-                MessageBox.Show("Preencha os campos vazios.", "Campo Vazio", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(senha))
+                {
+                    MessageBox.Show("Preencha os campos vazios.", "Campo Vazio", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return false;
+                }
+                else
+                {
+                    return _dao.Logar(usuario, senha);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Falha ao entrar: " + ex.Message);
                 return false;
-            }
-            else
-            {
-                return _dao.Logar(usuario, senha);
             }
             
         } 

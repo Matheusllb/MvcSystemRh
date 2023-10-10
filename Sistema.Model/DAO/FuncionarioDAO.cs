@@ -8,9 +8,9 @@ using Sistema.Model.Interfaces.IDAO;
 
 public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
 {
-    public FuncionarioDAO(DbConnectionManager connectionManager) : base(connectionManager, "Funcionario")
+    public FuncionarioDAO() : base("Funcionario")
     {
-        Data = LoadDataFromDatabase(connectionManager, "Funcionario");
+        Data = LoadDataFromDatabase("Funcionario");
     }
 
     public List<Funcionario> ProcuraFuncionarioPorNome(string nome)
