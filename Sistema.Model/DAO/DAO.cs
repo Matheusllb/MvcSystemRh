@@ -17,32 +17,6 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     {
         ConnectionManager = new DbConnectionManager();
         TableName = tableName;
-        Data = LoadDataFromDatabase(tableName);
-    }
-
-    protected List<T> LoadDataFromDatabase(string tableName)
-    {
-        List<T> items = new List<T>();
-
-        using (SqlConnection connection = ConnectionManager.GetConnection())
-        {
-            string query = $"SELECT * FROM {tableName}";
-            connection.Open();
-
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        T item = MapData(reader);
-                        items.Add(item);
-                    }
-                }
-            }
-        }
-
-        return items;
     }
 
     public List<T> GetAll()

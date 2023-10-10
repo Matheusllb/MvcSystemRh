@@ -6,10 +6,9 @@ namespace Sistema.Model.DAO
     public class DbConnectionManager
     {
         private SqlConnection connection;
-        private string connectionString = null;
+        private string connectionString = "Data Source=mvcsystemrh.database.windows.net;Initial Catalog=MvcSystemRh;Persist Security Info=True;User ID=pim;Password=Ads2023@@";
         public DbConnectionManager()
         {
-            connectionString = "Server=tcp:mvcsystemrh.database.windows.net,1433;Initial Catalog=MvcSystemRh;Persist Security Info=False;User ID=pim;Password=Ads2023@@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             connection = new SqlConnection(connectionString);
         }
 
@@ -21,7 +20,7 @@ namespace Sistema.Model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha na conexão: " + ex.Message);
+                Console.WriteLine("Falha na conexão (Model): " + ex.Message);
                 return null; // Retorna null em caso de falha na conexão
             }
         }
@@ -37,7 +36,7 @@ namespace Sistema.Model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Conexão falhou: " + ex.Message);
+                Console.WriteLine("Conexão falhou (Model): " + ex.Message);
             }
         }
 
