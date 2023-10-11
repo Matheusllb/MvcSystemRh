@@ -18,9 +18,8 @@ namespace Sistema.Model.Entidades
 
         }
 
-        public Pessoa(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil)
+        public Pessoa(string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil)
         {
-            Id = id;
             _endereco = endereco;
             _nome = nome;
             _cpf = cpf;

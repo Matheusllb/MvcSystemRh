@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Sistema.Desktop.View.BeneficioDesconto;
+using Sistema.Desktop.View.ViewBeneficioDesconto;
 
 namespace Sistema.Desktop
 {
@@ -27,7 +27,7 @@ namespace Sistema.Desktop
 
         private void Ir_Para_Beneficio_Desconto_Button_Click(object sender, RoutedEventArgs e)
         {
-            BeneficioDesconto beneficioDesconto = new BeneficioDesconto();
+            TelaBeneficioDesconto beneficioDesconto = new TelaBeneficioDesconto();
             beneficioDesconto.Show();
         }
     }

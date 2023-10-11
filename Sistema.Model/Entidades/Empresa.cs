@@ -14,9 +14,8 @@ namespace Sistema.Model.Entidades
 
         public Empresa() { }
 
-        public Empresa(int id, string nome, string cnpj, string setor, string email, string telefone, string endereco)
+        public Empresa(string nome, string cnpj, string setor, string email, string telefone, string endereco)
         {
-            Id = id;
             _nome = nome;
             _cnpj = cnpj;
             _setor = setor;

@@ -18,8 +18,8 @@ namespace Sistema.Model.Entidades
 
         public Usuario() : base() { }
 
-        public Usuario(int id, string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, int idPermissao, bool status, 
-            string login, string senha) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
+        public Usuario(string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, int idPermissao, bool status, 
+            string login, string senha) : base(endereco, nome, cpf, dataNascimento, estadoCivil)
         {
             _idUsuario = idUsuario;
             _idPermissao = idPermissao;

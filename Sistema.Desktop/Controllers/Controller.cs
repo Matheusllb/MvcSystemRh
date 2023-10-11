@@ -1,60 +1,121 @@
-﻿using Sistema.Model.Interfaces.IDAO;
+﻿using Sistema.Model.Interfaces.IController;
+using Sistema.Model.Interfaces.IDAO;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Markup;
 
-public class Controller<T> where T : IEntidade
+public abstract class Controller<T> : IController<T> where T : IEntidade
 {
-    private DAO<T> model;
+    protected DAO<T> Model;
 
     public Controller(DAO<T> model)
     {
-        this.model = model;
+        Model = model;
     }
 
-    public void FilterData(string searchTerm)
+    public void FilterData(string termo)
     {
-        List<T> newData = model.FilterData(searchTerm);
-        model.SetData(newData);
+        try
+        {
+            List<T> newData = Model.FilterData(termo);
+            Model.SetData(newData);
+        }catch (Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+        }
     }
 
     public DAO<T> GetModel()
     {
-        return model;
+        try
+        {
+            return Model;
+        }catch (Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return null;
+        }
     }
 
     public object[] GetHeaders()
     {
-        return model.GetHeaders();
+        try
+        {
+            return Model.GetHeaders();
+        }catch (Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return null;
+        }
     }
 
-    public void FetchAll()
+    public bool GetAll()
     {
-        List<T> newData = model.GetAll();
-        model.SetData(newData);
+        try
+        {
+            List<T> newData = Model.GetAll();
+            Model.SetData(newData);
+            return true;
+        }catch(Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return false;
+        }
     }
 
     public T GetById(int id)
     {
-        return model.GetById(id);
+        try
+        {
+            return Model.GetById(id);
+        }catch(Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return default(T);
+        }
     }
 
-    public void InsertOne(T newData)
+    public bool InsertOne(T newData)
     {
-        model.Insert(newData);
-        FetchAll();
+        try
+        {
+            Model.Insert(newData);
+            GetAll();
+            return true;
+        }catch(Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return false;
+        }
     }
 
-    public void UpdateOne(T data)
+    public bool UpdateOne(T data)
     {
-        model.Update(data);
-        FetchAll();
+        try
+        {
+            Model.Update(data);
+            GetAll();
+            return true;
+        }catch(Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return false;
+        }
     }
 
-    public void DeleteOne(int id)
+    public bool DeleteOne(int id)
     {
-        model.Delete(id);
-        FetchAll();
+        try
+        {
+            Model.Delete(id);
+            GetAll();
+            return true;
+        }catch (Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return false;
+        }
     }
 
 }

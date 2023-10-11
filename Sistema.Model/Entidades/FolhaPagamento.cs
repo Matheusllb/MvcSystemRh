@@ -20,10 +20,9 @@ namespace Sistema.Model.Entidades
         private List<string> _itens = new List<string>();
         
 
-        public FolhaPagamento(int id, int empresa, DateTime dataFechamento, DateTime pagamento,
+        public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
          Funcionario funcionario)
         {
-            Id = id;
             _idEmpresa = empresa;
             _dataFechamento = dataFechamento;
             _dataPagamento = pagamento;

@@ -16,8 +16,8 @@ namespace Sistema.Model.Entidades
 
         public Funcionario() : base() { }
 
-        public Funcionario(int id, int idFuncionario, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
-            string email, DateTime dataAdimissao, int idEmpresa, string cargo, decimal salario) : base(id, endereco, nome, cpf, dataNascimento, estadoCivil)
+        public Funcionario(int idFuncionario, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
+            string email, DateTime dataAdimissao, int idEmpresa, string cargo, decimal salario) : base(endereco, nome, cpf, dataNascimento, estadoCivil)
         {
             _idFuncionario = idFuncionario;
             _ativo = status;

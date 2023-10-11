@@ -5,22 +5,22 @@ namespace Sistema.Model.DAO
 {
     public class DbConnectionManager
     {
-        private SqlConnection connection;
-        private string connectionString = "Data Source=mvcsystemrh.database.windows.net;Initial Catalog=MvcSystemRh;Persist Security Info=True;User ID=pim;Password=Ads2023@@";
+        private SqlConnection _connection;
+        private string _connectionString = "Server=tcp:mvcsystemrh.database.windows.net,1433;Initial Catalog=MvcSystemRh;Persist Security Info=False;User ID=pim;Password=Ads2023@@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public DbConnectionManager()
         {
-            connection = new SqlConnection(connectionString);
+            _connection = new SqlConnection(_connectionString);
         }
 
         public SqlConnection GetConnection()
         {
             try
             {
-                return connection;
+                return _connection;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha na conexão (Model): " + ex.Message);
+                Console.WriteLine("Falha na conexão: " + ex.Message);
                 return null; // Retorna null em caso de falha na conexão
             }
         }
@@ -29,22 +29,22 @@ namespace Sistema.Model.DAO
         {
             try
             {
-                if (connection.State != System.Data.ConnectionState.Open)
+                if (_connection.State != System.Data.ConnectionState.Open)
                 {
-                    connection.Open();
+                    _connection.Open();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Conexão falhou (Model): " + ex.Message);
+                Console.WriteLine("Conexão falhou: " + ex.Message);
             }
         }
 
         public void CloseConnection()
         {
-            if (connection.State != System.Data.ConnectionState.Closed)
+            if (_connection.State != System.Data.ConnectionState.Closed)
             {
-                connection.Close();
+                _connection.Close();
             }
         }
     }

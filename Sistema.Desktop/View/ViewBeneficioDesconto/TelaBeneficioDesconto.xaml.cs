@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Sistema.Desktop.View.BeneficioDesconto
+namespace Sistema.Desktop.View.ViewBeneficioDesconto
 {
     /// <summary>
     /// Lógica interna para BeneficioDesconto.xaml
     /// </summary>
-    public partial class BeneficioDesconto : Window
+    public partial class TelaBeneficioDesconto : Window
     {
-        public BeneficioDesconto()
+        public TelaBeneficioDesconto()
         {
             InitializeComponent();
         }

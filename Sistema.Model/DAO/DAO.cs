@@ -22,118 +22,177 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     public List<T> GetAll()
     {
         List<T> result = new List<T>();
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+        try
         {
-            string query = $"SELECT * FROM {TableName}";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlConnection connection = ConnectionManager.GetConnection())
             {
-                using (SqlDataReader reader = command.ExecuteReader())
+                string query = $"SELECT * FROM {TableName}";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        T item = MapData(reader);
-                        result.Add(item);
+                        while (reader.Read())
+                        {
+                            T item = MapData(reader);
+                            result.Add(item);
+                        }
                     }
                 }
             }
+            return result;
+        }catch (SqlException sqlEx)
+        {
+            Console.WriteLine("Erro de banco: " + sqlEx.Message);
+            return result;
         }
-        return result;
+        catch (Exception ex)
+        {
+            Console.WriteLine("Erro: " +  ex.Message);
+            return result;
+        }
     }
 
     public T GetById(int id)
     {
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+        try
         {
-            string query = $"SELECT * FROM {TableName} WHERE Id = @Id";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlConnection connection = ConnectionManager.GetConnection())
             {
-                command.Parameters.AddWithValue("@Id", id);
-                using (SqlDataReader reader = command.ExecuteReader())
+                string query = $"SELECT * FROM {TableName} WHERE Id = @Id";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@Id", id);
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        return MapData(reader);
+                        if (reader.Read())
+                        {
+                            return MapData(reader);
+                        }
                     }
                 }
             }
+            return default;
+        }catch(SqlException sqlEx)
+        {
+            Console.WriteLine("Erro de banco: " + sqlEx.Message);
+            return default;
+        }catch(Exception ex)
+        {
+            Console.WriteLine("Erro: " + ex.Message);
+            return default;
         }
-        return default;
     }
 
-    public void Insert(T item)
+    public bool Insert(T item)
     {
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+        try
         {
-            // Obtém os nomes das colunas da tabela, excluindo a coluna 'Id'
-            var columnNames = typeof(T).GetProperties()
-                .Where(prop => prop.Name != "Id")
-                .Select(prop => prop.Name)
-                .ToArray();
-
-            // Monta a lista de parâmetros da consulta SQL
-            var parameters = columnNames.Select(colName => $"@{colName}").ToArray();
-
-            // Monta a consulta SQL de inserção dinâmica
-            string query = $"INSERT INTO {TableName} ({string.Join(", ", columnNames)}) " +
-                           $"VALUES ({string.Join(", ", parameters)})";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlConnection connection = ConnectionManager.GetConnection())
             {
-                // Configura os parâmetros da consulta SQL com os valores do objeto 'item'
-                foreach (var propInfo in typeof(T).GetProperties())
+                // Obtém os nomes das colunas da tabela, excluindo a coluna 'Id'
+                var columnNames = typeof(T).GetProperties()
+                    .Where(prop => prop.Name != "Id")
+                    .Select(prop => prop.Name)
+                    .ToArray();
+
+                // Monta a lista de parâmetros da consulta SQL
+                var parameters = columnNames.Select(colName => $"@{colName}").ToArray();
+
+                // Monta a consulta SQL de inserção dinâmica
+                string query = $"INSERT INTO {TableName} ({string.Join(", ", columnNames)}) " +
+                               $"VALUES ({string.Join(", ", parameters)})";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    if (propInfo.Name != "Id")
+                    // Configura os parâmetros da consulta SQL com os valores do objeto 'item'
+                    foreach (var propInfo in typeof(T).GetProperties())
+                    {
+                        if (propInfo.Name != "Id")
+                        {
+                            var paramValue = propInfo.GetValue(item);
+                            command.Parameters.AddWithValue($"@{propInfo.Name}", paramValue ?? DBNull.Value);
+                        }
+                    }
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }catch(SqlException sqlEx)
+        {
+            Console.WriteLine("Erro de banco: " + sqlEx.Message);
+            return false;
+        }catch(Exception ex)
+        {
+            Console.WriteLine("Erro: " + ex.Message);
+            return false;
+        }
+    }
+
+    public bool Update(T item)
+    {
+        try
+        {
+            using (SqlConnection connection = ConnectionManager.GetConnection())
+            {
+                // Obtém os nomes das colunas da tabela, excluindo a coluna 'Id'
+                var columnNames = typeof(T).GetProperties()
+                    .Where(prop => prop.Name != "Id")
+                    .Select(prop => prop.Name)
+                    .ToArray();
+
+                // Monta a lista de parâmetros da consulta SQL para atualização
+                var parameters = columnNames.Select(colName => $"{colName} = @{colName}").ToArray();
+
+                // Monta a consulta SQL de atualização dinâmica
+                string query = $"UPDATE {TableName} SET {string.Join(", ", parameters)} WHERE Id = @Id";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Configura os parâmetros da consulta SQL com os valores atualizados do objeto 'item'
+                    foreach (var propInfo in typeof(T).GetProperties())
                     {
                         var paramValue = propInfo.GetValue(item);
                         command.Parameters.AddWithValue($"@{propInfo.Name}", paramValue ?? DBNull.Value);
                     }
-                }
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
             }
+            return true;
+        }catch (SqlException sqlEx)
+        {
+            Console.WriteLine("Erro de banco: " + sqlEx.Message);
+            return false;
+        }catch (Exception ex)
+        {
+            Console.WriteLine("Erro: " + ex.Message);
+            return false;
         }
     }
 
-    public void Update(T item)
+    public bool Delete(int id)
     {
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+        try
         {
-            // Obtém os nomes das colunas da tabela, excluindo a coluna 'Id'
-            var columnNames = typeof(T).GetProperties()
-                .Where(prop => prop.Name != "Id")
-                .Select(prop => prop.Name)
-                .ToArray();
-
-            // Monta a lista de parâmetros da consulta SQL para atualização
-            var parameters = columnNames.Select(colName => $"{colName} = @{colName}").ToArray();
-
-            // Monta a consulta SQL de atualização dinâmica
-            string query = $"UPDATE {TableName} SET {string.Join(", ", parameters)} WHERE Id = @Id";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlConnection connection = ConnectionManager.GetConnection())
             {
-                // Configura os parâmetros da consulta SQL com os valores atualizados do objeto 'item'
-                foreach (var propInfo in typeof(T).GetProperties())
+                string query = $"DELETE FROM {TableName} WHERE Id = @Id";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    var paramValue = propInfo.GetValue(item);
-                    command.Parameters.AddWithValue($"@{propInfo.Name}", paramValue ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
                 }
-
-                command.ExecuteNonQuery();
             }
-        }
-    }
-
-    public void Delete(int id)
-    {
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+            return true;
+        }catch(SqlException sqlEx)
         {
-            string query = $"DELETE FROM {TableName} WHERE Id = @Id";
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@Id", id);
-                command.ExecuteNonQuery();
-            }
+            Console.WriteLine("Erro de banco: " + sqlEx.Message);
+            return false;
+        }catch(Exception ex)
+        {
+            Console.WriteLine("Erro: " + ex.Message);
+            return false;
         }
     }
 

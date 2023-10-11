@@ -58,6 +58,7 @@
     <Compile Include="Entidades\BDFuncionario.cs" />
     <Compile Include="Entidades\Pessoa.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Interfaces\IController\IController.cs" />
     <Compile Include="Interfaces\IDAO\IDAO.cs" />
     <Compile Include="Interfaces\IDAO\IEmpresaDAO.cs" />
     <Compile Include="Interfaces\IDAO\IEntidade.cs" />

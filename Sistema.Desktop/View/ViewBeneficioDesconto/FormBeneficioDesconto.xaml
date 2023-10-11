@@ -1,9 +1,9 @@
-﻿<Page x:Class="Sistema.Desktop.View.BeneficioDesconto.FormBeneficioDesconto"
+﻿<Page x:Class="Sistema.Desktop.View.ViewBeneficioDesconto.FormBeneficioDesconto"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Sistema.Desktop.View.BeneficioDesconto"
+      xmlns:local="clr-namespace:Sistema.Desktop.View.ViewBeneficioDesconto"
       mc:Ignorable="d" 
       d:DesignHeight="280" d:DesignWidth="300"
       Title="FormBeneficioDesconto">
@@ -37,13 +37,14 @@
                      BorderBrush="Transparent"
                      BorderThickness="0"
                      Height="35"
-                     Width="182" Margin="108,10,0,0"/>
+                     Width="182" Margin="108,10,0,0"
+                     Text=""/>
 
 
             <GroupBox Header="Escolha uma opção:" VerticalAlignment="Top" Margin="10,58,140,0" >
                 <StackPanel >
-                    <RadioButton Content="Benefício" Name="rbBeneficio" />
-                    <RadioButton Content="Desconto" Name="rbDesconto" />
+                    <RadioButton Content="Benefício" Name="rbBeneficio"/>
+                    <RadioButton Content="Desconto" Name="rbDesconto"/>
                 </StackPanel>
             </GroupBox>
 
@@ -66,7 +67,8 @@
                      BorderBrush="Transparent"
                      BorderThickness="0"
                      Height="36"
-                     Width="223" Margin="67,130,0,0"/>
+                     Width="223" Margin="67,130,0,0"
+                     Text=""/>
 
             <Button Height="50"
                     Width=" 90"

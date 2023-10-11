@@ -12,9 +12,9 @@ namespace Sistema.Model.Entidades
         {
         }
 
-        public BDFuncionario(int id, int funcionario, int idBeneficioDesconto)
+        public BDFuncionario(int funcionario, int idBeneficioDesconto)
         {
-            Id = id;
+
             _idFuncionario = funcionario;
             _idBeneficioDesconto = idBeneficioDesconto;
         } 

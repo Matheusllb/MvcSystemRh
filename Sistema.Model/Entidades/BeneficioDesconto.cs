@@ -17,12 +17,11 @@ namespace Sistema.Model.Entidades
 
         }
 
-        public BeneficioDesconto(int id, string descricao, bool desconto, bool ativo, decimal valor)
+        public BeneficioDesconto(string descricao, bool desconto, decimal valor)
         {
-            Id = id;
             _descricao = descricao;
             _desconto = desconto;
-            _ativo = ativo;
+            _ativo = true;
             _valor = valor;
         }
 
