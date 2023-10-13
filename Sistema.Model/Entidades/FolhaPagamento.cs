@@ -7,105 +7,105 @@ namespace Sistema.Model.Entidades
     public class FolhaPagamento : IEntidade
     {
         public int Id { get; set; }
-        private int _idEmpresa;
-        private DateTime _dataFechamento;
-        private DateTime _dataPagamento;
-        private decimal _totalVencimentos;
-        private decimal _totalDescontos;
-        private decimal _totalLiquido;
-        private Funcionario _funcionario;
-        private decimal _salarioINSS;
-        private decimal _valorFGTS;
-        private decimal _valorIRRF;
-        private List<string> _itens = new List<string>();
+        private int IdEmpresa;
+        private DateTime DataFechamento;
+        private DateTime DataPagamento;
+        private decimal TotalVencimentos;
+        private decimal TotalDescontos;
+        private decimal TotalLiquido;
+        private Funcionario Funcionario;
+        private decimal SalarioINSS;
+        private decimal ValorFGTS;
+        private decimal ValorIRRF;
+        private List<string> Itens = new List<string>();
         
 
         public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
          Funcionario funcionario)
         {
-            _idEmpresa = empresa;
-            _dataFechamento = dataFechamento;
-            _dataPagamento = pagamento;
-            _funcionario = funcionario;
-            _salarioINSS = CalculaINSS();
-            _valorFGTS = CalculaFGTS();
-            _valorIRRF = CalculaIRRF();
-            _totalVencimentos = CalculaTotalVencimentos();
-            _totalDescontos = CalculaTotalDescontos();
-            _totalLiquido = CalculaTotalLiquido();
+            IdEmpresa = empresa;
+            DataFechamento = dataFechamento;
+            DataPagamento = pagamento;
+            Funcionario = funcionario;
+            SalarioINSS = CalculaINSS();
+            ValorFGTS = CalculaFGTS();
+            ValorIRRF = CalculaIRRF();
+            TotalVencimentos = CalculaTotalVencimentos();
+            TotalDescontos = CalculaTotalDescontos();
+            TotalLiquido = CalculaTotalLiquido();
         }
         public FolhaPagamento()
         {
         }
 
-        public int GetIdEmpresaEmFolha() { return _idEmpresa; }
-        public DateTime GetDataFechamentoEmFolha() { return _dataFechamento; }
-        public DateTime GetDataPagamentoEmFolha() { return _dataPagamento; }
-        public decimal GetTotalVencimentosEmFolha() { return _totalVencimentos; }
-        public decimal GetTotalDescontosEmFolha() { return _totalDescontos; }
-        public decimal GetTotalLiquidoEmFolha() { return _totalLiquido; }
-        public Funcionario GetFuncionarioEmFolha() { return _funcionario; }
-        public decimal GetSalarioINSSEmFolha() { return _salarioINSS; }
-        public decimal GetValorFGTSEmFolha() { return _valorFGTS; }
-        public decimal GetValorIRRFEmFolha() { return _valorIRRF; }
-        public List<string> GetItensEmFolha() { return _itens; }
+        public int GetIdEmpresaEmFolha() { return IdEmpresa; }
+        public DateTime GetDataFechamentoEmFolha() { return DataFechamento; }
+        public DateTime GetDataPagamentoEmFolha() { return DataPagamento; }
+        public decimal GetTotalVencimentosEmFolha() { return TotalVencimentos; }
+        public decimal GetTotalDescontosEmFolha() { return TotalDescontos; }
+        public decimal GetTotalLiquidoEmFolha() { return TotalLiquido; }
+        public Funcionario GetFuncionarioEmFolha() { return Funcionario; }
+        public decimal GetSalarioINSSEmFolha() { return SalarioINSS; }
+        public decimal GetValorFGTSEmFolha() { return ValorFGTS; }
+        public decimal GetValorIRRFEmFolha() { return ValorIRRF; }
+        public List<string> GetItensEmFolha() { return Itens; }
 
-        public void SetIdEmpresaEmFolha(int idEmpresa) { _idEmpresa = idEmpresa; }
-        public void SetDataFechamentoEmFolha(DateTime dataFechamento) { _dataFechamento = dataFechamento; }
-        public void SetDataPagamentoEmFolha(DateTime dataPagamento) { _dataPagamento = dataPagamento; }
-        public void SetTotalVencimentosEmFolha(decimal totalVencimentos) { _totalVencimentos = totalVencimentos; }
-        public void SetTotalDescontosEmFolha(decimal totalDescontos) { _totalDescontos = totalDescontos; }
-        public void SetTotalLiquidoEmFolha(decimal totalLiquido) { _totalLiquido = totalLiquido; }
-        public void SetFuncionarioEmFolha(Funcionario funcionario) { _funcionario = funcionario; }
-        public void SetSalarioINSSEmFolha(decimal salarioINSS) { _salarioINSS = salarioINSS; }
-        public void SetFValorFGTSEmFolha(decimal valorFGTS) { _valorFGTS = valorFGTS; }
-        public void SetValorIRRFEmFolha(decimal valorIRRF) { _valorIRRF = valorIRRF; }
-        public void SetItensEmFolha(List<string> itens) { _itens = itens; }
+        public void SetIdEmpresaEmFolha(int idEmpresa) { IdEmpresa = idEmpresa; }
+        public void SetDataFechamentoEmFolha(DateTime dataFechamento) { DataFechamento = dataFechamento; }
+        public void SetDataPagamentoEmFolha(DateTime dataPagamento) { DataPagamento = dataPagamento; }
+        public void SetTotalVencimentosEmFolha(decimal totalVencimentos) { TotalVencimentos = totalVencimentos; }
+        public void SetTotalDescontosEmFolha(decimal totalDescontos) { TotalDescontos = totalDescontos; }
+        public void SetTotalLiquidoEmFolha(decimal totalLiquido) { TotalLiquido = totalLiquido; }
+        public void SetFuncionarioEmFolha(Funcionario funcionario) { Funcionario = funcionario; }
+        public void SetSalarioINSSEmFolha(decimal salarioINSS) { SalarioINSS = salarioINSS; }
+        public void SetFValorFGTSEmFolha(decimal valorFGTS) { ValorFGTS = valorFGTS; }
+        public void SetValorIRRFEmFolha(decimal valorIRRF) { ValorIRRF = valorIRRF; }
+        public void SetItensEmFolha(List<string> itens) { Itens = itens; }
 
         public decimal CalculaFGTS()
         {
-            return _valorFGTS = _funcionario.GetSalarioBrutoFuncionario() * (decimal)0.08;
+            return ValorFGTS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.08;
         }
         public decimal CalculaINSS()
         {
-            if(_funcionario.GetSalarioBrutoFuncionario() <= 1320)
+            if(Funcionario.GetSalarioBrutoFuncionario() <= 1320)
             {
-                return _salarioINSS = _funcionario.GetSalarioBrutoFuncionario() * (decimal)0.075;
+                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.075;
             }
-            else if(_funcionario.GetSalarioBrutoFuncionario() >= 1321 || _funcionario.GetSalarioBrutoFuncionario() <= (decimal)2571.29)
+            else if(Funcionario.GetSalarioBrutoFuncionario() >= 1321 || Funcionario.GetSalarioBrutoFuncionario() <= (decimal)2571.29)
             {
-                return _salarioINSS = _funcionario.GetSalarioBrutoFuncionario() * (decimal)0.09;
+                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.09;
             }
-            else if(_funcionario.GetSalarioBrutoFuncionario() >= (decimal)2571.30 || _funcionario.GetSalarioBrutoFuncionario() <= (decimal)3856.94)
+            else if(Funcionario.GetSalarioBrutoFuncionario() >= (decimal)2571.30 || Funcionario.GetSalarioBrutoFuncionario() <= (decimal)3856.94)
             {
-                return _salarioINSS = _funcionario.GetSalarioBrutoFuncionario() * (decimal)0.12;
+                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.12;
             }
-            else if(_funcionario.GetSalarioBrutoFuncionario() > (decimal)3856.95)
+            else if(Funcionario.GetSalarioBrutoFuncionario() > (decimal)3856.95)
             {
-                return _salarioINSS = _funcionario.GetSalarioBrutoFuncionario() * (decimal)0.14; 
+                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.14; 
             }
-            return _salarioINSS;
+            return SalarioINSS;
         }
         public decimal CalculaIRRF()
         {
-            decimal baseDeCalculoIRRF = _funcionario.GetSalarioBrutoFuncionario() - _salarioINSS;
+            decimal baseDeCalculoIRRF = Funcionario.GetSalarioBrutoFuncionario() - SalarioINSS;
             if (baseDeCalculoIRRF >= (decimal)1903.99 || baseDeCalculoIRRF <= (decimal)2826.65)
             {
-                return _valorIRRF = baseDeCalculoIRRF * (decimal)0.075;
+                return ValorIRRF = baseDeCalculoIRRF * (decimal)0.075;
             }
             else if(baseDeCalculoIRRF >= (decimal)2826.66 || baseDeCalculoIRRF <= (decimal)3751.05)
             {
-                return _valorIRRF = baseDeCalculoIRRF * (decimal)0.15;
+                return ValorIRRF = baseDeCalculoIRRF * (decimal)0.15;
             }
             else if(baseDeCalculoIRRF >= (decimal)3751.06 || baseDeCalculoIRRF <= (decimal)4664.68)
             {
-                return _valorIRRF = baseDeCalculoIRRF * (decimal)0.225;
+                return ValorIRRF = baseDeCalculoIRRF * (decimal)0.225;
             }
             else if(baseDeCalculoIRRF > (decimal)4664.68)
             {
-                return _valorIRRF = baseDeCalculoIRRF * (decimal)0.275;
+                return ValorIRRF = baseDeCalculoIRRF * (decimal)0.275;
             }
-            return _valorIRRF;
+            return ValorIRRF;
         }
 
         /*public decimal CalculaTotalBenefico(decimal[] beneficios)
@@ -119,16 +119,16 @@ namespace Sistema.Model.Entidades
 
         public decimal CalculaTotalVencimentos()
         {
-            return _totalVencimentos = _funcionario.GetSalarioBrutoFuncionario(); //+ CalculaTotalBenefico();
+            return TotalVencimentos = Funcionario.GetSalarioBrutoFuncionario(); //+ CalculaTotalBenefico();
 
         }
         public decimal CalculaTotalDescontos()
         {
-            return _totalDescontos = _salarioINSS + _valorIRRF; // + CalculaTotalDesconto();
+            return TotalDescontos = SalarioINSS + ValorIRRF; // + CalculaTotalDesconto();
         }
         public decimal CalculaTotalLiquido()
         {
-            return _totalLiquido = _totalVencimentos - _totalDescontos;
+            return TotalLiquido = TotalVencimentos - TotalDescontos;
         }
     }
 }

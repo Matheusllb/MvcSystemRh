@@ -7,10 +7,10 @@ namespace Sistema.Model.Entidades
     public class BeneficioDesconto : IEntidade
     {
         public int Id { get; set; }
-        private string _descricao;
-        private bool _desconto;
-        private bool _ativo;
-        private decimal _valor;
+        private string Descricao;
+        private bool Desconto;
+        private decimal Valor;
+        private bool Ativo;
 
         public BeneficioDesconto()
         {
@@ -19,21 +19,21 @@ namespace Sistema.Model.Entidades
 
         public BeneficioDesconto(string descricao, bool desconto, decimal valor)
         {
-            _descricao = descricao;
-            _desconto = desconto;
-            _ativo = true;
-            _valor = valor;
+            Descricao = descricao;
+            Desconto = desconto;
+            Valor = valor;
+            Ativo = true;
         }
 
-        public string GetDescricaoBeneficioDesconto() { return _descricao; }
-        public bool GetDescontoBeneficioDesconto() { return _desconto; }
-        public bool GetAtivoBeneficioDesconto() { return _ativo; }
-        public decimal GetValorBeneficioDesconto() { return _valor; }
+        public string GetDescricaoBeneficioDesconto() { return Descricao; }
+        public bool GetDescontoBeneficioDesconto() { return Desconto; }
+        public bool GetAtivoBeneficioDesconto() { return Ativo; }
+        public decimal GetValorBeneficioDesconto() { return Valor; }
 
-        public void SetDescricaoBeneficioDesconto(string descricao) { _descricao = descricao; }
-        public void SetDescontoBeneficioDesconto(bool desconto) { _desconto = desconto; }
-        public void SetAtivoBeneficioDesconto(bool ativo) { _ativo = ativo; }
-        public void SetValorBeneficioDesconto(decimal valor) { _valor = valor; }
+        public void SetDescricaoBeneficioDesconto(string descricao) { Descricao = descricao; }
+        public void SetDescontoBeneficioDesconto(bool desconto) { Desconto = desconto; }
+        public void SetAtivoBeneficioDesconto(bool ativo) { Ativo = ativo; }
+        public void SetValorBeneficioDesconto(decimal valor) { Valor = valor; }
 
     }
 }

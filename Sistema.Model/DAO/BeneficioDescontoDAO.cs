@@ -41,7 +41,7 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
 
     public override object[] GetHeaders()
     {
-        string[] headers = { "IdBeneficioDesconto", "Descricao", "Desconto", "Valor", "DescontoTotal", "BeneficioTotal" };
+        string[] headers = { "Id", "Descricao", "Desconto", "Valor", "Ativo" };
         return headers;
     }
 
@@ -54,7 +54,7 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
     {
         BeneficioDesconto bd = new BeneficioDesconto
         {
-            Id = (int)reader["IdBeneficioDesconto"],
+            Id = (int)reader["Id"],
         };
 
         bd.SetDescricaoBeneficioDesconto(reader["Descricao"].ToString());

@@ -1,12 +1,17 @@
-﻿using Sistema.Model.DAO;
-using Sistema.Model.Entidades;
-using Sistema.Model.Interfaces.IDAO;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Sistema.Model.Entidades;
 
-public class BDController : Controller<BeneficioDesconto>
+namespace Sistema.Desktop.Controllers
 {
-    public BDController(BeneficioDescontoDAO model) : base(model)
+    public class BDController : Controller<BeneficioDesconto>
     {
+        public BDController(BeneficioDescontoDAO dao) : base(dao)
+        {
+            Model = dao;
+        }
     }
-    
 }

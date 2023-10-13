@@ -5,36 +5,36 @@ namespace Sistema.Model.Entidades
     public class Empresa : IEntidade
     {
         public int Id { get; set; }
-        private string _nome;
-        private string _cnpj;
-        private string _setor;
-        private string _email;
-        private string _telefone;
-        private string _endereco;
+        private string Nome;
+        private string Cnpj;
+        private string Setor;
+        private string Email;
+        private string Telefone;
+        private string Endereco;
 
         public Empresa() { }
 
         public Empresa(string nome, string cnpj, string setor, string email, string telefone, string endereco)
         {
-            _nome = nome;
-            _cnpj = cnpj;
-            _setor = setor;
-            _email = email;
-            _telefone = telefone;
-            _endereco = endereco;
+            Nome = nome;
+            Cnpj = cnpj;
+            Setor = setor;
+            Email = email;
+            Telefone = telefone;
+            Endereco = endereco;
         }
-        public string GetNomeEmpresa() { return _nome; }
-        public string GetCnpjEmpresa() { return _cnpj; }
-        public string GetSetorEmpresa() { return _setor; }
-        public string GetEmailEmpresa() { return _email; }
-        public string GetTelefoneEmpresa() { return _telefone; }
-        public string GetEnderecoEmpresa() { return _endereco; }
+        public string GetNomeEmpresa() { return Nome; }
+        public string GetCnpjEmpresa() { return Cnpj; }
+        public string GetSetorEmpresa() { return Setor; }
+        public string GetEmailEmpresa() { return Email; }
+        public string GetTelefoneEmpresa() { return Telefone; }
+        public string GetEnderecoEmpresa() { return Endereco; }
 
-        public void SetNomeEmpresa(string nome) { _nome = nome; }
-        public void SetCnpjEmpresa(string cnpj) { _cnpj = cnpj; }
-        public void SetSetorEmpresa(string setor) { _setor = setor; }
-        public void SetEmailEmpresa(string email) { _email = email; }
-        public void SetTelefoneEmpresa(string telefone) { _telefone = telefone; }
-        public void SetEnderecoEmpresa(string endereco) { _endereco = endereco; }
+        public void SetNomeEmpresa(string nome) { Nome = nome; }
+        public void SetCnpjEmpresa(string cnpj) { Cnpj = cnpj; }
+        public void SetSetorEmpresa(string setor) { Setor = setor; }
+        public void SetEmailEmpresa(string email) { Email = email; }
+        public void SetTelefoneEmpresa(string telefone) { Telefone = telefone; }
+        public void SetEnderecoEmpresa(string endereco) { Endereco = endereco; }
     }
 }

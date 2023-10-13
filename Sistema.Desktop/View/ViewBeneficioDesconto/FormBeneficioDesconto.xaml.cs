@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sistema.Desktop.Controllers;
 using Sistema.Model.Entidades;
 
 namespace Sistema.Desktop.View.ViewBeneficioDesconto
@@ -41,7 +42,7 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
         {
             try
             {
-                // Caputa dos dados
+                // Captura dos dados
                 string descricao = txtDescricao.Text;
                 bool desconto = rbDesconto.IsChecked.Value;
                 decimal valor = decimal.Parse(txtValor.Text);

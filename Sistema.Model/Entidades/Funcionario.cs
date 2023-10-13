@@ -6,55 +6,55 @@ namespace Sistema.Model.Entidades
 {
     public class Funcionario : Pessoa
     {
-        private int _idFuncionario;
-        private bool _ativo;
-        private string _email;
-        private DateTime _dataAdmissao;
-        private int _idEmpresa;
-        private string _cargo;
-        private decimal _salarioBruto;
+        private int IdFuncionario;
+        private bool Ativo;
+        private string Email;
+        private DateTime DataAdmissao;
+        private int IdEmpresa;
+        private string Cargo;
+        private decimal SalarioBruto;
 
         public Funcionario() : base() { }
 
         public Funcionario(int idFuncionario, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
             string email, DateTime dataAdimissao, int idEmpresa, string cargo, decimal salario) : base(endereco, nome, cpf, dataNascimento, estadoCivil)
         {
-            _idFuncionario = idFuncionario;
-            _ativo = status;
-            _email = email;
-            _dataAdmissao = dataAdimissao;
-            _idEmpresa = idEmpresa;
-            _cargo = cargo;
-            _salarioBruto = salario;
+            IdFuncionario = idFuncionario;
+            Ativo = status;
+            Email = email;
+            DataAdmissao = dataAdimissao;
+            IdEmpresa = idEmpresa;
+            Cargo = cargo;
+            SalarioBruto = salario;
         }
 
-        public override string GetEnderecoPessoa() { return _endereco; }
-        public override string GetNomePessoa() { return _nome; }
-        public override string GetCpfPessoa() { return _cpf; }
-        public override DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
-        public override EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
-        public int GetIdFuncionario() { return _idFuncionario; }
-        public bool GetAtivo() { return _ativo; }
-        public string GetEmailFuncionario() { return _email; }
-        public bool GetStatusFuncionario() { return _ativo; }
-        public DateTime GetDataAdmissaoFuncionario() { return _dataAdmissao; }
-        public int GetIdEmpresaFuncionario() { return _idEmpresa; }
-        public string GetCargoFuncionario() { return _cargo; }
-        public decimal GetSalarioBrutoFuncionario() { return _salarioBruto; }
+        public override string GetEnderecoPessoa() { return Endereco; }
+        public override string GetNomePessoa() { return Nome; }
+        public override string GetCpfPessoa() { return Cpf; }
+        public override DateTime GetDataNascimentoPessoa() { return DataNascimento; }
+        public override EstadoCivil GetEstadoCivilPessoa() { return EstadoCivil; }
+        public int GetIdFuncionario() { return IdFuncionario; }
+        public bool GetAtivo() { return Ativo; }
+        public string GetEmailFuncionario() { return Email; }
+        public bool GetStatusFuncionario() { return Ativo; }
+        public DateTime GetDataAdmissaoFuncionario() { return DataAdmissao; }
+        public int GetIdEmpresaFuncionario() { return IdEmpresa; }
+        public string GetCargoFuncionario() { return Cargo; }
+        public decimal GetSalarioBrutoFuncionario() { return SalarioBruto; }
 
-        public override void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
-        public override void SetNomePessoa(string nome) { _nome = nome; }
-        public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
-        public override void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
-        public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
-        public void SetIdFuncionario(int idFuncionario) { _idFuncionario = idFuncionario; }
-        public void SetAtivo(bool ativo) {  _ativo = ativo; }
-        public void SetStatusFuncionario(bool status) { _ativo = status; }
-        public void SetEmailFuncionario(string email) { _email = email; }
-        public void SetDataAdmissaoFuncionario(DateTime dataAdmissao) { _dataAdmissao = dataAdmissao; }
-        public void SetIdEmpresaFuncionario(int empresa) { _idEmpresa = empresa; }
-        public void SetCargoFuncionario(string cargo) { _cargo = cargo; }
-        public void SetSalarioBrutoFuncionario(decimal salarioBruto) { _salarioBruto = salarioBruto; } 
+        public override void SetEnderecoPessoa(string endereco) { Endereco = endereco; }
+        public override void SetNomePessoa(string nome) { Nome = nome; }
+        public override void SetCpfPessoa(string cpf) { Cpf = cpf; }
+        public override void SetDataNascimentoPessoa(DateTime dataNascimento) { DataNascimento = dataNascimento; }
+        public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { EstadoCivil = estadoCivil; }
+        public void SetIdFuncionario(int idFuncionario) { IdFuncionario = idFuncionario; }
+        public void SetAtivo(bool ativo) {  Ativo = ativo; }
+        public void SetStatusFuncionario(bool status) { Ativo = status; }
+        public void SetEmailFuncionario(string email) { Email = email; }
+        public void SetDataAdmissaoFuncionario(DateTime dataAdmissao) { DataAdmissao = dataAdmissao; }
+        public void SetIdEmpresaFuncionario(int empresa) { IdEmpresa = empresa; }
+        public void SetCargoFuncionario(string cargo) { Cargo = cargo; }
+        public void SetSalarioBrutoFuncionario(decimal salarioBruto) { SalarioBruto = salarioBruto; } 
 
     }
 }

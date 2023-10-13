@@ -6,11 +6,11 @@ namespace Sistema.Model.Entidades
 {
     public class Usuario : Pessoa
     {
-        private int _idUsuario;
-        private int _idPermissao;
-        private bool _ativo;
-        private string _login;
-        private string _senha;
+        private int IdUsuario;
+        private int IdPermissao;
+        private bool Ativo;
+        private string Login;
+        private string Senha;
         private List<Usuario> _usuarios = new List<Usuario>();
         private List<Empresa> _empresas = new List<Empresa>();
         private List<Funcionario> _funcionarios = new List<Funcionario>();
@@ -21,39 +21,39 @@ namespace Sistema.Model.Entidades
         public Usuario(string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil, int idUsuario, int idPermissao, bool status, 
             string login, string senha) : base(endereco, nome, cpf, dataNascimento, estadoCivil)
         {
-            _idUsuario = idUsuario;
-            _idPermissao = idPermissao;
-            _ativo = status;
-            _login = login;
-            _senha = senha;
+            IdUsuario = idUsuario;
+            IdPermissao = idPermissao;
+            Ativo = status;
+            Login = login;
+            Senha = senha;
         }
 
-        public override string GetEnderecoPessoa() { return _endereco; }
-        public override string GetNomePessoa() { return _nome; }
-        public override string GetCpfPessoa() { return _cpf; }
-        public override DateTime GetDataNascimentoPessoa() { return _dataNascimento; }
-        public override EstadoCivil GetEstadoCivilPessoa() { return _estadoCivil; }
-        public int GetIdUsuario() { return _idUsuario; }
-        public bool GetStatusUsuario() { return _ativo; }
-        public int GetIdPermissaoUsuario() { return _idPermissao; }
-        public string GetLogin() { return _login;}
-        public string GetSenha() { return _senha;}
+        public override string GetEnderecoPessoa() { return Endereco; }
+        public override string GetNomePessoa() { return Nome; }
+        public override string GetCpfPessoa() { return Cpf; }
+        public override DateTime GetDataNascimentoPessoa() { return DataNascimento; }
+        public override EstadoCivil GetEstadoCivilPessoa() { return EstadoCivil; }
+        public int GetIdUsuario() { return IdUsuario; }
+        public bool GetStatusUsuario() { return Ativo; }
+        public int GetIdPermissaoUsuario() { return IdPermissao; }
+        public string GetLogin() { return Login;}
+        public string GetSenha() { return Senha;}
         public List<Usuario> GetUsuariosUsuario() { return _usuarios; }
         public List<Empresa> GetEmpresasUsuario() { return _empresas; }
         public List<Funcionario> GetFuncionariosUsuario() { return _funcionarios; }
         public List<FolhaPagamento> GetFolhasDePagamentoUsuario() { return _folhas; }
 
 
-        public override void SetEnderecoPessoa(string endereco) { _endereco = endereco; }
-        public override void SetNomePessoa(string nome) { _nome = nome; }
-        public override void SetCpfPessoa(string cpf) { _cpf = cpf; }
-        public override void SetDataNascimentoPessoa(DateTime dataNascimento) { _dataNascimento = dataNascimento; }
-        public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { _estadoCivil = estadoCivil; }
-        public void SetIdUsuario(int idUsuario) { _idUsuario = idUsuario; }
-        public void SetStatusUsuario(bool status) { _ativo = status; }
-        public void SetIdPermissaoUsuario(int idPermissao) { _idPermissao = idPermissao; }
-        public void SetLoginUsuario(string login) { _login = login; }
-        public void SetSenhaUsuario(string senha) {  _senha = senha; }
+        public override void SetEnderecoPessoa(string endereco) { Endereco = endereco; }
+        public override void SetNomePessoa(string nome) { Nome = nome; }
+        public override void SetCpfPessoa(string cpf) { Cpf = cpf; }
+        public override void SetDataNascimentoPessoa(DateTime dataNascimento) { DataNascimento = dataNascimento; }
+        public override void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { EstadoCivil = estadoCivil; }
+        public void SetIdUsuario(int idUsuario) { IdUsuario = idUsuario; }
+        public void SetStatusUsuario(bool status) { Ativo = status; }
+        public void SetIdPermissaoUsuario(int idPermissao) { IdPermissao = idPermissao; }
+        public void SetLoginUsuario(string login) { Login = login; }
+        public void SetSenhaUsuario(string senha) {  Senha = senha; }
         public void SetUsuariosUsuario(List<Usuario> usuarios) { _usuarios = usuarios; }
         public void SetEmpresaUsuario(List<Empresa> empresas) { _empresas = empresas; }
         public void SetFuncionariosUsuario(List<Funcionario> funcionarios) { _funcionarios = funcionarios; }
@@ -83,7 +83,7 @@ namespace Sistema.Model.Entidades
 
         public void ProcuraUsuarioPorNome(string nome)
         {
-            Usuario usuarioEncontrado = _usuarios.Find(u => u._nome == nome);
+            Usuario usuarioEncontrado = _usuarios.Find(u => u.Nome == nome);
 
             if (usuarioEncontrado != null)
             {
@@ -97,14 +97,14 @@ namespace Sistema.Model.Entidades
 
         public List<Usuario> ProcuraUsuariosPorParteDoNome(string parteNome)
         {
-            List<Usuario> usuariosEncontrados = _usuarios.FindAll(u => u._nome.Contains(parteNome));
+            List<Usuario> usuariosEncontrados = _usuarios.FindAll(u => u.Nome.Contains(parteNome));
             return usuariosEncontrados;
         }
 
         public List<Usuario> ProcuraUsuariosPorIdade(int idade)
         {
             DateTime dataAtual = DateTime.Today;
-            List<Usuario> usuariosEncontrados = _usuarios.FindAll(u => CalculaIdade(u._dataNascimento, dataAtual) == idade);
+            List<Usuario> usuariosEncontrados = _usuarios.FindAll(u => CalculaIdade(u.DataNascimento, dataAtual) == idade);
             return usuariosEncontrados;
         }
 

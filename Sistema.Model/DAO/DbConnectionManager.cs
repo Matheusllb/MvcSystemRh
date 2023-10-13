@@ -6,7 +6,7 @@ namespace Sistema.Model.DAO
     public class DbConnectionManager
     {
         private SqlConnection _connection;
-        private string _connectionString = "Server=tcp:mvcsystemrh.database.windows.net,1433;Initial Catalog=MvcSystemRh;Persist Security Info=False;User ID=pim;Password=Ads2023@@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private string _connectionString = "Data Source=mvcsystemrh.database.windows.net;Initial Catalog=MvcSystemRh;Persist Security Info=True;User ID=pim;Password=Ads2023@@";
         public DbConnectionManager()
         {
             _connection = new SqlConnection(_connectionString);
