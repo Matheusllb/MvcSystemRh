@@ -52,21 +52,25 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 BDController controller = new BDController(dao);
                 BeneficioDesconto novoItem = new BeneficioDesconto(descricao, desconto, valor);
 
-                if (desconto is true) // Se o desconto estiver marcado
+                if (desconto)
                 {
-                    novoItem.SetValorBeneficioDesconto(-valor); // O valor do novo item passa a ser negativo
+                    novoItem.SetValorBeneficioDesconto(-valor);
                 }
 
-                if (controller.InsertOne(novoItem)) // Se o método retornar 'true' indica sucesso
+                if (controller.InsertOne(novoItem))
                 {
                     MessageBox.Show("Item cadastrado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+                else
+                {
+                    MessageBox.Show("Falha ao registrar item!", "Falha!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro: " + ex.Message);
+                MessageBox.Show("Falha ao registrar item!" + ex.Message, "Falha!", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
-
         }
 
     }

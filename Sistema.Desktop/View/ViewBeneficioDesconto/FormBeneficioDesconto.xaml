@@ -71,11 +71,12 @@
                      Text=""/>
 
             <Button Height="50"
-                    Width=" 90"
+                    Width="90"
                     VerticalAlignment="Top"
-                    HorizontalAlignment="Center" Margin="0,188,0,0"
+                    HorizontalAlignment="Center"
+                    Margin="0,188,0,0"
                     Style="{DynamicResource ButtonStyle}"
-                    Content="Registar"
+                    Content="Registrar"
                     Click="btnRegistrar_Click"></Button>
 
         </Grid>

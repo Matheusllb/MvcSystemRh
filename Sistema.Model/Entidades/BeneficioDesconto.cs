@@ -7,10 +7,10 @@ namespace Sistema.Model.Entidades
     public class BeneficioDesconto : IEntidade
     {
         public int Id { get; set; }
-        private string Descricao;
-        private bool Desconto;
-        private decimal Valor;
-        private bool Ativo;
+        public string Descricao { get; set; }
+        public bool Desconto { get; set; }
+        public decimal Valor { get; set; }
+        public bool Ativo { get; set; }
 
         public BeneficioDesconto()
         {

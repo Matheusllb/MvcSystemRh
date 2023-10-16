@@ -2,6 +2,7 @@
 using Sistema.Model.Interfaces.IDAO;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 
@@ -80,12 +81,11 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
     {
         try
         {
-            Model.Insert(newData);
-            GetAll();
-            return true;
-        }catch(Exception ex)
+            return Model.Insert(newData);
+        }
+        catch (Exception ex)
         {
-            MessageBox.Show("Erro: " + ex.Message);
+            MessageBox.Show("Erro de controle: " + ex.Message);
             return false;
         }
     }
