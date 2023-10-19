@@ -25,10 +25,12 @@ namespace Sistema.Desktop
             InitializeComponent();
         }
 
-        private void Ir_Para_Beneficio_Desconto_Button_Click(object sender, RoutedEventArgs e)
+        private void Ir_Para_Beneficio_Desconto_Click(object sender, RoutedEventArgs e)
         {
             TelaBeneficioDesconto beneficioDesconto = new TelaBeneficioDesconto();
             beneficioDesconto.Show();
+            beneficioDesconto.WindowState = WindowState;
+            Close();
         }
     }
 }

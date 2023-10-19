@@ -1,41 +1,88 @@
 ﻿using Sistema.Model.Interfaces.IDAO;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Sistema.Model.Entidades
 {
-    public class BeneficioDesconto : IEntidade
+    public class BeneficioDesconto : IEntidade, INotifyPropertyChanged
     {
         public int Id { get; set; }
-        public string Descricao { get; set; }
-        public bool Desconto { get; set; }
-        public decimal Valor { get; set; }
-        public bool Ativo { get; set; }
+        private string _descricao;
+        private bool _desconto;
+        private decimal _valor;
+        private bool _ativo;
 
-        public BeneficioDesconto()
-        {
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        }
-
+        public BeneficioDesconto() { }
         public BeneficioDesconto(string descricao, bool desconto, decimal valor)
         {
-            Descricao = descricao;
-            Desconto = desconto;
-            Valor = valor;
-            Ativo = true;
+            _descricao = descricao;
+            _desconto = desconto;
+            _valor = valor;
+            _ativo = true;
         }
 
-        public string GetDescricaoBeneficioDesconto() { return Descricao; }
-        public bool GetDescontoBeneficioDesconto() { return Desconto; }
-        public bool GetAtivoBeneficioDesconto() { return Ativo; }
-        public decimal GetValorBeneficioDesconto() { return Valor; }
+        public string Descricao
+        {
+            get => _descricao;
+            set
+            {
+                if (_descricao != value)
+                {
+                    _descricao = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
-        public void SetDescricaoBeneficioDesconto(string descricao) { Descricao = descricao; }
-        public void SetDescontoBeneficioDesconto(bool desconto) { Desconto = desconto; }
-        public void SetAtivoBeneficioDesconto(bool ativo) { Ativo = ativo; }
-        public void SetValorBeneficioDesconto(decimal valor) { Valor = valor; }
+        public bool Desconto
+        {
+            get => _desconto;
+            set
+            {
+                if (_desconto != value)
+                {
+                    _desconto = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
+        public decimal Valor
+        {
+            get => _valor;
+            set
+            {
+                if (_valor != value)
+                {
+                    _valor = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool Ativo
+        {
+            get => _ativo;
+            set
+            {
+                if (_ativo != value)
+                {
+                    _ativo = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] string propName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
     }
+
 }
 
 

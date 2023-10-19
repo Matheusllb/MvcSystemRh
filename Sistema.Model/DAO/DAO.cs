@@ -14,23 +14,22 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
 {
     protected DbConnectionManager ConnectionManager;
     protected string TableName;
-    protected List<T> Data = new List<T>();
+    protected List<T> Data;
 
     public DAO(string tableName)
     {
         ConnectionManager = new DbConnectionManager();
         TableName = tableName;
+        Data = new List<T>();
     }
 
     public List<T> GetAll()
     {
         try
         {
-            Type tipo = typeof(T);
-
             string query = $"SELECT * FROM {TableName}";
 
-            List<T> result = new List<T>();
+            List<T> dadosDoBanco = new List<T>();
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
@@ -40,24 +39,16 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
                 {
                     while (reader.Read())
                     {
-                        T item = (T)Activator.CreateInstance(tipo);
+                        T item = MapData(reader);
 
-                        foreach (PropertyInfo property in tipo.GetProperties())
-                        {
-                            if (property.Name != "Id")
-                            {
-                                property.SetValue(item, reader[property.Name]);
-                            }
-                        }
-
-                        result.Add(item);
+                        dadosDoBanco.Add(item);
                     }
                 }
-
                 ConnectionManager.CloseConnection();
             }
 
-            return result;
+            SetData(dadosDoBanco);
+            return Data;
         }
         catch (SqlException sqlEx)
         {

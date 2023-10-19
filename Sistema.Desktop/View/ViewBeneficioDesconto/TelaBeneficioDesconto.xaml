@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema.Desktop.View.ViewBeneficioDesconto"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        mc:Ignorable="d" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" Height="450" Width="800"
+        x:Name="WindowBD">
     <Grid>
 
         <Border CornerRadius="10" Grid.RowSpan="2">
@@ -16,8 +18,35 @@
             </Border.Background>
         </Border>
 
+        <ListView x:Name="listViewBD"
+                  Width="655"
+                  Margin="66,80,0,60"
+                  ItemsSource="{Binding ElementName=WindowBD, Path=BfDs}" HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Descrição" DisplayMemberBinding="{Binding Descricao}"/>
+                    <GridViewColumn Header="Desconto" DisplayMemberBinding="{Binding Desconto}"/>
+                    <GridViewColumn Header="Valor" DisplayMemberBinding="{Binding Valor}"/>
+                    <GridViewColumn Header="Ativo" DisplayMemberBinding="{Binding Ativo}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="btnVoltar"
+            Height="40"
+            Width="40"
+            Style="{DynamicResource ShowPasswordButtonStyle}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Click="btnVoltar_Click">
+            <iconPacks:PackIconMaterial Kind="ArrowLeft"
+                                    Height="20"
+                                    Width="20"
+                                    Foreground="White"/>
+        </Button>
+
         <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" 
-                 Margin="24,24,0,0" TextWrapping="Wrap" 
+                 Margin="66,49,0,0" TextWrapping="Wrap" 
                  FontFamily="Helvetica"
                  FontWeight="Light"
                  FontSize="20"
@@ -25,9 +54,9 @@
                  Background="Transparent"
                  BorderThickness="0" 
                  VerticalAlignment="Top" 
-                 Width="439" Height="28" 
-                 SelectionOpacity="0.9" 
-                 TextChanged="txtSearchBD_TextChanged" >
+                 Width="494" Height="28" 
+                 SelectionOpacity="0.9"
+                 Text="">
             <TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Template">
@@ -35,7 +64,7 @@
                             <ControlTemplate TargetType="{x:Type TextBox}">
                                 <Grid>
                                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
-                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar funcionário" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="White" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="White" Visibility="Collapsed"/>
                                     <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                                 </Grid>
                                 <ControlTemplate.Triggers>
@@ -60,12 +89,28 @@
             </TextBox.Style>
         </TextBox>
 
-
-        <Button HorizontalAlignment="Left" Margin="484,24,0,0" VerticalAlignment="Top" Height="28" Width="37" Style="{DynamicResource ShowPasswordButtonStyle}">
-            <iconPacks:PackIconMaterial Kind="Magnify" Height="27" Width="24" />
+        <Button x:Name="btnFiltrar"
+                HorizontalAlignment="Left"
+                Margin="565,49,0,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Width="37"
+                Style="{DynamicResource ShowPasswordButtonStyle}"
+                Foreground="White">
+            <iconPacks:PackIconMaterial Kind="Magnify"
+                                        Height="27"
+                                        Width="24" />
         </Button>
-        
-        <Button Content="Novo" HorizontalAlignment="Left" Margin="562,24,0,0" VerticalAlignment="Top" Height="28" Width="166" Click="Button_Click" Style="{DynamicResource ButtonStyle}"/>
-        <Frame Name="frame" />
+
+        <Button x:Name="btnCriarNovo"
+                Content="Novo"
+                HorizontalAlignment="Left"
+                Margin="621,49,0,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Width="100"
+                Click="btnCriarNovo_Click"
+                Style="{DynamicResource ButtonStyle}"/>
+
     </Grid>
 </Window>

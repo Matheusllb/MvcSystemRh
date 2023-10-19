@@ -2,6 +2,7 @@
 using Sistema.Model.Interfaces.IDAO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
@@ -51,19 +52,25 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
         }
     }
 
-    public bool GetAll()
+    public List<T> GetAll()
     {
         try
         {
-            List<T> newData = Model.GetAll();
-            Model.SetData(newData);
-            return true;
-        }catch(Exception ex)
+            List<T> data = Model.GetAll();
+            return data;
+        }
+        catch (SqlException sqlEx)
         {
-            MessageBox.Show("Erro: " + ex.Message);
-            return false;
+            MessageBox.Show("Erro SQL: " + sqlEx.Message);
+            return null;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro geral: " + ex.Message);
+            return null;
         }
     }
+
 
     public T GetById(int id)
     {

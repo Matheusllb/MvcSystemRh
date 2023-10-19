@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Sistema.Desktop.Controllers;
+using Sistema.Model.Entidades;
+using System.Collections.ObjectModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,34 +13,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Sistema.Desktop.Controllers;
-using Sistema.Model.Entidades;
 
 namespace Sistema.Desktop.View.ViewBeneficioDesconto
 {
     /// <summary>
-    /// Interação lógica para FormBeneficioDesconto.xam
+    /// Lógica interna para TelaCadastroBD.xaml
     /// </summary>
-    public partial class FormBeneficioDesconto : Page
+    public partial class TelaCadastroBD : Window
     {
-        public FormBeneficioDesconto()
+        public TelaCadastroBD()
         {
             InitializeComponent();
-
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -54,7 +42,7 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
 
                 if (desconto)
                 {
-                    novoItem.SetValorBeneficioDesconto(-valor);
+                    novoItem.Valor = -valor;
                 }
 
                 if (controller.InsertOne(novoItem))
@@ -73,5 +61,12 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             }
         }
 
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            TelaBeneficioDesconto tela = new TelaBeneficioDesconto();
+            tela.Show();
+            tela.WindowState = WindowState;
+            Close();
+        }
     }
 }

@@ -55,11 +55,11 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
         BeneficioDesconto bd = new BeneficioDesconto
         {
             Id = (int)reader["Id"],
+            Descricao = (reader["Descricao"].ToString()),
+            Desconto = ((bool)reader["Desconto"]),
+            Valor = ((decimal)reader["Valor"]),
+            Ativo = ((bool)reader["Ativo"]),
         };
-
-        bd.SetDescricaoBeneficioDesconto(reader["Descricao"].ToString());
-        bd.SetDescontoBeneficioDesconto((bool)reader["Desconto"]);
-        bd.SetValorBeneficioDesconto((decimal)reader["Valor"]);
 
         return bd;
     }

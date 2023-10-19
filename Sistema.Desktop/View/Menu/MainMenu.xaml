@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema.Desktop"
         mc:Ignorable="d"
-        Title=" " Height="450" Width="800">
+        Title=" " Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Name="Menu">
     <Grid>
         <Border CornerRadius="10" Grid.RowSpan="2">
             <Border.Background>
@@ -15,7 +17,12 @@
             </Border.Background>
         </Border>
 
-        <Button x:Name="btnIrParaBfDs" Content=" Benefícios e descontos" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Ir_Para_Beneficio_Desconto_Button_Click" Style="{DynamicResource ButtonStyle}"/>
+        <Button x:Name="btnIrParaBfDs"
+                Content="Benefícios e descontos"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Click="Ir_Para_Beneficio_Desconto_Click"
+                Style="{DynamicResource ButtonStyle}"/>
 
     </Grid>
 </Window>

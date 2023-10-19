@@ -159,8 +159,8 @@
     <Compile Include="View\ViewBeneficioDesconto\TelaBeneficioDesconto.xaml.cs">
       <DependentUpon>TelaBeneficioDesconto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewBeneficioDesconto\FormBeneficioDesconto.xaml.cs">
-      <DependentUpon>FormBeneficioDesconto.xaml</DependentUpon>
+    <Compile Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml.cs">
+      <DependentUpon>TelaCadastroBD.xaml</DependentUpon>
     </Compile>
     <Page Include="Estilos\ButtonStyle.xaml">
       <SubType>Designer</SubType>
@@ -206,7 +206,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ViewBeneficioDesconto\FormBeneficioDesconto.xaml">
+    <Page Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

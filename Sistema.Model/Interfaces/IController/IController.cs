@@ -11,7 +11,7 @@ namespace Sistema.Model.Interfaces.IController
     {
         void FilterData(string termo);
         T GetById(int id);
-        bool GetAll();
+        List<T> GetAll();
         bool InsertOne(T newData);
         bool UpdateOne(T data);
         bool DeleteOne(int id);

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Sistema.Desktop.Controllers;
+using Sistema.Model.Entidades;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,26 +22,48 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
     /// </summary>
     public partial class TelaBeneficioDesconto : Window
     {
+        public ObservableCollection<BeneficioDesconto> BfDs { get; set; }
+
         public TelaBeneficioDesconto()
         {
-            InitializeComponent();
+            try
+            {
+                BeneficioDescontoDAO dao = new BeneficioDescontoDAO();
+                BDController controller = new BDController(dao);
+                BfDs = new ObservableCollection<BeneficioDesconto>();
+
+                // Obtém os dados usando o método GetAll
+                List<BeneficioDesconto> beneficios = controller.GetAll();
+                if (beneficios != null)
+                {
+                    foreach (BeneficioDesconto beneficio in beneficios)
+                    {
+                        BfDs.Add(beneficio);
+                    }
+                }
+
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
         }
 
-        private void txtSearchBD_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {
-
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            menu.WindowState = WindowState;
+            Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnCriarNovo_Click(object sender, RoutedEventArgs e)
         {
-            FormBeneficioDesconto formBeneficioDesconto = new FormBeneficioDesconto();
-            frame.Content = formBeneficioDesconto;
-
-        }
-
-        private void frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-
+            TelaCadastroBD telaCadastro = new TelaCadastroBD();
+            telaCadastro.Show();
+            telaCadastro.WindowState = WindowState;
+            Close();
         }
     }
 }
