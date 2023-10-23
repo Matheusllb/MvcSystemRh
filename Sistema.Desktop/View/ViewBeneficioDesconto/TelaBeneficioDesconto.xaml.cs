@@ -22,24 +22,30 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
     /// </summary>
     public partial class TelaBeneficioDesconto : Window
     {
-        public ObservableCollection<BeneficioDesconto> BfDs { get; set; }
+        public ObservableCollection<BeneficioDesconto> BfDs;
+        private BDController Controller { get; set; }
+
 
         public TelaBeneficioDesconto()
         {
             try
             {
                 BeneficioDescontoDAO dao = new BeneficioDescontoDAO();
-                BDController controller = new BDController(dao);
+                Controller = new BDController(dao);
                 BfDs = new ObservableCollection<BeneficioDesconto>();
 
                 // Obtém os dados usando o método GetAll
-                List<BeneficioDesconto> beneficios = controller.GetAll();
+                List<BeneficioDesconto> beneficios = Controller.GetAll();
                 if (beneficios != null)
                 {
                     foreach (BeneficioDesconto beneficio in beneficios)
                     {
                         BfDs.Add(beneficio);
                     }
+                }
+                else
+                {
+                    throw new Exception("Erro na view: valor nulo recebido!");
                 }
 
                 InitializeComponent();

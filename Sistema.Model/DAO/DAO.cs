@@ -12,15 +12,33 @@ using System.Threading.Tasks;
 
 public abstract class DAO<T> : IDAO<T> where T : IEntidade
 {
-    protected DbConnectionManager ConnectionManager;
-    protected string TableName;
-    protected List<T> Data;
+    protected DbConnectionManager connectionManager;
+    protected string tableName;
+    protected List<T> data;
 
     public DAO(string tableName)
     {
-        ConnectionManager = new DbConnectionManager();
-        TableName = tableName;
-        Data = new List<T>();
+        connectionManager = new DbConnectionManager();
+        this.tableName = tableName;
+        data = new List<T>();
+    }
+
+    public DbConnectionManager ConnectionManager
+    {
+        get => connectionManager;
+        set { connectionManager = value; }
+    }
+
+    public string TableName
+    {
+        get => tableName;
+        set { tableName = value; }
+    }
+
+    public List<T> Data
+    {
+        get => data;
+        set { data = value; }
     }
 
     public List<T> GetAll()
@@ -37,16 +55,17 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    while (reader.Read())
+                    while(reader.Read())
                     {
-                        T item = MapData(reader);
-
-                        dadosDoBanco.Add(item);
+                        dadosDoBanco.Add(MapData(reader));
                     }
                 }
                 ConnectionManager.CloseConnection();
             }
-
+            if (dadosDoBanco == null)
+            {
+                throw new Exception("Erro no DAO: Está retornando nulo!");
+            }
             SetData(dadosDoBanco);
             return Data;
         }
@@ -247,5 +266,5 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     public abstract object[] GetHeaders();
 
     public abstract void SetData(List<T> data);
-    protected abstract T MapData(SqlDataReader reader);
+    public abstract T MapData(SqlDataReader reader);
 }

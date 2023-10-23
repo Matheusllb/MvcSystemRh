@@ -9,7 +9,9 @@ using System.Windows.Markup;
 
 public abstract class Controller<T> : IController<T> where T : IEntidade
 {
-    protected DAO<T> Model;
+    protected DAO<T> Model {  get; set; }
+
+    public List<T> Data = new List<T>();
 
     public Controller(DAO<T> model)
     {
@@ -56,8 +58,12 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
     {
         try
         {
-            List<T> data = Model.GetAll();
-            return data;
+            Model.GetAll();
+            if (Model.Data == null)
+            {
+                throw new Exception("Erro no controlador: Está retornando nulo!");
+            }
+            return Model.Data; // Atualiza a lista no controlador
         }
         catch (SqlException sqlEx)
         {

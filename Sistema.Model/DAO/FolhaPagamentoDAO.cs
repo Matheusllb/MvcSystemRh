@@ -110,7 +110,7 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
         Data = data;
     }
 
-    protected override FolhaPagamento MapData(SqlDataReader reader)
+    public override FolhaPagamento MapData(SqlDataReader reader)
     {
         FolhaPagamento folhaPagamento = new FolhaPagamento
         {

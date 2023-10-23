@@ -98,7 +98,7 @@ namespace Sistema.Model.DAO
             Data = data;
         }
 
-        protected override Empresa MapData(SqlDataReader reader)
+        public override Empresa MapData(SqlDataReader reader)
         {
             Empresa empresa = new Empresa
             {

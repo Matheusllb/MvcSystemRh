@@ -116,7 +116,7 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
         Data = data;
     }
 
-    protected override Usuario MapData(SqlDataReader reader)
+    public override Usuario MapData(SqlDataReader reader)
     {
         Usuario usuario = new Usuario
         {

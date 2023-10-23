@@ -50,15 +50,15 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
         Data = data;
     }
 
-    protected override BeneficioDesconto MapData(SqlDataReader reader)
+    public override BeneficioDesconto MapData(SqlDataReader reader)
     {
         BeneficioDesconto bd = new BeneficioDesconto
         {
             Id = (int)reader["Id"],
-            Descricao = (reader["Descricao"].ToString()),
-            Desconto = ((bool)reader["Desconto"]),
-            Valor = ((decimal)reader["Valor"]),
-            Ativo = ((bool)reader["Ativo"]),
+            Descricao = reader["Descricao"].ToString(),
+            Desconto = (bool)reader["Desconto"],
+            Valor = (decimal)reader["Valor"],
+            Ativo = (bool)reader["Ativo"],
         };
 
         return bd;

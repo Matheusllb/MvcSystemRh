@@ -45,7 +45,7 @@ public class BDFuncionarioDAO : DAO<BDFuncionario>
         Data = data;
     }
 
-    protected override BDFuncionario MapData(SqlDataReader reader)
+    public override BDFuncionario MapData(SqlDataReader reader)
     {
         BDFuncionario bdFuncionario = new BDFuncionario
         {

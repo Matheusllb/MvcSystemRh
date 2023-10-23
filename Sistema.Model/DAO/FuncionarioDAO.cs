@@ -98,7 +98,7 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
         Data = data;
     }
 
-    protected override Funcionario MapData(SqlDataReader reader)
+    public override Funcionario MapData(SqlDataReader reader)
     {
         Funcionario funcionario = new Funcionario
         {
