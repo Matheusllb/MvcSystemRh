@@ -68,9 +68,5 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             Close();
         }
 
-        private void listViewBD_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

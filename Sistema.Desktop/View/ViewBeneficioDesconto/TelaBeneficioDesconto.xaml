@@ -23,11 +23,11 @@
                   ItemsSource="{Binding ElementName=WindowBD, Path=BfDs}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Descrição" Width="150" DisplayMemberBinding="{Binding Descricao}"/>
-                    <GridViewColumn Header="Desconto" Width="150" DisplayMemberBinding="{Binding Desconto}"/>
-                    <GridViewColumn Header="Valor" Width="150" DisplayMemberBinding="{Binding Valor}"/>
-                    <GridViewColumn Header="Ativo" Width="150" DisplayMemberBinding="{Binding Ativo}"/>
+                    <GridViewColumn Header="Id" Width="40" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Descrição" Width="140" DisplayMemberBinding="{Binding Descricao}"/>
+                    <GridViewColumn Header="Desconto" Width="140" DisplayMemberBinding="{Binding Desconto}"/>
+                    <GridViewColumn Header="Valor" Width="140" DisplayMemberBinding="{Binding Valor}"/>
+                    <GridViewColumn Header="Ativo" Width="140" DisplayMemberBinding="{Binding Ativo}"/>
                 </GridView>
             </ListView.View>
         </ListView>
