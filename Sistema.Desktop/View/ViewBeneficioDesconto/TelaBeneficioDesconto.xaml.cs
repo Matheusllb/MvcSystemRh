@@ -3,6 +3,7 @@ using Sistema.Model.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,37 +23,32 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
     /// </summary>
     public partial class TelaBeneficioDesconto : Window
     {
-        public ObservableCollection<BeneficioDesconto> BfDs;
-        private BDController Controller { get; set; }
-
+        public ObservableCollection<BeneficioDesconto> BfDs = new ObservableCollection<BeneficioDesconto>();
 
         public TelaBeneficioDesconto()
         {
             try
             {
                 BeneficioDescontoDAO dao = new BeneficioDescontoDAO();
-                Controller = new BDController(dao);
-                BfDs = new ObservableCollection<BeneficioDesconto>();
+                BDController controller = new BDController(dao);
 
                 // Obtém os dados usando o método GetAll
-                List<BeneficioDesconto> beneficios = Controller.GetAll();
+                List<BeneficioDesconto> beneficios = controller.GetAll();
+
+                // Adiciona os dados à lista de dados da view
                 if (beneficios != null)
                 {
-                    foreach (BeneficioDesconto beneficio in beneficios)
-                    {
-                        BfDs.Add(beneficio);
-                    }
-                }
-                else
-                {
-                    throw new Exception("Erro na view: valor nulo recebido!");
+                    BfDs = new ObservableCollection<BeneficioDesconto>(beneficios);
                 }
 
                 InitializeComponent();
+
+                // Associa a lista de dados à ListView
+                listViewBD.ItemsSource = BfDs;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro: " + ex.Message);
+                MessageBox.Show("Erro SQL: " + ex.Message);
             }
         }
 
@@ -70,6 +66,11 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             telaCadastro.Show();
             telaCadastro.WindowState = WindowState;
             Close();
+        }
+
+        private void listViewBD_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

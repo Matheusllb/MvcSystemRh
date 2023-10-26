@@ -34,17 +34,6 @@ public class BDFuncionarioDAO : DAO<BDFuncionario>
         return filteredData;
     }
 
-    public override object[] GetHeaders()
-    {
-        string[] headers = { "IdBDFuncionario", "IdFuncionario", "IdBeneficioDesconto" };
-        return headers;
-    }
-
-    public override void SetData(List<BDFuncionario> data)
-    {
-        Data = data;
-    }
-
     public override BDFuncionario MapData(SqlDataReader reader)
     {
         BDFuncionario bdFuncionario = new BDFuncionario

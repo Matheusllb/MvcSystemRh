@@ -19,15 +19,15 @@
         </Border>
 
         <ListView x:Name="listViewBD"
-                  Width="655"
-                  Margin="66,80,0,60"
-                  ItemsSource="{Binding ElementName=WindowBD, Path=BfDs}" HorizontalAlignment="Left">
+                  Margin="66,80,79,60"
+                  ItemsSource="{Binding ElementName=WindowBD, Path=BfDs}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Descrição" DisplayMemberBinding="{Binding Descricao}"/>
-                    <GridViewColumn Header="Desconto" DisplayMemberBinding="{Binding Desconto}"/>
-                    <GridViewColumn Header="Valor" DisplayMemberBinding="{Binding Valor}"/>
-                    <GridViewColumn Header="Ativo" DisplayMemberBinding="{Binding Ativo}"/>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Descrição" Width="150" DisplayMemberBinding="{Binding Descricao}"/>
+                    <GridViewColumn Header="Desconto" Width="150" DisplayMemberBinding="{Binding Desconto}"/>
+                    <GridViewColumn Header="Valor" Width="150" DisplayMemberBinding="{Binding Valor}"/>
+                    <GridViewColumn Header="Ativo" Width="150" DisplayMemberBinding="{Binding Ativo}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -45,16 +45,15 @@
                                     Foreground="White"/>
         </Button>
 
-        <TextBox x:Name="txtSearchBD" HorizontalAlignment="Left" 
-                 Margin="66,49,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="txtSearchBD" 
+                 Margin="66,49,240,0" TextWrapping="Wrap" 
                  FontFamily="Helvetica"
                  FontWeight="Light"
                  FontSize="20"
                  Foreground="White"
-                 Background="Transparent"
+                 Background="#363636"
                  BorderThickness="0" 
-                 VerticalAlignment="Top" 
-                 Width="494" Height="28" 
+                 VerticalAlignment="Top" Height="28" 
                  SelectionOpacity="0.9"
                  Text="">
             <TextBox.Style>
@@ -90,11 +89,9 @@
         </TextBox>
 
         <Button x:Name="btnFiltrar"
-                HorizontalAlignment="Left"
-                Margin="565,49,0,0"
+                Margin="565,49,198,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Width="37"
                 Style="{DynamicResource ShowPasswordButtonStyle}"
                 Foreground="White">
             <iconPacks:PackIconMaterial Kind="Magnify"
@@ -104,13 +101,11 @@
 
         <Button x:Name="btnCriarNovo"
                 Content="Novo"
-                HorizontalAlignment="Left"
-                Margin="621,49,0,0"
+                Margin="0,49,79,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Width="100"
                 Click="btnCriarNovo_Click"
-                Style="{DynamicResource ButtonStyle}"/>
+                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
 
     </Grid>
 </Window>

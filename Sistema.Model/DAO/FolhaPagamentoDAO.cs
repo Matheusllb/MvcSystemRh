@@ -99,17 +99,6 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
         return filteredData;
     }
 
-    public override object[] GetHeaders()
-    {
-        string[] headers = { "Id", "IdEmpresa", "DataFechamento", "DataPagamento", "TotalVencimentos", "TotalDescontos", "TotalLiquido", "Funcionario", "SalarioINSS", "ValorFGTS", "ValorIRRF", "Itens" };
-        return headers;
-    }
-
-    public override void SetData(List<FolhaPagamento> data)
-    {
-        Data = data;
-    }
-
     public override FolhaPagamento MapData(SqlDataReader reader)
     {
         FolhaPagamento folhaPagamento = new FolhaPagamento

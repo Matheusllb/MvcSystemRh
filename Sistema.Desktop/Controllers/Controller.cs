@@ -2,7 +2,9 @@
 using Sistema.Model.Interfaces.IDAO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
@@ -10,8 +12,6 @@ using System.Windows.Markup;
 public abstract class Controller<T> : IController<T> where T : IEntidade
 {
     protected DAO<T> Model {  get; set; }
-
-    public List<T> Data = new List<T>();
 
     public Controller(DAO<T> model)
     {
@@ -23,34 +23,9 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
         try
         {
             List<T> newData = Model.FilterData(termo);
-            Model.SetData(newData);
         }catch (Exception ex)
         {
             MessageBox.Show("Erro: " + ex.Message);
-        }
-    }
-
-    public DAO<T> GetModel()
-    {
-        try
-        {
-            return Model;
-        }catch (Exception ex)
-        {
-            MessageBox.Show("Erro: " + ex.Message);
-            return null;
-        }
-    }
-
-    public object[] GetHeaders()
-    {
-        try
-        {
-            return Model.GetHeaders();
-        }catch (Exception ex)
-        {
-            MessageBox.Show("Erro: " + ex.Message);
-            return null;
         }
     }
 
@@ -58,21 +33,33 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
     {
         try
         {
-            Model.GetAll();
-            if (Model.Data == null)
+            // Chama o método GetAll() do modelo
+            List<T> dados = Model.GetAll();
+
+            // Verifica se a lista de dados está vazia
+            if (dados == null)
             {
+                // Lança uma exceção
                 throw new Exception("Erro no controlador: Está retornando nulo!");
             }
-            return Model.Data; // Atualiza a lista no controlador
+
+            // Retorna a lista de dados
+            return dados;
         }
         catch (SqlException sqlEx)
         {
+            // Exibe uma mensagem de erro no console
             MessageBox.Show("Erro SQL: " + sqlEx.Message);
+
+            // Retorna null
             return null;
         }
         catch (Exception ex)
         {
+            // Exibe uma mensagem de erro no console
             MessageBox.Show("Erro geral: " + ex.Message);
+
+            // Retorna null
             return null;
         }
     }

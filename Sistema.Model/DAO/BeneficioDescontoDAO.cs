@@ -39,28 +39,29 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
         return filteredData;
     }
 
-    public override object[] GetHeaders()
-    {
-        string[] headers = { "Id", "Descricao", "Desconto", "Valor", "Ativo" };
-        return headers;
-    }
-
-    public override void SetData(List<BeneficioDesconto> data)
-    {
-        Data = data;
-    }
-
     public override BeneficioDesconto MapData(SqlDataReader reader)
     {
-        BeneficioDesconto bd = new BeneficioDesconto
+        try
         {
-            Id = (int)reader["Id"],
-            Descricao = reader["Descricao"].ToString(),
-            Desconto = (bool)reader["Desconto"],
-            Valor = (decimal)reader["Valor"],
-            Ativo = (bool)reader["Ativo"],
-        };
+            if (reader["Id"] != DBNull.Value && reader["Descricao"] != DBNull.Value && reader["Desconto"] != DBNull.Value && reader["Valor"] != DBNull.Value && reader["Ativo"] != DBNull.Value)
+            {
+                return new BeneficioDesconto
+                {
+                    Id = Convert.ToInt32(reader["Id"]),
+                    Descricao = reader["Descricao"].ToString(),
+                    Desconto = Convert.ToBoolean(reader["Desconto"]),
+                    Valor = Convert.ToDecimal(reader["Valor"]),
+                    Ativo = Convert.ToBoolean(reader["Ativo"]),
+                };
+            }
 
-        return bd;
+            return null;
+        }
+        catch (InvalidCastException ex)
+        {
+            
+            throw new Exception(ex.Message);
+     
+        }
     }
 }

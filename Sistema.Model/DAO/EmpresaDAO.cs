@@ -87,17 +87,6 @@ namespace Sistema.Model.DAO
             return filteredData;
         }
 
-        public override object[] GetHeaders()
-        {
-            string[] headers = { "IdEmpresa", "Nome", "Cnpj", "Setor", "Email", "Telefone", "Endereco" };
-            return headers;
-        }
-
-        public override void SetData(List<Empresa> data)
-        {
-            Data = data;
-        }
-
         public override Empresa MapData(SqlDataReader reader)
         {
             Empresa empresa = new Empresa

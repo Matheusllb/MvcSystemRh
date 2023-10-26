@@ -43,11 +43,10 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
 
     public List<T> GetAll()
     {
+        List<T> dadosDoBanco = new List<T>();
         try
         {
             string query = $"SELECT * FROM {TableName}";
-
-            List<T> dadosDoBanco = new List<T>();
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
@@ -55,29 +54,27 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    while(reader.Read())
+                    if (reader.HasRows)
                     {
-                        dadosDoBanco.Add(MapData(reader));
+                        while (reader.Read())
+                        {
+                            dadosDoBanco.Add((T)MapData(reader));
+                        }
                     }
                 }
+
                 ConnectionManager.CloseConnection();
             }
-            if (dadosDoBanco == null)
-            {
-                throw new Exception("Erro no DAO: Está retornando nulo!");
-            }
-            SetData(dadosDoBanco);
-            return Data;
+
+            return dadosDoBanco;
         }
         catch (SqlException sqlEx)
         {
-            Console.WriteLine("Erro de banco: " + sqlEx.Message);
-            return null;
+            throw new Exception(sqlEx.Message);
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Erro: " + ex.Message);
-            return null;
+            throw new Exception(ex.Message);
         }
     }
 
@@ -262,9 +259,5 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     }
 
     public abstract List<T> FilterData(string searchTerm);
-
-    public abstract object[] GetHeaders();
-
-    public abstract void SetData(List<T> data);
     public abstract T MapData(SqlDataReader reader);
 }

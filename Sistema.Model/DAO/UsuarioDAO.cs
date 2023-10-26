@@ -32,11 +32,15 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
                 }
             }
         }
-        catch (SqlException ex)
+        catch (SqlException sqlex)
         {
-            // Você pode lançar uma exceção personalizada ou retornar um código de erro específico aqui
-            // Por exemplo, lançar uma exceção personalizada com uma mensagem de erro significativa
-            throw new Exception("Erro durante a autenticação: " + ex.Message, ex);
+            Console.WriteLine(sqlex.Message);
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
         }
         finally
         {
@@ -104,18 +108,6 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
 
         return filteredData;
     }
-
-    public override object[] GetHeaders()
-    {
-        string[] headers = { "IdUsuario", "IdPessoa", "IdPermissao", "Inativo", "Login", "Senha" };
-        return headers;
-    }
-
-    public override void SetData(List<Usuario> data)
-    {
-        Data = data;
-    }
-
     public override Usuario MapData(SqlDataReader reader)
     {
         Usuario usuario = new Usuario

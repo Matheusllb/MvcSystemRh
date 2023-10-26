@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Sistema.Model.Interfaces.IDAO
         T GetById(int id);
         List<T> GetAll();
         List<T> FilterData(string termo);
+        T MapData(SqlDataReader reader);
 
     }
 }

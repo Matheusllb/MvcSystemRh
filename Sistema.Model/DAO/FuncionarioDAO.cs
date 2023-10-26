@@ -87,17 +87,6 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
         return filteredData;
     }
 
-    public override object[] GetHeaders()
-    {
-        string[] headers = { "IdFuncionario", "IdPessoa", "Email", "DataAdmissao", "IdEmpresa", "Cargo", "SalarioBruto" };
-        return headers;
-    }
-
-    public override void SetData(List<Funcionario> data)
-    {
-        Data = data;
-    }
-
     public override Funcionario MapData(SqlDataReader reader)
     {
         Funcionario funcionario = new Funcionario
