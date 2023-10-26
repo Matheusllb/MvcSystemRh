@@ -18,14 +18,16 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
         Model = model;
     }
 
-    public void FilterData(string termo)
+    public List<T> FilterData(string termo)
     {
         try
         {
             List<T> newData = Model.FilterData(termo);
+            return newData;
         }catch (Exception ex)
         {
             MessageBox.Show("Erro: " + ex.Message);
+            return null;
         }
     }
 

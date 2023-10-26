@@ -9,7 +9,7 @@ namespace Sistema.Model.Interfaces.IController
 {
     public interface IController<T> where T : IEntidade
     {
-        void FilterData(string termo);
+        List<T> FilterData(string termo);
         T GetById(int id);
         List<T> GetAll();
         bool InsertOne(T newData);

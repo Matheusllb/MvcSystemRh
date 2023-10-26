@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Sistema.Model.DAO;
@@ -14,54 +15,50 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
     {
         List<BeneficioDesconto> filteredData = new List<BeneficioDesconto>();
 
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+        string query = $"SELECT * FROM {TableName} WHERE Descricao LIKE @searchTerm";
+        searchTerm = $"%{searchTerm}%";
+
+        using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
         {
-            connection.Open();
+            ConnectionManager.OpenConnection();
 
-            string query = "SELECT * FROM BeneficioDesconto WHERE Descricao LIKE @searchTerm";
-            searchTerm = $"%{searchTerm}%";
+            command.Parameters.AddWithValue("@searchTerm", searchTerm);
 
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataReader reader = command.ExecuteReader())
             {
-                command.Parameters.AddWithValue("@searchTerm", searchTerm);
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        BeneficioDesconto bd = MapData(reader);
-                        filteredData.Add(bd);
-                    }
+                    filteredData.Add(MapData(reader));
                 }
             }
         }
-
         return filteredData;
     }
 
-    public override BeneficioDesconto MapData(SqlDataReader reader)
-    {
-        try
-        {
-            if (reader["Id"] != DBNull.Value && reader["Descricao"] != DBNull.Value && reader["Desconto"] != DBNull.Value && reader["Valor"] != DBNull.Value && reader["Ativo"] != DBNull.Value)
-            {
-                return new BeneficioDesconto
-                {
-                    Id = Convert.ToInt32(reader["Id"]),
-                    Descricao = reader["Descricao"].ToString(),
-                    Desconto = Convert.ToBoolean(reader["Desconto"]),
-                    Valor = Convert.ToDecimal(reader["Valor"]),
-                    Ativo = Convert.ToBoolean(reader["Ativo"]),
-                };
-            }
 
-            return null;
-        }
-        catch (InvalidCastException ex)
+public override BeneficioDesconto MapData(SqlDataReader reader)
+{
+    try
+    {
+        if (reader["Id"] != DBNull.Value && reader["Descricao"] != DBNull.Value && reader["Desconto"] != DBNull.Value && reader["Valor"] != DBNull.Value && reader["Ativo"] != DBNull.Value)
         {
-            
-            throw new Exception(ex.Message);
-     
+            return new BeneficioDesconto
+            {
+                Id = Convert.ToInt32(reader["Id"]),
+                Descricao = reader["Descricao"].ToString(),
+                Desconto = Convert.ToBoolean(reader["Desconto"]),
+                Valor = Convert.ToDecimal(reader["Valor"]),
+                Ativo = Convert.ToBoolean(reader["Ativo"]),
+            };
         }
+
+        return null;
     }
+    catch (InvalidCastException ex)
+    {
+
+        throw new Exception(ex.Message);
+
+    }
+}
 }

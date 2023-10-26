@@ -24,8 +24,8 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="40" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Descrição" Width="140" DisplayMemberBinding="{Binding Descricao}"/>
-                    <GridViewColumn Header="Desconto" Width="140" DisplayMemberBinding="{Binding Desconto}"/>
+                    <GridViewColumn Header="Descrição" Width="140" DisplayMemberBinding="{Binding Descricao}" />
+                    <GridViewColumn Header="Desconto" Width="140" DisplayMemberBinding="{Binding Desconto}"></GridViewColumn>
                     <GridViewColumn Header="Valor" Width="140" DisplayMemberBinding="{Binding Valor}"/>
                     <GridViewColumn Header="Ativo" Width="140" DisplayMemberBinding="{Binding Ativo}"/>
                 </GridView>
@@ -45,17 +45,18 @@
                                     Foreground="White"/>
         </Button>
 
+
         <TextBox x:Name="txtSearchBD" 
-                 Margin="66,49,240,0" TextWrapping="Wrap" 
+                 Margin="66,49,406,0" TextWrapping="Wrap" 
                  FontFamily="Helvetica"
                  FontWeight="Light"
-                 FontSize="20"
+                 FontSize="15"
                  Foreground="White"
                  Background="#363636"
                  BorderThickness="0" 
                  VerticalAlignment="Top" Height="28" 
                  SelectionOpacity="0.9"
-                 Text="">
+                 >
             <TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Template">
@@ -89,11 +90,11 @@
         </TextBox>
 
         <Button x:Name="btnFiltrar"
-                Margin="565,49,198,0"
+                Margin="356,47,406,0"
                 VerticalAlignment="Top"
                 Height="28"
                 Style="{DynamicResource ShowPasswordButtonStyle}"
-                Foreground="White">
+                Foreground="White" Click="btnFiltrar_Click">
             <iconPacks:PackIconMaterial Kind="Magnify"
                                         Height="27"
                                         Width="24" />
@@ -101,11 +102,98 @@
 
         <Button x:Name="btnCriarNovo"
                 Content="Novo"
-                Margin="0,49,79,0"
+                Margin="0,47,300,0"
                 VerticalAlignment="Top"
                 Height="28"
                 Click="btnCriarNovo_Click"
                 Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+
+        <Button x:Name="btnAlterar"
+                Content="Alterar"
+                Margin="0,47,189,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Click="btnAlterar_Click"
+                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+
+        <Button x:Name="btnDeletar"
+                Content="Deletar"
+                Margin="0,47,79,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Click="btnDeletar_Click"
+                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+
+        <Menu x:Name="menuAlterar"
+              Margin="66,20,79,354"
+              Visibility="Collapsed"
+              Background="#353535">
+
+            <Label Name="lblDescricao"
+                   Content="Descrição"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15"/>
+
+            <TextBox x:Name="txtDescricao" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0"
+                     Height="47" 
+                     SelectionOpacity="0.9" Width="100"
+                     Text="{Binding ElementName=listViewBD, Path=SelectedValue.Descricao, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblDesconto"
+                   Content="Desconto"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="70"
+                   Height="28"/>
+
+            <RadioButton Name="rbDesconto"
+                         IsChecked="{Binding ElementName=listViewBD, Path=SelectedValue.Desconto, UpdateSourceTrigger=LostFocus}"
+                         Content="Sim"
+                         Foreground="White"
+                         />
+            <RadioButton x:Name="rbBeneficio"
+                         IsChecked="{Binding ElementName=listViewBD, Path=SelectedValue.Desconto, UpdateSourceTrigger=LostFocus}"
+                         Content="Não"
+                         Foreground="White"
+                         />
+
+            <Label Name="lblValor"
+                   Content="Valor"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="40"
+                   />
+
+            <TextBox x:Name="txtValor" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="28" 
+                     SelectionOpacity="0.9" Width="40"
+                     Text="{Binding ElementName=listViewBD, Path=SelectedValue.Valor, UpdateSourceTrigger=LostFocus}"/>
+
+            <Button x:Name="btnConfirmar"
+                    Content="Confirmar"
+                    FontFamily="Helvetica"
+                    FontWeight="Light"
+                    FontSize="15"
+                    Height="28"
+                    Click="btnConfirmar_Click"
+                    Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+        </Menu>
 
     </Grid>
 </Window>
