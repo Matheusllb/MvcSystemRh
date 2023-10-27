@@ -107,7 +107,7 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 }
                 else
                 {
-                    BeneficioDesconto selecionado = listViewBD.SelectedItem as BeneficioDesconto;
+                    
                     if(MessageBox.Show("Deseja modificar este item?","Alteração de dados", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
                     {
                         txtSearchBD.Visibility = Visibility.Hidden;
@@ -116,15 +116,6 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                         btnAlterar.Visibility = Visibility.Hidden;
                         btnDeletar.Visibility = Visibility.Hidden;
                         menuAlterar.Visibility = Visibility.Visible;
-                        
-                        if (controller.UpdateOne(selecionado))
-                        {
-                            MessageBox.Show("Item modificado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Falha ao modificar item!", "Falha!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                        }
                     }
                     else
                     {
@@ -176,7 +167,28 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                BeneficioDesconto selecionado = listViewBD.SelectedItem as BeneficioDesconto;
+                
+                if (controller.UpdateOne(selecionado))
+                {
+                    MessageBox.Show("Item modificado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtSearchBD.Visibility = Visibility.Visible;
+                    btnFiltrar.Visibility = Visibility.Visible;
+                    btnCriarNovo.Visibility = Visibility.Visible;
+                    btnAlterar.Visibility = Visibility.Visible;
+                    btnDeletar.Visibility = Visibility.Visible;
+                    menuAlterar.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao modificar item!", "Falha!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
