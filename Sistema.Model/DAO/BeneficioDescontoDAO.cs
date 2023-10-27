@@ -36,29 +36,40 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
     }
 
 
-public override BeneficioDesconto MapData(SqlDataReader reader)
-{
-    try
+    public override BeneficioDesconto MapData(SqlDataReader reader)
     {
-        if (reader["Id"] != DBNull.Value && reader["Descricao"] != DBNull.Value && reader["Desconto"] != DBNull.Value && reader["Valor"] != DBNull.Value && reader["Ativo"] != DBNull.Value)
+        try
         {
-            return new BeneficioDesconto
+            if (reader["Id"] != DBNull.Value &&
+                reader["Descricao"] != DBNull.Value &&
+                reader["Desconto"] != DBNull.Value &&
+                reader["Valor"] != DBNull.Value &&
+                reader["Ativo"] != DBNull.Value)
             {
-                Id = Convert.ToInt32(reader["Id"]),
-                Descricao = reader["Descricao"].ToString(),
-                Desconto = Convert.ToBoolean(reader["Desconto"]),
-                Valor = Convert.ToDecimal(reader["Valor"]),
-                Ativo = Convert.ToBoolean(reader["Ativo"]),
-            };
+                if (!(bool)reader["Ativo"])
+                {
+                    return null;
+                }
+                else
+                {
+                    return new BeneficioDesconto
+                    {
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Descricao = reader["Descricao"].ToString(),
+                        Desconto = Convert.ToBoolean(reader["Desconto"]),
+                        Valor = Convert.ToDecimal(reader["Valor"]),
+                        Ativo = Convert.ToBoolean(reader["Ativo"]),
+                    };
+                }
+            }
+
+            return null;
         }
+        catch (InvalidCastException ex)
+        {
 
-        return null;
+            throw new Exception(ex.Message);
+
+        }
     }
-    catch (InvalidCastException ex)
-    {
-
-        throw new Exception(ex.Message);
-
-    }
-}
 }

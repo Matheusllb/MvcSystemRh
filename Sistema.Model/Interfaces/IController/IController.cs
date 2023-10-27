@@ -15,6 +15,7 @@ namespace Sistema.Model.Interfaces.IController
         bool InsertOne(T newData);
         bool UpdateOne(T data);
         bool DeleteOne(int id);
+        bool Inativar(int id);
     }
 
 }

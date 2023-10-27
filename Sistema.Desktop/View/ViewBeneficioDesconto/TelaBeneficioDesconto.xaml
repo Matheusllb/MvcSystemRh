@@ -16,47 +16,51 @@
                     <GradientStop Color="#353535" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
+            <Border Height="50"
+                VerticalAlignment="Top"
+                Background="#FF946DED"
+                BorderBrush="#282828"/>
         </Border>
 
         <ListView x:Name="listViewBD"
-                  Margin="66,80,79,60"
+                  Margin="66,110,79,30"
                   ItemsSource="{Binding ElementName=WindowBD, Path=BfDs}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="40" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Descrição" Width="140" DisplayMemberBinding="{Binding Descricao}" />
-                    <GridViewColumn Header="Desconto" Width="140" DisplayMemberBinding="{Binding Desconto}"></GridViewColumn>
-                    <GridViewColumn Header="Valor" Width="140" DisplayMemberBinding="{Binding Valor}"/>
-                    <GridViewColumn Header="Ativo" Width="140" DisplayMemberBinding="{Binding Ativo}"/>
+                    <GridViewColumn Header="Descrição" Width="Auto" DisplayMemberBinding="{Binding Descricao}"/>
+                    <GridViewColumn Header="Desconto" Width="Auto" DisplayMemberBinding="{Binding Desconto}"/>
+                    <GridViewColumn Header="Valor" Width="Auto" DisplayMemberBinding="{Binding Valor}"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
         <Button x:Name="btnVoltar"
-            Height="40"
-            Width="40"
-            Style="{DynamicResource ShowPasswordButtonStyle}"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Click="btnVoltar_Click">
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Click="btnVoltar_Click">
             <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                                    Height="20"
-                                    Width="20"
-                                    Foreground="White"/>
+                                        Height="20"
+                                        Width="20"
+                                        Foreground="#383838"/>
         </Button>
 
 
         <TextBox x:Name="txtSearchBD" 
-                 Margin="66,49,406,0" TextWrapping="Wrap" 
+                 Margin="66,77,415,0" TextWrapping="Wrap" 
                  FontFamily="Helvetica"
                  FontWeight="Light"
                  FontSize="15"
                  Foreground="White"
-                 Background="#363636"
+                 Background="#292929"
                  BorderThickness="0" 
                  VerticalAlignment="Top" Height="28" 
                  SelectionOpacity="0.9"
-                 >
+                 BorderBrush="White">
             <TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Template">
@@ -64,7 +68,7 @@
                             <ControlTemplate TargetType="{x:Type TextBox}">
                                 <Grid>
                                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
-                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="White" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Opacity="0.7" Visibility="Collapsed"/>
                                     <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                                 </Grid>
                                 <ControlTemplate.Triggers>
@@ -89,20 +93,48 @@
             </TextBox.Style>
         </TextBox>
 
-        <Button x:Name="btnFiltrar"
-                Margin="356,47,406,0"
+        <Button x:Name="btnAtualizar"
+                Margin="0,77,491,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Style="{DynamicResource ShowPasswordButtonStyle}"
-                Foreground="White" Click="btnFiltrar_Click">
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnAtualizar_Click" HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Refresh"
+                                                Height="20"
+                                                Width="16" />
+        </Button>
+
+        <Button x:Name="btnFiltrar"
+                Margin="0,77,453,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnFiltrar_Click" HorizontalAlignment="Right" Width="38">
             <iconPacks:PackIconMaterial Kind="Magnify"
-                                        Height="27"
-                                        Width="24" />
+                                        Height="20"
+                                        Width="16" />
+        </Button>
+
+        <Button x:Name="btnBuscaId"
+                Margin="0,77,415,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnBuscaId_Click" HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Identifier"
+                                                    Height="20"
+                                                    Width="16" />
         </Button>
 
         <Button x:Name="btnCriarNovo"
                 Content="Novo"
-                Margin="0,47,300,0"
+                Margin="0,77,300,0"
                 VerticalAlignment="Top"
                 Height="28"
                 Click="btnCriarNovo_Click"
@@ -110,7 +142,7 @@
 
         <Button x:Name="btnAlterar"
                 Content="Alterar"
-                Margin="0,47,189,0"
+                Margin="0,77,189,0"
                 VerticalAlignment="Top"
                 Height="28"
                 Click="btnAlterar_Click"
@@ -118,14 +150,14 @@
 
         <Button x:Name="btnDeletar"
                 Content="Deletar"
-                Margin="0,47,79,0"
+                Margin="0,77,79,0"
                 VerticalAlignment="Top"
                 Height="28"
                 Click="btnDeletar_Click"
                 Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
 
         <Menu x:Name="menuAlterar"
-              Margin="66,20,79,354"
+              Margin="56,50,10,324"
               Visibility="Collapsed"
               Background="#353535">
 
@@ -134,7 +166,7 @@
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15"/>
+                   FontSize="15" Width="70"/>
 
             <TextBox x:Name="txtDescricao" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
@@ -144,7 +176,7 @@
                      Background="#363636"
                      BorderThickness="0"
                      Height="47" 
-                     SelectionOpacity="0.9" Width="100"
+                     SelectionOpacity="0.9" Width="110"
                      Text="{Binding ElementName=listViewBD, Path=SelectedValue.Descricao, UpdateSourceTrigger=LostFocus}"/>
 
             <Label Name="lblDesconto"
@@ -152,18 +184,18 @@
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="70"
+                   FontSize="15" Width="69"
                    Height="28"/>
 
             <RadioButton Name="rbDesconto"
                          IsChecked="{Binding ElementName=listViewBD, Path=SelectedValue.Desconto, UpdateSourceTrigger=LostFocus}"
                          Content="Sim"
-                         Foreground="White"
+                         Foreground="White" Width="38"
                          />
             <RadioButton x:Name="rbBeneficio"
                          IsChecked="{Binding ElementName=listViewBD, Path=SelectedValue.Desconto, UpdateSourceTrigger=LostFocus}"
                          Content="Não"
-                         Foreground="White"
+                         Foreground="White" Width="41"
                          />
 
             <Label Name="lblValor"
@@ -182,7 +214,7 @@
                      Background="#363636"
                      BorderThickness="0" 
                      Height="28" 
-                     SelectionOpacity="0.9" Width="40"
+                     SelectionOpacity="0.9" Width="69"
                      Text="{Binding ElementName=listViewBD, Path=SelectedValue.Valor, UpdateSourceTrigger=LostFocus}"/>
 
             <Button x:Name="btnConfirmar"
@@ -194,6 +226,8 @@
                     Click="btnConfirmar_Click"
                     Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
         </Menu>
+
+
 
     </Grid>
 </Window>

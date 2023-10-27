@@ -58,7 +58,11 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
                     {
                         while (reader.Read())
                         {
-                            dadosDoBanco.Add((T)MapData(reader));
+                            T item = MapData(reader);
+                            if(item != null)
+                            {
+                                dadosDoBanco.Add(item);
+                            }
                         }
                     }
                 }
@@ -70,11 +74,11 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         }
         catch (SqlException sqlEx)
         {
-            throw new Exception(sqlEx.Message);
+            throw sqlEx;
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            throw ex;
         }
     }
 
@@ -83,49 +87,39 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         try
         {
             Type tipo = typeof(T);
-
             string query = $"SELECT * FROM {TableName} WHERE Id = @Id";
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
-                command.Parameters.AddWithValue("@Id", id);
+                ConnectionManager.OpenConnection(); // Abre a conexão
 
-                ConnectionManager.OpenConnection();
+                command.Parameters.AddWithValue("@Id", id);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        T item = (T)Activator.CreateInstance(tipo);
+                        T item = MapData(reader);
 
-                        foreach (PropertyInfo property in tipo.GetProperties())
+                        if (item != null)
                         {
-                            if (property.Name != "Id")
-                            {
-                                property.SetValue(item, reader[property.Name]);
-                            }
-                        }
-
-                        ConnectionManager.CloseConnection();
-
-                        return item;
+                            return item;
+                        }       
                     }
                 }
-
-                ConnectionManager.CloseConnection();
             }
 
-            return default(T);
+            ConnectionManager.CloseConnection();
+
+            return default;
         }
         catch (SqlException sqlEx)
         {
-            Console.WriteLine("Erro de banco: " + sqlEx.Message);
-            return default(T);
+            throw sqlEx;
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Erro: " + ex.Message);
-            return default(T);
+            throw ex;
         }
     }
 
@@ -223,8 +217,6 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     {
         try
         {
-            Type tipo = typeof(T);
-
             if (id <= 0)
             {
                 Console.WriteLine("ID inválido.");
@@ -248,13 +240,42 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         }
         catch (SqlException sqlEx)
         {
-            Console.WriteLine("Erro de banco: " + sqlEx.Message);
-            return false;
+            throw sqlEx;
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Erro: " + ex.Message);
-            return false;
+            throw ex;
+        }
+    }
+    
+    public bool Inativar(int id)
+    {
+        try
+        {
+            if (id <= 0)
+            {
+                Console.WriteLine("ID inválido.");
+                return false;
+            }
+
+            string query = $"UPDATE {TableName} SET Ativo = 0 WHERE Id = @Id";
+
+            using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@Id", id);
+                ConnectionManager.OpenConnection();
+                int count = command.ExecuteNonQuery();
+                ConnectionManager.CloseConnection();
+                return count > 0;
+            }
+        }
+        catch (SqlException sqlEx)
+        {
+            throw sqlEx;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
         }
     }
 

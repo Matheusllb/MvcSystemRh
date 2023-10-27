@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema.Desktop"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title=" " Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
@@ -12,17 +13,136 @@
         <Border CornerRadius="10" Grid.RowSpan="2">
             <Border.Background>
                 <LinearGradientBrush>
-                    <GradientStop Color="#353535 " Offset="0.0"/>
+                    <GradientStop Color="#282828" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
+            <Border Height="50"
+                    VerticalAlignment="Top"
+                    Background="#FF946DED"
+                    BorderBrush="#282828"/>
         </Border>
 
-        <Button x:Name="btnIrParaBfDs"
-                Content="Benefícios e descontos"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Click="Ir_Para_Beneficio_Desconto_Click"
-                Style="{DynamicResource ButtonStyle}"/>
+        <Canvas
+              Width="200"
+              HorizontalAlignment="Left"
+              Background="#353535" Margin="0,49,0,0">
+
+            <Button x:Name="btnIrParaBfDs"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Click="Ir_Para_Beneficio_Desconto_Click"
+                    Height="50" Width="126"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Content="Benefícios/Descontos"
+                    Foreground="White"
+                    Style="{DynamicResource ButtonStyle}"
+                    Canvas.Left="53"
+                    Canvas.Top="21"/>
+
+            <iconPacks:PackIconMaterial Kind="Handshake"
+                                        Height="30"
+                                        Width="30"
+                                        Foreground="White"
+                                        Canvas.Left="13"
+                                        Canvas.Top="31"/>
+
+            <Button x:Name="btnIrParaEmpresa"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Click="Ir_Para_Empresa_Click"
+                    Height="50" Width="126"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Content="Empresas"
+                    Foreground="White"
+                    Style="{DynamicResource ButtonStyle}"
+                    Canvas.Left="53"
+                    Canvas.Top="92"/>
+
+            <iconPacks:PackIconMaterial Kind="Domain"
+                            Height="30"
+                            Width="30"
+                            Foreground="White"
+                            Canvas.Left="13"
+                            Canvas.Top="102"/>
+
+            <Button x:Name="btnIrParaFuncionarios"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Click="Ir_Para_Funcionarios_Click"
+                    Height="50" Width="126"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Content="Funcionários"
+                    Foreground="White"
+                    Style="{DynamicResource ButtonStyle}"
+                    Canvas.Left="53"
+                    Canvas.Top="163"/>
+
+            <iconPacks:PackIconMaterial Kind="AccountHardHat"
+                Height="30"
+                Width="30"
+                Foreground="White"
+                Canvas.Left="13"
+                Canvas.Top="173"/>
+
+            <Button x:Name="btnIrParaFolhaPagamento"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Click="Ir_Para_FolhaPagamento_Click"
+                    Height="50" Width="126"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Content="Folha de Pagamento"
+                    Foreground="White"
+                    Style="{DynamicResource ButtonStyle}"
+                    Canvas.Left="53"
+                    Canvas.Top="234"/>
+
+            <iconPacks:PackIconMaterial Kind="CashFast"
+                                        Height="30"
+                                        Width="30"
+                                        Foreground="White"
+                                        Canvas.Left="13"
+                                        Canvas.Top="244"/>
+
+        </Canvas>
+
+        <Label Name="lblTitulo"
+               Background="Transparent"
+               BorderBrush="Transparent"
+               Foreground="White"
+               BorderThickness="0"
+               Content="Menu"
+               FontSize="20"
+               Height="34"
+               Width="90" Margin="78,7,0,0"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left" />
+
+        <iconPacks:PackIconMaterial Kind="HumanGreetingProximity"
+                                    Height="30"
+                                    Width="30"
+                                    Foreground="White" Margin="43,9,0,0"/>
+
+        <iconPacks:PackIconMaterial Kind="AccountCircleOutline"
+                                    Height="20" Margin="0,14,10,0"
+                                    Foreground="White" HorizontalAlignment="Right" Width="16"/>
+        <Label Name="lblUsuario"
+               Background="Transparent"
+               BorderBrush="Transparent"
+               BorderThickness="0"
+               Margin="0,15,31,0"
+               HorizontalAlignment="Right"
+               Width="105"
+               Height="18"
+               VerticalAlignment="Top"
+               Content="{Binding ElementName=TelaDeLogin, Path=txbUsername}"/>
 
     </Grid>
 </Window>

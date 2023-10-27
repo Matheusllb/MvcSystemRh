@@ -3,7 +3,9 @@ using Sistema.Model.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +77,7 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             try
             {
                 string pesquisa = txtSearchBD.Text;
-                if (pesquisa is null)
+                if (string.IsNullOrEmpty(pesquisa))
                 {
                     throw new Exception("Insira um valor na barra de pesquisa antes de filtrar os dados.");
                 }
@@ -101,17 +103,19 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
         {
             try
             {
-                if(listViewBD.SelectedItem is null)
+                if (listViewBD.SelectedItem is null)
                 {
                     throw new Exception("Selecione um item que deseja modificar.");
                 }
                 else
                 {
-                    
-                    if(MessageBox.Show("Deseja modificar este item?","Alteração de dados", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
+
+                    if (MessageBox.Show("Deseja modificar este item?", "Alteração de dados", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
                     {
                         txtSearchBD.Visibility = Visibility.Hidden;
                         btnFiltrar.Visibility = Visibility.Hidden;
+                        btnAtualizar.Visibility = Visibility.Hidden;
+                        btnBuscaId.Visibility = Visibility.Hidden;
                         btnCriarNovo.Visibility = Visibility.Hidden;
                         btnAlterar.Visibility = Visibility.Hidden;
                         btnDeletar.Visibility = Visibility.Hidden;
@@ -123,7 +127,8 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                     }
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -140,9 +145,9 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 else
                 {
                     BeneficioDesconto selecionado = listViewBD.SelectedItem as BeneficioDesconto;
-                    if(MessageBox.Show("Tem certeza que deseja excluír este item?","Item será excluído", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
+                    if (MessageBox.Show("Tem certeza que deseja excluír este item?", "Item será excluído", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
                     {
-                        if (controller.DeleteOne(selecionado.Id))
+                        if (controller.Inativar(selecionado.Id))
                         {
                             MessageBox.Show("Item excluído com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
                             BfDs.Remove(selecionado);
@@ -170,11 +175,23 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             try
             {
                 BeneficioDesconto selecionado = listViewBD.SelectedItem as BeneficioDesconto;
-                
+                if ((bool)rbDesconto.IsChecked)
+                {
+                    selecionado.Desconto = true;
+                    selecionado.Valor = -selecionado.Valor;
+                }
+                else if ((bool)rbBeneficio.IsChecked)
+                {
+                    selecionado.Desconto = false;
+                    selecionado.Valor = Math.Abs(selecionado.Valor);
+                }
+
                 if (controller.UpdateOne(selecionado))
                 {
                     MessageBox.Show("Item modificado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
                     txtSearchBD.Visibility = Visibility.Visible;
+                    btnAtualizar.Visibility = Visibility.Visible;
+                    btnBuscaId.Visibility = Visibility.Visible;
                     btnFiltrar.Visibility = Visibility.Visible;
                     btnCriarNovo.Visibility = Visibility.Visible;
                     btnAlterar.Visibility = Visibility.Visible;
@@ -185,7 +202,64 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 {
                     MessageBox.Show("Falha ao modificar item!", "Falha!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBuscaId_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string pesquisa = txtSearchBD.Text;
+                if (string.IsNullOrEmpty(pesquisa))
+                {
+                    MessageBox.Show("Insira um valor na barra de pesquisa antes de filtrar os dados.");
+                    return;
+                }
+
+                if (int.TryParse(pesquisa, out int id))
+                {
+                    BeneficioDesconto itemEncontrado = controller.GetById(id);
+                    if (itemEncontrado != null)
+                    {
+                        BfDs = new ObservableCollection<BeneficioDesconto>(new List<BeneficioDesconto> { itemEncontrado });
+                        listViewBD.ItemsSource = BfDs;
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID não encontrado.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Somente números representam um ID!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
+
+        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                txtSearchBD.Text = null;
+                List<BeneficioDesconto> beneficios = controller.GetAll();
+
+                // Adiciona os dados à lista de dados da view
+                if (beneficios != null)
+                {
+                    BfDs = new ObservableCollection<BeneficioDesconto>(beneficios);
+                }
+
+                listViewBD.ItemsSource = BfDs;
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

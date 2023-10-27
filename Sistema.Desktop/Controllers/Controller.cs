@@ -111,7 +111,19 @@ public abstract class Controller<T> : IController<T> where T : IEntidade
         try
         {
             Model.Delete(id);
-            GetAll();
+            return true;
+        }catch (Exception ex)
+        {
+            MessageBox.Show("Erro: " + ex.Message);
+            return false;
+        }
+    }
+    
+    public bool Inativar(int id)
+    {
+        try
+        {
+            Model.Inativar(id);
             return true;
         }catch (Exception ex)
         {

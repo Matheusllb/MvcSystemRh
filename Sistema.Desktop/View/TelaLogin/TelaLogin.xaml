@@ -9,7 +9,8 @@
         AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        MouseDown="TelaLogin_OnMouseDown">
+        MouseDown="TelaLogin_OnMouseDown"
+        Name="TelaDeLogin">
     <Grid x:Name="grid">
         <Grid>
             <Grid.RowDefinitions>

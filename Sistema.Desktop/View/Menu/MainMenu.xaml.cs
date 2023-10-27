@@ -32,5 +32,20 @@ namespace Sistema.Desktop
             beneficioDesconto.WindowState = WindowState;
             Close();
         }
+
+        private void Ir_Para_Empresa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ir_Para_Funcionarios_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ir_Para_FolhaPagamento_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
