@@ -86,12 +86,11 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     {
         try
         {
-            Type tipo = typeof(T);
             string query = $"SELECT * FROM {TableName} WHERE Id = @Id";
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
-                ConnectionManager.OpenConnection(); // Abre a conexão
+                ConnectionManager.OpenConnection();
 
                 command.Parameters.AddWithValue("@Id", id);
 

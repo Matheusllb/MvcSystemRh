@@ -19,58 +19,61 @@ namespace Sistema.Model.DAO
             {
                 List<Empresa> filteredData = new List<Empresa>();
 
-                using (SqlConnection connection = ConnectionManager.GetConnection())
+                string query = $"SELECT * FROM {TableName} WHERE Nome LIKE @searchTerm OR Cnpj LIKE @searchTerm OR Setor LIKE @searchTerm OR Email LIKE @searchTerm OR Telefone LIKE @searchTerm OR Endereco LIKE @searchTerm";
+                searchTerm = $"%{searchTerm}%";
+
+                using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
                 {
-                    string query = $"SELECT * FROM {TableName} WHERE Nome LIKE @searchTerm OR Cnpj LIKE @searchTerm OR Setor LIKE @searchTerm OR Email LIKE @searchTerm OR Telefone LIKE @searchTerm OR Endereco LIKE @searchTerm";
-                    searchTerm = $"%{searchTerm}%";
+                    ConnectionManager.OpenConnection();
 
-                    using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
+                    command.Parameters.AddWithValue("@searchTerm", searchTerm);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        ConnectionManager.OpenConnection();
-
-                        command.Parameters.AddWithValue("@searchTerm", searchTerm);
-
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
-                            {
-                                Empresa empresa = MapData(reader);
-                                filteredData.Add(empresa);
-                            }
+                            filteredData.Add(MapData(reader));
                         }
-                        ConnectionManager.CloseConnection();
                     }
-                    return filteredData;
                 }
-            }catch (Exception ex)
+                return filteredData;
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
         public override Empresa MapData(SqlDataReader reader)
         {
             try
             {
-                if (reader["IdEmpresa"] != DBNull.Value &&
+                if (reader["Id"] != DBNull.Value &&
                     reader["Nome"] != DBNull.Value &&
                     reader["Cnpj"] != DBNull.Value &&
                     reader["Setor"] != DBNull.Value &&
                     reader["Email"] != DBNull.Value &&
                     reader["Telefone"] != DBNull.Value &&
-                    reader["Endereco"] != DBNull.Value)
+                    reader["Endereco"] != DBNull.Value &&
+                    reader["Ativo"] != DBNull.Value)
                 {
-                    return new Empresa
+                    if (!(bool)reader["Ativo"])
                     {
-                        Id = (int)reader["IdEmpresa"],
-                        Nome = reader["Nome"].ToString(),
-                        Cnpj = reader["Cnpj"].ToString(),
-                        Setor = reader["Setor"].ToString(),
-                        Email = reader["Email"].ToString(),
-                        Telefone = reader["Telefone"].ToString(),
-                        Endereco = reader["Endereco"].ToString()
-                    };
+                        return null;
+                    }
+                    else
+                    {
+                        return new Empresa
+                        {
+                            Id = (int)reader["Id"],
+                            Nome = reader["Nome"].ToString(),
+                            Cnpj = reader["Cnpj"].ToString(),
+                            Setor = reader["Setor"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Telefone = reader["Telefone"].ToString(),
+                            Endereco = reader["Endereco"].ToString()
+                        };
+                    }
 
                 }
                 else

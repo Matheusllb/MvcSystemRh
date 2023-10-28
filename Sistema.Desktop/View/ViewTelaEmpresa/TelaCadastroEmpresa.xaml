@@ -41,24 +41,26 @@
                     HorizontalAlignment="Left"
                     Margin="224,101,0,0">
 
-            <Label x:Name="lblNome"
-                   Content="Nome"
-                   Foreground="White"
-                   Width="50" Height="28"/>
-
             <TextBox x:Name="txtNome" TextWrapping="Wrap" 
                      Foreground="White"
                      Background="#292929"
                      BorderThickness="0" 
                      SelectionOpacity="0.9"
                      Text=""
-                     Width="200"
-                     Margin="279,58,175,336"/>
+                     Width="348" Height="41"
+                     HorizontalAlignment="Right"
+                     />
+
+            <Label x:Name="lblNome"
+                   Content="Nome"
+                   Foreground="White"
+                   Width="50" Height="28"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
         </StackPanel>
 
-
-
-        <Label Name="lblCnpj"
+        <StackPanel>
+            <Label Name="lblCnpj"
                Content="CNPJ"
                Foreground="White"
                Width="50" Height="28"
@@ -66,12 +68,15 @@
                HorizontalAlignment="Left"
                Margin="224,106,0,0"/>
 
-        <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
+            <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
                  Foreground="White"
                  Background="#292929"
                  BorderThickness="0" 
                  SelectionOpacity="0.9"
                  Text="" Margin="279,99,175,294"/>
+
+        </StackPanel>
+
 
         <Label Name="lblSetor"
                Content="Setor"
