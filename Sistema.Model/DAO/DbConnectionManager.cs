@@ -20,8 +20,7 @@ namespace Sistema.Model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha na conexão: " + ex.Message);
-                return null; // Retorna null em caso de falha na conexão
+                throw ex;
             }
         }
 
@@ -36,7 +35,7 @@ namespace Sistema.Model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Conexão falhou: " + ex.Message);
+                throw ex;
             }
         }
 

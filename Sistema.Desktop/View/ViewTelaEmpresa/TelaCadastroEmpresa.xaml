@@ -35,20 +35,28 @@
                                         Foreground="#353535"/>
         </Button>
 
-        <Label Name="lblNome"
-               Content="Nome"
-               Foreground="White"
-               Width="50" Height="28"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Left"
-               Margin="224,64,0,0"/>
+        <StackPanel Width="401"
+                    Height="41"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,101,0,0">
 
-        <TextBox x:Name="txtNome" TextWrapping="Wrap" 
-                 Foreground="White"
-                 Background="#292929"
-                 BorderThickness="0" 
-                 SelectionOpacity="0.9"
-                 Text="" Margin="279,58,175,336"/>
+            <Label x:Name="lblNome"
+                   Content="Nome"
+                   Foreground="White"
+                   Width="50" Height="28"/>
+
+            <TextBox x:Name="txtNome" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text=""
+                     Width="200"
+                     Margin="279,58,175,336"/>
+        </StackPanel>
+
+
 
         <Label Name="lblCnpj"
                Content="CNPJ"
@@ -56,14 +64,14 @@
                Width="50" Height="28"
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
-               Margin="224,112,0,0"/>
+               Margin="224,106,0,0"/>
 
         <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
                  Foreground="White"
                  Background="#292929"
                  BorderThickness="0" 
                  SelectionOpacity="0.9"
-                 Text="" Margin="279,103,175,290"/>
+                 Text="" Margin="279,99,175,294"/>
 
         <Label Name="lblSetor"
                Content="Setor"
