@@ -22,10 +22,9 @@
                     BorderBrush="#282828"/>
         </Border>
 
-        <Canvas
-              Width="200"
-              HorizontalAlignment="Left"
-              Background="#353535" Margin="0,49,0,0">
+        <Canvas Width="200"
+                HorizontalAlignment="Left"
+                Background="#353535" Margin="0,50,0,0">
 
             <Button x:Name="btnIrParaBfDs"
                     VerticalAlignment="Top"
@@ -116,7 +115,7 @@
         <Label Name="lblTitulo"
                Background="Transparent"
                BorderBrush="Transparent"
-               Foreground="White"
+               Foreground="Black"
                BorderThickness="0"
                Content="Menu"
                FontSize="20"
@@ -128,21 +127,33 @@
         <iconPacks:PackIconMaterial Kind="HumanGreetingProximity"
                                     Height="30"
                                     Width="30"
-                                    Foreground="White" Margin="43,9,0,0"/>
+                                    Foreground="Black" Margin="43,9,0,0"/>
 
-        <iconPacks:PackIconMaterial Kind="AccountCircleOutline"
-                                    Height="20" Margin="0,14,10,0"
-                                    Foreground="White" HorizontalAlignment="Right" Width="16"/>
+        <iconPacks:PackIconMaterial Kind="AccountSettings" Margin="13,0,0,12"
+                                    Foreground="White" VerticalAlignment="Bottom" Width="30" Height="30"/>
         <Label Name="lblUsuario"
                Background="Transparent"
                BorderBrush="Transparent"
+               Foreground="White"
                BorderThickness="0"
-               Margin="0,15,31,0"
-               HorizontalAlignment="Right"
-               Width="105"
-               Height="18"
-               VerticalAlignment="Top"
-               Content="{Binding ElementName=TelaDeLogin, Path=txbUsername}"/>
+               Margin="49,0,0,12"
+               Content="{Binding ElementName=TelaDeLogin, Path=txbUsername}" HorizontalAlignment="Left" Width="134" Height="30" VerticalAlignment="Bottom"/>
+
+        <Button Name="btnConfig"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="Black" 
+                Click="btnConfig_Click">
+            <iconPacks:PackIconMaterial Kind="Cog"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
 
     </Grid>
 </Window>

@@ -32,8 +32,18 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             {
                 // Captura dos dados
                 string descricao = txtDescricao.Text;
-                bool desconto = rbDesconto.IsChecked.Value;
-                decimal valor = decimal.Parse(txtValor.Text);
+                bool desconto = rbDesconto.IsChecked ?? false; // Usar ?? false para evitar possíveis valores nulos
+                decimal valor;
+
+                if (string.IsNullOrWhiteSpace(descricao))
+                {
+                    throw new Exception("Preencha o campo de descrição antes de continuar");
+                }
+
+                if (!decimal.TryParse(txtValor.Text, out valor))
+                {
+                    throw new Exception("O valor não é um número decimal válido");
+                }
 
                 // Instanciação de objetos
                 BeneficioDescontoDAO dao = new BeneficioDescontoDAO();

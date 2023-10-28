@@ -159,11 +159,18 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\BDController.cs" />
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="View\ViewBeneficioDesconto\TelaBeneficioDesconto.xaml.cs">
       <DependentUpon>TelaBeneficioDesconto.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml.cs">
       <DependentUpon>TelaCadastroBD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTelaEmpresa\TelaCadastroEmpresa.xaml.cs">
+      <DependentUpon>TelaCadastroEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTelaEmpresa\TelaEmpresa.xaml.cs">
+      <DependentUpon>TelaEmpresa.xaml</DependentUpon>
     </Compile>
     <Page Include="Estilos\ButtonStyle.xaml">
       <SubType>Designer</SubType>
@@ -210,6 +217,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewTelaEmpresa\TelaCadastroEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewTelaEmpresa\TelaEmpresa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

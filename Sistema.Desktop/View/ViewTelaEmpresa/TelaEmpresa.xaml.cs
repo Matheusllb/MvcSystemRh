@@ -1,11 +1,10 @@
 ﻿using Sistema.Desktop.Controllers;
+using Sistema.Desktop.View.ViewBeneficioDesconto;
+using Sistema.Model.DAO;
 using Sistema.Model.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,41 +17,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Sistema.Desktop.View.ViewBeneficioDesconto
+namespace Sistema.Desktop.View.ViewTelaEmpresa
 {
     /// <summary>
-    /// Lógica interna para BeneficioDesconto.xaml
+    /// Lógica interna para TelaEmpresa.xaml
     /// </summary>
-    public partial class TelaBeneficioDesconto : Window
+    public partial class TelaEmpresa : Window
     {
-        public ObservableCollection<BeneficioDesconto> BfDs = new ObservableCollection<BeneficioDesconto>();
-        public BDController controller;
-        public BeneficioDescontoDAO dao = new BeneficioDescontoDAO();
-
-        public TelaBeneficioDesconto()
+        public ObservableCollection<Empresa> empresas = new ObservableCollection<Empresa>();
+        public EmpresaController controller;
+        public EmpresaDAO dao = new EmpresaDAO();
+        public TelaEmpresa()
         {
             try
             {
-                controller = new BDController(dao);
+                controller = new EmpresaController(dao);
 
-                // Obtém os dados usando o método GetAll
-                List<BeneficioDesconto> beneficios = controller.GetAll();
+                List<Empresa> dados = controller.GetAll();
 
-                // Adiciona os dados à lista de dados da view
-                if (beneficios != null)
+                if (dados != null)
                 {
-                    BfDs = new ObservableCollection<BeneficioDesconto>(beneficios);
+                    empresas = new ObservableCollection<Empresa>(dados);
                 }
 
                 InitializeComponent();
 
-                // Associa a lista de dados à ListView
-                listView.ItemsSource = BfDs;
+                listView.ItemsSource = empresas;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro SQL: " + ex.Message);
             }
+
+
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -63,13 +60,25 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             Close();
         }
 
-        private void btnCriarNovo_Click(object sender, RoutedEventArgs e)
+        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
         {
-            TelaCadastroBD telaCadastro = new TelaCadastroBD();
-            telaCadastro.Show();
-            telaCadastro.WindowState = WindowState;
-            Close();
+            try
+            {
+                txtSearch.Text = null;
+                List<Empresa> dados = controller.GetAll();
 
+                // Adiciona os dados à lista de dados da view
+                if (dados != null)
+                {
+                    empresas = new ObservableCollection<Empresa>(dados);
+                }
+
+                listView.ItemsSource = empresas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnFiltrar_Click(object sender, RoutedEventArgs e)
@@ -83,11 +92,11 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 }
                 else
                 {
-                    List<BeneficioDesconto> listaFiltrada = controller.FilterData(pesquisa);
+                    List<Empresa> listaFiltrada = controller.FilterData(pesquisa);
 
                     if (listaFiltrada != null)
                     {
-                        BfDs = new ObservableCollection<BeneficioDesconto>(listaFiltrada);
+                        empresas = new ObservableCollection<Empresa>(listaFiltrada);
                     }
 
                     listView.ItemsSource = listaFiltrada;
@@ -97,6 +106,49 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnBuscaId_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string pesquisa = txtSearch.Text;
+                if (string.IsNullOrEmpty(pesquisa))
+                {
+                    MessageBox.Show("Insira um valor na barra de pesquisa antes de filtrar os dados.");
+                    return;
+                }
+
+                if (int.TryParse(pesquisa, out int id))
+                {
+                    Empresa itemEncontrado = controller.GetById(id);
+                    if (itemEncontrado != null)
+                    {
+                        empresas = new ObservableCollection<Empresa>(new List<Empresa> { itemEncontrado });
+                        listView.ItemsSource = empresas;
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID não encontrado.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Somente números representam um ID!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
+
+        private void btnCriarNovo_Click(object sender, RoutedEventArgs e)
+        {
+            TelaCadastroEmpresa telaCadastro = new TelaCadastroEmpresa();
+            telaCadastro.Show();
+            telaCadastro.WindowState = WindowState;
+            Close();
         }
 
         private void btnAlterar_Click(object sender, RoutedEventArgs e)
@@ -144,13 +196,13 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 }
                 else
                 {
-                    BeneficioDesconto selecionado = listView.SelectedItem as BeneficioDesconto;
+                    Empresa selecionado = listView.SelectedItem as Empresa;
                     if (MessageBox.Show("Tem certeza que deseja excluír este item?", "Item será excluído", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
                     {
                         if (controller.Inativar(selecionado.Id))
                         {
                             MessageBox.Show("Item excluído com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
-                            BfDs.Remove(selecionado);
+                            empresas.Remove(selecionado);
                         }
                         else
                         {
@@ -174,17 +226,7 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
         {
             try
             {
-                BeneficioDesconto selecionado = listView.SelectedItem as BeneficioDesconto;
-                if ((bool)rbDesconto.IsChecked)
-                {
-                    selecionado.Desconto = true;
-                    selecionado.Valor = -selecionado.Valor;
-                }
-                else if ((bool)rbBeneficio.IsChecked)
-                {
-                    selecionado.Desconto = false;
-                    selecionado.Valor = Math.Abs(selecionado.Valor);
-                }
+                Empresa selecionado = listView.SelectedItem as Empresa;
 
                 if (controller.UpdateOne(selecionado))
                 {
@@ -204,62 +246,6 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 }
             }
             catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnBuscaId_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string pesquisa = txtSearch.Text;
-                if (string.IsNullOrEmpty(pesquisa))
-                {
-                    MessageBox.Show("Insira um valor na barra de pesquisa antes de filtrar os dados.");
-                    return;
-                }
-
-                if (int.TryParse(pesquisa, out int id))
-                {
-                    BeneficioDesconto itemEncontrado = controller.GetById(id);
-                    if (itemEncontrado != null)
-                    {
-                        BfDs = new ObservableCollection<BeneficioDesconto>(new List<BeneficioDesconto> { itemEncontrado });
-                        listView.ItemsSource = BfDs;
-                    }
-                    else
-                    {
-                        MessageBox.Show("ID não encontrado.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Somente números representam um ID!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message);
-            }
-        }
-
-        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                txtSearch.Text = null;
-                List<BeneficioDesconto> beneficios = controller.GetAll();
-
-                // Adiciona os dados à lista de dados da view
-                if (beneficios != null)
-                {
-                    BfDs = new ObservableCollection<BeneficioDesconto>(beneficios);
-                }
-
-                listView.ItemsSource = BfDs;
-            }
-            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

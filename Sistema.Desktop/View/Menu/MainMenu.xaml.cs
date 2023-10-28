@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Sistema.Desktop.View.ViewBeneficioDesconto;
+using Sistema.Desktop.View.ViewTelaEmpresa;
 
 namespace Sistema.Desktop
 {
@@ -35,7 +36,10 @@ namespace Sistema.Desktop
 
         private void Ir_Para_Empresa_Click(object sender, RoutedEventArgs e)
         {
-
+            TelaEmpresa empresa = new TelaEmpresa();
+            empresa.Show();
+            empresa.WindowState = WindowState;
+            Close();
         }
 
         private void Ir_Para_Funcionarios_Click(object sender, RoutedEventArgs e)
@@ -44,6 +48,11 @@ namespace Sistema.Desktop
         }
 
         private void Ir_Para_FolhaPagamento_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
         {
 
         }

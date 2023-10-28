@@ -127,53 +127,6 @@ namespace Sistema.Model.Entidades
             _usuarios.Remove(usuario);
         }
 
-        //-------------------------------------------------------Métodos para Empresas----------------------------------------------------
-
-        /*public void CadastraEmpresa()
-        {
-            CadastroEmpresa cadastro = new CadastroEmpresa();
-            Empresa novaEmpresa = cadastro.TelaCadastro();
-            Empresas.Add(novaEmpresa);
-        }*/
-
-        public void ProcuraEmpresaPorId(int id)
-        {
-            Empresa empresaEncontrada = _empresas.Find(e => e.Id == id);
-            if (empresaEncontrada != null)
-            {
-                Console.WriteLine($"Empresa encontrada: {empresaEncontrada}");
-            }
-            else
-            {
-                Console.WriteLine("Empresa não encontrada.");
-            }
-        }
-
-        public List<Empresa> ProcuraEmpresaPorNome(string nome)
-        {
-            List<Empresa> empresasEncontradas = _empresas.FindAll(e => e.GetNomeEmpresa() == nome);
-            if (empresasEncontradas != null)
-            {
-                return empresasEncontradas;
-            }
-            else
-            {
-                Console.WriteLine("Empresa não encontrada.");
-            }
-            return empresasEncontradas;
-        }
-        
-        public List<Empresa> ProcuraEmpresaPorSetor(string setor)
-        {
-            List<Empresa> empresasEncontradas = _empresas.FindAll(e => e.GetSetorEmpresa() == setor);
-            return empresasEncontradas;
-        }
-
-        public void RemoveEmrpesa(Empresa empresa)
-        {
-            _empresas.Remove(empresa);
-        }
-
         //-----------------------------------------------------Métodos para Funcionário----------------------------------------------------
 
         /*public void CadastraFuncionario(Empresa empresa, Cargo cargo)

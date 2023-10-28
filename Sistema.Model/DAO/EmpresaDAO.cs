@@ -1,6 +1,7 @@
 ﻿using Sistema.Model.DAO;
 using Sistema.Model.Entidades;
 using Sistema.Model.Interfaces.IDAO;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -89,19 +90,37 @@ namespace Sistema.Model.DAO
 
         public override Empresa MapData(SqlDataReader reader)
         {
-            Empresa empresa = new Empresa
+            try
             {
-                Id = (int)reader["IdEmpresa"],
-            };
-            empresa.SetNomeEmpresa(reader["Nome"].ToString());
-            empresa.SetCnpjEmpresa(reader["Cnpj"].ToString());
-            empresa.SetSetorEmpresa(reader["Setor"].ToString());
-            empresa.SetEmailEmpresa(reader["Email"].ToString());
-            empresa.SetTelefoneEmpresa(reader["Telefone"].ToString());
-            empresa.SetEnderecoEmpresa(reader["Endereco"].ToString());
+                if (reader["IdEmpresa"] != DBNull.Value &&
+                    reader["Nome"] != DBNull.Value &&
+                    reader["Cnpj"] != DBNull.Value &&
+                    reader["Setor"] != DBNull.Value &&
+                    reader["Email"] != DBNull.Value &&
+                    reader["Telefone"] != DBNull.Value &&
+                    reader["Endereco"] != DBNull.Value)
+                {
+                    return new Empresa
+                    {
+                        Id = (int)reader["IdEmpresa"],
+                        Nome = reader["Nome"].ToString(),
+                        Cnpj = reader["Cnpj"].ToString(),
+                        Setor = reader["Setor"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Telefone = reader["Telefone"].ToString(),
+                        Endereco = reader["Endereco"].ToString()
+                    };
 
-            return empresa;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (InvalidCastException ex)
+            {
+                throw ex;
+            }
         }
     }
-
 }

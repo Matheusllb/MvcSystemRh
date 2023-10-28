@@ -68,7 +68,7 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
         catch (InvalidCastException ex)
         {
 
-            throw new Exception(ex.Message);
+            throw ex;
 
         }
     }

@@ -16,19 +16,25 @@
                     <GradientStop Color="#353535"/>
                 </LinearGradientBrush>
             </Border.Background>
+            <Border Height="50"
+                    VerticalAlignment="Top"
+                    Background="#FF946DED"
+                    BorderBrush="#292929"/>
         </Border>
 
         <Button x:Name="btnVoltar"
-                    Height="40"
-                    Width="40"
-                    Style="{DynamicResource ShowPasswordButtonStyle}"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Left"
-                    Click="btnVoltar_Click">
+                Height="50"
+                Width="50"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Click="btnVoltar_Click"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0">
             <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                                            Height="20"
-                                            Width="20"
-                                            Foreground="White"/>
+                                        Height="20"
+                                        Width="20"
+                                        Foreground="#353535"/>
         </Button>
 
         <Label Content="Descrição:"
