@@ -13,26 +13,32 @@ public class BeneficioDescontoDAO : DAO<BeneficioDesconto>
 
     public override List<BeneficioDesconto> FilterData(string searchTerm)
     {
-        List<BeneficioDesconto> filteredData = new List<BeneficioDesconto>();
-
-        string query = $"SELECT * FROM {TableName} WHERE Descricao LIKE @searchTerm";
-        searchTerm = $"%{searchTerm}%";
-
-        using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
+        try
         {
-            ConnectionManager.OpenConnection();
+            List<BeneficioDesconto> filteredData = new List<BeneficioDesconto>();
 
-            command.Parameters.AddWithValue("@searchTerm", searchTerm);
+            string query = $"SELECT * FROM {TableName} WHERE Descricao LIKE @searchTerm";
+            searchTerm = $"%{searchTerm}%";
 
-            using (SqlDataReader reader = command.ExecuteReader())
+            using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
-                while (reader.Read())
+                ConnectionManager.OpenConnection();
+
+                command.Parameters.AddWithValue("@searchTerm", searchTerm);
+
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    filteredData.Add(MapData(reader));
+                    while (reader.Read())
+                    {
+                        filteredData.Add(MapData(reader));
+                    }
                 }
             }
+            return filteredData;
+        }catch (Exception ex) 
+        {
+            throw ex;
         }
-        return filteredData;
     }
 
 
