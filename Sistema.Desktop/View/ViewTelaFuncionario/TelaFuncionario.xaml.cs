@@ -1,7 +1,7 @@
 ﻿using Sistema.Desktop.Controllers;
-using Sistema.Desktop.View.ViewBeneficioDesconto;
-using Sistema.Model.DAO;
+using Sistema.Desktop.View.ViewTelaEmpresa;
 using Sistema.Model.Entidades;
+using Sistema.Model.Interfaces.IController;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,39 +17,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Sistema.Desktop.View.ViewTelaEmpresa
+namespace Sistema.Desktop.View.ViewTelaFuncionario
 {
     /// <summary>
-    /// Lógica interna para TelaEmpresa.xaml
+    /// Lógica interna para TelaFuncionario.xaml
     /// </summary>
-    public partial class TelaEmpresa : Window
+    public partial class TelaFuncionario : Window
     {
-        public ObservableCollection<Empresa> empresas = new ObservableCollection<Empresa>();
-        public EmpresaController controller;
-        public EmpresaDAO dao = new EmpresaDAO();
-        public TelaEmpresa()
+        public ObservableCollection<Funcionario> Funcionarios = new ObservableCollection<Funcionario>();
+        public FuncionarioController controller;
+        public FuncionarioDAO dao = new FuncionarioDAO();
+
+        public TelaFuncionario()
         {
             try
             {
-                controller = new EmpresaController(dao);
+                controller = new FuncionarioController(dao);
 
-                List<Empresa> dados = controller.GetAll();
+                List<Funcionario> dados = controller.GetAll();
 
                 if (dados != null)
                 {
-                    empresas = new ObservableCollection<Empresa>(dados);
+                    Funcionarios = new ObservableCollection<Funcionario>(dados);
                 }
 
                 InitializeComponent();
 
-                listView.ItemsSource = empresas;
+                listView.ItemsSource = Funcionarios;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro SQL: " + ex.Message);
             }
-
-
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -60,20 +59,25 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
             Close();
         }
 
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void btnAtualizar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 txtSearch.Text = null;
-                List<Empresa> dados = controller.GetAll();
+                List<Funcionario> dados = controller.GetAll();
 
                 // Adiciona os dados à lista de dados da view
                 if (dados != null)
                 {
-                    empresas = new ObservableCollection<Empresa>(dados);
+                    Funcionarios = new ObservableCollection<Funcionario>(dados);
                 }
 
-                listView.ItemsSource = empresas;
+                listView.ItemsSource = Funcionarios;
             }
             catch (Exception ex)
             {
@@ -92,11 +96,11 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
                 }
                 else
                 {
-                    List<Empresa> listaFiltrada = controller.FilterData(pesquisa);
+                    List<Funcionario> listaFiltrada = controller.FilterData(pesquisa);
 
                     if (listaFiltrada != null)
                     {
-                        empresas = new ObservableCollection<Empresa>(listaFiltrada);
+                        Funcionarios = new ObservableCollection<Funcionario>(listaFiltrada);
                     }
 
                     listView.ItemsSource = listaFiltrada;
@@ -121,11 +125,11 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
 
                 if (int.TryParse(pesquisa, out int id))
                 {
-                    Empresa itemEncontrado = controller.GetById(id);
+                    Funcionario itemEncontrado = controller.GetById(id);
                     if (itemEncontrado != null)
                     {
-                        empresas = new ObservableCollection<Empresa>(new List<Empresa> { itemEncontrado });
-                        listView.ItemsSource = empresas;
+                        Funcionarios = new ObservableCollection<Funcionario>(new List<Funcionario> { itemEncontrado });
+                        listView.ItemsSource = Funcionarios;
                     }
                     else
                     {
@@ -145,7 +149,7 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
 
         private void btnCriarNovo_Click(object sender, RoutedEventArgs e)
         {
-            TelaCadastroEmpresa telaCadastro = new TelaCadastroEmpresa();
+            TelaCadastroFuncionario telaCadastro = new TelaCadastroFuncionario();
             telaCadastro.Show();
             telaCadastro.WindowState = WindowState;
             Close();
@@ -196,13 +200,13 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
                 }
                 else
                 {
-                    Empresa selecionado = listView.SelectedItem as Empresa;
+                    Funcionario selecionado = listView.SelectedItem as Funcionario;
                     if (MessageBox.Show("Tem certeza que deseja excluír este item?", "Item será excluído", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
                     {
                         if (controller.Inativar(selecionado.Id))
                         {
                             MessageBox.Show("Item excluído com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
-                            empresas.Remove(selecionado);
+                            Funcionarios.Remove(selecionado);
                         }
                         else
                         {
@@ -226,7 +230,7 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
         {
             try
             {
-                Empresa selecionado = listView.SelectedItem as Empresa;
+                Funcionario selecionado = listView.SelectedItem as Funcionario;
 
                 if (controller.UpdateOne(selecionado))
                 {
@@ -249,11 +253,6 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void btnConfig_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -78,5 +78,10 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
             tela.WindowState = WindowState;
             Close();
         }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

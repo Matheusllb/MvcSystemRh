@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Sistema.Desktop.View.ViewBeneficioDesconto;
 using Sistema.Desktop.View.ViewTelaEmpresa;
+using Sistema.Desktop.View.ViewTelaFuncionario;
 
 namespace Sistema.Desktop
 {
@@ -44,7 +45,10 @@ namespace Sistema.Desktop
 
         private void Ir_Para_Funcionarios_Click(object sender, RoutedEventArgs e)
         {
-
+            TelaFuncionario funcionario = new TelaFuncionario();
+            funcionario.Show();
+            funcionario.WindowState = WindowState;
+            Close();
         }
 
         private void Ir_Para_FolhaPagamento_Click(object sender, RoutedEventArgs e)

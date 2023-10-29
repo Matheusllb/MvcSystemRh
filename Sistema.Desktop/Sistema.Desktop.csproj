@@ -160,6 +160,7 @@
     <Compile Include="Controllers\BDController.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="View\ViewBeneficioDesconto\TelaBeneficioDesconto.xaml.cs">
       <DependentUpon>TelaBeneficioDesconto.xaml</DependentUpon>
     </Compile>
@@ -171,6 +172,12 @@
     </Compile>
     <Compile Include="View\ViewTelaEmpresa\TelaEmpresa.xaml.cs">
       <DependentUpon>TelaEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTelaFuncionario\TelaCadastroFuncionario.xaml.cs">
+      <DependentUpon>TelaCadastroFuncionario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTelaFuncionario\TelaFuncionario.xaml.cs">
+      <DependentUpon>TelaFuncionario.xaml</DependentUpon>
     </Compile>
     <Page Include="Estilos\ButtonStyle.xaml">
       <SubType>Designer</SubType>
@@ -225,6 +232,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewTelaEmpresa\TelaEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewTelaFuncionario\TelaCadastroFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewTelaFuncionario\TelaFuncionario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

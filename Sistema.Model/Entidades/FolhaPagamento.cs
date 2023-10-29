@@ -64,31 +64,31 @@ namespace Sistema.Model.Entidades
 
         public decimal CalculaFGTS()
         {
-            return ValorFGTS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.08;
+            return ValorFGTS = Funcionario.SalarioBruto * (decimal)0.08;
         }
         public decimal CalculaINSS()
         {
-            if(Funcionario.GetSalarioBrutoFuncionario() <= 1320)
+            if(Funcionario.SalarioBruto <= 1320)
             {
-                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.075;
+                return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.075;
             }
-            else if(Funcionario.GetSalarioBrutoFuncionario() >= 1321 || Funcionario.GetSalarioBrutoFuncionario() <= (decimal)2571.29)
+            else if(Funcionario.SalarioBruto >= 1321 || Funcionario.SalarioBruto <= (decimal)2571.29)
             {
-                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.09;
+                return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.09;
             }
-            else if(Funcionario.GetSalarioBrutoFuncionario() >= (decimal)2571.30 || Funcionario.GetSalarioBrutoFuncionario() <= (decimal)3856.94)
+            else if(Funcionario.SalarioBruto >= (decimal)2571.30 || Funcionario.SalarioBruto <= (decimal)3856.94)
             {
-                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.12;
+                return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.12;
             }
-            else if(Funcionario.GetSalarioBrutoFuncionario() > (decimal)3856.95)
+            else if(Funcionario.SalarioBruto > (decimal)3856.95)
             {
-                return SalarioINSS = Funcionario.GetSalarioBrutoFuncionario() * (decimal)0.14; 
+                return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.14; 
             }
             return SalarioINSS;
         }
         public decimal CalculaIRRF()
         {
-            decimal baseDeCalculoIRRF = Funcionario.GetSalarioBrutoFuncionario() - SalarioINSS;
+            decimal baseDeCalculoIRRF = Funcionario.SalarioBruto - SalarioINSS;
             if (baseDeCalculoIRRF >= (decimal)1903.99 || baseDeCalculoIRRF <= (decimal)2826.65)
             {
                 return ValorIRRF = baseDeCalculoIRRF * (decimal)0.075;
@@ -119,7 +119,7 @@ namespace Sistema.Model.Entidades
 
         public decimal CalculaTotalVencimentos()
         {
-            return TotalVencimentos = Funcionario.GetSalarioBrutoFuncionario(); //+ CalculaTotalBenefico();
+            return TotalVencimentos = Funcionario.SalarioBruto; //+ CalculaTotalBenefico();
 
         }
         public decimal CalculaTotalDescontos()

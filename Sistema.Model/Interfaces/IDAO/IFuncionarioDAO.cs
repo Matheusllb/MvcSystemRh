@@ -9,7 +9,6 @@ namespace Sistema.Model.Interfaces.IDAO
 {
     public interface IFuncionarioDAO : IDAO<Funcionario>
     {
-        List<Funcionario> ProcuraFuncionarioPorNome(string nome);
-        List<Funcionario> ProcuraFuncionarioPorCargo(string cargo);
+
     }
 }

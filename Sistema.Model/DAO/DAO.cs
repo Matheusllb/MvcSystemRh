@@ -14,12 +14,14 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
 {
     protected DbConnectionManager connectionManager;
     protected string tableName;
+    protected string secondTable;
     protected List<T> data;
 
     public DAO(string tableName)
     {
         connectionManager = new DbConnectionManager();
         this.tableName = tableName;
+        secondTable = string.Empty;
         data = new List<T>();
     }
 
@@ -35,6 +37,12 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         set { tableName = value; }
     }
 
+    public string SecondTable
+    {
+        get => secondTable;
+        set { secondTable = value; }
+    }
+
     public List<T> Data
     {
         get => data;
@@ -44,10 +52,18 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     public List<T> GetAll()
     {
         List<T> dadosDoBanco = new List<T>();
+        string query = string.Empty;
         try
         {
-            string query = $"SELECT * FROM {TableName}";
+            if (!string.IsNullOrEmpty(SecondTable))
+            {
+                query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id";
+            }
+            else
+            {
+                query = $"SELECT * FROM {TableName}";
 
+            }
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
                 ConnectionManager.OpenConnection();
@@ -59,7 +75,7 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
                         while (reader.Read())
                         {
                             T item = MapData(reader);
-                            if(item != null)
+                            if (item != null)
                             {
                                 dadosDoBanco.Add(item);
                             }
@@ -86,7 +102,15 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     {
         try
         {
-            string query = $"SELECT * FROM {TableName} WHERE Id = @Id";
+            string query = string.Empty;
+            if (!string.IsNullOrEmpty(SecondTable))
+            {
+                query = $"SELECT * FROM { TableName} JOIN { SecondTable} ON { TableName}.IdPessoa = { SecondTable}.Id WHERE { TableName}.Id = @Id";
+            }
+            else
+            {
+                query = $"SELECT * FROM {TableName} WHERE Id = @Id";
+            }
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
@@ -103,7 +127,7 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
                         if (item != null)
                         {
                             return item;
-                        }       
+                        }
                     }
                 }
             }
@@ -246,7 +270,7 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
             throw ex;
         }
     }
-    
+
     public bool Inativar(int id)
     {
         try

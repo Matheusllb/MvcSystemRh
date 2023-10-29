@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Sistema.Model.Entidades.Enum;
 using Sistema.Model.Interfaces.IDAO;
 
@@ -7,11 +9,13 @@ namespace Sistema.Model.Entidades
     abstract public class Pessoa : IEntidade
     {
         public int Id { get; set; }
-        protected string Endereco;
-        protected string Nome;
-        protected string Cpf;
-        protected DateTime DataNascimento;
-        protected EstadoCivil EstadoCivil;
+        protected string _endereco;
+        protected string _nome;
+        protected string _cpf;
+        protected DateTime _dataNascimento;
+        protected EstadoCivil _estadoCivil;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Pessoa()
         {
@@ -20,24 +24,82 @@ namespace Sistema.Model.Entidades
 
         public Pessoa(string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil)
         {
-            Endereco = endereco;
-            Nome = nome;
-            Cpf = cpf;
-            DataNascimento = dataNascimento;
-            EstadoCivil = estadoCivil;
+            _endereco = endereco;
+            _nome = nome;
+            _cpf = cpf;
+            _dataNascimento = dataNascimento;
+            _estadoCivil = estadoCivil;
         }
 
-        public virtual string GetEnderecoPessoa() { return Endereco; }
-        public virtual string GetNomePessoa() { return Nome; }
-        public virtual string GetCpfPessoa() { return Cpf; }
-        public virtual DateTime GetDataNascimentoPessoa() { return DataNascimento; }
-        public virtual EstadoCivil GetEstadoCivilPessoa() { return EstadoCivil; }
+        public string Endereco
+        {
+            get => _endereco;
+            set
+            {
+                if(_endereco != value)
+                {
+                    _endereco = value;
+                }
+                NotifyPropertyChanged();
+            }
+        }
+        
+        public string Nome
+        {
+            get => _nome;
+            set
+            {
+                if(_nome != value)
+                {
+                    _nome = value;
+                }
+                NotifyPropertyChanged();
+            }
+        }
+        
+        public string CPF
+        {
+            get => _cpf;
+            set
+            {
+                if(_cpf != value)
+                {
+                    _cpf = value;
+                }
+                NotifyPropertyChanged();
+            }
+        }
+        
+        public DateTime DataNascimento
+        {
+            get => _dataNascimento;
+            set
+            {
+                if(_dataNascimento != value)
+                {
+                    _dataNascimento = value;
+                }
+                NotifyPropertyChanged();
+            }
+        }
+        
+        public EstadoCivil EstadoCivilP
+        {
+            get => _estadoCivil;
+            set
+            {
+                if(_estadoCivil != value)
+                {
+                    _estadoCivil = value;
+                }
+                NotifyPropertyChanged();
+            }
+        }
 
-        public virtual void SetEnderecoPessoa(string endereco) { Endereco = endereco; }
-        public virtual void SetNomePessoa(string nome) { Nome = nome; }
-        public virtual void SetCpfPessoa(string cpf) { Cpf = cpf; }
-        public virtual void SetDataNascimentoPessoa(DateTime dataNascimento) { DataNascimento = dataNascimento; }
-        public virtual void SetEstadoCivilPessoa(EstadoCivil estadoCivil) { EstadoCivil = estadoCivil; }
+        protected void NotifyPropertyChanged([CallerMemberName] string propName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
 
     }
 }

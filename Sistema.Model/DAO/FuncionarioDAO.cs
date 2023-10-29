@@ -10,101 +10,93 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
 {
     public FuncionarioDAO() : base("Funcionario")
     {
+        secondTable = "Pessoa";
     }
 
-    public List<Funcionario> ProcuraFuncionarioPorNome(string nome)
-    {
-        List<Funcionario> funcionariosEncontrados = new List<Funcionario>();
 
-        using (SqlConnection connection = ConnectionManager.GetConnection())
-        {
-            string query = "SELECT * FROM Funcionario WHERE Nome LIKE @Nome;";
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@Nome", "%" + nome + "%");
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Funcionario funcionario = MapData(reader);
-                        funcionariosEncontrados.Add(funcionario);
-                    }
-                }
-            }
-        }
-
-        return funcionariosEncontrados;
-    }
-
-    public List<Funcionario> ProcuraFuncionarioPorCargo(string cargo)
-    {
-        List<Funcionario> funcionariosEncontrados = new List<Funcionario>();
-
-        using (SqlConnection connection = ConnectionManager.GetConnection())
-        {
-            string query = "SELECT * FROM Funcionario WHERE Cargo = @Cargo;";
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@Cargo", cargo);
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Funcionario funcionario = MapData(reader);
-                        funcionariosEncontrados.Add(funcionario);
-                    }
-                }
-            }
-        }
-
-        return funcionariosEncontrados;
-    }
 
     public override List<Funcionario> FilterData(string searchTerm)
     {
-        List<Funcionario> filteredData = new List<Funcionario>();
-
-        using (SqlConnection connection = ConnectionManager.GetConnection())
+        try
         {
-            string query = $"SELECT * FROM Funcionario WHERE IdFuncionario = @searchTerm OR Email = @searchTerm";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            List<Funcionario> filteredData = new List<Funcionario>();
+
+            string query = @"SELECT P.* FROM " + SecondTable + @" AS P INNER JOIN " + TableName + @" AS F ON P.Id = F.IdPessoa
+                             WHERE (F.Cargo = @searchTerm OR F.Email = @searchTerm OR F.DataAdmissao LIKE @searchTerm)
+                             OR (P.Nome = @searchTerm OR P.Cpf = @searchTerm OR P.DataNascimento LIKE @searchTerm OR P.EstadoCivil LIKE @searchTerm OR P.Endereco LIKE @searchTerm)";
+            searchTerm = $"%{searchTerm}%";
+
+            using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
+                ConnectionManager.OpenConnection();
+
                 command.Parameters.AddWithValue("@searchTerm", searchTerm);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Funcionario funcionario = MapData(reader);
-                        filteredData.Add(funcionario);
+                        filteredData.Add(MapData(reader));
                     }
                 }
             }
-        }
 
-        return filteredData;
+            return filteredData;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 
     public override Funcionario MapData(SqlDataReader reader)
     {
-        Funcionario funcionario = new Funcionario
+        try
         {
-            Id = (int)reader["IdPessoa"],
-        };
-        funcionario.SetIdFuncionario((int)reader["IdFuncionario"]);
-        funcionario.SetAtivo((bool)reader["Ativo"]);
-        funcionario.SetNomePessoa((string)reader["Nome"]);
-        funcionario.SetCpfPessoa((string)reader["Cpf"]);
-        funcionario.SetDataNascimentoPessoa((DateTime)reader["DataNascimento"]);
-        funcionario.SetEstadoCivilPessoa((EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()));
-        funcionario.SetEmailFuncionario((string)reader["Email"]);
-        funcionario.SetDataAdmissaoFuncionario((DateTime)reader["DataAdmissao"]);
-        funcionario.SetIdEmpresaFuncionario((int)reader["IdEmpresa"]);
-        funcionario.SetCargoFuncionario((string)reader["Cargo"]);
-        funcionario.SetSalarioBrutoFuncionario((decimal)reader["SalarioBruto"]);
 
-        return funcionario;
+            if (reader["Id"] != DBNull.Value &&
+                reader["IdPessoa"] != DBNull.Value &&
+                reader["Email"] != DBNull.Value &&
+                reader["DataAdmissao"] != DBNull.Value &&
+                reader["IdEmpresa"] != DBNull.Value &&
+                reader["Cargo"] != DBNull.Value &&
+                reader["SalarioBruto"] != DBNull.Value &&
+                reader["Ativo"] != DBNull.Value &&
+                reader["Endereco"] != DBNull.Value &&
+                reader["Nome"] != DBNull.Value &&
+                reader["Cpf"] != DBNull.Value &&
+                reader["DataNascimento"] != DBNull.Value &&
+                reader["EstadoCivil"] != DBNull.Value)
+            {
+                if (!(bool)reader["Ativo"])
+                {
+                    return null;
+                }
+                else
+                {
+                    return new Funcionario
+                    {
+                        IdFuncionario = Convert.ToInt32(reader["Id"]),
+                        Id = Convert.ToInt32(reader["IdPessoa"]),
+                        Email = reader["Email"].ToString(),
+                        DataAdmissao = Convert.ToDateTime(reader["DataAdmissao"]),
+                        IdEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
+                        Cargo = reader["Cargo"].ToString(),
+                        SalarioBruto = Convert.ToDecimal(reader["SalarioBruto"]),
+                        CPF = reader["Cpf"].ToString(),
+                        Endereco = reader["Endereco"].ToString(),
+                        Nome = reader["Nome"].ToString(),
+                        DataNascimento = Convert.ToDateTime(reader["DataNascimento"]),
+                        EstadoCivilP = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()),
+                        Ativo = Convert.ToBoolean(reader["Ativo"])
+                    };
+                }
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 }

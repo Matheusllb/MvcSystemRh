@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:Sistema.Desktop.View.ViewTelaEmpresa"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Name="WindowCadastroEmpresa" Height="450" Width="800">
     <Grid>
@@ -15,24 +16,39 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Border Height="50"
-            VerticalAlignment="Top"
-            Background="#FF946DED"
-            BorderBrush="#292929"/>
+                    VerticalAlignment="Top"
+                    Background="#FF946DED"
+                    BorderBrush="#292929">
+                <Button x:Name="btnVoltar"
+                        Height="50"
+                        Width="50"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0">
+                    <iconPacks:PackIconMaterial Kind="ArrowLeft"
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
+                </Button>
+            </Border>
         </Border>
 
-        <Button x:Name="btnVoltar"
+        <Button Name="btnConfig"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
                 Height="50"
                 Width="50"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Click="btnVoltar_Click"
                 Background="Transparent"
                 BorderBrush="Transparent"
-                BorderThickness="0">
-            <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                                        Height="20"
-                                        Width="20"
-                                        Foreground="#353535"/>
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnConfig_Click">
+            <iconPacks:PackIconMaterial Kind="Cog"
+                                            Height="20"
+                                            Width="16"/>
         </Button>
 
         <StackPanel Width="401"
@@ -61,19 +77,19 @@
 
         <StackPanel>
             <Label Name="lblCnpj"
-               Content="CNPJ"
-               Foreground="White"
-               Width="50" Height="28"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Left"
-               Margin="224,106,0,0"/>
+                   Content="CNPJ"
+                   Foreground="White"
+                   Width="50" Height="28"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="224,106,0,0"/>
 
             <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
-                 Foreground="White"
-                 Background="#292929"
-                 BorderThickness="0" 
-                 SelectionOpacity="0.9"
-                 Text="" Margin="279,99,175,294"/>
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text="" Margin="279,99,175,294"/>
 
         </StackPanel>
 

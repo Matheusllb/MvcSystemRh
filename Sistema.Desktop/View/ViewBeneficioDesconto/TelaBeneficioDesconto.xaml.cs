@@ -264,5 +264,10 @@ namespace Sistema.Desktop.View.ViewBeneficioDesconto
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

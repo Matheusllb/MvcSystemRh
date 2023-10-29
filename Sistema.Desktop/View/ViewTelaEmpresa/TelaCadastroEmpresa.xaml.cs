@@ -74,5 +74,10 @@ namespace Sistema.Desktop.View.ViewTelaEmpresa
             tela.WindowState = WindowState;
             Close();
         }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

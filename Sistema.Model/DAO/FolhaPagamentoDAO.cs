@@ -116,7 +116,7 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
         {
             Id = (int)reader["IdPessoa"],
         };
-        funcionario.SetIdFuncionario((int)reader["IdFuncionario"]);
+        /*funcionario.SetIdFuncionario((int)reader["IdFuncionario"]);
         funcionario.SetAtivo((bool)reader["Ativo"]);
         funcionario.SetNomePessoa((string)reader["Nome"]);
         funcionario.SetCpfPessoa((string)reader["Cpf"]);
@@ -126,7 +126,7 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
         funcionario.SetDataAdmissaoFuncionario((DateTime)reader["DataAdmissao"]);
         funcionario.SetIdEmpresaFuncionario((int)reader["IdEmpresa"]);
         funcionario.SetCargoFuncionario((string)reader["Cargo"]);
-        funcionario.SetSalarioBrutoFuncionario((decimal)reader["SalarioBruto"]);
+        funcionario.SetSalarioBrutoFuncionario((decimal)reader["SalarioBruto"]);*/
         //Continuando a mapear folha
         folhaPagamento.SetFuncionarioEmFolha(funcionario);
         folhaPagamento.SetSalarioINSSEmFolha((decimal)reader["SalarioINSS"]);
