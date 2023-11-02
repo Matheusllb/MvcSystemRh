@@ -10,11 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema.Desktop", "Sistema.
 		{34DADF2D-F9FC-40F2-AE9E-AF0E187192F5} = {34DADF2D-F9FC-40F2-AE9E-AF0E187192F5}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema.Web", "Sistema.Web\Sistema.Web.csproj", "{0E355473-13B0-4EF5-9D67-F1749D6B707E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{34DADF2D-F9FC-40F2-AE9E-AF0E187192F5} = {34DADF2D-F9FC-40F2-AE9E-AF0E187192F5}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +24,6 @@ Global
 		{F45D2AFE-BEED-496F-BDD9-B892EE6C2745}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F45D2AFE-BEED-496F-BDD9-B892EE6C2745}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F45D2AFE-BEED-496F-BDD9-B892EE6C2745}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E355473-13B0-4EF5-9D67-F1749D6B707E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E355473-13B0-4EF5-9D67-F1749D6B707E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E355473-13B0-4EF5-9D67-F1749D6B707E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E355473-13B0-4EF5-9D67-F1749D6B707E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

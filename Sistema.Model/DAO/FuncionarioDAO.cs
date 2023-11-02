@@ -13,17 +13,14 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
         secondTable = "Pessoa";
     }
 
-
-
     public override List<Funcionario> FilterData(string searchTerm)
     {
         try
         {
             List<Funcionario> filteredData = new List<Funcionario>();
 
-            string query = @"SELECT P.* FROM " + SecondTable + @" AS P INNER JOIN " + TableName + @" AS F ON P.Id = F.IdPessoa
-                             WHERE (F.Cargo = @searchTerm OR F.Email = @searchTerm OR F.DataAdmissao LIKE @searchTerm)
-                             OR (P.Nome = @searchTerm OR P.Cpf = @searchTerm OR P.DataNascimento LIKE @searchTerm OR P.EstadoCivil LIKE @searchTerm OR P.Endereco LIKE @searchTerm)";
+            string query = $"SELECT * FROM {TableName} AS F JOIN {SecondTable} AS P ON F.IdPessoa = P.Id WHERE P.Nome LIKE @searchTerm OR P.Cpf LIKE @searchTerm OR P.EstadoCivil LIKE @searchTerm OR P.Endereco LIKE @searchTerm OR F.Cargo LIKE @searchTerm OR F.Email LIKE @searchTerm";
+
             searchTerm = $"%{searchTerm}%";
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
@@ -53,8 +50,8 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
     {
         try
         {
-
             if (reader["Id"] != DBNull.Value &&
+                //
                 reader["IdPessoa"] != DBNull.Value &&
                 reader["Email"] != DBNull.Value &&
                 reader["DataAdmissao"] != DBNull.Value &&
@@ -88,11 +85,54 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
                         Nome = reader["Nome"].ToString(),
                         DataNascimento = Convert.ToDateTime(reader["DataNascimento"]),
                         EstadoCivilP = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()),
-                        Ativo = Convert.ToBoolean(reader["Ativo"])
+                        Ativo = Convert.ToBoolean(reader["Ativo"]),
                     };
                 }
             }
+
             return null;
+        }
+        catch (InvalidCastException ex)
+        {
+
+            throw ex;
+
+        }
+    }
+
+    public bool UpdatePessoais(Funcionario item)
+    {
+        try
+        {
+            if (item.Id <= 0)
+            {
+                Console.WriteLine("ID inválido.");
+                return false;
+            }
+
+            string query = $"UPDATE Pessoa SET Endereco = @Endereco, Nome = @Nome, Cpf = @Cpf, DataNascimento = @DataNascimento, EstadoCivil = @EstadoCivil WHERE Id = @Id";
+
+            using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@Id", item.Id);
+                command.Parameters.AddWithValue("@Endereco", item.Endereco);
+                command.Parameters.AddWithValue("@Nome", item.Nome);
+                command.Parameters.AddWithValue("@Cpf", item.CPF);
+                command.Parameters.AddWithValue("@DataNascimento", item.DataNascimento);
+                command.Parameters.AddWithValue("@EstadoCivil", item.EstadoCivilP);
+
+                ConnectionManager.OpenConnection();
+
+                int count = command.ExecuteNonQuery();
+
+                ConnectionManager.CloseConnection();
+
+                return count > 0;
+            }
+        }
+        catch (SqlException sqlEx)
+        {
+            throw sqlEx;
         }
         catch (Exception ex)
         {

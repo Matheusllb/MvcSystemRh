@@ -15,25 +15,29 @@
                     <GradientStop Color="#353535" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Border Height="50"
-            VerticalAlignment="Top"
-            Background="#FF946DED"
-            BorderBrush="#292929">
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Button x:Name="btnVoltar"
-                 Height="50"
-                 Width="50"
-                 Background="Transparent"
-                 BorderBrush="Transparent"
-                 BorderThickness="0"
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Left"
-                 Click="btnVoltar_Click">
+                        Height="50"
+                        Width="50"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click">
                     <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                                        Height="20"
-                                        Width="20"
-                                        Foreground="#353535"/>
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
                 </Button>
-
             </Border>
         </Border>
 

@@ -16,10 +16,15 @@
                     <GradientStop Color="#282828" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Border Height="50"
-                    VerticalAlignment="Top"
-                    Background="#FF946DED"
-                    BorderBrush="#282828">
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Button Name="btnConfig"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"

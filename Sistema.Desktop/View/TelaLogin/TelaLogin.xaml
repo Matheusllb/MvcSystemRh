@@ -41,7 +41,7 @@
                            FontWeight="Light"
                            FontFamily="helvetica"
                            FontSize="22"
-                           Foreground="White"
+                           Foreground="#282828"
                            HorizontalAlignment="Center"/>
             </StackPanel>
 
@@ -51,7 +51,7 @@
                              FontWeight="Light"
                              FontSize="20"
                              HorizontalAlignment="Center"
-                             Foreground="White"
+                             Foreground="#282828"
                              Background="Transparent"
                              BorderThickness="0"
                              Width="235"
@@ -64,11 +64,11 @@
                     <iconPacks:PackIconMaterial Kind="Account" 
                                                 VerticalAlignment="Center" 
                                                 HorizontalAlignment="Center" 
-                                                Foreground="White"/>
+                                                Foreground="#282828"/>
                 </StackPanel>
                 <Border Width="250"
                         Height="2"
-                        Background="White"
+                        Background="#282828"
                         Opacity="0.5"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
@@ -76,7 +76,7 @@
                              FontWeight="Light"
                              FontSize="20"
                              HorizontalAlignment="Center"
-                             Foreground="White" Background="Transparent"
+                             Foreground="#282828" Background="Transparent"
                              BorderThickness="0" 
                              Width="235" 
                              HorizontalContentAlignment="Left"
@@ -86,13 +86,13 @@
                              Style="{DynamicResource PasswordPlaceholderStyle}"/>
 
                     <Button x:Name="btnMostrarSenha" Style="{DynamicResource ShowPasswordButtonStyle}" Click="btnMostrarSenha_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <iconPacks:PackIconMaterial Kind="Eye" Foreground="White"/>
+                        <iconPacks:PackIconMaterial Kind="Eye" Foreground="#282828"/>
                     </Button>
 
                 </StackPanel>
                 <Border Width="250"
                         Height="2"
-                        Background="White"
+                        Background="#282828"
                         Opacity="0.5"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"/>
@@ -107,7 +107,7 @@
                      FontWeight="Light"
                      FontSize="20"
                      HorizontalAlignment="Left"
-                     Foreground="White"
+                     Foreground="#282828"
                      Background="Transparent"
                      BorderThickness="0"
                      Width="236"
@@ -124,7 +124,7 @@
                                 <ControlTemplate TargetType="{x:Type TextBox}">
                                     <Grid>
                                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
-                                        <TextBlock x:Name="PlaceholderText" Text="Digite sua senha" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="White" Visibility="Collapsed"/>
+                                        <TextBlock x:Name="PlaceholderText" Text="Digite sua senha" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="#282828" Visibility="Collapsed"/>
                                         <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                                     </Grid>
                                     <ControlTemplate.Triggers>

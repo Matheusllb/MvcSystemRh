@@ -15,25 +15,29 @@
                     <GradientStop Color="#353535" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Border Height="50"
-                    VerticalAlignment="Top"
-                    Background="#FF946DED"
-                    BorderBrush="#292929">
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Button x:Name="btnVoltar"
-                         Height="50"
-                         Width="50"
-                         Background="Transparent"
-                         BorderBrush="Transparent"
-                         BorderThickness="0"
-                         VerticalAlignment="Top"
-                         HorizontalAlignment="Left"
-                         Click="btnVoltar_Click">
+                        Height="50"
+                        Width="50"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click">
                     <iconPacks:PackIconMaterial Kind="ArrowLeft"
                                                 Height="20"
                                                 Width="20"
-                                                Foreground="#353535"/>
+                                                Foreground="#282828"/>
                 </Button>
-
             </Border>
         </Border>
 
@@ -72,7 +76,7 @@
         </ListView>
 
         <TextBox x:Name="txtSearch" 
-         Margin="66,77,415,0" TextWrapping="Wrap" 
+         Margin="66,77,345,0" TextWrapping="Wrap" 
          FontFamily="Helvetica"
          FontWeight="Light"
          FontSize="15"
@@ -115,10 +119,10 @@
         </TextBox>
 
         <Button x:Name="btnAtualizar"
-        Margin="0,77,491,0"
+        Margin="0,77,307,0"
         VerticalAlignment="Top"
         Height="28"
-        Background="Transparent"
+        Background="#292929"
         BorderBrush="Transparent"
         BorderThickness="0"
         Foreground="White" Click="btnAtualizar_Click" HorizontalAlignment="Right" Width="38">
@@ -128,10 +132,10 @@
         </Button>
 
         <Button x:Name="btnFiltrar"
-        Margin="0,77,453,0"
+        Margin="0,77,269,0"
         VerticalAlignment="Top"
         Height="28"
-        Background="Transparent"
+        Background="#292929"
         BorderBrush="Transparent"
         BorderThickness="0"
         Foreground="White" Click="btnFiltrar_Click" HorizontalAlignment="Right" Width="38">
@@ -141,10 +145,10 @@
         </Button>
 
         <Button x:Name="btnBuscaId"
-        Margin="0,77,415,0"
+        Margin="0,77,231,0"
         VerticalAlignment="Top"
         Height="28"
-        Background="Transparent"
+        Background="#292929"
         BorderBrush="Transparent"
         BorderThickness="0"
         Foreground="White" Click="btnBuscaId_Click" HorizontalAlignment="Right" Width="38">
@@ -154,96 +158,148 @@
         </Button>
 
         <Button x:Name="btnCriarNovo"
-        Content="Novo"
-        Margin="0,77,300,0"
-        VerticalAlignment="Top"
-        Height="28"
-        Click="btnCriarNovo_Click"
-        Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+                Margin="0,77,193,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnCriarNovo_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Plus"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
 
         <Button x:Name="btnAlterar"
-        Content="Alterar"
-        Margin="0,77,189,0"
-        VerticalAlignment="Top"
-        Height="28"
-        Click="btnAlterar_Click"
-        Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+                Margin="0,77,155,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnAlterar_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Pencil"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
+        <Button x:Name="btnAlterarPessoais"
+                Margin="0,77,117,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnAlterarPessoais_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="AccountEdit"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
 
         <Button x:Name="btnDeletar"
-        Content="Deletar"
-        Margin="0,77,79,0"
-        VerticalAlignment="Top"
-        Height="28"
-        Click="btnDeletar_Click"
-        Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+                Margin="0,77,79,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnDeletar_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Delete"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
 
         <Menu x:Name="menuAlterar"
-      Margin="56,70,10,260"
+      Margin="66,70,79,30"
       Visibility="Collapsed"
       Background="#353535">
 
-            <Label Name="lblNome"
-           Content="Nome"
+            <Label Name="lblCargo"
+           Content="Cargo"
            Foreground="White"
            FontFamily="Helvetica"
            FontWeight="Light"
-           FontSize="15" Width="51"/>
-
-            <TextBox x:Name="txtNome" TextWrapping="Wrap" 
-             FontFamily="Helvetica"
-             FontWeight="Light"
-             FontSize="15"
-             Foreground="White"
-             Background="#363636"
-             BorderThickness="0"
-             Height="27" 
-             SelectionOpacity="0.9" Width="156"
-             Text="{Binding ElementName=listView, Path=SelectedValue.Nome, UpdateSourceTrigger=LostFocus}"/>
-
-            <Label Name="lblCnpj"
-           Content="CNPJ"
-           Foreground="White"
-           FontFamily="Helvetica"
-           FontWeight="Light"
-           FontSize="15" Width="44"
+           FontSize="15" Width="120"
            Height="27"/>
 
-            <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
+            <TextBox x:Name="txtCargo" TextWrapping="Wrap" 
              FontFamily="Helvetica"
              FontWeight="Light"
              FontSize="15"
              Foreground="White"
-             Background="#363636"
+             Background="#282828"
              BorderThickness="0" 
              Height="27" 
-             SelectionOpacity="0.9" Width="154"
-             Text="{Binding ElementName=listView, Path=SelectedValue.Cnpj, UpdateSourceTrigger=LostFocus}"/>
+             SelectionOpacity="0.9" Width="480"
+             Text="{Binding ElementName=listView, Path=SelectedValue.Cargo, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblSetor"
-           Content="Setor"
+            <Label Name="lblEmpresa"
+           Content="Empresa"
            Foreground="White"
            FontFamily="Helvetica"
            FontWeight="Light"
-           FontSize="15" Width="43"
+           FontSize="15" Width="120"
            />
 
-            <TextBox x:Name="txtSetor" TextWrapping="Wrap" 
+            <TextBox x:Name="txtEmpresa" TextWrapping="Wrap" 
              FontFamily="Helvetica"
              FontWeight="Light"
              FontSize="15"
              Foreground="White"
-             Background="#363636"
+             Background="#282828"
              BorderThickness="0" 
              Height="27" 
-             SelectionOpacity="0.9" Width="155"
-             Text="{Binding ElementName=listView, Path=SelectedValue.Setor, UpdateSourceTrigger=LostFocus}"/>
+             SelectionOpacity="0.9" Width="480"
+             Text="{Binding ElementName=listView, Path=SelectedValue.IdEmpresa, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblSalarioBruto"
+           Content="Salario Bruto"
+           Foreground="White"
+           FontFamily="Helvetica"
+           FontWeight="Light"
+           FontSize="15" Width="120"
+           />
+
+            <TextBox x:Name="txtSalarioBruto" TextWrapping="Wrap" 
+             FontFamily="Helvetica"
+             FontWeight="Light"
+             FontSize="15"
+             Foreground="White"
+             Background="#282828"
+             BorderThickness="0" 
+             Height="27" 
+             SelectionOpacity="0.9" Width="480"
+             Text="{Binding ElementName=listView, Path=SelectedValue.SalarioBruto, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblDataAdmissao"
+           Content="DataAdmissao"
+           Foreground="White"
+           FontFamily="Helvetica"
+           FontWeight="Light"
+           FontSize="15" Width="120"
+           />
+
+            <TextBox x:Name="txtDataAdmissao" TextWrapping="Wrap" 
+             FontFamily="Helvetica"
+             FontWeight="Light"
+             FontSize="15"
+             Foreground="White"
+             Background="#282828"
+             BorderThickness="0" 
+             Height="27" 
+             SelectionOpacity="0.9" Width="480"
+             Text="{Binding ElementName=listView, Path=SelectedValue.DataAdmissao, UpdateSourceTrigger=LostFocus}"/>
 
             <Label Name="lblEmail"
            Content="Email"
            Foreground="White"
            FontFamily="Helvetica"
            FontWeight="Light"
-           FontSize="15" Width="44"
+           FontSize="15" Width="120"
            />
 
             <TextBox x:Name="txtEmail" TextWrapping="Wrap" 
@@ -251,50 +307,13 @@
              FontWeight="Light"
              FontSize="15"
              Foreground="White"
-             Background="#363636"
+             Background="#282828"
              BorderThickness="0" 
              Height="27" 
-             SelectionOpacity="0.9" Width="152"
+             SelectionOpacity="0.9" Width="480"
              Text="{Binding ElementName=listView, Path=SelectedValue.Email, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblTelefone"
-           Content="Telefone"
-           Foreground="White"
-           FontFamily="Helvetica"
-           FontWeight="Light"
-           FontSize="15" Width="65"
-           />
-
-            <TextBox x:Name="txtTelefone" TextWrapping="Wrap" 
-             FontFamily="Helvetica"
-             FontWeight="Light"
-             FontSize="15"
-             Foreground="White"
-             Background="#363636"
-             BorderThickness="0" 
-             Height="27" 
-             SelectionOpacity="0.9" Width="141"
-             Text="{Binding ElementName=listView, Path=SelectedValue.Telefone, UpdateSourceTrigger=LostFocus}"/>
-
-            <Label Name="lblEndereco"
-           Content="Endereço"
-           Foreground="White"
-           FontFamily="Helvetica"
-           FontWeight="Light"
-           FontSize="15" Width="70"
-           />
-
-            <TextBox x:Name="txtEndereco" TextWrapping="Wrap" 
-             FontFamily="Helvetica"
-             FontWeight="Light"
-             FontSize="15"
-             Foreground="White"
-             Background="#363636"
-             BorderThickness="0" 
-             Height="27" 
-             SelectionOpacity="0.9" Width="171"
-             Text="{Binding ElementName=listView, Path=SelectedValue.Endereco, UpdateSourceTrigger=LostFocus}"/>
-
+            
             <Button x:Name="btnConfirmar"
             Content="Confirmar"
             FontFamily="Helvetica"
@@ -303,6 +322,111 @@
             Height="28"
             Click="btnConfirmar_Click"
             Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+        </Menu>
+
+        <Menu x:Name="menuAlterarPessoais"
+            Margin="66,70,79,30"
+            Visibility="Collapsed"
+            Background="#353535">
+
+            <Label Name="lblNome"
+                   Content="Nome"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="120"/>
+
+            <TextBox x:Name="txtNome" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#282828"
+                     BorderThickness="0"
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="480"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Nome, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblCPF"
+                   Content="CPF"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="120"/>
+
+            <TextBox x:Name="txtCPF" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#282828"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="480"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.CPF, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblDataNascimento"
+                   Content="Data Nascimento"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="120"/>
+
+            <TextBox x:Name="txtDataNascimento" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#282828"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="480"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.DataNascimento, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblEstadoCivil"
+                   Content="EstadoCivil"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="120"/>   
+
+            <TextBox x:Name="txtEstadoCivil" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#282828"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="480"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.EstadoCivilP, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblEndereco"
+                   Content="Endereço"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="120"/>
+
+            <TextBox x:Name="txtEndereco" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#282828"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="480"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Endereco, UpdateSourceTrigger=LostFocus}"/>
+
+            <Button x:Name="btnConfirmarPessoais"
+                    Content="Confirmar"
+                    FontFamily="Helvetica"
+                    FontWeight="Light"
+                    FontSize="15"
+                    Height="28"
+                    Click="btnConfirmarPessoais_Click"
+                    Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
         </Menu>
     </Grid>
 </Window>

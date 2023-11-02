@@ -15,10 +15,15 @@
                     <GradientStop Color="#353535" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Border Height="50"
-                    VerticalAlignment="Top"
-                    Background="#FF946DED"
-                    BorderBrush="#292929">
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Button x:Name="btnVoltar"
                         Height="50"
                         Width="50"
@@ -29,9 +34,9 @@
                         HorizontalAlignment="Left"
                         Click="btnVoltar_Click">
                     <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                                Height="20"
-                                Width="20"
-                                Foreground="#282828"/>
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
                 </Button>
             </Border>
         </Border>
@@ -52,7 +57,7 @@
         </ListView>
 
         <TextBox x:Name="txtSearch" 
-                 Margin="66,77,415,0" TextWrapping="Wrap" 
+                 Margin="66,77,307,0" TextWrapping="Wrap" 
                  FontFamily="Helvetica"
                  FontWeight="Light"
                  FontSize="15"
@@ -62,100 +67,118 @@
                  VerticalAlignment="Top" Height="28" 
                  SelectionOpacity="0.9"
                  BorderBrush="White">
-                <TextBox.Style>
-                    <Style TargetType="TextBox">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type TextBox}">
-                                    <Grid>
-                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
-                                        <TextBlock x:Name="PlaceholderText" Text="Pesquisar" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Opacity="0.7" Visibility="Collapsed"/>
-                                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                                    </Grid>
-                                    <ControlTemplate.Triggers>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
-                                                <Condition Property="IsFocused" Value="False"/>
-                                                <Condition Property="Text" Value=""/>
-                                            </MultiTrigger.Conditions>
-                                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
-                                        </MultiTrigger>
-                                        <Trigger Property="IsFocused" Value="True">
-                                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
-                                        </Trigger>
-                                        <Trigger Property="Text" Value="">
-                                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TextBox.Style>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Opacity="0.7" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
         </TextBox>
 
         <Button x:Name="btnAtualizar"
-                Margin="0,77,491,0"
+                Margin="0,77,269,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Background="Transparent"
+                Background="#292929"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White" Click="btnAtualizar_Click" HorizontalAlignment="Right" Width="38">
-                    <iconPacks:PackIconMaterial Kind="Refresh"
+            <iconPacks:PackIconMaterial Kind="Refresh"
                                                 Height="20"
                                                 Width="16" />
         </Button>
 
         <Button x:Name="btnFiltrar"
-                Margin="0,77,453,0"
+                Margin="0,77,231,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Background="Transparent"
+                Background="#292929"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White" Click="btnFiltrar_Click" HorizontalAlignment="Right" Width="38">
-                    <iconPacks:PackIconMaterial Kind="Magnify"
+            <iconPacks:PackIconMaterial Kind="Magnify"
                                                 Height="20"
                                                 Width="16" />
         </Button>
 
         <Button x:Name="btnBuscaId"
-                Margin="0,77,415,0"
+                Margin="0,77,193,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Background="Transparent"
+                Background="#292929"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White" Click="btnBuscaId_Click" HorizontalAlignment="Right" Width="38">
-                    <iconPacks:PackIconMaterial Kind="Identifier"
+            <iconPacks:PackIconMaterial Kind="Identifier"
                                                 Height="20"
                                                 Width="16" />
         </Button>
 
         <Button x:Name="btnCriarNovo"
-                Content="Novo"
-                Margin="0,77,300,0"
-                VerticalAlignment="Top"
-                Height="28"
-                Click="btnCriarNovo_Click"
-                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+        Margin="0,77,155,0"
+        VerticalAlignment="Top"
+        Height="28"
+        Background="#292929"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Foreground="White" Click="btnCriarNovo_Click"
+        HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Plus"
+                                Height="20"
+                                Width="16"/>
+        </Button>
 
         <Button x:Name="btnAlterar"
-                Content="Alterar"
-                Margin="0,77,189,0"
-                VerticalAlignment="Top"
-                Height="28"
-                Click="btnAlterar_Click"
-                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+        Margin="0,77,117,0"
+        VerticalAlignment="Top"
+        Height="28"
+        Background="#292929"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Foreground="White" Click="btnAlterar_Click"
+        HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Pencil"
+                                Height="20"
+                                Width="16"/>
+        </Button>
 
         <Button x:Name="btnDeletar"
-                Content="Deletar"
-                Margin="0,77,79,0"
-                VerticalAlignment="Top"
-                Height="28"
-                Click="btnDeletar_Click"
-                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+        Margin="0,77,79,0"
+        VerticalAlignment="Top"
+        Height="28"
+        Background="#292929"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Foreground="White" Click="btnDeletar_Click"
+        HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Delete"
+                                Height="20"
+                                Width="16"/>
+        </Button>
 
         <Menu x:Name="menuAlterar"
               Margin="56,70,10,260"
@@ -217,7 +240,7 @@
                      Height="27" 
                      SelectionOpacity="0.9" Width="155"
                      Text="{Binding ElementName=listView, Path=SelectedValue.Setor, UpdateSourceTrigger=LostFocus}"/>
-            
+
             <Label Name="lblEmail"
                    Content="Email"
                    Foreground="White"
@@ -236,7 +259,7 @@
                      Height="27" 
                      SelectionOpacity="0.9" Width="152"
                      Text="{Binding ElementName=listView, Path=SelectedValue.Email, UpdateSourceTrigger=LostFocus}"/>
-            
+
             <Label Name="lblTelefone"
                    Content="Telefone"
                    Foreground="White"
@@ -255,7 +278,7 @@
                      Height="27" 
                      SelectionOpacity="0.9" Width="141"
                      Text="{Binding ElementName=listView, Path=SelectedValue.Telefone, UpdateSourceTrigger=LostFocus}"/>
-            
+
             <Label Name="lblEndereco"
                    Content="Endereço"
                    Foreground="White"

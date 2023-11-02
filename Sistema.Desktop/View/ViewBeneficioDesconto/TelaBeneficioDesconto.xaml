@@ -16,10 +16,15 @@
                     <GradientStop Color="#353535" Offset="0.0"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Border Height="50"
-                VerticalAlignment="Top"
-                Background="#FF946DED"
-                BorderBrush="#292929">
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Button x:Name="btnVoltar"
                         Height="50"
                         Width="50"
@@ -66,7 +71,7 @@
 
 
         <TextBox x:Name="txtSearch" 
-                 Margin="66,77,415,0" TextWrapping="Wrap" 
+                 Margin="66,77,307,0" TextWrapping="Wrap" 
                  FontFamily="Helvetica"
                  FontWeight="Light"
                  FontSize="15"
@@ -109,10 +114,10 @@
         </TextBox>
 
         <Button x:Name="btnAtualizar"
-                Margin="0,77,491,0"
+                Margin="0,77,269,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Background="Transparent"
+                Background="#292929"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White" Click="btnAtualizar_Click" HorizontalAlignment="Right" Width="38">
@@ -122,10 +127,10 @@
         </Button>
 
         <Button x:Name="btnFiltrar"
-                Margin="0,77,453,0"
+                Margin="0,77,231,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Background="Transparent"
+                Background="#292929"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White" Click="btnFiltrar_Click" HorizontalAlignment="Right" Width="38">
@@ -135,10 +140,10 @@
         </Button>
 
         <Button x:Name="btnBuscaId"
-                Margin="0,77,415,0"
+                Margin="0,77,193,0"
                 VerticalAlignment="Top"
                 Height="28"
-                Background="Transparent"
+                Background="#292929"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White" Click="btnBuscaId_Click" HorizontalAlignment="Right" Width="38">
@@ -148,28 +153,46 @@
         </Button>
 
         <Button x:Name="btnCriarNovo"
-                Content="Novo"
-                Margin="0,77,300,0"
-                VerticalAlignment="Top"
-                Height="28"
-                Click="btnCriarNovo_Click"
-                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+        Margin="0,77,155,0"
+        VerticalAlignment="Top"
+        Height="28"
+        Background="#292929"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Foreground="White" Click="btnCriarNovo_Click"
+        HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Plus"
+                                Height="20"
+                                Width="16"/>
+        </Button>
 
         <Button x:Name="btnAlterar"
-                Content="Alterar"
-                Margin="0,77,189,0"
-                VerticalAlignment="Top"
-                Height="28"
-                Click="btnAlterar_Click"
-                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+        Margin="0,77,117,0"
+        VerticalAlignment="Top"
+        Height="28"
+        Background="#292929"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Foreground="White" Click="btnAlterar_Click"
+        HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Pencil"
+                                Height="20"
+                                Width="16"/>
+        </Button>
 
         <Button x:Name="btnDeletar"
-                Content="Deletar"
-                Margin="0,77,79,0"
-                VerticalAlignment="Top"
-                Height="28"
-                Click="btnDeletar_Click"
-                Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Right" Width="100"/>
+        Margin="0,77,79,0"
+        VerticalAlignment="Top"
+        Height="28"
+        Background="#292929"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Foreground="White" Click="btnDeletar_Click"
+        HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Delete"
+                                Height="20"
+                                Width="16"/>
+        </Button>
 
         <Menu x:Name="menuAlterar"
               Margin="56,50,10,324"

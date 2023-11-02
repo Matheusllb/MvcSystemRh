@@ -15,14 +15,12 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     protected DbConnectionManager connectionManager;
     protected string tableName;
     protected string secondTable;
-    protected List<T> data;
 
     public DAO(string tableName)
     {
         connectionManager = new DbConnectionManager();
         this.tableName = tableName;
         secondTable = string.Empty;
-        data = new List<T>();
     }
 
     public DbConnectionManager ConnectionManager
@@ -43,11 +41,6 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         set { secondTable = value; }
     }
 
-    public List<T> Data
-    {
-        get => data;
-        set { data = value; }
-    }
 
     public List<T> GetAll()
     {

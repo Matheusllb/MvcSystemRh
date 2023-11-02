@@ -9,6 +9,6 @@ namespace Sistema.Model.Interfaces.IDAO
 {
     public interface IFuncionarioDAO : IDAO<Funcionario>
     {
-
+        bool UpdatePessoais(Funcionario funcionario);
     }
 }

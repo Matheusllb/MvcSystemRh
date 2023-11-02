@@ -254,5 +254,71 @@ namespace Sistema.Desktop.View.ViewTelaFuncionario
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnAlterarPessoais_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (listView.SelectedItem is null)
+                {
+                    throw new Exception("Selecione um item que deseja modificar.");
+                }
+                else
+                {
+
+                    if (MessageBox.Show("Deseja modificar este item?", "Alteração de dados pessoais", MessageBoxButton.YesNo, MessageBoxImage.Question) is MessageBoxResult.Yes)
+                    {
+                        txtSearch.Visibility = Visibility.Hidden;
+                        btnFiltrar.Visibility = Visibility.Hidden;
+                        btnAtualizar.Visibility = Visibility.Hidden;
+                        btnBuscaId.Visibility = Visibility.Hidden;
+                        btnCriarNovo.Visibility = Visibility.Hidden;
+                        btnAlterar.Visibility = Visibility.Hidden;
+                        btnAlterarPessoais.Visibility = Visibility.Hidden;
+                        btnDeletar.Visibility = Visibility.Hidden;
+                        menuAlterarPessoais.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        listView.SelectedItem = null;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnConfirmarPessoais_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Funcionario selecionado = listView.SelectedItem as Funcionario;
+
+                if (controller.Update(selecionado))
+                {
+                    MessageBox.Show("Item modificado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtSearch.Visibility = Visibility.Visible;
+                    btnAtualizar.Visibility = Visibility.Visible;
+                    btnBuscaId.Visibility = Visibility.Visible;
+                    btnFiltrar.Visibility = Visibility.Visible;
+                    btnCriarNovo.Visibility = Visibility.Visible;
+                    btnAlterar.Visibility = Visibility.Visible;
+                    btnAlterarPessoais.Visibility = Visibility.Visible;
+                    btnDeletar.Visibility = Visibility.Visible;
+                    menuAlterarPessoais.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao modificar item!", "Falha!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

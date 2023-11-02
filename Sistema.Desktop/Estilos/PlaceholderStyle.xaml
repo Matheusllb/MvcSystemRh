@@ -9,7 +9,7 @@
                     <Grid>
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
                         <TextBlock x:Name="PlaceholderText" Text="Digite seu usuário" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"
-                                Foreground="White" Visibility="Collapsed"/>
+                                Foreground="#282828" Visibility="Collapsed"/>
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Grid>
                     <ControlTemplate.Triggers>
