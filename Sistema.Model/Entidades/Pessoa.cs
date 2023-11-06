@@ -6,9 +6,9 @@ using Sistema.Model.Interfaces.IDAO;
 
 namespace Sistema.Model.Entidades
 {
-    abstract public class Pessoa : IEntidade
+    abstract public class Pessoa
     {
-        public int Id { get; set; }
+        public int IdPessoa { get; set; }
         protected string _endereco;
         protected string _nome;
         protected string _cpf;

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Sistema.Model.Entidades.Enum;
+using Sistema.Model.Interfaces.IDAO;
 
 namespace Sistema.Model.Entidades
 {
-    public class Funcionario : Pessoa
+    public class Funcionario : Pessoa, IEntidade
     {
-        private int _idFuncionario;
+        public int Id {  get; set; }
         private bool _ativo;
         private string _email;
         private DateTime _dataAdmissao;
@@ -22,26 +23,13 @@ namespace Sistema.Model.Entidades
         public Funcionario(int idFuncionario, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
             string email, DateTime dataAdimissao, int idEmpresa, string cargo, decimal salario) : base(endereco, nome, cpf, dataNascimento, estadoCivil)
         {
-            _idFuncionario = idFuncionario;
+            Id = idFuncionario;
             _ativo = status;
             _email = email;
             _dataAdmissao = dataAdimissao;
             _idEmpresa = idEmpresa;
             _cargo = cargo;
             _salarioBruto = salario;
-        }
-
-        public int IdFuncionario
-        {
-            get => _idFuncionario;
-            set
-            {
-                if(_idFuncionario != value)
-                {
-                    _idFuncionario = value;
-                    NotifyPropertyChanged();
-                }
-            }
         }
         
         public bool Ativo

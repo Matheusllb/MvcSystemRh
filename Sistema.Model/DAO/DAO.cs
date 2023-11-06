@@ -193,7 +193,7 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
                 return false;
             }
 
-            PropertyInfo[] propriedades = tipo.GetProperties().Where(p => p.Name != "Id").ToArray();
+            PropertyInfo[] propriedades = tipo.GetProperties().Where(p => p.DeclaringType == tipo && p.Name != "Id").ToArray();
 
             string setClause = string.Join(", ", propriedades.Select((p, i) => $"{p.Name} = @p{i}"));
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema.Desktop.View.ViewTelaEmpresa;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,10 @@ namespace Sistema.Desktop.View.ViewTelaFuncionario
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {
-
+            TelaEmpresa tela = new TelaEmpresa();
+            tela.Show();
+            tela.WindowState = WindowState;
+            Close();
         }
 
         private void btnConfig_Click(object sender, RoutedEventArgs e)

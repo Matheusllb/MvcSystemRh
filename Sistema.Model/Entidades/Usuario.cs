@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sistema.Model.Entidades.Enum;
+using Sistema.Model.Interfaces.IDAO;
 
 namespace Sistema.Model.Entidades
 {
-    public class Usuario : Pessoa
+    public class Usuario : Pessoa, IEntidade
     {
+        public int Id { get; set; }
         private int IdUsuario;
         private int IdPermissao;
         private bool Ativo;

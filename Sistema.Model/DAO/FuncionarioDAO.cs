@@ -51,7 +51,6 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
         try
         {
             if (reader["Id"] != DBNull.Value &&
-                //
                 reader["IdPessoa"] != DBNull.Value &&
                 reader["Email"] != DBNull.Value &&
                 reader["DataAdmissao"] != DBNull.Value &&
@@ -73,8 +72,8 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
                 {
                     return new Funcionario
                     {
-                        IdFuncionario = Convert.ToInt32(reader["Id"]),
-                        Id = Convert.ToInt32(reader["IdPessoa"]),
+                        Id = Convert.ToInt32(reader["Id"]),
+                        IdPessoa = Convert.ToInt32(reader["IdPessoa"]),
                         Email = reader["Email"].ToString(),
                         DataAdmissao = Convert.ToDateTime(reader["DataAdmissao"]),
                         IdEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
@@ -104,7 +103,7 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
     {
         try
         {
-            if (item.Id <= 0)
+            if (item.IdPessoa <= 0)
             {
                 Console.WriteLine("ID inválido.");
                 return false;
@@ -114,7 +113,7 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
 
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
-                command.Parameters.AddWithValue("@Id", item.Id);
+                command.Parameters.AddWithValue("@Id", item.IdPessoa);
                 command.Parameters.AddWithValue("@Endereco", item.Endereco);
                 command.Parameters.AddWithValue("@Nome", item.Nome);
                 command.Parameters.AddWithValue("@Cpf", item.CPF);
