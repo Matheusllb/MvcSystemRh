@@ -1,91 +1,222 @@
 ﻿using Sistema.Model.Interfaces.IDAO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Sistema.Model.Entidades
 {
-    public class FolhaPagamento : IEntidade
+    public class FolhaPagamento : IEntidade, INotifyPropertyChanged
     {
         public int Id { get; set; }
-        private int IdEmpresa;
-        private DateTime DataFechamento;
-        private DateTime DataPagamento;
-        private decimal TotalVencimentos;
-        private decimal TotalDescontos;
-        private decimal TotalLiquido;
-        private Funcionario Funcionario;
-        private decimal SalarioINSS;
-        private decimal ValorFGTS;
-        private decimal ValorIRRF;
-        private List<string> Itens = new List<string>();
-        
+        private int _idEmpresa;
+        private DateTime _dataFechamento;
+        private DateTime _dataPagamento;
+        private decimal _totalVencimentos;
+        private decimal _totalDescontos;
+        private decimal _totalLiquido;
+        private Funcionario _funcionario;
+        private decimal _salarioINSS;
+        private decimal _valorFGTS;
+        private decimal _valorIRRF;
+        private List<string> _itens = new List<string>();
 
-        public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
-         Funcionario funcionario)
-        {
-            IdEmpresa = empresa;
-            DataFechamento = dataFechamento;
-            DataPagamento = pagamento;
-            Funcionario = funcionario;
-            SalarioINSS = CalculaINSS();
-            ValorFGTS = CalculaFGTS();
-            ValorIRRF = CalculaIRRF();
-            TotalVencimentos = CalculaTotalVencimentos();
-            TotalDescontos = CalculaTotalDescontos();
-            TotalLiquido = CalculaTotalLiquido();
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public FolhaPagamento()
         {
         }
 
-        public int GetIdEmpresaEmFolha() { return IdEmpresa; }
-        public DateTime GetDataFechamentoEmFolha() { return DataFechamento; }
-        public DateTime GetDataPagamentoEmFolha() { return DataPagamento; }
-        public decimal GetTotalVencimentosEmFolha() { return TotalVencimentos; }
-        public decimal GetTotalDescontosEmFolha() { return TotalDescontos; }
-        public decimal GetTotalLiquidoEmFolha() { return TotalLiquido; }
-        public Funcionario GetFuncionarioEmFolha() { return Funcionario; }
-        public decimal GetSalarioINSSEmFolha() { return SalarioINSS; }
-        public decimal GetValorFGTSEmFolha() { return ValorFGTS; }
-        public decimal GetValorIRRFEmFolha() { return ValorIRRF; }
-        public List<string> GetItensEmFolha() { return Itens; }
+        public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
+         Funcionario funcionario)
+        {
+            _idEmpresa = empresa;
+            _dataFechamento = dataFechamento;
+            _dataPagamento = pagamento;
+            _funcionario = funcionario;
+            _salarioINSS = CalculaINSS();
+            _valorFGTS = CalculaFGTS();
+            _valorIRRF = CalculaIRRF();
+            _totalVencimentos = CalculaTotalVencimentos();
+            _totalDescontos = CalculaTotalDescontos();
+            _totalLiquido = CalculaTotalLiquido();
+        }
 
-        public void SetIdEmpresaEmFolha(int idEmpresa) { IdEmpresa = idEmpresa; }
-        public void SetDataFechamentoEmFolha(DateTime dataFechamento) { DataFechamento = dataFechamento; }
-        public void SetDataPagamentoEmFolha(DateTime dataPagamento) { DataPagamento = dataPagamento; }
-        public void SetTotalVencimentosEmFolha(decimal totalVencimentos) { TotalVencimentos = totalVencimentos; }
-        public void SetTotalDescontosEmFolha(decimal totalDescontos) { TotalDescontos = totalDescontos; }
-        public void SetTotalLiquidoEmFolha(decimal totalLiquido) { TotalLiquido = totalLiquido; }
-        public void SetFuncionarioEmFolha(Funcionario funcionario) { Funcionario = funcionario; }
-        public void SetSalarioINSSEmFolha(decimal salarioINSS) { SalarioINSS = salarioINSS; }
-        public void SetFValorFGTSEmFolha(decimal valorFGTS) { ValorFGTS = valorFGTS; }
-        public void SetValorIRRFEmFolha(decimal valorIRRF) { ValorIRRF = valorIRRF; }
-        public void SetItensEmFolha(List<string> itens) { Itens = itens; }
+        public int IdEmpresa
+        {
+            get => _idEmpresa;
+            set
+            {
+                if (_idEmpresa != value)
+                {
+                    _idEmpresa = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public DateTime DataFechamento
+        {
+            get => _dataFechamento;
+            set
+            {
+                if (_dataFechamento != value)
+                {
+                    _dataFechamento = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public DateTime DataPagamento
+        {
+            get => _dataPagamento;
+            set
+            {
+                if (_dataPagamento != value)
+                {
+                    _dataPagamento = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public Funcionario Funcionario
+        {
+            get => _funcionario;
+            set
+            {
+                if (_funcionario != value)
+                {
+                    _funcionario = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public decimal SalarioINSS
+        {
+            get => _salarioINSS;
+            set
+            {
+                if (_salarioINSS != value)
+                {
+                    _salarioINSS = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        
+        public decimal ValorFGTS
+        {
+            get => _valorFGTS;
+            set
+            {
+                if (_valorFGTS != value)
+                {
+                    _valorFGTS = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        
+        public decimal ValorIRRF
+        {
+            get => _valorIRRF;
+            set
+            {
+                if (_valorIRRF != value)
+                {
+                    _valorIRRF = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+              
+        public decimal TotalVencimentos
+        {
+            get => _totalVencimentos;
+            set
+            {
+                if (_totalVencimentos != value)
+                {
+                    _totalVencimentos = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+                     
+        public decimal TotalDescontos
+        {
+            get => _totalDescontos;
+            set
+            {
+                if (_totalDescontos != value)
+                {
+                    _totalDescontos = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+                           
+        public decimal TotalLiquido
+        {
+            get => _totalLiquido;
+            set
+            {
+                if (_totalLiquido != value)
+                {
+                    _totalLiquido = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public List<string> Itens
+        {
+            get => _itens;
+            set
+            {
+                if (_itens != value)
+                {
+                    _itens = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] string propName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
 
         public decimal CalculaFGTS()
         {
             return ValorFGTS = Funcionario.SalarioBruto * (decimal)0.08;
         }
+
         public decimal CalculaINSS()
         {
-            if(Funcionario.SalarioBruto <= 1320)
+            if (Funcionario.SalarioBruto <= 1320)
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.075;
             }
-            else if(Funcionario.SalarioBruto >= 1321 || Funcionario.SalarioBruto <= (decimal)2571.29)
+            else if (Funcionario.SalarioBruto >= 1321 || Funcionario.SalarioBruto <= (decimal)2571.29)
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.09;
             }
-            else if(Funcionario.SalarioBruto >= (decimal)2571.30 || Funcionario.SalarioBruto <= (decimal)3856.94)
+            else if (Funcionario.SalarioBruto >= (decimal)2571.30 || Funcionario.SalarioBruto <= (decimal)3856.94)
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.12;
             }
-            else if(Funcionario.SalarioBruto > (decimal)3856.95)
+            else if (Funcionario.SalarioBruto > (decimal)3856.95)
             {
-                return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.14; 
+                return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.14;
             }
             return SalarioINSS;
         }
+
         public decimal CalculaIRRF()
         {
             decimal baseDeCalculoIRRF = Funcionario.SalarioBruto - SalarioINSS;
@@ -93,15 +224,15 @@ namespace Sistema.Model.Entidades
             {
                 return ValorIRRF = baseDeCalculoIRRF * (decimal)0.075;
             }
-            else if(baseDeCalculoIRRF >= (decimal)2826.66 || baseDeCalculoIRRF <= (decimal)3751.05)
+            else if (baseDeCalculoIRRF >= (decimal)2826.66 || baseDeCalculoIRRF <= (decimal)3751.05)
             {
                 return ValorIRRF = baseDeCalculoIRRF * (decimal)0.15;
             }
-            else if(baseDeCalculoIRRF >= (decimal)3751.06 || baseDeCalculoIRRF <= (decimal)4664.68)
+            else if (baseDeCalculoIRRF >= (decimal)3751.06 || baseDeCalculoIRRF <= (decimal)4664.68)
             {
                 return ValorIRRF = baseDeCalculoIRRF * (decimal)0.225;
             }
-            else if(baseDeCalculoIRRF > (decimal)4664.68)
+            else if (baseDeCalculoIRRF > (decimal)4664.68)
             {
                 return ValorIRRF = baseDeCalculoIRRF * (decimal)0.275;
             }
@@ -122,10 +253,12 @@ namespace Sistema.Model.Entidades
             return TotalVencimentos = Funcionario.SalarioBruto; //+ CalculaTotalBenefico();
 
         }
+
         public decimal CalculaTotalDescontos()
         {
             return TotalDescontos = SalarioINSS + ValorIRRF; // + CalculaTotalDesconto();
         }
+
         public decimal CalculaTotalLiquido()
         {
             return TotalLiquido = TotalVencimentos - TotalDescontos;

@@ -16,8 +16,8 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Border Grid.RowSpan="2"
-                    Height="50"
-                    VerticalAlignment="Top">
+                Height="50"
+                VerticalAlignment="Top">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
@@ -42,18 +42,327 @@
         </Border>
 
         <Button Name="btnConfig"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Right"
-        Height="50"
-        Width="50"
-        Background="Transparent"
-        BorderBrush="Transparent"
-        BorderThickness="0"
-        Foreground="#282828" 
-        Click="btnConfig_Click">
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnConfig_Click">
             <iconPacks:PackIconMaterial Kind="Cog"
-                                Height="20"
-                                Width="16"/>
+                                            Height="20"
+                                            Width="16"/>
         </Button>
+
+        <StackPanel Name="stkNome"
+                    Width="401"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,100,0,0"
+                    Visibility="Visible">
+
+            <TextBox x:Name="txtNome" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text=""
+                     Width="348" Height="20" HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblNome"
+                   Content="Nome"
+                   Foreground="White"
+                   Width="50" Height="25"
+                   Margin="0,-23,0,0" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkCPF"
+                    Width="260"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="224,140,0,0"
+                    Visibility="Visible">
+
+            <TextBox x:Name="txtCpf" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text=""
+                     Width="200" 
+                     HorizontalAlignment="Right"
+                     Height="20"/>
+
+            <Label x:Name="lblCpf"
+                   Content="CPF"
+                   Foreground="White"
+                   Width="50" 
+                   Height="25" 
+                   HorizontalAlignment="Left" Margin="0,-23,0,0"/>
+        </StackPanel>
+
+        <StackPanel Name="stkDataNascimento"
+                    Width="260"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="224,180,0,0"
+                    Visibility="Visible">
+
+            <TextBox x:Name="txtDataNascimento" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text="" 
+                     Width="130" 
+                     Height="20"
+                     HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblDataNascimento"
+                   Content="Data de Nascimento"
+                   Foreground="White"
+                   Width="120"
+                   HorizontalAlignment="Left"
+                   Height="25" 
+                   Margin="0,-23,0,0"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkEstadoCivil"
+                    Width="260"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="224,220,0,0"
+                    Visibility="Visible">
+
+            <TextBox x:Name="txtEstadoCivil" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text="" 
+                     Width="130"
+                     Height="20" 
+                     HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblEstadoCivil"
+                   Content="Estado Civil"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   Width="71"
+                   HorizontalAlignment="Left" 
+                   Margin="0,-20,0,0" 
+                   Height="24"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkEndereco"
+                    Width="420"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="205,260,0,0"
+                    Visibility="Visible">
+
+            <TextBox x:Name="txtEndereco"
+                     TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Text="" 
+                     Width="348" 
+                     Height="20" 
+                     HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblEndereco"
+                   Content="Endereço"
+                   Foreground="White"
+                   Width="59" 
+                   Margin="0,-23,0,0"
+                   Height="24" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+
+
+        <StackPanel Name="stkEmail"
+                    Width="420"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,100,0,0"
+                    Visibility="Collapsed">
+
+            <TextBox x:Name="txtEmail" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Width="348"
+                     Height="20"
+                     Text="" HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblEmail"
+                   Content="Email"
+                   Foreground="White"
+                   Width="59"
+                   Height="24"
+                   Margin="0,-23.4,0,0" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkDataAdmissao"
+                    Width="250"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,140,0,0"
+                    Visibility="Collapsed">
+
+            <TextBox x:Name="txtDataAdmissao" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Width="130"
+                     Height="20"
+                     Text="" HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblDataAdmissao"
+                   Content="Data de Admissão"
+                   Foreground="White"
+                   Width="109"
+                   Height="24"
+                   Margin="0,-23.4,0,0" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkEmpresa"
+                    Width="250"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,180,0,0"
+                    Visibility="Collapsed">
+
+            <TextBox x:Name="txtEmpresa" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Width="130"
+                     Height="20"
+                     Text="" HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblEmpresa"
+                   Content="Código da empresa"
+                   Foreground="White"
+                   Width="115"
+                   Height="24"
+                   Margin="0,-23.4,0,0" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkCargo"
+                    Width="420"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,220,0,0"
+                    Visibility="Collapsed">
+
+            <TextBox x:Name="txtCargo" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Width="348"
+                     Height="20"
+                     Text="" HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblCargo"
+                   Content="Cargo"
+                   Foreground="White"
+                   Width="59"
+                   Height="24"
+                   Margin="0,-23.4,0,0" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <StackPanel Name="stkSalario"
+                    Width="250"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="224,260,0,0"
+                    Visibility="Collapsed">
+
+            <TextBox x:Name="txtSalario" TextWrapping="Wrap" 
+                     Foreground="White"
+                     Background="#292929"
+                     BorderThickness="0" 
+                     SelectionOpacity="0.9"
+                     Width="130"
+                     Height="20"
+                     Text="" HorizontalAlignment="Right"/>
+
+            <Label x:Name="lblSalario"
+                   Content="Salário Bruto"
+                   Foreground="White"
+                   Width="79"
+                   Height="24"
+                   Margin="0,-23.4,0,0" 
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <Button x:Name="btnProximo"
+                Visibility="Collapsed"
+                Height="50"
+                Width="90"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="0,339,0,0"
+                Style="{DynamicResource ButtonStyle}"
+                Content="Próximo"
+                Click="btnProximo_Click"></Button>
+
+        <Button x:Name="btnRetornar"
+                Visibility="Collapsed"
+                Height="50"
+                Width="90"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="244,339,0,0"
+                Style="{DynamicResource ButtonStyle}"
+                Content="Voltar"
+                Click="btnRetornar_Click"></Button>
+
+        <Button x:Name="btnRegistrar"
+                Visibility="Visible"
+                Height="50"
+                Width="90"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="0,339,0,0"
+                Style="{DynamicResource ButtonStyle}"
+                Content="Registrar"
+                Click="btnRegistrar_Click"></Button>
+
     </Grid>
 </Window>

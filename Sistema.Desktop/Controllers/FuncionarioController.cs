@@ -31,6 +31,21 @@ namespace Sistema.Desktop.Controllers
                 return false;
             }
         }
+        public bool Insert(Funcionario data)
+        {
+            try
+            {
+                FuncionarioDAO dAO = new FuncionarioDAO();
+                dAO.InsertPessoais(data);
+                GetAll();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+                return false;
+            }
+        }
 
     }
 }

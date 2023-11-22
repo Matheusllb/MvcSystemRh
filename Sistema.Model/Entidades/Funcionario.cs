@@ -20,10 +20,9 @@ namespace Sistema.Model.Entidades
 
         public Funcionario() : base() { }
 
-        public Funcionario(int idFuncionario, bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
+        public Funcionario(bool status,string endereco, string nome, string cpf, DateTime dataNascimento, EstadoCivil estadoCivil,
             string email, DateTime dataAdimissao, int idEmpresa, string cargo, decimal salario) : base(endereco, nome, cpf, dataNascimento, estadoCivil)
         {
-            Id = idFuncionario;
             _ativo = status;
             _email = email;
             _dataAdmissao = dataAdimissao;

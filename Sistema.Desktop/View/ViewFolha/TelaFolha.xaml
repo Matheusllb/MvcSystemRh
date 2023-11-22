@@ -1,0 +1,332 @@
+﻿<Window x:Class="Sistema.Desktop.View.ViewFolha.TelaFolha"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sistema.Desktop.View.ViewFolha"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        WindowStartupLocation="CenterScreen"
+        Height="450" Width="800"
+        x:Name="WindowFolha">
+    <Grid>
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#353535" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border Grid.RowSpan="2"
+                Height="50"
+                VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button x:Name="btnVoltar"
+                        Height="50"
+                        Width="50"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click">
+                        <iconPacks:PackIconMaterial Kind="ArrowLeft"
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
+                </Button>
+            </Border>
+        </Border>
+
+        <ListView x:Name="listView"
+                  Margin="66,110,79,30"
+                  ItemsSource="{Binding ElementName=WindowFolha, Path=Folhas}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Código da Empresa" Width="Auto" DisplayMemberBinding="{Binding IdEmpresa}"/>
+                    <GridViewColumn Header="Fechamento" Width="Auto" DisplayMemberBinding="{Binding DataFechamento}"/>
+                    <GridViewColumn Header="Pagamento" Width="Auto" DisplayMemberBinding="{Binding DataPagamento}"/>
+                    <GridViewColumn Header="Funcionário" Width="Auto" DisplayMemberBinding="{Binding Funcionario.Nome}"/>
+                    <GridViewColumn Header="Código do Funcionário" Width="Auto" DisplayMemberBinding="{Binding Funcionario.Id}"/>
+                    <GridViewColumn Header="Cargo" Width="Auto" DisplayMemberBinding="{Binding Funcionario.Cargo}"/>
+                    <GridViewColumn Header="INSS" Width="Auto" DisplayMemberBinding="{Binding SalarioINSS}"/>
+                    <GridViewColumn Header="FGTS" Width="Auto" DisplayMemberBinding="{Binding ValorFGTS}"/>
+                    <GridViewColumn Header="IRRF" Width="Auto" DisplayMemberBinding="{Binding ValorIRRF}"/>
+                    <GridViewColumn Header="Vencimentos" Width="Auto" DisplayMemberBinding="{Binding TotalVencimentos}"/>
+                    <GridViewColumn Header="Descontos" Width="Auto" DisplayMemberBinding="{Binding TotalDescontos}"/>
+                    <GridViewColumn Header="Líquido" Width="Auto" DisplayMemberBinding="{Binding TotalLiquido}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBox x:Name="txtSearch" 
+             Margin="66,77,307,0" TextWrapping="Wrap" 
+             FontFamily="Helvetica"
+             FontWeight="Light"
+             FontSize="15"
+             Foreground="White"
+             Background="#292929"
+             BorderThickness="0" 
+             VerticalAlignment="Top" Height="28" 
+             SelectionOpacity="0.9"
+             BorderBrush="White">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Pesquisar" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Opacity="0.7" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <Button x:Name="btnAtualizar"
+            Margin="0,77,269,0"
+            VerticalAlignment="Top"
+            Height="28"
+            Background="#292929"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Foreground="White" Click="btnAtualizar_Click" HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Refresh"
+                                            Height="20"
+                                            Width="16" />
+        </Button>
+
+        <Button x:Name="btnFiltrar"
+            Margin="0,77,231,0"
+            VerticalAlignment="Top"
+            Height="28"
+            Background="#292929"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Foreground="White" Click="btnFiltrar_Click" HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Magnify"
+                                            Height="20"
+                                            Width="16" />
+        </Button>
+
+        <Button x:Name="btnBuscaId"
+            Margin="0,77,193,0"
+            VerticalAlignment="Top"
+            Height="28"
+            Background="#292929"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Foreground="White" Click="btnBuscaId_Click" HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Identifier"
+                                            Height="20"
+                                            Width="16" />
+        </Button>
+
+        <Button x:Name="btnCriarNovo"
+                Margin="0,77,155,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnCriarNovo_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Plus"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
+        <Button x:Name="btnAlterar"
+                Margin="0,77,117,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnAlterar_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Pencil"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
+        <Button x:Name="btnDeletar"
+                Margin="0,77,79,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Background="#292929"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White" Click="btnDeletar_Click"
+                HorizontalAlignment="Right" Width="38">
+            <iconPacks:PackIconMaterial Kind="Delete"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
+        <Menu x:Name="menuAlterar"
+              Margin="56,70,10,260"
+              Visibility="Collapsed"
+              Background="#353535">
+
+            <Label Name="lblNome"
+                   Content="Nome"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="51"/>
+
+            <TextBox x:Name="txtNome" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0"
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="156"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Nome, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblCnpj"
+                   Content="CNPJ"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="44"
+                   Height="27"/>
+
+            <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="154"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Cnpj, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblSetor"
+                   Content="Setor"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="43"
+                   />
+
+            <TextBox x:Name="txtSetor" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="155"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Setor, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblEmail"
+                   Content="Email"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="44"
+                   />
+
+            <TextBox x:Name="txtEmail" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="152"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Email, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblTelefone"
+                   Content="Telefone"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="65"
+                   />
+
+            <TextBox x:Name="txtTelefone" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="141"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Telefone, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblEndereco"
+                   Content="Endereço"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="70"
+                   />
+
+            <TextBox x:Name="txtEndereco" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="171"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.Endereco, UpdateSourceTrigger=LostFocus}"/>
+
+            <Button x:Name="btnConfirmar"
+                    Content="Confirmar"
+                    FontFamily="Helvetica"
+                    FontWeight="Light"
+                    FontSize="15"
+                    Height="28"
+                    Click="btnConfirmar_Click"
+                    Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+        </Menu>
+
+        <Button Name="btnConfig"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnConfig_Click">
+                <iconPacks:PackIconMaterial Kind="Cog"
+                                            Height="20"
+                                            Width="16"/>
+        </Button>
+    </Grid>
+</Window>

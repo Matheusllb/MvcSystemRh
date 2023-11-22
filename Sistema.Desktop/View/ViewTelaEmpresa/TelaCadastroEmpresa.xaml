@@ -24,6 +24,7 @@
                         <GradientStop Color="#FF946DED" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
+                
                 <Button x:Name="btnVoltar"
                         Height="50"
                         Width="50"
@@ -57,10 +58,10 @@
         </Button>
 
         <StackPanel Width="401"
-                    Height="41"
+                    Height="20"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    Margin="224,101,0,0">
+                    Margin="224,100,0,0">
 
             <TextBox x:Name="txtNome" TextWrapping="Wrap" 
                      Foreground="White"
@@ -68,93 +69,164 @@
                      BorderThickness="0" 
                      SelectionOpacity="0.9"
                      Text=""
-                     Width="348" Height="41"
-                     HorizontalAlignment="Right"
+                     Width="348" Height="20" HorizontalAlignment="Right"
                      />
 
             <Label x:Name="lblNome"
                    Content="Nome"
                    Foreground="White"
-                   Width="50" Height="28"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"/>
+                   Width="50" Height="25"
+                   Margin="0,-23,0,0" 
+                   HorizontalAlignment="Left"
+                   />
+
         </StackPanel>
 
-        <StackPanel>
-            <Label Name="lblCnpj"
-                   Content="CNPJ"
-                   Foreground="White"
-                   Width="50" Height="28"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Left"
-                   Margin="224,106,0,0"/>
+        <StackPanel Width="401"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="224,140,0,0">
 
             <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
-                     Foreground="White"
-                     Background="#292929"
-                     BorderThickness="0" 
-                     SelectionOpacity="0.9"
-                     Text="" Margin="279,99,175,294"/>
-
-        </StackPanel>
-
-
-        <Label Name="lblSetor"
-               Content="Setor"
-               Foreground="White"
-               Width="43" Margin="228,156,530,251"/>
-
-        <TextBox x:Name="txtSetor" TextWrapping="Wrap" 
                  Foreground="White"
                  Background="#292929"
                  BorderThickness="0" 
                  SelectionOpacity="0.9"
-                 Text="" Margin="279,149,175,245"/>
+                 Text=""
+                 Width="348" 
+                 HorizontalAlignment="Right"
+                 Height="20"
+                 />
 
-        <Label Name="lblEmail"
+            <Label x:Name="lblCnpj"
+               Content="CNPJ"
+               Foreground="White"
+               Width="50" 
+               Height="25" 
+               HorizontalAlignment="Left" Margin="0,-23,0,0"
+               />
+        </StackPanel>
+
+        <StackPanel Width="401"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="224,180,0,0">
+
+            <TextBox x:Name="txtSetor" TextWrapping="Wrap" 
+                 Foreground="White"
+                 Background="#292929"
+                 BorderThickness="0" 
+                 SelectionOpacity="0.9"
+                 Text="" 
+                 Width="348" 
+                 Height="20"
+                 HorizontalAlignment="Right"
+                 />
+
+            <Label x:Name="lblSetor"
+               Content="Setor"
+               Foreground="White"
+               Width="50"
+               HorizontalAlignment="Left"
+               Height="25" 
+               Margin="0,-23,0,0"
+               />
+
+        </StackPanel>
+
+        <StackPanel Width="401"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="224,220,0,0">
+
+            <TextBox x:Name="txtEmail" TextWrapping="Wrap" 
+                 Foreground="White"
+                 Background="#292929"
+                 BorderThickness="0" 
+                 SelectionOpacity="0.9"
+                 Text="" 
+                 Width="348"
+                 Height="20" 
+                 HorizontalAlignment="Right"
+                 />
+
+            <Label x:Name="lblEmail"
                Content="Email"
                Foreground="White"
                FontFamily="Helvetica"
                FontWeight="Light"
-               Width="44" Margin="230,206,526,206"/>
+               Width="50"
+               HorizontalAlignment="Left" 
+               Margin="0,-20,0,0" 
+               Height="24"
+               />
 
-        <TextBox x:Name="txtEmail" TextWrapping="Wrap" 
+        </StackPanel>
+
+        <StackPanel Width="420"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="205,260,0,0">
+
+            <TextBox x:Name="txtTelefone" TextWrapping="Wrap" 
                  Foreground="White"
                  Background="#292929"
                  BorderThickness="0" 
                  SelectionOpacity="0.9"
-                 Text="" Margin="279,194,175,196"/>
+                 Text="" 
+                 Width="348" 
+                 Height="20" 
+                 HorizontalAlignment="Right"
+                 />
 
-        <Label Name="lblTelefone"
+            <Label x:Name="lblTelefone"
                Content="Telefone"
                Foreground="White"
-               Width="65" Margin="230,249,505,156"/>
+               Width="59" 
+               Margin="0,-23,0,0"
+               Height="24" 
+               HorizontalAlignment="Left"/>
 
-        <TextBox x:Name="txtTelefone" TextWrapping="Wrap" 
+        </StackPanel>
+
+        <StackPanel Width="420"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="205,300,0,0">
+
+            <TextBox x:Name="txtEndereco" TextWrapping="Wrap" 
                  Foreground="White"
                  Background="#292929"
                  BorderThickness="0" 
                  SelectionOpacity="0.9"
-                 Text="" Margin="305,243,175,150"/>
+                 Width="348"
+                 Height="20"
+                 Text="" HorizontalAlignment="Right"
+                 />
 
-        <Label Name="lblEndereco"
+            <Label x:Name="lblEndereco"
                Content="Endereço"
                Foreground="White"
-               Width="70" Margin="230,295,500,110"/>
+               Width="59"
+               Height="24"
+               Margin="0,-23.4,0,0" 
+               HorizontalAlignment="Left"
+               />
 
-        <TextBox x:Name="txtEndereco" TextWrapping="Wrap" 
-                 Foreground="White"
-                 Background="#292929"
-                 BorderThickness="0" 
-                 SelectionOpacity="0.9"
-                 Text="" Margin="305,289,175,104"/>
+        </StackPanel>
+
 
         <Button x:Name="btnRegistrar"
                 Height="50"
                 Width="90"
                 VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Margin="0,347,0,0"
+                HorizontalAlignment="Left"
+                Margin="398,339,0,0"
                 Style="{DynamicResource ButtonStyle}"
                 Content="Registrar"
                 Click="btnRegistrar_Click"></Button>

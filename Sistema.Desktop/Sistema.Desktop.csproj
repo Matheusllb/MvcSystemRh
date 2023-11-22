@@ -160,12 +160,19 @@
     <Compile Include="Controllers\BDController.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\FolhaController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="View\ViewBeneficioDesconto\TelaBeneficioDesconto.xaml.cs">
       <DependentUpon>TelaBeneficioDesconto.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml.cs">
       <DependentUpon>TelaCadastroBD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewFolha\TelaFolha.xaml.cs">
+      <DependentUpon>TelaFolha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewFolha\TelaFolhaPagamento.xaml.cs">
+      <DependentUpon>TelaFolhaPagamento.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewTelaEmpresa\TelaCadastroEmpresa.xaml.cs">
       <DependentUpon>TelaCadastroEmpresa.xaml</DependentUpon>
@@ -224,6 +231,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewFolha\TelaFolha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewFolha\TelaFolhaPagamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

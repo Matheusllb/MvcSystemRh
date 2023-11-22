@@ -138,4 +138,45 @@ public class FuncionarioDAO : DAO<Funcionario>, IFuncionarioDAO
             throw ex;
         }
     }
+
+
+    public bool InsertPessoais(Funcionario item)
+    {
+        try
+        {
+            if (item.IdPessoa <= 0)
+            {
+                Console.WriteLine("ID inválido.");
+                return false;
+            }
+
+            string query = $"INSERT INTO Pessoa (Endereco, Nome, Cpf, DataNascimento, EstadoCivil) VALUES (@Endereco, @Nome, @Cpf, @DataNascimento, @EstadoCivil)";
+
+            using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@Endereco", item.Endereco);
+                command.Parameters.AddWithValue("@Nome", item.Nome);
+                command.Parameters.AddWithValue("@Cpf", item.CPF);
+                command.Parameters.AddWithValue("@DataNascimento", item.DataNascimento);
+                command.Parameters.AddWithValue("@EstadoCivil", item.EstadoCivilP);
+
+                ConnectionManager.OpenConnection();
+
+                int count = command.ExecuteNonQuery();
+
+                ConnectionManager.CloseConnection();
+
+                return count > 0;
+            }
+        }
+        catch (SqlException sqlEx)
+        {
+            throw sqlEx;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
 }
+

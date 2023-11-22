@@ -145,7 +145,7 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         {
             Type tipo = typeof(T);
 
-            PropertyInfo[] propriedades = tipo.GetProperties().Where(p => p.Name != "Id").ToArray();
+            PropertyInfo[] propriedades = tipo.GetProperties().Where(p => p.DeclaringType == tipo && p.Name != "Id").ToArray();
 
             string colunas = string.Join(", ", propriedades.Select(p => p.Name));
             string parametros = string.Join(", ", propriedades.Select((p, i) => $"@p{i}"));

@@ -1,0 +1,183 @@
+﻿<Window x:Class="Sistema.Desktop.View.ViewFolha.TelaFolhaPagamento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sistema.Desktop.View.ViewFolha"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        WindowStartupLocation="CenterScreen"
+        Height="450" Width="800"
+        x:Name="WindowFolhaPagamento">
+    <Grid>
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#353535" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Button x:Name="btnVoltar"
+                        Height="50"
+                        Width="50"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click">
+                    <iconPacks:PackIconMaterial Kind="ArrowLeft"
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
+                </Button>
+            </Border>
+        </Border>
+
+        <Button Name="btnMenu"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnMenu_Click" Margin="52,0,0,0">
+            <iconPacks:PackIconMaterial Kind="Home"
+                                        Height="30"
+                                        Width="26"/>
+
+        </Button>
+
+        <Button Name="btnConfig"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnConfig_Click">
+            <iconPacks:PackIconMaterial Kind="Cog"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
+
+        <Border Height="30"
+                VerticalAlignment="Top" Margin="0,50,0,0">
+            <Border.Background>
+                <SolidColorBrush Color="#282828"/>
+            </Border.Background>
+        </Border>
+
+        <Label Name="lblCaminho"
+               Content="Folha de Pagamento - Cáculos - Individual"
+               VerticalAlignment="Top"
+               Margin="275,50,280,0"
+               Height="30"
+               Foreground="LightGray"/>
+
+
+        <TextBox Text="Mês de Fechamento *"
+                 Background="Transparent"
+                 BorderBrush="Transparent"
+                 BorderThickness="0"
+                 Margin="146,141,482,0"
+                 Foreground="White" Height="16" VerticalAlignment="Top"/>
+
+        <DatePicker x:Name="dpDataFechamento"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Foreground="#282828"
+                    Margin="318,132,455,0" Height="25" VerticalAlignment="Top">
+        </DatePicker>
+
+        <Border CornerRadius="3"
+                Background="#282828" 
+                Margin="146,157,437,0"
+                BorderBrush="Black" Height="7" VerticalAlignment="Top"/>
+
+        <TextBox Name="txtDataPagamento"
+                 Text="Data do Pagamento *"
+                 Margin="432,141,196,0"
+                 Background="Transparent"
+                 BorderBrush="Transparent"
+                 BorderThickness="0"
+                 Foreground="White" Height="16" VerticalAlignment="Top"/>
+
+        <DatePicker x:Name="dpDataPagamento"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Foreground="#282828"
+                    Margin="604,132,170,0" Height="25" VerticalAlignment="Top"/>
+
+        <Border CornerRadius="3"
+                Background="#282828" 
+                Margin="432,157,150,0"
+                BorderBrush="Black" Height="7" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="txtCodigoEmpresa"
+                 Text="Código da Empresa *"
+                 Background="Transparent"
+                 BorderBrush="Transparent"
+                 BorderThickness="0"
+                 Foreground="White"
+                 Margin="146,248,463,0" Height="19" VerticalAlignment="Top"/>
+
+        <Border CornerRadius="3"
+                Background="#282828" 
+                Margin="146,267,437,0"
+                BorderBrush="Black" Height="8" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="txtCodigoFuncionario"
+                 Text="Código do Funcionário *"
+                 Background="Transparent"
+                 BorderBrush="Transparent"
+                 BorderThickness="0"
+                 Foreground="White"
+                 Margin="432,248,177,0" Height="19" VerticalAlignment="Top"/>
+
+        <Border CornerRadius="3"
+                Background="#282828" 
+                Margin="432,267,150,0"
+                BorderBrush="Black" Height="8" VerticalAlignment="Top"/>
+
+        <Button Name="btnContinuar"
+                Click="btnContinuar_Click"
+                Width="40"
+                Height="40"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White"
+                Margin="600,0,150,53" VerticalAlignment="Bottom">
+            <iconPacks:PackIconMaterial Kind="ArrowRightCircle"
+                                        Width="30"
+                                        Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Button>
+
+        <TextBlock x:Name="txbContinuar"
+                   Background="Transparent"
+                   Foreground="White"
+                   Text="Continuar"
+                   FontSize="20"
+                   Margin="507,0,200,60"
+                   VerticalAlignment="Bottom" Height="26"/>
+
+
+    </Grid>
+</Window>
