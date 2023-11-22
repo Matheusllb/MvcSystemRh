@@ -23,5 +23,25 @@ namespace Sistema.Desktop.View.ViewFolha
         {
             InitializeComponent();
         }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnContinuar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

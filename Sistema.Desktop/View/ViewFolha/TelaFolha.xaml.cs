@@ -31,5 +31,50 @@ namespace Sistema.Desktop.View.ViewFolha
         {
             InitializeComponent();
         }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnFiltrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnBuscaId_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCriarNovo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAlterar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeletar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConfirmar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

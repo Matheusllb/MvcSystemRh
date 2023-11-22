@@ -10,7 +10,7 @@ using System.Xml.Linq;
 public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 {
     public FolhaPagamentoDAO() : base("FolhaPagamento")
-    {    
+    {
     }
 
     public List<FolhaPagamento> ProcuraFolhaPorDataFechamento(DateTime fechamento)
@@ -101,76 +101,111 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 
     public override FolhaPagamento MapData(SqlDataReader reader)
     {
-        FolhaPagamento folhaPagamento = new FolhaPagamento
+        try
         {
-            Id = (int)reader["Id"],
-        };
-        folhaPagamento.SetIdEmpresaEmFolha((int)reader["IdEmpresa"]);
-        folhaPagamento.SetDataFechamentoEmFolha((DateTime)reader["DataFechamento"]);
-        folhaPagamento.SetDataPagamentoEmFolha((DateTime)reader["DataPagamento"]);
-        folhaPagamento.SetTotalVencimentosEmFolha((decimal)reader["TotalVencimentos"]);
-        folhaPagamento.SetTotalDescontosEmFolha((decimal)reader["TotalDescontos"]);
-        folhaPagamento.SetTotalLiquidoEmFolha((decimal)reader["TotalLiquido"]);
-        //Mapeamento de funcionario
-        Funcionario funcionario = new Funcionario
-        {
-            Id = (int)reader["IdPessoa"],
-        };
-        /*funcionario.SetIdFuncionario((int)reader["IdFuncionario"]);
-        funcionario.SetAtivo((bool)reader["Ativo"]);
-        funcionario.SetNomePessoa((string)reader["Nome"]);
-        funcionario.SetCpfPessoa((string)reader["Cpf"]);
-        funcionario.SetDataNascimentoPessoa((DateTime)reader["DataNascimento"]);
-        funcionario.SetEstadoCivilPessoa((EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()));
-        funcionario.SetEmailFuncionario((string)reader["Email"]);
-        funcionario.SetDataAdmissaoFuncionario((DateTime)reader["DataAdmissao"]);
-        funcionario.SetIdEmpresaFuncionario((int)reader["IdEmpresa"]);
-        funcionario.SetCargoFuncionario((string)reader["Cargo"]);
-        funcionario.SetSalarioBrutoFuncionario((decimal)reader["SalarioBruto"]);*/
-        //Continuando a mapear folha
-        folhaPagamento.SetFuncionarioEmFolha(funcionario);
-        folhaPagamento.SetSalarioINSSEmFolha((decimal)reader["SalarioINSS"]);
-        folhaPagamento.SetFValorFGTSEmFolha((decimal)reader["ValorFGTS"]);
-        folhaPagamento.SetValorIRRFEmFolha((decimal)reader["ValorIRRF"]);
-        //Itens de folha
-        List<string> listaItens = new List<string>();
-
-        using (SqlConnection connection = ConnectionManager.GetConnection())
-        {
-            string query = @"
-            SELECT bd.Descricao, bd.Valor, bd.Desconto
-            FROM BDFuncionario bdf
-            JOIN BeneficioDesconto bd ON bdf.IdBeneficioDesconto = bd.IdBeneficioDesconto
-            WHERE bdf.IdFolhaPag = @IdFolhaPag";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
+            if (reader["Id"] != DBNull.Value &&
+                reader["IdEmpresa"] != DBNull.Value &&
+                reader["DataFechamento"] != DBNull.Value &&
+                reader["DataPagamento"] != DBNull.Value &&
+                reader["TotalVencimentos"] != DBNull.Value &&
+                reader["TotalDescontos"] != DBNull.Value &&
+                reader["TotalLiquido"] != DBNull.Value &&
+                reader["Funcionario"] != DBNull.Value &&
+                reader["SalarioINSS"] != DBNull.Value &&
+                reader["ValorFGTS"] != DBNull.Value &&
+                reader["Ativo"] != DBNull.Value &&
+                reader["ValorIRRF"] != DBNull.Value)
             {
-                command.Parameters.AddWithValue("@IdFolhaPag", folhaPagamento.Id);
+                int vIdF = (int)reader["Id"];
+                int vIdEmpresa = (int)reader["IdEmpresa"];
+                DateTime vDataFechamento = (DateTime)reader["DataFechamento"];
+                DateTime vDataPagamento = (DateTime)reader["DataPagamento"];
+                decimal vTotalVencimentos = (decimal)reader["TotalVencimentos"];
+                decimal vTotalDescontos = (decimal)reader["TotalDescontos"];
+                decimal vTotalLiquido = (decimal)reader["TotalLiquido"];
 
-                using (SqlDataReader itemReader = command.ExecuteReader())
+                Funcionario funcionario = new Funcionario
                 {
-                    while (itemReader.Read())
+                    Id = Convert.ToInt32(reader["Id"]),
+                    IdPessoa = Convert.ToInt32(reader["IdPessoa"]),
+                    Email = reader["Email"].ToString(),
+                    DataAdmissao = Convert.ToDateTime(reader["DataAdmissao"]),
+                    IdEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
+                    Cargo = reader["Cargo"].ToString(),
+                    SalarioBruto = Convert.ToDecimal(reader["SalarioBruto"]),
+                    CPF = reader["Cpf"].ToString(),
+                    Endereco = reader["Endereco"].ToString(),
+                    Nome = reader["Nome"].ToString(),
+                    DataNascimento = Convert.ToDateTime(reader["DataNascimento"]),
+                    EstadoCivilP = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()),
+                    Ativo = Convert.ToBoolean(reader["Ativo"]),
+                };
+
+                decimal vSalarioINSS = (decimal)reader["SalarioINSS"];
+                decimal vValorFGTS = (decimal)reader["ValorFGTS"];
+                decimal vValorIRRF = (decimal)reader["ValorIRRF"];
+                List<string> itens = new List<string>();
+
+                FolhaPagamento folha = new FolhaPagamento
+                {
+                    Id = vIdF,
+                    IdEmpresa = vIdEmpresa,
+                    DataFechamento = vDataFechamento,
+                    DataPagamento = vDataPagamento,
+                    TotalVencimentos = vTotalVencimentos,
+                    TotalDescontos = vTotalDescontos,
+                    TotalLiquido = vTotalLiquido,
+                    Funcionario = funcionario,
+                    SalarioINSS = vSalarioINSS,
+                    ValorFGTS = vValorFGTS,
+                    ValorIRRF = vValorIRRF,
+                    Itens = itens
+                };
+
+                using (SqlConnection connection = ConnectionManager.GetConnection())
+                {
+                    string query = @"
+                    SELECT bd.Descricao, bd.Valor, bd.Desconto
+                    FROM BDFuncionario bdf
+                    JOIN BeneficioDesconto bd ON bdf.Id = bd.Id
+                    WHERE bdf.Id = @Id";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        string descricao = itemReader["Descricao"].ToString();
-                        decimal valor = (decimal)itemReader["Valor"];
-                        bool desconto = (bool)itemReader["Desconto"];
+                        command.Parameters.AddWithValue("@Id", folha.Id);
 
-                        // Adiciona "(desconto)" ou "(benefício)" com base no valor "desconto"
-                        string tipoItem = desconto ? "(desconto)" : "(benefício)";
+                        using (SqlDataReader itemReader = command.ExecuteReader())
+                        {
+                            while (itemReader.Read())
+                            {
+                                string descricao = itemReader["Descricao"].ToString();
+                                decimal valor = (decimal)itemReader["Valor"];
+                                bool desconto = (bool)itemReader["Desconto"];
 
-                        // Cria a representação completa do item
-                        string itemFormatado = $"Descrição: \"{descricao} {tipoItem}\", Valor: {(desconto ? "-" : "+")}{valor.ToString("0.00")}";
+                                // Adiciona "(desconto)" ou "(benefício)" com base no valor "desconto"
+                                string tipoItem = desconto ? "(desconto)" : "(benefício)";
 
-                        // Adiciona o item formatado à lista de itens
-                        listaItens.Add(itemFormatado);
+                                // Cria a representação completa do item
+                                string itemFormatado = $"Descrição: \"{descricao} {tipoItem}\", Valor: {(desconto ? "-" : "+")}{valor.ToString("0.00")}";
+
+                                // Adiciona o item formatado à lista de itens
+                                folha.Itens.Add(itemFormatado);
+                            }
+                        }
                     }
                 }
+
+                return folha;
+            }
+            else
+            {
+                return null;
             }
         }
-
-        folhaPagamento.SetItensEmFolha(listaItens);
-
-        return folhaPagamento;
+        catch (InvalidCastException ex)
+        {
+            throw ex;
+        }
     }
 
 }
