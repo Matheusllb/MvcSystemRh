@@ -17,9 +17,9 @@ public class UsuarioDAO : DAO<Usuario>, IUsuarioDAO
         {
             using (SqlConnection connection = ConnectionManager.GetConnection())
             {
-                connection.Open();
+                ConnectionManager.OpenConnection();
 
-                string query = "SELECT COUNT(*) FROM Usuario WHERE Login = @user AND Senha = @password AND Inativo = 0";
+                string query = "SELECT COUNT(*) FROM Usuario WHERE Login = @user AND Senha = @password AND Ativo = 1";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

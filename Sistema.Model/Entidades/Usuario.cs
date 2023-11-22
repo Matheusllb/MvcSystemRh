@@ -13,10 +13,6 @@ namespace Sistema.Model.Entidades
         private bool Ativo;
         private string Login;
         private string Senha;
-        private List<Usuario> _usuarios = new List<Usuario>();
-        private List<Empresa> _empresas = new List<Empresa>();
-        private List<Funcionario> _funcionarios = new List<Funcionario>();
-        private List<FolhaPagamento> _folhas = new List<FolhaPagamento>();
 
         public Usuario() : base() { }
 
@@ -35,20 +31,11 @@ namespace Sistema.Model.Entidades
         public int GetIdPermissaoUsuario() { return IdPermissao; }
         public string GetLogin() { return Login;}
         public string GetSenha() { return Senha;}
-        public List<Usuario> GetUsuariosUsuario() { return _usuarios; }
-        public List<Empresa> GetEmpresasUsuario() { return _empresas; }
-        public List<Funcionario> GetFuncionariosUsuario() { return _funcionarios; }
-        public List<FolhaPagamento> GetFolhasDePagamentoUsuario() { return _folhas; }
-
         public void SetIdUsuario(int idUsuario) { IdUsuario = idUsuario; }
         public void SetStatusUsuario(bool status) { Ativo = status; }
         public void SetIdPermissaoUsuario(int idPermissao) { IdPermissao = idPermissao; }
         public void SetLoginUsuario(string login) { Login = login; }
         public void SetSenhaUsuario(string senha) {  Senha = senha; }
-        public void SetUsuariosUsuario(List<Usuario> usuarios) { _usuarios = usuarios; }
-        public void SetEmpresaUsuario(List<Empresa> empresas) { _empresas = empresas; }
-        public void SetFuncionariosUsuario(List<Funcionario> funcionarios) { _funcionarios = funcionarios; }
-        public void SetFolhaPagamentoUsuario(List<FolhaPagamento> folhas) { _folhas = folhas; }
     }
 
 }
