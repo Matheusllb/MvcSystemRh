@@ -83,64 +83,154 @@
 
         <Label Name="lblCaminho"
                Content="Folha de Pagamento - Cáculos - Individual"
-               VerticalAlignment="Top"
                Margin="275,50,280,0"
-               Height="30"
-               Foreground="LightGray"/>
+               Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
 
 
-        <TextBox Text="Mês de Fechamento *"
+        <TextBox Name="txtDataFechamento"
+                 Text=""
                  Background="Transparent"
                  BorderBrush="Transparent"
                  BorderThickness="0"
-                 Margin="146,141,482,0"
-                 Foreground="White" Height="16" VerticalAlignment="Top"/>
+                 Margin="146,186,0,0"
+                 Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Data de Fechamento *" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
         <DatePicker x:Name="dpDataFechamento"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     BorderThickness="0"
-                    Foreground="#282828"
-                    Margin="318,132,455,0" Height="25" VerticalAlignment="Top">
-        </DatePicker>
+                    Margin="333,177,0,0" LostFocus="dpDataFech_LostFocus" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
 
         <Border CornerRadius="3"
                 Background="#282828" 
-                Margin="146,157,437,0"
-                BorderBrush="Black" Height="7" VerticalAlignment="Top"/>
+                Margin="146,202,0,0"
+                BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox Name="txtDataPagamento"
-                 Text="Data do Pagamento *"
-                 Margin="432,141,196,0"
+                 Text=""
+                 Margin="432,186,0,0"
                  Background="Transparent"
                  BorderBrush="Transparent"
                  BorderThickness="0"
-                 Foreground="White" Height="16" VerticalAlignment="Top"/>
+                 Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Data de Pagamento *" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
         <DatePicker x:Name="dpDataPagamento"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     BorderThickness="0"
                     Foreground="#282828"
-                    Margin="604,132,170,0" Height="25" VerticalAlignment="Top"/>
+                    Margin="615,177,0,0" LostFocus="dpDataPag_LostFocus" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
 
         <Border CornerRadius="3"
                 Background="#282828" 
-                Margin="432,157,150,0"
-                BorderBrush="Black" Height="7" VerticalAlignment="Top"/>
+                Margin="432,202,0,0"
+                BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
 
         <TextBox x:Name="txtCodigoEmpresa"
-                 Text="Código da Empresa *"
+                 Text=""
                  Background="Transparent"
                  BorderBrush="Transparent"
                  BorderThickness="0"
                  Foreground="White"
-                 Margin="146,248,463,0" Height="19" VerticalAlignment="Top"/>
+                 Margin="146,293,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Código da Empresa *" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
         <Border CornerRadius="3"
                 Background="#282828" 
-                Margin="146,267,437,0"
-                BorderBrush="Black" Height="8" VerticalAlignment="Top"/>
+                Margin="146,312,0,0"
+                BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox x:Name="txtCodigoFuncionario"
                  Text="Código do Funcionário *"
@@ -148,25 +238,56 @@
                  BorderBrush="Transparent"
                  BorderThickness="0"
                  Foreground="White"
-                 Margin="432,248,177,0" Height="19" VerticalAlignment="Top"/>
+                 Margin="432,293,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    <TextBlock x:Name="PlaceholderText" Text="Código da Funcionario *" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Foreground="LightGray" Visibility="Collapsed"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsFocused" Value="False"/>
+                                            <Condition Property="Text" Value=""/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
         <Border CornerRadius="3"
                 Background="#282828" 
-                Margin="432,267,150,0"
-                BorderBrush="Black" Height="8" VerticalAlignment="Top"/>
+                Margin="432,312,0,0"
+                BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
 
         <Button Name="btnContinuar"
                 Click="btnContinuar_Click"
-                Width="40"
-                Height="40"
+                Width="28"
+                Height="28"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White"
-                Margin="600,0,150,53" VerticalAlignment="Bottom">
+                Margin="0,0,117,47" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <iconPacks:PackIconMaterial Kind="ArrowRightCircle"
-                                        Width="30"
-                                        Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        Width="20"
+                                        Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         </Button>
 
@@ -174,10 +295,18 @@
                    Background="Transparent"
                    Foreground="White"
                    Text="Continuar"
-                   FontSize="20"
-                   Margin="507,0,200,60"
-                   VerticalAlignment="Bottom" Height="26"/>
+                   FontSize="15"
+                   Margin="0,0,150,47"
+                   VerticalAlignment="Bottom" Height="23" HorizontalAlignment="Right" Width="75"/>
 
+        <iconPacks:PackIconMaterial Kind="Numeric1Circle" Margin="195,98,0,0" Height="20" Width="20" Foreground="#7BD2F9"/>
+        <Label Width="116" Height="26" Content="Informações gerais" Margin="221,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <iconPacks:PackIconMaterial Kind="Numeric2Circle" Margin="342,98,0,0" Height="20" Width="20" Foreground="#282828"/>
+        <Label Height="26" Width="58" Content="Empresa" Margin="367,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <iconPacks:PackIconMaterial Kind="Numeric3Circle" Margin="430,98,0,0" Height="20" Width="20" Foreground="#282828"/>
+        <Label Height="26" Width="76"  Content="Funcionário" Margin="455,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <iconPacks:PackIconMaterial Kind="Numeric4Circle" Margin="536,98,0,0" Height="20" Width="20" Foreground="#282828"/>
+        <Label Height="26" Width="39" Content="Folha" Margin="561,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
     </Grid>
 </Window>

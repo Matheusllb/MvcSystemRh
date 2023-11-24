@@ -31,7 +31,10 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            menu.WindowState = WindowState;
+            Close();
         }
 
         private void btnConfig_Click(object sender, RoutedEventArgs e)
@@ -43,5 +46,20 @@ namespace Sistema.Desktop.View.ViewFolha
         {
 
         }
+
+        private void dpDataFech_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txtDataFechamento.Text = string.Empty;
+            txtDataFechamento.Text = dpDataFechamento.Text.Trim();
+            dpDataFechamento.Focusable = true;
+        }
+
+        private void dpDataPag_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txtDataPagamento.Text = string.Empty;
+            txtDataPagamento.Text = dpDataPagamento.Text.Trim();
+            dpDataPagamento.Focusable = true;
+        }
+
     }
 }

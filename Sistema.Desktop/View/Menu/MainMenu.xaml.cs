@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Sistema.Desktop.View.ViewBeneficioDesconto;
+using Sistema.Desktop.View.ViewFolha;
 using Sistema.Desktop.View.ViewTelaEmpresa;
 using Sistema.Desktop.View.ViewTelaFuncionario;
 
@@ -53,7 +54,10 @@ namespace Sistema.Desktop
 
         private void Ir_Para_FolhaPagamento_Click(object sender, RoutedEventArgs e)
         {
-
+            TelaFolhaPagamento folha = new TelaFolhaPagamento();
+            folha.Show();
+            folha.WindowState = WindowState;
+            Close();
         }
 
         private void btnConfig_Click(object sender, RoutedEventArgs e)
