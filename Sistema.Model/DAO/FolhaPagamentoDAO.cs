@@ -11,6 +11,10 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 {
     public FolhaPagamentoDAO() : base("FolhaPagamento")
     {
+        SecondTable = "Funcionario";
+        ThirdTable = "Pessoa";
+        FourthTable = "BDFuncionario";
+        FifthTable = "BeneficioDesconto";
     }
 
     public List<FolhaPagamento> ProcuraFolhaPorDataFechamento(DateTime fechamento)
@@ -110,13 +114,12 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
                 reader["TotalVencimentos"] != DBNull.Value &&
                 reader["TotalDescontos"] != DBNull.Value &&
                 reader["TotalLiquido"] != DBNull.Value &&
-                reader["Funcionario"] != DBNull.Value &&
+                reader["IdFuncionario"] != DBNull.Value &&
                 reader["SalarioINSS"] != DBNull.Value &&
                 reader["ValorFGTS"] != DBNull.Value &&
-                reader["Ativo"] != DBNull.Value &&
-                reader["ValorIRRF"] != DBNull.Value)
+                reader["Ativo"] != DBNull.Value)
             {
-                int vIdF = (int)reader["Id"];
+                int vId = (int)reader["Id"];
                 int vIdEmpresa = (int)reader["IdEmpresa"];
                 DateTime vDataFechamento = (DateTime)reader["DataFechamento"];
                 DateTime vDataPagamento = (DateTime)reader["DataPagamento"];
@@ -124,78 +127,80 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
                 decimal vTotalDescontos = (decimal)reader["TotalDescontos"];
                 decimal vTotalLiquido = (decimal)reader["TotalLiquido"];
 
-                Funcionario funcionario = new Funcionario
+                Funcionario funcionario = null;
+                if (reader["Id"] != DBNull.Value &&
+                    reader["IdPessoa"] != DBNull.Value &&
+                    reader["Email"] != DBNull.Value &&
+                    reader["DataAdmissao"] != DBNull.Value &&
+                    reader["IdEmpresa"] != DBNull.Value &&
+                    reader["Cargo"] != DBNull.Value &&
+                    reader["SalarioBruto"] != DBNull.Value &&
+                    reader["Ativo"] != DBNull.Value &&
+                    reader["Endereco"] != DBNull.Value &&
+                    reader["Nome"] != DBNull.Value &&
+                    reader["Cpf"] != DBNull.Value &&
+                    reader["DataNascimento"] != DBNull.Value &&
+                    reader["EstadoCivil"] != DBNull.Value)
                 {
-                    Id = Convert.ToInt32(reader["Id"]),
-                    IdPessoa = Convert.ToInt32(reader["IdPessoa"]),
-                    Email = reader["Email"].ToString(),
-                    DataAdmissao = Convert.ToDateTime(reader["DataAdmissao"]),
-                    IdEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
-                    Cargo = reader["Cargo"].ToString(),
-                    SalarioBruto = Convert.ToDecimal(reader["SalarioBruto"]),
-                    CPF = reader["Cpf"].ToString(),
-                    Endereco = reader["Endereco"].ToString(),
-                    Nome = reader["Nome"].ToString(),
-                    DataNascimento = Convert.ToDateTime(reader["DataNascimento"]),
-                    EstadoCivilP = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()),
-                    Ativo = Convert.ToBoolean(reader["Ativo"]),
-                };
+                    if (!(bool)reader["Ativo"])
+                    {
+                        funcionario = null;
+                    }
+                    else
+                    {
+                        funcionario = new Funcionario
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            IdPessoa = Convert.ToInt32(reader["IdPessoa"]),
+                            Email = reader["Email"].ToString(),
+                            DataAdmissao = Convert.ToDateTime(reader["DataAdmissao"]),
+                            IdEmpresa = Convert.ToInt32(reader["IdEmpresa"]),
+                            Cargo = reader["Cargo"].ToString(),
+                            SalarioBruto = Convert.ToDecimal(reader["SalarioBruto"]),
+                            CPF = reader["Cpf"].ToString(),
+                            Endereco = reader["Endereco"].ToString(),
+                            Nome = reader["Nome"].ToString(),
+                            DataNascimento = Convert.ToDateTime(reader["DataNascimento"]),
+                            EstadoCivilP = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), reader["EstadoCivil"].ToString()),
+                            Ativo = Convert.ToBoolean(reader["Ativo"]),
+                        };
+                    }
+                }
+                else
+                {
+                    funcionario = null;
+                }
 
                 decimal vSalarioINSS = (decimal)reader["SalarioINSS"];
                 decimal vValorFGTS = (decimal)reader["ValorFGTS"];
-                decimal vValorIRRF = (decimal)reader["ValorIRRF"];
                 List<string> itens = new List<string>();
 
-                FolhaPagamento folha = new FolhaPagamento
-                {
-                    Id = vIdF,
-                    IdEmpresa = vIdEmpresa,
-                    DataFechamento = vDataFechamento,
-                    DataPagamento = vDataPagamento,
-                    TotalVencimentos = vTotalVencimentos,
-                    TotalDescontos = vTotalDescontos,
-                    TotalLiquido = vTotalLiquido,
-                    Funcionario = funcionario,
-                    SalarioINSS = vSalarioINSS,
-                    ValorFGTS = vValorFGTS,
-                    ValorIRRF = vValorIRRF,
-                    Itens = itens
-                };
+                FolhaPagamento folha = new FolhaPagamento(vId, vIdEmpresa, vDataFechamento, vDataPagamento, vTotalVencimentos, vTotalDescontos, vTotalLiquido, funcionario, vSalarioINSS, vValorFGTS, itens);
 
-                using (SqlConnection connection = ConnectionManager.GetConnection())
+                do
                 {
-                    string query = @"
-                    SELECT bd.Descricao, bd.Valor, bd.Desconto
-                    FROM BDFuncionario bdf
-                    JOIN BeneficioDesconto bd ON bdf.Id = bd.Id
-                    WHERE bdf.Id = @Id";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    if (reader["Descricao"] != DBNull.Value && reader["Valor"] != DBNull.Value && reader["Desconto"] != DBNull.Value)
                     {
-                        command.Parameters.AddWithValue("@Id", folha.Id);
+                        string descricao = reader["Descricao"].ToString();
+                        decimal valor = (decimal)reader["Valor"];
+                        bool desconto = (bool)reader["Desconto"];
 
-                        using (SqlDataReader itemReader = command.ExecuteReader())
-                        {
-                            while (itemReader.Read())
-                            {
-                                string descricao = itemReader["Descricao"].ToString();
-                                decimal valor = (decimal)itemReader["Valor"];
-                                bool desconto = (bool)itemReader["Desconto"];
+                        string tipoItem = desconto ? "(desconto)" : "(benefício)";
 
-                                // Adiciona "(desconto)" ou "(benefício)" com base no valor "desconto"
-                                string tipoItem = desconto ? "(desconto)" : "(benefício)";
+                        string itemFormatado = $"Descrição: \"{descricao} {tipoItem}\", Valor: {(desconto ? "-" : "+")}{valor.ToString("0.00")}";
 
-                                // Cria a representação completa do item
-                                string itemFormatado = $"Descrição: \"{descricao} {tipoItem}\", Valor: {(desconto ? "-" : "+")}{valor.ToString("0.00")}";
+                        folha.Itens.Add(itemFormatado);
 
-                                // Adiciona o item formatado à lista de itens
-                                folha.Itens.Add(itemFormatado);
-                            }
-                        }
                     }
-                }
+                    else
+                    {
+                        return null;
+                    }
+
+                } while (reader.Read());
 
                 return folha;
+
             }
             else
             {
@@ -209,3 +214,7 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
     }
 
 }
+
+
+
+

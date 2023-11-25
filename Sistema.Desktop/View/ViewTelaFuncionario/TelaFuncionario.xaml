@@ -61,6 +61,7 @@
           ItemsSource="{Binding ElementName=WindowFuncionario, Path=Funcionarios}">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Código" Width="Auto" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Nome" Width="Auto" DisplayMemberBinding="{Binding Nome}"/>
                     <GridViewColumn Header="Cargo" Width="Auto" DisplayMemberBinding="{Binding Cargo}"/>
                     <GridViewColumn Header="Empresa" Width="Auto" DisplayMemberBinding="{Binding IdEmpresa}"/>

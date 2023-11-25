@@ -46,6 +46,7 @@
                   ItemsSource="{Binding ElementName=WindowEmpresa, Path=empresas}">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Código" Width="Auto" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Nome" Width="Auto" DisplayMemberBinding="{Binding Nome}"/>
                     <GridViewColumn Header="Cnpj" Width="Auto" DisplayMemberBinding="{Binding Cnpj}"/>
                     <GridViewColumn Header="Setor" Width="Auto" DisplayMemberBinding="{Binding Setor}"/>

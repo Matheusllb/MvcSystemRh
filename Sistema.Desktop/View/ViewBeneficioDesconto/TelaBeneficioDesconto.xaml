@@ -47,6 +47,7 @@
                   ItemsSource="{Binding ElementName=WindowBD, Path=BfDs}">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Código" Width="Auto" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Descrição" Width="Auto" DisplayMemberBinding="{Binding Descricao}"/>
                     <GridViewColumn Header="Desconto" Width="Auto" DisplayMemberBinding="{Binding Desconto}"/>
                     <GridViewColumn Header="Valor" Width="Auto" DisplayMemberBinding="{Binding Valor}"/>

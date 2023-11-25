@@ -46,6 +46,7 @@
                   ItemsSource="{Binding ElementName=WindowFolha, Path=Folhas}">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Código" Width="Auto" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Código da Empresa" Width="Auto" DisplayMemberBinding="{Binding IdEmpresa}"/>
                     <GridViewColumn Header="Fechamento" Width="Auto" DisplayMemberBinding="{Binding DataFechamento}"/>
                     <GridViewColumn Header="Pagamento" Width="Auto" DisplayMemberBinding="{Binding DataPagamento}"/>

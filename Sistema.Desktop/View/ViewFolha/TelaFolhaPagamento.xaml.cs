@@ -53,23 +53,29 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(txtCodigoEmpresa.Text, out idEmpresa) && int.TryParse(txtCodigoFuncionario.Text, out idFuncionario))
+            try
             {
-                if (DateTime.TryParse(txtDataFechamento.Text, out fechamento) && DateTime.TryParse(txtDataPagamento.Text, out pagamento))
+                if (int.TryParse(txtCodigoEmpresa.Text, out idEmpresa) && int.TryParse(txtCodigoFuncionario.Text, out idFuncionario))
                 {
-                    TelaFolhaEmpresa telaFolhaEmpresa = new TelaFolhaEmpresa(this);
-                    telaFolhaEmpresa.Show();
-                    telaFolhaEmpresa.WindowState = WindowState;
-                    Hide();
+                    if (DateTime.TryParse(txtDataFechamento.Text, out fechamento) && DateTime.TryParse(txtDataPagamento.Text, out pagamento))
+                    {
+                        TelaFolhaEmpresa telaFolhaEmpresa = new TelaFolhaEmpresa(this);
+                        telaFolhaEmpresa.Show();
+                        telaFolhaEmpresa.WindowState = WindowState;
+                        Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, insira datas válidas.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, insira datas válidas.");
+                    MessageBox.Show("Por favor, insira IDs válidos.");
                 }
-            }
-            else
+            }catch(Exception ex)
             {
-                MessageBox.Show("Por favor, insira IDs válidos.");
+                MessageBox.Show("Exceção " + ex.Message);
             }
         }
 

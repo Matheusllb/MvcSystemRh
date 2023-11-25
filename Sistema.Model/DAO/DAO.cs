@@ -15,6 +15,9 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
     protected DbConnectionManager connectionManager;
     protected string tableName;
     protected string secondTable;
+    protected string thirdTable;
+    protected string fourthTable;
+    protected string fifthTable;
 
     public DAO(string tableName)
     {
@@ -40,6 +43,26 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         get => secondTable;
         set { secondTable = value; }
     }
+    
+    public string ThirdTable
+    {
+        get => thirdTable;
+        set { thirdTable = value; }
+    }
+
+     
+    public string FourthTable
+    {
+        get => fourthTable;
+        set { fourthTable = value; }
+    }
+
+     
+    public string FifthTable
+    {
+        get => fifthTable;
+        set { fifthTable = value; }
+    }
 
 
     public List<T> GetAll()
@@ -50,13 +73,27 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         {
             if (!string.IsNullOrEmpty(SecondTable))
             {
-                query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id";
+                if (!string.IsNullOrEmpty(ThirdTable) && !string.IsNullOrEmpty(FourthTable) && !string.IsNullOrEmpty(FifthTable))
+                {
+                    query = $"SELECT FolhaPagamento.*, Funcionario.*, Pessoa.*, bd.Descricao, bd.Valor, bd.Desconto " +
+                            $"FROM {TableName} " +
+                            $"INNER JOIN {SecondTable} ON {TableName}.IdFuncionario = {SecondTable}.Id " +
+                            $"INNER JOIN {ThirdTable} ON {SecondTable}.IdPessoa = {ThirdTable}.Id " +
+                            $"LEFT JOIN {FourthTable} bdf ON {SecondTable}.Id = bdf.IdFuncionario " +
+                            $"LEFT JOIN {FifthTable} bd ON bdf.IdBeneficioDesconto = bd.Id";
+
+                }
+                else
+                {
+                    query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id";
+                }
             }
             else
             {
                 query = $"SELECT * FROM {TableName}";
 
             }
+
             using (SqlCommand command = new SqlCommand(query, ConnectionManager.GetConnection()))
             {
                 ConnectionManager.OpenConnection();
@@ -98,7 +135,7 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
             string query = string.Empty;
             if (!string.IsNullOrEmpty(SecondTable))
             {
-                query = $"SELECT * FROM { TableName} JOIN { SecondTable} ON { TableName}.IdPessoa = { SecondTable}.Id WHERE { TableName}.Id = @Id";
+                query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id WHERE {TableName}.Id = @Id";
             }
             else
             {

@@ -314,9 +314,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\ViewBeneficioDesconto\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Sistema.Model\Sistema.Model.csproj">
       <Project>{34dadf2d-f9fc-40f2-ae9e-af0e187192f5}</Project>

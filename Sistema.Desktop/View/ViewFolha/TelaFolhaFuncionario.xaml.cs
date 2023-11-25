@@ -29,17 +29,11 @@ namespace Sistema.Desktop.View.ViewFolha
 
         public TelaFolhaFuncionario(TelaFolhaEmpresa telaFolhaEmpresa)
         {
-            InitializeComponent();
             this.telaFolhaEmpresa = telaFolhaEmpresa;
 
-            try
-            {
-                funcionario = controller.GetById(telaFolhaEmpresa.telaFolhaPagamento.idFuncionario);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message);
-            }
+            funcionario = controller.GetById(telaFolhaEmpresa.telaFolhaPagamento.idFuncionario);
+
+            InitializeComponent();
         }
 
         private void btnAnterior_Click(object sender, RoutedEventArgs e)

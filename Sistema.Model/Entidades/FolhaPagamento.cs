@@ -23,8 +23,20 @@ namespace Sistema.Model.Entidades
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public FolhaPagamento()
+        public FolhaPagamento(int id,int idEmpresa, DateTime dataFechamento, DateTime dataPagamento, decimal totalVencimentos, decimal totalDescontos, decimal totalLiquido, Funcionario funcionario, decimal salarioINSS, decimal valorFGTS, List<string> itens)
         {
+            Id = id;
+            _idEmpresa = idEmpresa;
+            _dataFechamento = dataFechamento;
+            _dataPagamento = dataPagamento;
+            _totalVencimentos = totalVencimentos;
+            _totalDescontos = totalDescontos;
+            _totalLiquido = totalLiquido;
+            _funcionario = funcionario;
+            _salarioINSS = salarioINSS;
+            _valorFGTS = valorFGTS;
+            _valorIRRF = (decimal)1000;
+            _itens = itens;
         }
 
         public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
@@ -198,7 +210,7 @@ namespace Sistema.Model.Entidades
 
         public decimal CalculaINSS()
         {
-            if (Funcionario.SalarioBruto <= 1320)
+            if (Funcionario.SalarioBruto <= (decimal)1320)
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.075;
             }
