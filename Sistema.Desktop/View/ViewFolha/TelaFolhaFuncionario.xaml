@@ -1,0 +1,210 @@
+﻿<Window x:Class="Sistema.Desktop.View.ViewFolha.TelaFolhaFuncionario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sistema.Desktop.View.ViewFolha"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        x:Name="WindowFolhaFuncionario" Height="450" Width="800">
+    <Grid>
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#353535" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border Grid.RowSpan="2"
+                    Height="50"
+                    VerticalAlignment="Top">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
+                        <GradientStop Color="#FF946DED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Button x:Name="btnVoltar"
+                        Height="50"
+                        Width="50"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click">
+                    <iconPacks:PackIconMaterial Kind="ArrowLeft"
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
+                </Button>
+            </Border>
+        </Border>
+
+        <Button Name="btnMenu"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnMenu_Click" Margin="52,0,0,0">
+            <iconPacks:PackIconMaterial Kind="Home"
+                                        Height="30"
+                                        Width="26"/>
+
+        </Button>
+
+        <Button Name="btnConfig"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnConfig_Click">
+            <iconPacks:PackIconMaterial Kind="Cog"
+                                        Height="20"
+                                        Width="16"/>
+        </Button>
+
+
+        <Border Height="30"
+                VerticalAlignment="Top" Margin="0,50,0,0">
+            <Border.Background>
+                <SolidColorBrush Color="#282828"/>
+            </Border.Background>
+        </Border>
+
+        <Label Name="lblCaminho"
+               Content="Folha de Pagamento - Cáculos - Individual"
+               Margin="275,50,280,0"
+               Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
+
+        <TextBox Name="txtCodFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Id}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="24,149,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtNomeFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Nome}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="24,196,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtCPFFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.CPF}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="24,246,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtDataNascFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.DataNascimento}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="24,296,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtECFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.EstadoCivilP}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="279,149,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtEnderecoFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Endereco}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="279,198,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtEmailFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Email}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="279,246,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtDataAdmissãoFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.DataAdmissao}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="279,296,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtCodEmpresaF"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.IdEmpresa}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="534,149,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtCargoFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Cargo}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="536,197,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <TextBox Name="txtSalarioFuncionario"
+         Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.SalarioBruto}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="536,247,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+
+        <Border CornerRadius="3" Background="#282828" Margin="279,263,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="279,312,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <Border CornerRadius="3" Background="#282828" Margin="24,312,0,0" BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <Border CornerRadius="3" Background="#282828" Margin="24,263,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="534,263,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="279,214,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="24,214,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="24,165,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="279,165,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="534,214,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="534,165,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+
+        <Button Name="btnContinuar"
+                Click="btnContinuar_Click"
+                Width="28"
+                Height="28"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White"
+                Margin="0,0,117,47" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <iconPacks:PackIconMaterial Kind="ArrowRightCircle"
+                                        Width="20"
+                                        Height="20" RenderTransformOrigin="1.4,1.25"/>
+
+        </Button>
+
+        <TextBlock x:Name="txbContinuar"
+                   Background="Transparent"
+                   Foreground="White"
+                   Text="Continuar"
+                   FontSize="15"
+                   Margin="0,0,150,47"
+                   VerticalAlignment="Bottom" Height="23" HorizontalAlignment="Right" Width="75"/>
+
+        <iconPacks:PackIconMaterial Kind="Numeric1Circle" Margin="195,98,0,0" Height="20" Width="20" Foreground="#282828"/>
+        <Label Width="116" Height="26" Content="Informações gerais" Margin="221,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <iconPacks:PackIconMaterial Kind="Numeric2Circle" Margin="342,98,0,0" Height="20" Width="20" Foreground="#282828"/>
+        <Label Height="26" Width="58" Content="Empresa" Margin="367,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <iconPacks:PackIconMaterial Kind="Numeric3Circle" Margin="430,98,0,0" Height="20" Width="20" Foreground="#FF84A4F4"/>
+        <Label Height="26" Width="76"  Content="Funcionário" Margin="455,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <iconPacks:PackIconMaterial Kind="Numeric4Circle" Margin="536,98,0,0" Height="20" Width="20" Foreground="#282828"/>
+        <Label Height="26" Width="39" Content="Folha" Margin="561,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBlock x:Name="txbAnterior"
+           Background="Transparent"
+           Foreground="White"
+           Text="Voltar"
+           FontSize="15"
+           Margin="155,0,0,47"
+           VerticalAlignment="Bottom" Height="23" HorizontalAlignment="Left" Width="50"/>
+
+        <Button Name="btnAnterior"
+                Click="btnAnterior_Click"
+                Width="28"
+                Height="28"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White"
+                Margin="113,0,0,47" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Left">
+            <iconPacks:PackIconMaterial Kind="ArrowLeftCircle"
+                        Width="20"
+                        Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Button>
+
+        <Label Content="Código"
+               Foreground="#FF84A4F4"
+               Margin="24,170,734,243" 
+               FontFamily="Helvetica" 
+               FontSize="10"/>
+
+
+
+        <Label Content="Nome" Foreground="#FF84A4F4" Margin="24,219,732,193" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="CPF" Foreground="#FF84A4F4" Margin="24,268,731,146" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Data de Nascimento" Foreground="#FF84A4F4" Margin="24,317,673,94" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Estado Civil" Foreground="#FF84A4F4" Margin="279,170,461,241" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Endereço" Foreground="#FF84A4F4" Margin="279,219,455,190" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="E-Mail" Foreground="#FF84A4F4" Margin="279,267,452,145" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Data de Admissão" Foreground="#FF84A4F4" Margin="279,317,429,93" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Código da Empresa" Foreground="#FF84A4F4" Margin="534,170,168,242" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Cargo" Foreground="#FF84A4F4" Margin="534,219,198,192" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Salário Bruto" Foreground="#FF84A4F4" Margin="534,268,197,143" FontFamily="Helvetica" FontSize="10"/>
+    </Grid>
+</Window>

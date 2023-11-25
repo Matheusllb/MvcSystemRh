@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema.Model.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,11 @@ namespace Sistema.Desktop.View.ViewFolha
     /// </summary>
     public partial class TelaFolhaPagamento : Window
     {
+        public int idEmpresa;
+        public int idFuncionario;
+        public DateTime fechamento;
+        public DateTime pagamento;
+
         public TelaFolhaPagamento()
         {
             InitializeComponent();
@@ -26,7 +32,10 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {
-
+            TelaFolhaPrincipal principal = new TelaFolhaPrincipal();
+            principal.Show();
+            principal.WindowState = WindowState;
+            Close();
         }
 
         private void btnMenu_Click(object sender, RoutedEventArgs e)
@@ -44,7 +53,24 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-
+            if (int.TryParse(txtCodigoEmpresa.Text, out idEmpresa) && int.TryParse(txtCodigoFuncionario.Text, out idFuncionario))
+            {
+                if (DateTime.TryParse(txtDataFechamento.Text, out fechamento) && DateTime.TryParse(txtDataPagamento.Text, out pagamento))
+                {
+                    TelaFolhaEmpresa telaFolhaEmpresa = new TelaFolhaEmpresa(this);
+                    telaFolhaEmpresa.Show();
+                    telaFolhaEmpresa.WindowState = WindowState;
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, insira datas válidas.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, insira IDs válidos.");
+            }
         }
 
         private void dpDataFech_LostFocus(object sender, RoutedEventArgs e)

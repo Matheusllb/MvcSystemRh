@@ -1,4 +1,4 @@
-﻿<Window x:Class="Sistema.Desktop.View.ViewFolha.TelaEmpresa"
+﻿<Window x:Class="Sistema.Desktop.View.ViewFolha.TelaFolhaEmpresa"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -87,12 +87,7 @@
                Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
 
         <TextBox Name="txtCodEmpresa"
-                 Text=""
-                 Background="Transparent"
-                 BorderBrush="Transparent"
-                 BorderThickness="0"
-                 Margin="145,150,0,0"
-                 Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Id}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="145,150,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
         <Border CornerRadius="3"
                 Background="#282828" 
@@ -100,12 +95,7 @@
                 BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox Name="txtNomeEmpresa"
-                 Text=""
-                 Margin="432,150,0,0"
-                 Background="Transparent"
-                 BorderBrush="Transparent"
-                 BorderThickness="0"
-                 Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Nome}" Margin="432,150,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
         <Border CornerRadius="3"
                 Background="#282828" 
@@ -113,12 +103,7 @@
                 BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
 
         <TextBox x:Name="txtCNPJEmpresa"
-                 Text=""
-                 Background="Transparent"
-                 BorderBrush="Transparent"
-                 BorderThickness="0"
-                 Foreground="White"
-                 Margin="145,257,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Cnpj}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Margin="145,257,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
 
         <Border CornerRadius="3"
                 Background="#282828" 
@@ -126,12 +111,7 @@
                 BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox x:Name="txtSetorEmpresa"
-                 Text=""
-                 Background="Transparent"
-                 BorderBrush="Transparent"
-                 BorderThickness="0"
-                 Foreground="White"
-                 Margin="432,257,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Setor}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Margin="432,257,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
 
         <Border CornerRadius="3"
                 Background="#282828" 
@@ -139,12 +119,7 @@
                 BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
 
         <TextBox x:Name="txtEmailEmpresa"
-            Text=""
-            Background="Transparent"
-            BorderBrush="Transparent"
-            BorderThickness="0"
-            Foreground="White"
-            Margin="145,205,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+            Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Email}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Margin="145,205,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
 
         <Border CornerRadius="3"
             Background="#282828" 
@@ -152,12 +127,7 @@
             BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox x:Name="txtTelefoneEmpresa"
-            Text=""
-            Background="Transparent"
-            BorderBrush="Transparent"
-            BorderThickness="0"
-            Foreground="White"
-            Margin="144,310,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+            Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Telefone}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White"  Margin="144,310,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
 
         <Border CornerRadius="3"
             Background="#282828" 
@@ -165,12 +135,7 @@
             BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox x:Name="txtEnderecoEmpresa"
-            Text=""
-            Margin="432,0,0,0"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            BorderThickness="0"
-            Foreground="White" Height="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="172"/>
+            Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Endereco}" Margin="432,0,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Height="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="172"/>
 
         <Border CornerRadius="3"
             Background="#282828" 

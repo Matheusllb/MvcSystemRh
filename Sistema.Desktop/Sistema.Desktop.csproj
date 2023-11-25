@@ -168,11 +168,23 @@
     <Compile Include="View\ViewBeneficioDesconto\TelaCadastroBD.xaml.cs">
       <DependentUpon>TelaCadastroBD.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewFolha\TelaFolhaEmpresa.xaml.cs">
+      <DependentUpon>TelaFolhaEmpresa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewFolha\TelaFolha.xaml.cs">
       <DependentUpon>TelaFolha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewFolha\TelaFolhaFuncionario.xaml.cs">
+      <DependentUpon>TelaFolhaFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewFolha\TelaFolhaPagamento.xaml.cs">
       <DependentUpon>TelaFolhaPagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewFolha\TelaFolhaPrincipal.xaml.cs">
+      <DependentUpon>TelaFolhaPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewFolha\TelaIndividualColetivo.xaml.cs">
+      <DependentUpon>TelaIndividualColetivo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewTelaEmpresa\TelaCadastroEmpresa.xaml.cs">
       <DependentUpon>TelaCadastroEmpresa.xaml</DependentUpon>
@@ -234,11 +246,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ViewFolha\TelaFolhaEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ViewFolha\TelaFolha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ViewFolha\TelaFolhaFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ViewFolha\TelaFolhaPagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewFolha\TelaFolhaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewFolha\TelaIndividualColetivo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

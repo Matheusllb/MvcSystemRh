@@ -34,7 +34,10 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {
-
+            TelaFolhaPrincipal principal = new TelaFolhaPrincipal();
+            principal.Show();
+            principal.WindowState = WindowState;
+            Close();
         }
 
         private void btnAtualizar_Click(object sender, RoutedEventArgs e)

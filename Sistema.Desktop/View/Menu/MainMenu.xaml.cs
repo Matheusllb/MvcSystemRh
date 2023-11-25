@@ -54,7 +54,7 @@ namespace Sistema.Desktop
 
         private void Ir_Para_FolhaPagamento_Click(object sender, RoutedEventArgs e)
         {
-            TelaFolhaPagamento folha = new TelaFolhaPagamento();
+            TelaFolhaPrincipal folha = new TelaFolhaPrincipal();
             folha.Show();
             folha.WindowState = WindowState;
             Close();

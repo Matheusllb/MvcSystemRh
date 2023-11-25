@@ -233,7 +233,7 @@
                 BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
         <TextBox x:Name="txtCodigoFuncionario"
-                 Text="Código do Funcionário *"
+                 Text=""
                  Background="Transparent"
                  BorderBrush="Transparent"
                  BorderThickness="0"

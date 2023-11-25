@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Sistema.Desktop.View.ViewFolha
 {
     /// <summary>
-    /// Lógica interna para TelaEmpresa.xaml
+    /// Lógica interna para TelaIndividualColetivo.xaml
     /// </summary>
-    public partial class TelaEmpresa : Window
+    public partial class TelaIndividualColetivo : Window
     {
-        public TelaEmpresa()
+        public TelaIndividualColetivo()
         {
             InitializeComponent();
         }
