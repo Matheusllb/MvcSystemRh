@@ -43,21 +43,21 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
         get => secondTable;
         set { secondTable = value; }
     }
-    
+
     public string ThirdTable
     {
         get => thirdTable;
         set { thirdTable = value; }
     }
 
-     
+
     public string FourthTable
     {
         get => fourthTable;
         set { fourthTable = value; }
     }
 
-     
+
     public string FifthTable
     {
         get => fifthTable;
@@ -139,7 +139,10 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
                 {
                     query = $"SELECT * FROM {TableName} WHERE Id = @Id";
                 }
-                query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id WHERE {TableName}.Id = @Id";
+                else
+                {
+                    query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id WHERE {TableName}.Id = @Id";
+                }
             }
             else
             {

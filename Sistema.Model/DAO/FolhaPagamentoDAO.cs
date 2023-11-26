@@ -74,27 +74,30 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
         using (SqlConnection connection = ConnectionManager.GetConnection())
         {
             string query = @"
-            SELECT
-                fP.IdFolhaPag, fP.IdEmpresa, fP.DataFechamento, fP.DataPagamento, fP.TotalVencimentos, fP.TotalDescontos, fP.TotalLiquido,
-                f.IdPessoa, f.IdFuncionario, f.Ativo, p.Endereco, p.Nome, p.Cpf, p.DataNascimento, p.EstadoCivil, f.Email, f.DataAdmissao, f.Cargo, f.SalarioBruto,
-                bF.IdFuncionario,~bF.IdBeneficioDesconto,
-                bD.Descricao, bD.Valor, bD.Desconto
-            FROM FolhaPagamento fP
-            JOIN Funcionario f ON fP.IdFuncionario = f.IdFuncionario
-            JOIN Pessoa p ON f.IdPessoa = p.IdPessoa
-            JOIN BDFuncionario bF ON f.IdFuncionario = bF.IdFuncionario
-            JOIN BeneficioDesconto bD ON bD.IdBeneficioDesconto = bF.IdBeneficioDesconto
-            WHERE LOWER(p.Nome) LIKE @searchTerm OR LOWER(bD.Descricao) LIKE @searchTerm";
+                            SELECT
+                                fP.IdFolhaPag, fP.IdEmpresa, fP.DataFechamento, fP.DataPagamento, fP.TotalVencimentos, fP.TotalDescontos, fP.TotalLiquido,
+                                f.IdPessoa, f.IdFuncionario, f.Ativo, p.Endereco, p.Nome, p.Cpf, p.DataNascimento, p.EstadoCivil, f.Email, f.DataAdmissao, f.Cargo, f.SalarioBruto,
+                                bF.IdFuncionario,~bF.IdBeneficioDesconto,
+                                bD.Descricao, bD.Valor, bD.Desconto
+                            FROM FolhaPagamento fP
+                            JOIN Funcionario f ON fP.IdFuncionario = f.IdFuncionario
+                            JOIN Pessoa p ON f.IdPessoa = p.IdPessoa
+                            JOIN BDFuncionario bF ON f.IdFuncionario = bF.IdFuncionario
+                            JOIN BeneficioDesconto bD ON bD.IdBeneficioDesconto = bF.IdBeneficioDesconto
+                            WHERE LOWER(p.Nome) LIKE @searchTerm OR LOWER(bD.Descricao) LIKE @searchTerm";
+            searchTerm = $"%{searchTerm}%";
+
             using (SqlCommand command = new SqlCommand(query, connection))
             {
+                ConnectionManager.OpenConnection();
+
                 command.Parameters.AddWithValue("@searchTerm", searchTerm);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        FolhaPagamento folhaPagamento = MapData(reader);
-                        filteredData.Add(folhaPagamento);
+                        filteredData.Add(MapData(reader));
                     }
                 }
             }

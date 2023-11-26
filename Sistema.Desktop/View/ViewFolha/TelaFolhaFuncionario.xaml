@@ -83,8 +83,8 @@
 
         <Label Name="lblCaminho"
                Content="Folha de Pagamento - Cáculos - Individual"
-               Margin="275,50,280,0"
-               Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
+               Margin="0,50,280,0"
+               Foreground="LightGray" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Width="245"/>
 
         <TextBox Name="txtCodFuncionario"
          Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Id}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="24,149,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
@@ -188,23 +188,16 @@
 
         </Button>
 
-        <Label Content="Código"
-               Foreground="#FF84A4F4"
-               Margin="24,170,734,243" 
-               FontFamily="Helvetica" 
-               FontSize="10"/>
-
-
-
-        <Label Content="Nome" Foreground="#FF84A4F4" Margin="24,219,732,193" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="CPF" Foreground="#FF84A4F4" Margin="24,268,731,146" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Data de Nascimento" Foreground="#FF84A4F4" Margin="24,317,673,94" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Estado Civil" Foreground="#FF84A4F4" Margin="279,170,461,241" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Endereço" Foreground="#FF84A4F4" Margin="279,219,455,190" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="E-Mail" Foreground="#FF84A4F4" Margin="279,267,452,145" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Data de Admissão" Foreground="#FF84A4F4" Margin="279,317,429,93" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Código da Empresa" Foreground="#FF84A4F4" Margin="534,170,168,242" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Cargo" Foreground="#FF84A4F4" Margin="534,219,198,192" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="Salário Bruto" Foreground="#FF84A4F4" Margin="534,268,197,143" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="Código" Foreground="#FF84A4F4" Margin="24,170,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="42" Height="21" VerticalAlignment="Top"/>
+        <Label Content="Nome" Foreground="#FF84A4F4" Margin="24,219,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="44" Height="22" VerticalAlignment="Top"/>
+        <Label Content="CPF" Foreground="#FF84A4F4" Margin="24,268,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="45" Height="20" VerticalAlignment="Top"/>
+        <Label Content="Data de Nascimento" Foreground="#FF84A4F4" Margin="24,317,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="103" Height="23" VerticalAlignment="Top"/>
+        <Label Content="Estado Civil" Foreground="#FF84A4F4" Margin="279,170,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="60" Height="23" VerticalAlignment="Top"/>
+        <Label Content="Endereço" Foreground="#FF84A4F4" Margin="279,219,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="66" Height="25" VerticalAlignment="Top"/>
+        <Label Content="E-Mail" Foreground="#FF84A4F4" Margin="279,267,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="69" Height="22" VerticalAlignment="Top"/>
+        <Label Content="Data de Admissão" Foreground="#FF84A4F4" Margin="279,317,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="92" Height="24" VerticalAlignment="Top"/>
+        <Label Content="Código da Empresa" Foreground="#FF84A4F4" Margin="534,170,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="98" Height="22" VerticalAlignment="Top"/>
+        <Label Content="Cargo" Foreground="#FF84A4F4" Margin="534,219,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="68" Height="23" VerticalAlignment="Top"/>
+        <Label Content="Salário Bruto" Foreground="#FF84A4F4" Margin="534,268,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="69" Height="23" VerticalAlignment="Top"/>
     </Grid>
 </Window>

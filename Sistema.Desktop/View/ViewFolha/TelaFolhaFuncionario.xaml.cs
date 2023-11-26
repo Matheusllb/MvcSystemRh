@@ -22,24 +22,43 @@ namespace Sistema.Desktop.View.ViewFolha
     /// </summary>
     public partial class TelaFolhaFuncionario : Window
     {
-        private TelaFolhaEmpresa telaFolhaEmpresa;
+        private TelaFolhaEmpresa segundaTela;
         public Funcionario funcionario;
         public FuncionarioController controller;
         public FuncionarioDAO dao = new FuncionarioDAO();
 
         public TelaFolhaFuncionario(TelaFolhaEmpresa telaFolhaEmpresa)
         {
-            this.telaFolhaEmpresa = telaFolhaEmpresa;
+            try
+            {
+                InitializeComponent();
+                segundaTela = telaFolhaEmpresa;
+                controller = new FuncionarioController(dao);
+                funcionario = controller.GetById(segundaTela.primeiraTela.idFuncionario);
 
-            funcionario = controller.GetById(telaFolhaEmpresa.telaAnterior.idFuncionario);
+                txtCodFuncionario.Text = funcionario.Id.ToString();
+                txtNomeFuncionario.Text = funcionario.Nome;
+                txtCPFFuncionario.Text = funcionario.CPF;
+                txtDataNascFuncionario.Text = funcionario.DataNascimento.ToString("dd/MM/yyyy");
+                txtECFuncionario.Text = funcionario.EstadoCivilP.ToString();
+                txtEnderecoFuncionario.Text = funcionario.Endereco;
+                txtEmailFuncionario.Text = funcionario.Email;
+                txtDataAdmissãoFuncionario.Text = funcionario.DataAdmissao.ToString("dd/MM/yyyy");
+                txtCodEmpresaF.Text = funcionario.IdEmpresa.ToString();
+                txtCargoFuncionario.Text = funcionario.Cargo;
+                txtSalarioFuncionario.Text = funcionario.SalarioBruto.ToString();
 
-            InitializeComponent();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+
         }
 
         private void btnAnterior_Click(object sender, RoutedEventArgs e)
         {
-            telaFolhaEmpresa.Show();
-            telaFolhaEmpresa.WindowState = WindowState;
+            segundaTela.Show();
+            segundaTela.WindowState = WindowState;
             Close();
         }
 

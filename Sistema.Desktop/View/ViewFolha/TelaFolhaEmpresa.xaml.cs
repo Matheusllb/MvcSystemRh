@@ -25,7 +25,7 @@ namespace Sistema.Desktop.View.ViewFolha
 
     public partial class TelaFolhaEmpresa : Window
     {
-        public TelaFolhaPagamento telaAnterior;
+        public TelaFolhaPagamento primeiraTela;
         public Empresa empresa;
         public EmpresaDAO dao = new EmpresaDAO();
         public EmpresaController controller;
@@ -35,17 +35,17 @@ namespace Sistema.Desktop.View.ViewFolha
             try
             {
                 InitializeComponent();
-                telaAnterior = telaFolhaPagamento;
+                primeiraTela = telaFolhaPagamento;
                 controller = new EmpresaController(dao);
-                empresa = controller.GetById(telaAnterior.idEmpresa);
+                empresa = controller.GetById(primeiraTela.idEmpresa);
 
                 txtCodEmpresa.Text = empresa.Id.ToString();
                 txtNomeEmpresa.Text = empresa.Nome;
                 txtCNPJEmpresa.Text = empresa.Cnpj;
                 txtSetorEmpresa.Text = empresa.Setor;
                 txtEmailEmpresa.Text = empresa.Email;
-                txtEnderecoEmpresa.Text = empresa.Endereco;
                 txtTelefoneEmpresa.Text = empresa.Telefone;
+                txtEnderecoEmpresa.Text = empresa.Endereco;
 
             }
             catch (Exception ex)
@@ -56,8 +56,8 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnAnterior_Click(object sender, RoutedEventArgs e)
         {
-            telaAnterior.Show();
-            telaAnterior.WindowState = WindowState;
+            primeiraTela.Show();
+            primeiraTela.WindowState = WindowState;
             Close();
         }
 

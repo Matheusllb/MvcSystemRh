@@ -188,18 +188,18 @@
         </Button>
 
         <Menu x:Name="menuAlterar"
-              Margin="56,70,10,260"
-              Visibility="Collapsed"
+              Margin="56,70,59,21"
+              Visibility="Visible"
               Background="#353535">
 
-            <Label Name="lblNome"
-                   Content="Nome"
+            <Label Name="lblDataFechamento"
+                   Content="Fechamento"
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="51"/>
+                   FontSize="15" Width="92"/>
 
-            <TextBox x:Name="txtNome" TextWrapping="Wrap" 
+            <TextBox x:Name="txtFechamento" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
                      FontWeight="Light"
                      FontSize="15"
@@ -207,18 +207,18 @@
                      Background="#363636"
                      BorderThickness="0"
                      Height="27" 
-                     SelectionOpacity="0.9" Width="156"
-                     Text="{Binding ElementName=listView, Path=SelectedValue.Nome, UpdateSourceTrigger=LostFocus}"/>
+                     SelectionOpacity="0.9" Width="541"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.DataFechamento, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblCnpj"
-                   Content="CNPJ"
+            <Label Name="lblDataPagamento"
+                   Content="Pagamento"
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="44"
+                   FontSize="15" Width="84"
                    Height="27"/>
 
-            <TextBox x:Name="txtCnpj" TextWrapping="Wrap" 
+            <TextBox x:Name="txtDataPagamento" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
                      FontWeight="Light"
                      FontSize="15"
@@ -226,18 +226,18 @@
                      Background="#363636"
                      BorderThickness="0" 
                      Height="27" 
-                     SelectionOpacity="0.9" Width="154"
-                     Text="{Binding ElementName=listView, Path=SelectedValue.Cnpj, UpdateSourceTrigger=LostFocus}"/>
+                     SelectionOpacity="0.9" Width="553"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.DataPagamento, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblSetor"
-                   Content="Setor"
+            <Label Name="lblTotalVencimentos"
+                   Content="Vencimentos"
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="43"
+                   FontSize="15" Width="90"
                    />
 
-            <TextBox x:Name="txtSetor" TextWrapping="Wrap" 
+            <TextBox x:Name="txtTotalVencimentos" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
                      FontWeight="Light"
                      FontSize="15"
@@ -245,18 +245,18 @@
                      Background="#363636"
                      BorderThickness="0" 
                      Height="27" 
-                     SelectionOpacity="0.9" Width="155"
-                     Text="{Binding ElementName=listView, Path=SelectedValue.Setor, UpdateSourceTrigger=LostFocus}"/>
+                     SelectionOpacity="0.9" Width="546"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.TotalVencimentos, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblEmail"
-                   Content="Email"
+            <Label Name="lblTotalDescontos"
+                   Content="Descontos"
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="44"
+                   FontSize="15" Width="79"
                    />
 
-            <TextBox x:Name="txtEmail" TextWrapping="Wrap" 
+            <TextBox x:Name="txtTotalDescontos" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
                      FontWeight="Light"
                      FontSize="15"
@@ -264,18 +264,18 @@
                      Background="#363636"
                      BorderThickness="0" 
                      Height="27" 
-                     SelectionOpacity="0.9" Width="152"
-                     Text="{Binding ElementName=listView, Path=SelectedValue.Email, UpdateSourceTrigger=LostFocus}"/>
+                     SelectionOpacity="0.9" Width="555"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.TotalDescontos, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblTelefone"
-                   Content="Telefone"
+            <Label Name="lblLiquido"
+                   Content="Liquido"
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="65"
+                   FontSize="15" Width="56"
                    />
 
-            <TextBox x:Name="txtTelefone" TextWrapping="Wrap" 
+            <TextBox x:Name="txtTotalLiquido" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
                      FontWeight="Light"
                      FontSize="15"
@@ -283,18 +283,18 @@
                      Background="#363636"
                      BorderThickness="0" 
                      Height="27" 
-                     SelectionOpacity="0.9" Width="141"
-                     Text="{Binding ElementName=listView, Path=SelectedValue.Telefone, UpdateSourceTrigger=LostFocus}"/>
+                     SelectionOpacity="0.9" Width="579"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.TotalLiquido, UpdateSourceTrigger=LostFocus}"/>
 
-            <Label Name="lblEndereco"
-                   Content="Endereço"
+            <Label Name="lblINSS"
+                   Content="INSS"
                    Foreground="White"
                    FontFamily="Helvetica"
                    FontWeight="Light"
-                   FontSize="15" Width="70"
+                   FontSize="15" Width="40"
                    />
 
-            <TextBox x:Name="txtEndereco" TextWrapping="Wrap" 
+            <TextBox x:Name="txtINSS" TextWrapping="Wrap" 
                      FontFamily="Helvetica"
                      FontWeight="Light"
                      FontSize="15"
@@ -302,17 +302,42 @@
                      Background="#363636"
                      BorderThickness="0" 
                      Height="27" 
-                     SelectionOpacity="0.9" Width="171"
-                     Text="{Binding ElementName=listView, Path=SelectedValue.Endereco, UpdateSourceTrigger=LostFocus}"/>
+                     SelectionOpacity="0.9" Width="597"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.SalarioINSS, UpdateSourceTrigger=LostFocus}"/>
+
+            <Label Name="lblValorFGTS"
+                   Content="FGTS"
+                   Foreground="White"
+                   FontFamily="Helvetica"
+                   FontWeight="Light"
+                   FontSize="15" Width="45"
+                   />
+
+            <TextBox x:Name="txtValorFGTS" TextWrapping="Wrap" 
+                     FontFamily="Helvetica"
+                     FontWeight="Light"
+                     FontSize="15"
+                     Foreground="White"
+                     Background="#363636"
+                     BorderThickness="0" 
+                     Height="27" 
+                     SelectionOpacity="0.9" Width="532"
+                     Text="{Binding ElementName=listView, Path=SelectedValue.ValorFGTS, UpdateSourceTrigger=LostFocus}"/>
 
             <Button x:Name="btnConfirmar"
-                    Content="Confirmar"
-                    FontFamily="Helvetica"
-                    FontWeight="Light"
-                    FontSize="15"
-                    Height="28"
+                    Height="50"
+                    Width="50"
                     Click="btnConfirmar_Click"
-                    Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
+                <iconPacks:PackIconMaterial Kind="CheckCircle"
+                                            Height="25"
+                                            Width="25"
+                                            Foreground="White"/>
+                
+            </Button>
         </Menu>
 
         <Button Name="btnConfig"
