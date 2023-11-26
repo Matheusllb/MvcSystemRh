@@ -25,24 +25,39 @@ namespace Sistema.Desktop.View.ViewFolha
 
     public partial class TelaFolhaEmpresa : Window
     {
-        public TelaFolhaPagamento telaFolhaPagamento;
-        public Empresa empresa = new Empresa();
-        public EmpresaController controller;
+        public TelaFolhaPagamento telaAnterior;
+        public Empresa empresa;
         public EmpresaDAO dao = new EmpresaDAO();
+        public EmpresaController controller;
 
         public TelaFolhaEmpresa(TelaFolhaPagamento telaFolhaPagamento)
         {
-            this.telaFolhaPagamento = telaFolhaPagamento;
+            try
+            {
+                InitializeComponent();
+                telaAnterior = telaFolhaPagamento;
+                controller = new EmpresaController(dao);
+                empresa = controller.GetById(telaAnterior.idEmpresa);
 
-            empresa = controller.GetById(telaFolhaPagamento.idEmpresa);
+                txtCodEmpresa.Text = empresa.Id.ToString();
+                txtNomeEmpresa.Text = empresa.Nome;
+                txtCNPJEmpresa.Text = empresa.Cnpj;
+                txtSetorEmpresa.Text = empresa.Setor;
+                txtEmailEmpresa.Text = empresa.Email;
+                txtEnderecoEmpresa.Text = empresa.Endereco;
+                txtTelefoneEmpresa.Text = empresa.Telefone;
 
-            InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
         }
 
         private void btnAnterior_Click(object sender, RoutedEventArgs e)
         {
-            telaFolhaPagamento.Show();
-            telaFolhaPagamento.WindowState = WindowState;
+            telaAnterior.Show();
+            telaAnterior.WindowState = WindowState;
             Close();
         }
 

@@ -26,7 +26,7 @@ namespace Sistema.Model.Entidades
             _telefone = telefone;
             _endereco = endereco;
         }
-        
+
         public string Nome 
         {
             get => _nome;

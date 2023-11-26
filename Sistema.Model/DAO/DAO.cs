@@ -135,6 +135,10 @@ public abstract class DAO<T> : IDAO<T> where T : IEntidade
             string query = string.Empty;
             if (!string.IsNullOrEmpty(SecondTable))
             {
+                if (!string.IsNullOrEmpty(ThirdTable) && !string.IsNullOrEmpty(FourthTable) && !string.IsNullOrEmpty(FifthTable))
+                {
+                    query = $"SELECT * FROM {TableName} WHERE Id = @Id";
+                }
                 query = $"SELECT * FROM {TableName} JOIN {SecondTable} ON {TableName}.IdPessoa = {SecondTable}.Id WHERE {TableName}.Id = @Id";
             }
             else

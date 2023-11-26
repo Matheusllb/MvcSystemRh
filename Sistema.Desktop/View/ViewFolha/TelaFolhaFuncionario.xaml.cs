@@ -31,7 +31,7 @@ namespace Sistema.Desktop.View.ViewFolha
         {
             this.telaFolhaEmpresa = telaFolhaEmpresa;
 
-            funcionario = controller.GetById(telaFolhaEmpresa.telaFolhaPagamento.idFuncionario);
+            funcionario = controller.GetById(telaFolhaEmpresa.telaAnterior.idFuncionario);
 
             InitializeComponent();
         }

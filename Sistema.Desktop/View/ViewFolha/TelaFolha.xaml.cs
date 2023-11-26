@@ -144,9 +144,9 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnCriarNovo_Click(object sender, RoutedEventArgs e)
         {
-            TelaFolhaPrincipal principal = new TelaFolhaPrincipal();
-            principal.Show();
-            principal.WindowState = WindowState;
+            TelaFolhaPagamento calculo = new TelaFolhaPagamento();
+            calculo.Show();
+            calculo.WindowState = WindowState;
             Close();
         }
 
