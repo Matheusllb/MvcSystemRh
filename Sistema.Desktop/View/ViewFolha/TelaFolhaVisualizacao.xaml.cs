@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace Sistema.Desktop.View.ViewFolha
 {
@@ -42,7 +43,23 @@ namespace Sistema.Desktop.View.ViewFolha
                 List<BeneficioDesconto> lista = controller.BuscaBD(terceiraTela.funcionario.Id);
                 folha = new FolhaPagamento(idE, fechamentoNF, pagamentoNF, terceiraTela.funcionario, lista);
 
-                MessageBox.Show("Folha gerada com sucesso!");
+                lblCodE.Content = terceiraTela.segundaTela.empresa.Id.ToString();
+                lblNomeEmpresa.Content = terceiraTela.segundaTela.empresa.Nome;
+                lblEnderecoEmpresa.Content = terceiraTela.segundaTela.empresa.Endereco;
+                lblCNPJEmpresa.Content = terceiraTela.segundaTela.empresa.Cnpj;
+                lblMesFechamento.Content = terceiraTela.segundaTela.primeiraTela.fechamento.ToString("MM/yyyy");
+                lblCodF.Content = terceiraTela.funcionario.Id.ToString();
+                lblNomeF.Content = terceiraTela.funcionario.Nome;
+                lblCargo.Content = terceiraTela.funcionario.Cargo;
+                lblAdmissao.Content = terceiraTela.funcionario.DataAdmissao.ToString("dd/MM/yyyy");
+                lblValorSalario.Content = terceiraTela.funcionario.SalarioBruto.ToString("2F");
+                lblValoVencimento.Content = terceiraTela.funcionario.SalarioBruto.ToString();
+                lblVDescontoINSS.Content = folha.SalarioINSS.ToString();
+                lblVDescontosIRRF.Content = folha.ValorIRRF.ToString();
+                lblTotalVencimentos.Content = folha.CalculaTotalVencimentos().ToString();
+                lblTotalDescontos.Content = folha.CalculaTotalDescontos().ToString();
+                lblTotalLiquido.Content = folha.CalculaTotalLiquido().ToString();
+                lblPagamento.Content = terceiraTela.segundaTela.primeiraTela.pagamento.ToString("dd/MM/yyyy");
 
             }
             catch (Exception ex)

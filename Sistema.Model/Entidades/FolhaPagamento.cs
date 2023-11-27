@@ -251,7 +251,11 @@ namespace Sistema.Model.Entidades
             {
                 return ValorIRRF = baseDeCalculoIRRF * (decimal)0.275;
             }
-            return ValorIRRF;
+            else
+            {
+                return ValorIRRF;
+
+            }
         }
 
         public decimal CalculaTotalBenefico(List<BeneficioDesconto> beneficios)
