@@ -39,13 +39,13 @@ namespace Sistema.Model.Entidades
         }
 
         public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
-         Funcionario funcionario, List<BeneficioDesconto> lista)
+         Funcionario funcionario)
         {
             _idEmpresa = empresa;
             _dataFechamento = dataFechamento;
             _dataPagamento = pagamento;
             _funcionario = funcionario;
-            _itens = lista;
+
             _salarioINSS = CalculaINSS();
             _valorFGTS = CalculaFGTS();
             _valorIRRF = CalculaIRRF();

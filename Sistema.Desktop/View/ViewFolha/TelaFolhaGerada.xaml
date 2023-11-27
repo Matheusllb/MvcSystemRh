@@ -18,33 +18,32 @@
         </Border>
 
         <Rectangle Fill="#282828"
-                   Margin="109,53,434,71"
+                   Margin="109,53,0,71"
                    RadiusX="15"
-                   RadiusY="15"/>
+                   RadiusY="15" HorizontalAlignment="Left" Width="257"/>
 
         <TextBlock Text="Sua folha foi gerada com sucesso!"
-                   Height="200"
                    Foreground="#FF946DED"
                    TextWrapping="Wrap" 
-                   Margin="446,69,135,165"
+                   Margin="446,69,0,0"
                    FontSize="37"
-                   TextAlignment="Center"/>
+                   TextAlignment="Center" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="219"/>
 
         <TextBlock Text="Agora imprima ou exporte sua folha de pagamento!"
                    Foreground="White" 
-                   Margin="422,253,104,143"
+                   Margin="422,253,0,0"
                    TextWrapping="Wrap"
-                   TextAlignment="Center"/>
+                   TextAlignment="Center" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="274"/>
 
         <Rectangle Fill="#282828" 
-                   Margin="468,336,256,29"
+                   Margin="0,0,256,29"
                    RadiusX="180"
-                   RadiusY="180"/>
+                   RadiusY="180" Height="69" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="76"/>
 
         <Rectangle Fill="#282828" 
-                   Margin="597,336,127,29"
+                   Margin="0,0,127,29"
                    RadiusX="180"
-                   RadiusY="180"/>
+                   RadiusY="180" Height="69" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="76"/>
 
 
         <iconPacks:PackIconMaterial Kind="Printer"
@@ -62,15 +61,15 @@
 
         <Button x:Name="btnImprimir" 
                 Background="Transparent" 
-                Margin="483,350,271,42"
-                BorderBrush="Transparent" Click="btnImprimir_Click"/>
+                Margin="0,0,271,42"
+                BorderBrush="Transparent" Click="btnImprimir_Click" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46"/>
 
         <Button x:Name="btnExportar"
                 Background="Transparent" 
-                Margin="612,350,142,42"
-                BorderBrush="Transparent" Click="btnExportar_Click"/>
+                Margin="0,0,142,42"
+                BorderBrush="Transparent" Click="btnExportar_Click" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46"/>
 
-        <DocumentViewer Margin="121,69,448,85"/>
+        <DocumentViewer Margin="121,69,0,0" Height="280" VerticalAlignment="Top" HorizontalAlignment="Left" Width="231"/>
 
 
 

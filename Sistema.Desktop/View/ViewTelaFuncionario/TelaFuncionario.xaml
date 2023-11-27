@@ -314,15 +314,21 @@
              SelectionOpacity="0.9" Width="480"
              Text="{Binding ElementName=listView, Path=SelectedValue.Email, UpdateSourceTrigger=LostFocus}"/>
 
-            
+
             <Button x:Name="btnConfirmar"
-            Content="Confirmar"
-            FontFamily="Helvetica"
-            FontWeight="Light"
-            FontSize="15"
-            Height="28"
-            Click="btnConfirmar_Click"
-            Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+                    Height="50"
+                    Width="50"
+                    Click="btnConfirmar_Click"
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
+                <iconPacks:PackIconMaterial Kind="CheckCircle"
+                                            Height="25"
+                                            Width="25"
+                                            Foreground="White"/>
+
+            </Button>
         </Menu>
 
         <Menu x:Name="menuAlterarPessoais"
@@ -421,13 +427,19 @@
                      Text="{Binding ElementName=listView, Path=SelectedValue.Endereco, UpdateSourceTrigger=LostFocus}"/>
 
             <Button x:Name="btnConfirmarPessoais"
-                    Content="Confirmar"
-                    FontFamily="Helvetica"
-                    FontWeight="Light"
-                    FontSize="15"
-                    Height="28"
+                    Height="50"
+                    Width="50"
                     Click="btnConfirmarPessoais_Click"
-                    Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
+                <iconPacks:PackIconMaterial Kind="CheckCircle"
+                                            Height="25"
+                                            Width="25"
+                                            Foreground="White"/>
+
+            </Button>
         </Menu>
     </Grid>
 </Window>

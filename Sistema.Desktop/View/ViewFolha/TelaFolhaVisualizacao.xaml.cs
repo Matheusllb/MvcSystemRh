@@ -40,8 +40,7 @@ namespace Sistema.Desktop.View.ViewFolha
                 int idE = terceiraTela.segundaTela.primeiraTela.idEmpresa;
                 DateTime fechamentoNF = terceiraTela.segundaTela.primeiraTela.fechamento;
                 DateTime pagamentoNF = terceiraTela.segundaTela.primeiraTela.pagamento;
-                List<BeneficioDesconto> lista = controller.BuscaBD(terceiraTela.funcionario.Id);
-                folha = new FolhaPagamento(idE, fechamentoNF, pagamentoNF, terceiraTela.funcionario, lista);
+                folha = new FolhaPagamento(idE, fechamentoNF, pagamentoNF, terceiraTela.funcionario);
 
                 lblCodE.Content = terceiraTela.segundaTela.empresa.Id.ToString();
                 lblNomeEmpresa.Content = terceiraTela.segundaTela.empresa.Nome;
