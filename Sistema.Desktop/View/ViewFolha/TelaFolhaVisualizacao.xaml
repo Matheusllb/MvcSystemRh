@@ -90,7 +90,7 @@
                    Foreground="White"
                    Text="GerarFolha"
                    FontSize="15"
-                   Margin="575,364,0,47" HorizontalAlignment="Left" Width="75"/>
+                   Margin="0,0,150,47" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Bottom"/>
 
         <Button Name="btnContinuar"
                 Click="btnContinuar_Click"
@@ -99,7 +99,7 @@
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White"
-                Margin="655,359,0,47" HorizontalAlignment="Left">
+                Margin="0,0,117,47" HorizontalAlignment="Right" Height="28" VerticalAlignment="Bottom">
             <iconPacks:PackIconMaterial Kind="ArrowRightCircle"
                                         Width="20"
                                         Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -111,7 +111,7 @@
                    Foreground="White"
                    Text="Voltar"
                    FontSize="15"
-                   Margin="155,364,0,47" Width="50" HorizontalAlignment="Left" />
+                   Margin="155,0,0,47" Width="50" HorizontalAlignment="Left" Height="23" VerticalAlignment="Bottom" />
 
         <Button Name="btnAnterior"
                 Click="btnAnterior_Click"
@@ -120,7 +120,7 @@
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Foreground="White"
-                Margin="113,359,0,47" HorizontalAlignment="Left">
+                Margin="113,0,0,47" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom">
             <iconPacks:PackIconMaterial Kind="ArrowLeftCircle"
                                         Width="20"
                                         Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>

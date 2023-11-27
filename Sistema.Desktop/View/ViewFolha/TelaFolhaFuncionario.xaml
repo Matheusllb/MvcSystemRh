@@ -83,8 +83,8 @@
 
         <Label Name="lblCaminho"
                Content="Folha de Pagamento - Cáculos - Individual"
-               Margin="0,50,280,0"
-               Foreground="LightGray" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Width="245"/>
+               Margin="275,50,280,0"
+               Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
 
         <TextBox Name="txtCodFuncionario"
          Text="{Binding ElementName=WindowFolhaFuncionario, Path=funcionario.Id}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="24,149,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
