@@ -70,10 +70,10 @@
         <Label Name="lblCaminho"
                Content="Folha de Pagamento"
                VerticalAlignment="Top"
-               Margin="0,48,337,0"
+               Margin="344,48,0,0"
                Height="30"
                Foreground="LightGray" 
-               HorizontalAlignment="Right"/>
+               HorizontalAlignment="Left"/>
 
         <TextBlock Margin="139,106,0,0"
                    Text="Cálculos" 
@@ -103,23 +103,23 @@
         </TextBlock>
 
         <Rectangle Name="Interno2"
-                   Margin="0,137,134,0" 
+                   Margin="530,137,0,0" 
                    Fill="#FF292727"
                    RadiusX="10"
                    RadiusY="10"
-                   StrokeThickness="3" HorizontalAlignment="Right" Width="136" Height="167" VerticalAlignment="Top">
+                   StrokeThickness="3" HorizontalAlignment="Left" Width="136" Height="167" VerticalAlignment="Top">
 
         </Rectangle>
 
-        <TextBlock Margin="0,103,128,0" 
+        <TextBlock Margin="524,103,0,0" 
                    FontFamily="Helvetica"
                    FontSize="16"
                    TextAlignment="Center" 
                    Foreground="White"
-                   Text="Gerenciamento" Background="#FF292727" HorizontalAlignment="Right" Width="148" Height="20" VerticalAlignment="Top">
+                   Text="Gerenciamento" Background="#FF292727" HorizontalAlignment="Left" Width="148" Height="20" VerticalAlignment="Top">
         </TextBlock>
 
-        <TextBlock Margin="0,151,141,0"
+        <TextBlock Margin="538,151,0,0"
                    Foreground="White"
                    Text="Manutenção de Folhas                       
                    - Visualização de Folhas
@@ -129,7 +129,7 @@
                    TextWrapping="Wrap"
                    LineHeight="30"
                    FontFamily="Helvetica" 
-                   FontSize="10" HorizontalAlignment="Right" Width="121" Height="135" VerticalAlignment="Top">
+                   FontSize="10" HorizontalAlignment="Left" Width="121" Height="135" VerticalAlignment="Top">
         </TextBlock>
 
 
@@ -147,16 +147,14 @@
         <iconPacks:PackIconMaterial Kind="ArrowLeftTop"
                                     Height="69"
                                     Width="113" 
-                                    Margin="317,187,0,0" 
-                                    Foreground="#FF292727" 
-                                    HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    Margin="317,276,0,0" 
+                                    Foreground="#FF292727"/>
 
         <iconPacks:PackIconMaterial Kind="ArrowRightBottom"
                                     Height="69"
                                     Width="113" 
-                                    Margin="0,257,315,0" 
-                                    Foreground="#FF292727" 
-                                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    Margin="372,311,0,0" 
+                                    Foreground="#FF292727"/>
 
         <Button x:Name="btnCalc"
                 Click="btnCalc_Click"
@@ -164,7 +162,7 @@
                 BorderBrush="#84a4f3"
                 BorderThickness="1,5"
                 Foreground="#282828"
-                Margin="137,91,0,0" HorizontalAlignment="Left" Width="155" Height="334" VerticalAlignment="Center"/>
+                Margin="137,96,0,0" HorizontalAlignment="Left" Width="155" Height="334" VerticalAlignment="Top"/>
 
         <Button x:Name="btnGer"
                 Click="btnGer_Click"
@@ -172,9 +170,7 @@
                 BorderBrush="#FFA781FF"
                 BorderThickness="1,5"
                 Foreground="#282828" 
-                Margin="0,89,126,0" HorizontalAlignment="Right" Width="154" Height="336" VerticalAlignment="Center">
-
-        </Button>
+                Margin="520,94,0,0" Height="336" VerticalAlignment="Top" HorizontalAlignment="Left" Width="154"/>
 
     </Grid>
 </Window>

@@ -1,0 +1,82 @@
+﻿<Window x:Class="Sistema.Desktop.View.ViewFolha.TelaFolhaGerada"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sistema.Desktop.View.ViewFolha"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        x:Name="WindowFolhaGerada" Height="450" Width="800">
+    <Grid>
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#353535" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <iconPacks:PackIconMaterial Kind="AlphaXCircleOutline"
+                                    Width="30"
+                                    Height="30"
+                                    Margin="15,15"
+                                    Foreground="White"/>
+
+        <Rectangle Fill="#282828"
+                   Margin="109,53,434,71"
+                   RadiusX="15"
+                   RadiusY="15"/>
+
+        <TextBlock Text="Sua folha foi gerada com sucesso!"
+                   Height="200"
+                   Foreground="#FF946DED"
+                   TextWrapping="Wrap" 
+                   Margin="446,69,135,165"
+                   FontSize="37"
+                   TextAlignment="Center"/>
+
+        <TextBlock Text="Agora imprima ou exporte sua folha de pagamento!"
+                   Foreground="White" 
+                   Margin="422,253,104,143"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"/>
+
+        <Rectangle Fill="#282828" 
+                   Margin="468,336,256,29"
+                   RadiusX="180"
+                   RadiusY="180"/>
+
+        <Rectangle Fill="#282828" 
+                   Margin="597,336,127,29"
+                   RadiusX="180"
+                   RadiusY="180"/>
+
+
+        <iconPacks:PackIconMaterial Kind="Printer"
+                                    Foreground="White"
+                                    Height="41" 
+                                    Margin="469,351,0,0" 
+                                    Width="73"
+                                    />
+
+        <iconPacks:PackIconMaterial Kind="SwapVertical"
+                                    Foreground="White"
+                                    Height="41" 
+                                    Margin="598,349,0,0" 
+                                    Width="73"/>
+
+        <Button x:Name="btnImprimir" 
+                Background="Transparent" 
+                Margin="483,350,271,42"
+                BorderBrush="Transparent"/>
+
+        <Button x:Name="btnExportar"
+                Background="Transparent" 
+                Margin="612,350,142,42"
+                BorderBrush="Transparent"/>
+
+
+
+    </Grid>
+</Window>

@@ -22,7 +22,7 @@ namespace Sistema.Desktop.View.ViewFolha
     /// </summary>
     public partial class TelaFolhaFuncionario : Window
     {
-        private TelaFolhaEmpresa segundaTela;
+        public TelaFolhaEmpresa segundaTela;
         public Funcionario funcionario;
         public FuncionarioController controller;
         public FuncionarioDAO dao = new FuncionarioDAO();
@@ -85,15 +85,10 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            int idE = segundaTela.primeiraTela.idEmpresa;
-            DateTime fechamentoNF = segundaTela.primeiraTela.fechamento;
-            DateTime pagamentoNF = segundaTela.primeiraTela.pagamento;
-            BDFuncionarioDAO dao = new BDFuncionarioDAO();
-            BDFController controller = new BDFController(dao);
-            List<BeneficioDesconto> lista = controller.BuscaBD(funcionario.Id);
-
-            FolhaPagamento novaFolha = new FolhaPagamento(idE,fechamentoNF,pagamentoNF,funcionario,lista);
-
+            TelaFolhaVisualizacao quartaTela = new TelaFolhaVisualizacao(this);
+            quartaTela.Show();
+            quartaTela.WindowState = WindowState;
+            Close();
         }
     }
 }
