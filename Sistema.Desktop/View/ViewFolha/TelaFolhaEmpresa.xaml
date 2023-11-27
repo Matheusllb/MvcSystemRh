@@ -86,69 +86,43 @@
                Margin="275,50,280,0"
                Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
 
-        <TextBox Name="txtCodEmpresa"
-                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Id}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="146,143,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <Border CornerRadius="3"
-                Background="#282828" 
-                Margin="146,159,0,0"
-                BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <TextBox Name="txtCodEmpresa"
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Id}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="148,157,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
         <TextBox Name="txtNomeEmpresa"
-                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Nome}" Margin="433,143,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Nome}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="148,200,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <Border CornerRadius="3"
-                Background="#282828" 
-                Margin="433,159,0,0"
-                BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <TextBox Name="txtCNPJEmpresa"
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Cnpj}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="148,243,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <TextBox x:Name="txtCNPJEmpresa"
-                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Cnpj}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Margin="146,250,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+        <TextBox Name="txtSetorEmpresa" 
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Setor}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="148,285,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <Border CornerRadius="3"
-                Background="#282828" 
-                Margin="146,269,0,0"
-                BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <TextBox Name="txtEmailEmpresa"
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Email}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="437,156,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <TextBox x:Name="txtSetorEmpresa"
-                 Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Setor}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Margin="433,250,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+        <TextBox Name="txtTelefoneEmpresa"
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Telefone}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="437,201,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <Border CornerRadius="3"
-                Background="#282828" 
-                Margin="433,269,0,0"
-                BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <TextBox Name="txtEnderecoEmpresa"
+ Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Endereco}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="437,242,0,0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
 
-        <TextBox x:Name="txtEmailEmpresa"
-            Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Email}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Margin="146,198,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
+        <Border CornerRadius="3" Background="#282828" Margin="437,259,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="437,172,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <Border CornerRadius="3" Background="#282828" Margin="148,301,0,0" BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <Border CornerRadius="3" Background="#282828" Margin="148,260,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="148,173,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="437,217,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
+        <Border CornerRadius="3" Background="#282828" Margin="148,218,0,0" BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
 
-        <Border CornerRadius="3"
-            Background="#282828" 
-            Margin="146,217,0,0"
-            BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
-
-        <TextBox x:Name="txtTelefoneEmpresa"
-            Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Telefone}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White"  Margin="145,303,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="191"/>
-
-        <Border CornerRadius="3"
-            Background="#282828" 
-            Margin="145,322,0,0"
-            BorderBrush="Black" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="217"/>
-
-        <TextBox x:Name="txtEnderecoEmpresa"
-            Text="{Binding ElementName=WindowFolhaEmpresa, Path=empresa.Endereco}" Margin="433,202,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="172"/>
-
-        <Border CornerRadius="3"
-            Background="#282828" 
-            Margin="433,218,0,0"
-            BorderBrush="Black" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
-
-        <Label Content="Código" Foreground="#84a4f3" Margin="146,166,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Top"/>
-        <Label Content="Nome" Foreground="#84a4f3" Margin="146,225,609,189" FontFamily="Helvetica" FontSize="10"/>
-        <Label Content="CNPJ" Foreground="#84a4f3" Margin="146,277,0,137" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="45"/>
-        <Label Content="Setor" Foreground="#84a4f3" Margin="146,330,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="20" VerticalAlignment="Top"/>
-        <Label Content="Telefone" Foreground="#84a4f3" Margin="434,225,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="25" VerticalAlignment="Top"/>
-        <Label Content="E-Mail" Foreground="#84a4f3" Margin="434,166,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="22" VerticalAlignment="Top"/>
-        <Label Content="Endereço" Foreground="#84a4f3" Margin="434,277,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="24" VerticalAlignment="Top"/>
+        <Label Content="Código" Foreground="#84a4f3" Margin="146,174,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Top"/>
+        <Label Content="Nome" Foreground="#84a4f3" Margin="146,219,609,195" FontFamily="Helvetica" FontSize="10"/>
+        <Label Content="CNPJ" Foreground="#84a4f3" Margin="146,261,0,153" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="45"/>
+        <Label Content="Setor" Foreground="#84a4f3" Margin="146,303,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="20" VerticalAlignment="Top"/>
+        <Label Content="Telefone" Foreground="#84a4f3" Margin="434,218,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="25" VerticalAlignment="Top"/>
+        <Label Content="E-Mail" Foreground="#84a4f3" Margin="434,173,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="22" VerticalAlignment="Top"/>
+        <Label Content="Endereço" Foreground="#84a4f3" Margin="434,260,0,0" FontFamily="Helvetica" FontSize="10" HorizontalAlignment="Left" Width="59" Height="24" VerticalAlignment="Top"/>
 
         <TextBlock x:Name="txbContinuar"
                    Background="Transparent"

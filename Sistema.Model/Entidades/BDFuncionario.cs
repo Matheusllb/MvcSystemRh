@@ -1,27 +1,38 @@
 ﻿using Sistema.Model.Interfaces.IDAO;
+using System.Collections.Generic;
 
 namespace Sistema.Model.Entidades
 {
     public class BDFuncionario : IEntidade
     {
         public int Id { get; set; }
-        private int IdFuncionario;
-        private int IdBeneficioDesconto;
+        private int _idFuncionario;
+        private int _idBeneficioDesconto;
+        private List<BeneficioDesconto> _beneficioDesconto = new List<BeneficioDesconto> ();
 
         public BDFuncionario()
         {
         }
 
-        public BDFuncionario(int funcionario, int idBeneficioDesconto)
+        public BDFuncionario(List<BeneficioDesconto> beneficioDescontos)
         {
-
-            IdFuncionario = funcionario;
-            IdBeneficioDesconto = idBeneficioDesconto;
+            _beneficioDesconto = beneficioDescontos;
         } 
 
-        public int GetIdBDFuncionario() { return IdFuncionario; }
-        public int GetIdBDBeneficioDesconto() { return IdBeneficioDesconto; }
-        public void SetIdBDFuncionario(int idFuncionario) { IdFuncionario = idFuncionario; }
-        public void SetIdBDBeneficioDesconto(int idBeneficioDesconto) { IdBeneficioDesconto = idBeneficioDesconto; }
+       public int IdF
+        {
+            get => _idFuncionario;
+            set => _idFuncionario = value;
+        }
+       public int IdBD
+        {
+            get => _idBeneficioDesconto;
+            set => _idBeneficioDesconto = value;
+        }
+       public List<BeneficioDesconto> BeneficioDesconto
+        {
+            get => _beneficioDesconto;
+            set => _beneficioDesconto = value;
+        }
     }
 }

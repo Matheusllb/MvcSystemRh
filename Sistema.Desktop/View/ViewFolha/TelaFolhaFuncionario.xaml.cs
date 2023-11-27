@@ -85,7 +85,15 @@ namespace Sistema.Desktop.View.ViewFolha
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nova tela em breve");
+            int idE = segundaTela.primeiraTela.idEmpresa;
+            DateTime fechamentoNF = segundaTela.primeiraTela.fechamento;
+            DateTime pagamentoNF = segundaTela.primeiraTela.pagamento;
+            BDFuncionarioDAO dao = new BDFuncionarioDAO();
+            BDFController controller = new BDFController(dao);
+            List<BeneficioDesconto> lista = controller.BuscaBD(funcionario.Id);
+
+            FolhaPagamento novaFolha = new FolhaPagamento(idE,fechamentoNF,pagamentoNF,funcionario,lista);
+
         }
     }
 }

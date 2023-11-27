@@ -176,9 +176,10 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
 
                 decimal vSalarioINSS = (decimal)reader["SalarioINSS"];
                 decimal vValorFGTS = (decimal)reader["ValorFGTS"];
-                List<string> itens = new List<string>();
+                List<BeneficioDesconto> itens = new List<BeneficioDesconto>();
 
-                FolhaPagamento folha = new FolhaPagamento(vId, vIdEmpresa, vDataFechamento, vDataPagamento, vTotalVencimentos, vTotalDescontos, vTotalLiquido, funcionario, vSalarioINSS, vValorFGTS, itens);
+                FolhaPagamento folha = new FolhaPagamento(vIdEmpresa, vDataFechamento, vDataPagamento, vTotalVencimentos, vTotalDescontos, vTotalLiquido, funcionario, vSalarioINSS, vValorFGTS, itens);
+                folha.Id = vId;
 
                 do
                 {
@@ -188,11 +189,9 @@ public class FolhaPagamentoDAO : DAO<FolhaPagamento>, IFolhaPagamentoDAO
                         decimal valor = (decimal)reader["Valor"];
                         bool desconto = (bool)reader["Desconto"];
 
-                        string tipoItem = desconto ? "(desconto)" : "(benefício)";
-
-                        string itemFormatado = $"Descrição: \"{descricao} {tipoItem}\", Valor: {(desconto ? "-" : "+")}{valor.ToString("0.00")}";
-
-                        folha.Itens.Add(itemFormatado);
+                        BeneficioDesconto bD = new BeneficioDesconto(descricao, desconto, valor);
+                        
+                        folha.Itens.Add(bD);
 
                     }
                     else

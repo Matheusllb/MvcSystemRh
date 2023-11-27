@@ -19,13 +19,12 @@ namespace Sistema.Model.Entidades
         private decimal _salarioINSS;
         private decimal _valorFGTS;
         private decimal _valorIRRF;
-        private List<string> _itens = new List<string>();
+        private List<BeneficioDesconto> _itens = new List<BeneficioDesconto>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public FolhaPagamento(int id,int idEmpresa, DateTime dataFechamento, DateTime dataPagamento, decimal totalVencimentos, decimal totalDescontos, decimal totalLiquido, Funcionario funcionario, decimal salarioINSS, decimal valorFGTS, List<string> itens)
+        public FolhaPagamento(int idEmpresa, DateTime dataFechamento, DateTime dataPagamento, decimal totalVencimentos, decimal totalDescontos, decimal totalLiquido, Funcionario funcionario, decimal salarioINSS, decimal valorFGTS, List<BeneficioDesconto> itens)
         {
-            Id = id;
             _idEmpresa = idEmpresa;
             _dataFechamento = dataFechamento;
             _dataPagamento = dataPagamento;
@@ -35,17 +34,18 @@ namespace Sistema.Model.Entidades
             _funcionario = funcionario;
             _salarioINSS = salarioINSS;
             _valorFGTS = valorFGTS;
-            _valorIRRF = (decimal)1000;
+            _valorIRRF = CalculaIRRF();
             _itens = itens;
         }
 
         public FolhaPagamento(int empresa, DateTime dataFechamento, DateTime pagamento,
-         Funcionario funcionario)
+         Funcionario funcionario, List<BeneficioDesconto> lista)
         {
             _idEmpresa = empresa;
             _dataFechamento = dataFechamento;
             _dataPagamento = pagamento;
             _funcionario = funcionario;
+            _itens = lista;
             _salarioINSS = CalculaINSS();
             _valorFGTS = CalculaFGTS();
             _valorIRRF = CalculaIRRF();
@@ -118,7 +118,7 @@ namespace Sistema.Model.Entidades
                 }
             }
         }
-        
+
         public decimal ValorFGTS
         {
             get => _valorFGTS;
@@ -131,7 +131,7 @@ namespace Sistema.Model.Entidades
                 }
             }
         }
-        
+
         public decimal ValorIRRF
         {
             get => _valorIRRF;
@@ -145,7 +145,7 @@ namespace Sistema.Model.Entidades
             }
         }
 
-              
+
         public decimal TotalVencimentos
         {
             get => _totalVencimentos;
@@ -158,7 +158,7 @@ namespace Sistema.Model.Entidades
                 }
             }
         }
-                     
+
         public decimal TotalDescontos
         {
             get => _totalDescontos;
@@ -171,7 +171,7 @@ namespace Sistema.Model.Entidades
                 }
             }
         }
-                           
+
         public decimal TotalLiquido
         {
             get => _totalLiquido;
@@ -185,7 +185,7 @@ namespace Sistema.Model.Entidades
             }
         }
 
-        public List<string> Itens
+        public List<BeneficioDesconto> Itens
         {
             get => _itens;
             set
@@ -251,24 +251,42 @@ namespace Sistema.Model.Entidades
             return ValorIRRF;
         }
 
-        /*public decimal CalculaTotalBenefico(decimal[] beneficios)
+        public decimal CalculaTotalBenefico(List<BeneficioDesconto> beneficios)
         {
-            //Recebe valor da classe FolhaDAO (banco de dados)
+            decimal valorTotal = 0;
+            foreach (BeneficioDesconto bD in beneficios)
+            {
+                if (bD.Valor >= 0)
+                {
+                    valorTotal += bD.Valor;
+
+                }
+            }
+            return valorTotal;
         }
-        public decimal CalculaTotalDesconto(decimal[] descontos)
+        public decimal CalculaTotalDesconto(List<BeneficioDesconto> beneficios)
         {
-            //Recebe valor da classe FolhaDAO (banco de dados)
-        }*/
+            decimal valorTotal = 0;
+            foreach(BeneficioDesconto bD in beneficios)
+            {
+                if (bD.Valor < 0)
+                {
+                    valorTotal += (-1) * bD.Valor;
+
+                }
+            }
+            return valorTotal;
+        }
 
         public decimal CalculaTotalVencimentos()
         {
-            return TotalVencimentos = Funcionario.SalarioBruto; //+ CalculaTotalBenefico();
+            return TotalVencimentos = Funcionario.SalarioBruto + CalculaTotalBenefico(Itens);
 
         }
 
         public decimal CalculaTotalDescontos()
         {
-            return TotalDescontos = SalarioINSS + ValorIRRF; // + CalculaTotalDesconto();
+            return TotalDescontos = SalarioINSS + ValorIRRF + CalculaTotalDesconto(Itens);
         }
 
         public decimal CalculaTotalLiquido()

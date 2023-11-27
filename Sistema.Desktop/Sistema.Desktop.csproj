@@ -158,6 +158,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\BDController.cs" />
+    <Compile Include="Controllers\BDFController.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\FolhaController.cs" />
