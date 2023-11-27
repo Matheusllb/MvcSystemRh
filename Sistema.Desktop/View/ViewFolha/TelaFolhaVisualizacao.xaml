@@ -158,17 +158,17 @@
         <Label Name="lblCargo" FontSize="9" Foreground="White" Content="" Margin="200,273,0,142" HorizontalAlignment="Left" Width="121"/>
         <Label Name="lblDataAdmissao" FontSize="7" Foreground="White" Content="Data de Admissão" Margin="69,214,0,197" HorizontalAlignment="Left" Width="85"/>
         <Label Name="lblAdmissao" FontSize="9" Foreground="White" Content="" Margin="69,237,0,174" HorizontalAlignment="Left" Width="85"/>
-        <Label Name="lblDescricao" Height="23" FontSize="7" Foreground="White" Content="Descrição" Margin="445,139,305,0" VerticalAlignment="Top"/>
+        <Label Name="lblDescricao" Height="23" FontSize="7" Foreground="White" Content="Descrição" Margin="0,139,305,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50"/>
         <Label Name="lblSalario"  FontSize="5" Foreground="White" Content="Salário Base" Margin="445,168,315,0" Height="17" VerticalAlignment="Top"/>
         <Label Name="lblINSS" FontSize="5" Foreground="White" Content="INSS" Margin="445,185,305,0" Height="17" VerticalAlignment="Top"/>
         <Label Name="lblIRRF" FontSize="5" Foreground="White" Content="IRRF" Margin="445,202,305,0" Height="16" VerticalAlignment="Top"/>
-        <Label Name="lblReferencia" FontSize="7" Foreground="White" Content="Referência" Margin="495,139,260,0" Height="23" VerticalAlignment="Top"/>
-        <Label Name="lblValorSalario" FontSize="5" Foreground="White" Content="" Margin="495,168,260,0" Height="17" VerticalAlignment="Top"/>
-        <Label Name="lblVencimentos" Height="23" FontSize="7" Foreground="White" Content="Vencimentos" Margin="540,139,205,0" VerticalAlignment="Top"/>
-        <Label Name="lblValoVencimento" FontSize="5" Foreground="White" Content="" Margin="540,168,220,0" Height="17" VerticalAlignment="Top"/>
-        <Label Name="lblDescontos" Height="23" FontSize="7" Foreground="White" Content="Descontos" Margin="595,139,159,0" VerticalAlignment="Top"/>
-        <Label Name="lblVDescontoINSS" FontSize="5" Foreground="White" Content="" Margin="591,184,159,0" Height="18" VerticalAlignment="Top"/>
-        <Label Name="lblVDescontosIRRF" FontSize="5" Foreground="White" Content="" Margin="591,202,159,0" Height="16" VerticalAlignment="Top"/>
+        <Label Name="lblReferencia" FontSize="7" Foreground="White" Content="Referência" Margin="0,139,260,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="45"/>
+        <Label Name="lblValorSalario" FontSize="5" Foreground="White" Content="" Margin="0,168,260,0" Height="17" VerticalAlignment="Top" HorizontalAlignment="Right" Width="45"/>
+        <Label Name="lblVencimentos" Height="23" FontSize="7" Foreground="White" Content="Vencimentos" Margin="0,139,205,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="55"/>
+        <Label Name="lblValoVencimento" FontSize="5" Foreground="White" Content="" Margin="0,168,220,0" Height="17" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40"/>
+        <Label Name="lblDescontos" Height="23" FontSize="7" Foreground="White" Content="Descontos" Margin="0,139,159,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="46"/>
+        <Label Name="lblVDescontoINSS" FontSize="5" Foreground="White" Content="" Margin="0,184,159,0" Height="18" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50"/>
+        <Label Name="lblVDescontosIRRF" FontSize="5" Foreground="White" Content="" Margin="0,202,159,0" Height="16" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50"/>
         <Label Name="lblMensagens" FontSize="7" Foreground="White" Content="MENSSAGENS" Margin="445,230,295,181"/>
         <Label Name="lblTextoTotalVencimentos" FontSize="5" Foreground="White" Content="Total Vencimentos" Margin="465,257,285,161"/>
         <Label Name="lblTextoTotalDescontos" FontSize="5" Foreground="White" Content="Total Descontos" Margin="520,257,230,161"/>
