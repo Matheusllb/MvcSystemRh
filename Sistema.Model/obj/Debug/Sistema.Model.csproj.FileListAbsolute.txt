@@ -16,3 +16,9 @@ C:\Users\Leonardo\Desktop\PIM\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.
 C:\Users\Leonardo\Desktop\PIM\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.csproj.CoreCompileInputs.cache
 C:\Users\Leonardo\Desktop\PIM\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.dll
 C:\Users\Leonardo\Desktop\PIM\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.pdb
+C:\Users\RLZ\Documents\GitClone\MvcSystemRh\Sistema.Model\bin\Debug\Sistema.Model.dll
+C:\Users\RLZ\Documents\GitClone\MvcSystemRh\Sistema.Model\bin\Debug\Sistema.Model.pdb
+C:\Users\RLZ\Documents\GitClone\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.csproj.AssemblyReference.cache
+C:\Users\RLZ\Documents\GitClone\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.csproj.CoreCompileInputs.cache
+C:\Users\RLZ\Documents\GitClone\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.dll
+C:\Users\RLZ\Documents\GitClone\MvcSystemRh\Sistema.Model\obj\Debug\Sistema.Model.pdb
