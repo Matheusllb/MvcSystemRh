@@ -23,5 +23,18 @@ namespace Sistema.Desktop.View.ViewFolha
         {
             InitializeComponent();
         }
+
+        private void btnImprimir_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnExportar_Click(object sender, RoutedEventArgs e)
+        {
+            TelaFolha telaFolha = new TelaFolha();
+            telaFolha.Show();
+            telaFolha.WindowState = WindowState;
+            Close();
+        }
     }
 }

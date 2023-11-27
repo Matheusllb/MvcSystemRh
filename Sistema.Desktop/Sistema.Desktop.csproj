@@ -178,11 +178,17 @@
     <Compile Include="View\ViewFolha\TelaFolhaFuncionario.xaml.cs">
       <DependentUpon>TelaFolhaFuncionario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewFolha\TelaFolhaGerada.xaml.cs">
+      <DependentUpon>TelaFolhaGerada.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewFolha\TelaFolhaPagamento.xaml.cs">
       <DependentUpon>TelaFolhaPagamento.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewFolha\TelaFolhaPrincipal.xaml.cs">
       <DependentUpon>TelaFolhaPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewFolha\TelaFolhaVisualizacao.xaml.cs">
+      <DependentUpon>TelaFolhaVisualizacao.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewFolha\TelaIndividualColetivo.xaml.cs">
       <DependentUpon>TelaIndividualColetivo.xaml</DependentUpon>
@@ -259,11 +265,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ViewFolha\TelaFolhaGerada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ViewFolha\TelaFolhaPagamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewFolha\TelaFolhaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewFolha\TelaFolhaVisualizacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

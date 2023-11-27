@@ -210,23 +210,26 @@ namespace Sistema.Model.Entidades
 
         public decimal CalculaINSS()
         {
-            if (Funcionario.SalarioBruto <= (decimal)1320)
+            if (Funcionario.SalarioBruto <= (decimal)1320) //7%
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.075;
             }
-            else if (Funcionario.SalarioBruto >= 1321 || Funcionario.SalarioBruto <= (decimal)2571.29)
+            else if (Funcionario.SalarioBruto >= 1321 || Funcionario.SalarioBruto <= (decimal)2571.29) //%9
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.09;
             }
-            else if (Funcionario.SalarioBruto >= (decimal)2571.30 || Funcionario.SalarioBruto <= (decimal)3856.94)
+            else if (Funcionario.SalarioBruto >= (decimal)2571.30 || Funcionario.SalarioBruto <= (decimal)3856.94) //12%
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.12;
             }
-            else if (Funcionario.SalarioBruto > (decimal)3856.95)
+            else if (Funcionario.SalarioBruto > (decimal)3856.95) //14%
             {
                 return SalarioINSS = Funcionario.SalarioBruto * (decimal)0.14;
             }
-            return SalarioINSS;
+            else
+            {
+                return SalarioINSS;
+            }
         }
 
         public decimal CalculaIRRF()
@@ -267,7 +270,7 @@ namespace Sistema.Model.Entidades
         public decimal CalculaTotalDesconto(List<BeneficioDesconto> beneficios)
         {
             decimal valorTotal = 0;
-            foreach(BeneficioDesconto bD in beneficios)
+            foreach (BeneficioDesconto bD in beneficios)
             {
                 if (bD.Valor < 0)
                 {

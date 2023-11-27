@@ -17,12 +17,6 @@
             </Border.Background>
         </Border>
 
-        <iconPacks:PackIconMaterial Kind="AlphaXCircleOutline"
-                                    Width="30"
-                                    Height="30"
-                                    Margin="15,15"
-                                    Foreground="White"/>
-
         <Rectangle Fill="#282828"
                    Margin="109,53,434,71"
                    RadiusX="15"
@@ -69,12 +63,14 @@
         <Button x:Name="btnImprimir" 
                 Background="Transparent" 
                 Margin="483,350,271,42"
-                BorderBrush="Transparent"/>
+                BorderBrush="Transparent" Click="btnImprimir_Click"/>
 
         <Button x:Name="btnExportar"
                 Background="Transparent" 
                 Margin="612,350,142,42"
-                BorderBrush="Transparent"/>
+                BorderBrush="Transparent" Click="btnExportar_Click"/>
+
+        <DocumentViewer Margin="121,69,448,85"/>
 
 
 

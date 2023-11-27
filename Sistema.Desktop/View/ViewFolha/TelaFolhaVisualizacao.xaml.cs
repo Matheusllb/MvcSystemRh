@@ -23,6 +23,10 @@ namespace Sistema.Desktop.View.ViewFolha
     public partial class TelaFolhaVisualizacao : Window
     {
         public TelaFolhaFuncionario terceiraTela;
+        public BDFuncionarioDAO dao = new BDFuncionarioDAO();
+        public BDFController controller;
+        public FolhaPagamento folha;
+
 
         public TelaFolhaVisualizacao(TelaFolhaFuncionario telaFolhaFuncionario)
         {
@@ -30,15 +34,13 @@ namespace Sistema.Desktop.View.ViewFolha
             {
                 InitializeComponent();
                 terceiraTela = telaFolhaFuncionario;
+                controller = new BDFController(dao);
 
                 int idE = terceiraTela.segundaTela.primeiraTela.idEmpresa;
                 DateTime fechamentoNF = terceiraTela.segundaTela.primeiraTela.fechamento;
                 DateTime pagamentoNF = terceiraTela.segundaTela.primeiraTela.pagamento;
-                BDFuncionarioDAO dao = new BDFuncionarioDAO();
-                BDFController controller = new BDFController(dao);
                 List<BeneficioDesconto> lista = controller.BuscaBD(terceiraTela.funcionario.Id);
-
-                FolhaPagamento novaFolha = new FolhaPagamento(idE, fechamentoNF, pagamentoNF, terceiraTela.funcionario, lista);
+                folha = new FolhaPagamento(idE, fechamentoNF, pagamentoNF, terceiraTela.funcionario, lista);
 
                 MessageBox.Show("Folha gerada com sucesso!");
 
@@ -47,6 +49,42 @@ namespace Sistema.Desktop.View.ViewFolha
             {
                 MessageBox.Show("Erro: " + ex.Message);
             }
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            TelaFolhaPrincipal principal = new TelaFolhaPrincipal();
+            principal.Show();
+            principal.WindowState = WindowState;
+            Close();
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            menu.WindowState = WindowState;
+            Close();
+        }
+
+        private void btnConfig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnContinuar_Click(object sender, RoutedEventArgs e)
+        {
+            TelaFolhaGerada gerada = new TelaFolhaGerada();
+            gerada.Show();
+            gerada.WindowState = WindowState;
+            Close();
+        }
+
+        private void btnAnterior_Click(object sender, RoutedEventArgs e)
+        {
+            terceiraTela.Show();
+            terceiraTela.WindowState = WindowState;
+            Close();
         }
     }
 }

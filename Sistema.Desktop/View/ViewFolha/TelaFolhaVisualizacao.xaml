@@ -26,137 +26,165 @@
                 </Border.Background>
 
                 <Button x:Name="btnVoltar2"
-            Height="50"
-            Width="50"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            BorderThickness="0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Click="btnVoltar_Click">
+                        Height="50"
+                        Width="50"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Click="btnVoltar_Click">
                     <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                Height="20"
-                Width="20"
-                Foreground="#282828"/>
+                                                Height="20"
+                                                Width="20"
+                                                Foreground="#282828"/>
                 </Button>
             </Border>
         </Border>
 
         <Button Name="btnMenu"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Left"
-        Height="50"
-        Width="50"
-        Background="Transparent"
-        BorderBrush="Transparent"
-        BorderThickness="0"
-        Foreground="#282828" 
-        Click="btnMenu_Click" Margin="52,0,0,0">
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnMenu_Click" Margin="52,0,0,0">
             <iconPacks:PackIconMaterial Kind="Home"
-                                Height="30"
-                                Width="26"/>
+                                        Height="30"
+                                        Width="26"/>
 
         </Button>
 
         <Button Name="btnConfig"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Right"
-        Height="50"
-        Width="50"
-        Background="Transparent"
-        BorderBrush="Transparent"
-        BorderThickness="0"
-        Foreground="#282828" 
-        Click="btnConfig_Click">
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Height="50"
+                Width="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="#282828" 
+                Click="btnConfig_Click">
             <iconPacks:PackIconMaterial Kind="Cog"
-                                Height="20"
-                                Width="16"/>
+                                        Height="20"
+                                        Width="16"/>
         </Button>
 
         <Border Height="30"
-        VerticalAlignment="Top" Margin="0,50,0,0">
+                VerticalAlignment="Top" Margin="0,50,0,0">
             <Border.Background>
                 <SolidColorBrush Color="#282828"/>
             </Border.Background>
         </Border>
 
         <Label Name="lblCaminho"
-       Content="Folha de Pagamento - Cáculos - Individual"
-       Margin="275,50,280,0"
-       Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
+               Content="Folha de Pagamento - Cáculos - Individual"
+               Margin="275,50,280,0"
+               Foreground="LightGray" Height="30" VerticalAlignment="Top"/>
 
         <TextBlock x:Name="txbGerarFolha"
-           Background="Transparent"
-           Foreground="White"
-           Text="GerarFolha"
-           FontSize="15"
-           Margin="0,0,150,47"
-           VerticalAlignment="Bottom" Height="23" HorizontalAlignment="Right" Width="75"/>
+                   Background="Transparent"
+                   Foreground="White"
+                   Text="GerarFolha"
+                   FontSize="15"
+                   Margin="0,0,150,47"
+                   VerticalAlignment="Bottom" Height="23" HorizontalAlignment="Right" Width="75"/>
 
         <Button Name="btnContinuar"
-        Click="btnContinuar_Click"
-        Width="28"
-        Height="28"
-        Background="Transparent"
-        BorderBrush="Transparent"
-        BorderThickness="0"
-        Foreground="White"
-        Margin="0,0,117,47" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                Click="btnContinuar_Click"
+                Width="28"
+                Height="28"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White"
+                Margin="0,0,117,47" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <iconPacks:PackIconMaterial Kind="ArrowRightCircle"
-                                Width="20"
-                                Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        Width="20"
+                                        Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         </Button>
 
         <TextBlock x:Name="txbAnterior"
-           Background="Transparent"
-           Foreground="White"
-           Text="Voltar"
-           FontSize="15"
-           Margin="155,0,0,47"
-           VerticalAlignment="Bottom" Height="23" HorizontalAlignment="Left" Width="50"/>
+                   Background="Transparent"
+                   Foreground="White"
+                   Text="Voltar"
+                   FontSize="15"
+                   Margin="155,0,0,47"
+                   VerticalAlignment="Bottom" Height="23" Width="50" HorizontalAlignment="Left" />
 
         <Button Name="btnAnterior"
-        Click="btnAnterior_Click"
-        Width="28"
-        Height="28"
-        Background="Transparent"
-        BorderBrush="Transparent"
-        BorderThickness="0"
-        Foreground="White"
-        Margin="113,0,0,47" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                Click="btnAnterior_Click"
+                Width="28"
+                Height="28"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Foreground="White"
+                Margin="113,0,0,47" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <iconPacks:PackIconMaterial Kind="ArrowLeftCircle"
-                        Width="20"
-                        Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        Width="20"
+                                        Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         </Button>
 
         <Rectangle Fill="#282828"
-           RadiusX="10"
-           RadiusY="10" 
-           Margin="445,139,154,88"/>
+                   RadiusX="10"
+                   RadiusY="10" 
+                   Margin="445,139,154,88"/>
 
         <Rectangle Fill="#282828"
-           RadiusX="10"
-           RadiusY="10" 
-           Margin="69,139,391,169"/>
+                   RadiusX="10"
+                   RadiusY="10" 
+                   Margin="69,139,391,169"/>
 
-        <Rectangle  Margin="69,273,479,142"
-             >
-
+        <Rectangle  Margin="69,273,479,142">
             <Rectangle.Fill>
                 <LinearGradientBrush>
                     <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
                     <GradientStop Color="#FF946DED" Offset="1"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
-
         </Rectangle>
 
-        <Rectangle Fill="#282828" Margin="69,297,537,116"
-           />
+        <Label Name="lblTitulo" FontSize="15" Content="RECIBO DE PAGAMENTO DE SALÁRIO" Margin="148,139,390,266" Foreground="White"/>
+        <Label Name="lblNomeEmpresa" FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.segundaTela.empresa.Nome}" Margin="98,297,537,116"/>
+        <Label Name="lblCodE" FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.segundaTela.empresa.Id}" Margin="69,297,707,116"/>
+        <Label Name="lblEnderecoEmpresa" Height="23"  FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.segundaTela.empresa.Endereco}" Margin="69,168,561,243"/>
+        <Label Name="lblCNPJEmpresa" Height="23"  FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.segundaTela.empresa.Cnpj}" Margin="69,191,561,220"/>
+        <Label Name="lblReferenteMes" Height="23" FontSize="7" Content="Referente ao Mês/Ano" Foreground="White" Margin="325,162,391,249"/>
+        <Label Name="lblMesFechamento" Height="23" FontSize="10" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=folha.DataFechamento}" Margin="325,185,391,226"/>
+        <Label Name="lblCodF" FontSize="9" Margin="69,273,707,142" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.funcionario.Id}"/>
+        <Label Name="lblNomeF" FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.funcionario.Nome}" Margin="98,273,605,142"/>
+        <Label Name="lblCargo" FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao,Path=terceiraTela.funcionario.Cargo}" Margin="200,273,479,142"/>
+        <Label Name="lblDataAdmissao" Height="23" FontSize="7" Foreground="White" Content="Data de Admissão" Margin="69,214,646,197"/>
+        <Label Name="lblAdmissao" Height="23" FontSize="9" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao,Path=terceiraTela.funcionario.DataAdmissao}" Margin="69,237,646,174"/>
+        <Label Name="lblDescricao" Height="23" Width="50" FontSize="7" Foreground="White" Content="Descrição" Margin="445,139,305,272"/>
+        <Label Name="lblSalario"  FontSize="5" Foreground="White" Content="Salário Base" Margin="445,168,315,249"/>
+        <Label Name="lblINSS" Width="50" FontSize="5" Foreground="White" Content="INSS" Margin="445,185,305,232"/>
+        <Label Name="lblIRRF" Width="50" FontSize="5" Foreground="White" Content="IRRF" Margin="445,202,305,216"/>
+        <Label Name="lblReferencia" FontSize="7" Foreground="White" Content="Referência" Margin="495,139,260,272"/>
+        <Label Name="lblValorSalario" FontSize="5" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.funcionario.SalarioBruto}" Margin="495,168,260,249"/>
+        <Label Name="lblVencimentos" Height="23" FontSize="5" Foreground="White" Content="Vencimentos" Margin="540,139,205,272"/>
+        <Label Name="lblValoVencimento" FontSize="5" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=terceiraTela.funcionario.SalarioBruto}" Margin="540,168,220,249"/>
+        <Label Name="lblDescontos" Height="23" FontSize="7" Foreground="White" Content="Descontos" Margin="595,139,159,272"/>
+        <Label Name="lblVDescontoINSS" Width="50" FontSize="5" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=folha.SalarioINSS}" Margin="591,184,159,232"/>
+        <Label Name="lblVDescontosIRRF" Width="50" FontSize="5" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=folha.SalarioINSS}" Margin="591,202,159,216"/>
+        <Label Name="lblMensagens" Height="23" FontSize="7" Foreground="White" Content="MENSSAGENS" Margin="445,230,295,181"/>
+        <Label Name="lblTextoTotalVencimentos" Width="50" FontSize="5" Foreground="White" Content="Total Vencimentos" Margin="465,257,285,161"/>
+        <Label Name="lblTextoTotalDescontos" Width="50" FontSize="5" Foreground="White" Content="Total Descontos" Margin="520,257,230,161"/>
+        <Label Name="lblTextoTotalLiquido" Width="50" FontSize="5" Foreground="White" Content="Total Líquido" Margin="575,257,175,161"/>
+        <Label Name="lblTotalVencimentos" Height="23" Width="50" FontSize="5" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=folha.TotalVencimentos}" Margin="465,273,285,138"/>
+        <Label Name="lblTotalDescontos" Height="23" Width="50" FontSize="5" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=folha.TotalDescontos}" Margin="520,273,230,138"/>
+        <Label Name="lblTotalLiquido" Height="23" Width="50" FontSize="5" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao,Path=folha.TotalLiquido}" Margin="575,273,175,138"/>
+        <Label Name="lblAssinatura" Height="23" Width="50" FontSize="7" Foreground="White" Content="ASSINATURA" Margin="465,323,285,88"/>
+        <Label Name="lblPagamento" FontSize="5" Foreground="White" Content="{Binding ElementName=WindowFolhaVisualizacao, Path=folha.DataPagamento}" Margin="564,310,164,107"/>
+        <Label Name="lblDataPagamento" FontSize="7" Foreground="White" Content="Data de Pagamento" Margin="564,327,162,83"/>
 
-
+        <Rectangle Fill="#282828" Margin="69,297,537,116"/>
 
         <iconPacks:PackIconMaterial Kind="Numeric1Circle" Margin="195,98,0,0" Height="20" Width="20" Foreground="#282828"/>
         <Label Width="116" Height="26" Content="Informações gerais" Margin="221,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
