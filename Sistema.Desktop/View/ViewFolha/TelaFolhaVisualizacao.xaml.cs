@@ -102,5 +102,6 @@ namespace Sistema.Desktop.View.ViewFolha
             terceiraTela.WindowState = WindowState;
             Close();
         }
+
     }
 }

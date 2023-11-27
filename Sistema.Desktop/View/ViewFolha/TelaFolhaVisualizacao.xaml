@@ -137,7 +137,7 @@
                    RadiusY="10" 
                    Margin="69,139,0,169" HorizontalAlignment="Left" Width="340"/>
 
-        <Rectangle  Margin="69,273,0,142" HorizontalAlignment="Left" Width="252">
+        <Rectangle  Margin="69,0,0,142" HorizontalAlignment="Left" Width="252" Height="19" VerticalAlignment="Bottom">
             <Rectangle.Fill>
                 <LinearGradientBrush>
                     <GradientStop Color="#FF7BD2F6" Offset="0.0"/>
@@ -147,40 +147,40 @@
         </Rectangle>
 
         <Label Name="lblTitulo" FontSize="15" Content="RECIBO DE PAGAMENTO DE SALÁRIO" Margin="148,139,0,266" Foreground="White" HorizontalAlignment="Left" Width="262"/>
-        <Label Name="lblNomeEmpresa" FontSize="9" Foreground="White" Content="" Margin="98,297,0,116" HorizontalAlignment="Left" Width="165"/>
-        <Label Name="lblCodE" FontSize="9" Foreground="White" Content="" Margin="69,297,0,116" HorizontalAlignment="Left" Width="24"/>
-        <Label Name="lblEnderecoEmpresa"  FontSize="9" Foreground="White" Content="" Margin="69,168,0,243" HorizontalAlignment="Left" Width="170"/>
-        <Label Name="lblCNPJEmpresa"  FontSize="9" Foreground="White" Content="" Margin="69,191,0,220" HorizontalAlignment="Left" Width="170"/>
+        <Label Name="lblNomeEmpresa" FontSize="7" Foreground="White" Content="" Margin="98,0,0,116" HorizontalAlignment="Left" Width="165" Height="21" VerticalAlignment="Bottom"/>
+        <Label Name="lblCodE" FontSize="7" Foreground="White" Content="" Margin="69,0,0,116" HorizontalAlignment="Left" Width="24" Height="21" VerticalAlignment="Bottom"/>
+        <Label Name="lblEnderecoEmpresa"  FontSize="7" Foreground="White" Content="" Margin="69,168,0,243" HorizontalAlignment="Left" Width="170"/>
+        <Label Name="lblCNPJEmpresa"  FontSize="7" Foreground="White" Content="" Margin="69,191,0,220" HorizontalAlignment="Left" Width="170"/>
         <Label Name="lblReferenteMes" FontSize="7" Content="Referente ao Mês/Ano" Foreground="White" Margin="325,162,0,249" HorizontalAlignment="Left" Width="84"/>
-        <Label Name="lblMesFechamento" FontSize="10" Foreground="White" Content="" Margin="325,185,0,226" HorizontalAlignment="Left" Width="84"/>
-        <Label Name="lblCodF" FontSize="9" Margin="69,273,0,142" Foreground="White" Content="" HorizontalAlignment="Left" Width="24"/>
-        <Label Name="lblNomeF" FontSize="9" Foreground="White" Content="" Margin="98,273,0,142" HorizontalAlignment="Left" Width="97"/>
-        <Label Name="lblCargo" FontSize="9" Foreground="White" Content="" Margin="200,273,0,142" HorizontalAlignment="Left" Width="121"/>
-        <Label Name="lblDataAdmissao" FontSize="7" Foreground="White" Content="Data de Admissão" Margin="69,214,0,197" HorizontalAlignment="Left" Width="85"/>
-        <Label Name="lblAdmissao" FontSize="9" Foreground="White" Content="" Margin="69,237,0,174" HorizontalAlignment="Left" Width="85"/>
-        <Label Name="lblDescricao" Height="23" FontSize="7" Foreground="White" Content="Descrição" Margin="0,139,305,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50"/>
-        <Label Name="lblSalario"  FontSize="5" Foreground="White" Content="Salário Base" Margin="445,168,315,0" Height="17" VerticalAlignment="Top"/>
-        <Label Name="lblINSS" FontSize="5" Foreground="White" Content="INSS" Margin="445,185,305,0" Height="17" VerticalAlignment="Top"/>
-        <Label Name="lblIRRF" FontSize="5" Foreground="White" Content="IRRF" Margin="445,202,305,0" Height="16" VerticalAlignment="Top"/>
-        <Label Name="lblReferencia" FontSize="7" Foreground="White" Content="Referência" Margin="0,139,260,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="45"/>
-        <Label Name="lblValorSalario" FontSize="5" Foreground="White" Content="" Margin="0,168,260,0" Height="17" VerticalAlignment="Top" HorizontalAlignment="Right" Width="45"/>
-        <Label Name="lblVencimentos" Height="23" FontSize="7" Foreground="White" Content="Vencimentos" Margin="0,139,205,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="55"/>
-        <Label Name="lblValoVencimento" FontSize="5" Foreground="White" Content="" Margin="0,168,220,0" Height="17" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40"/>
-        <Label Name="lblDescontos" Height="23" FontSize="7" Foreground="White" Content="Descontos" Margin="0,139,159,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="46"/>
-        <Label Name="lblVDescontoINSS" FontSize="5" Foreground="White" Content="" Margin="0,184,159,0" Height="18" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50"/>
-        <Label Name="lblVDescontosIRRF" FontSize="5" Foreground="White" Content="" Margin="0,202,159,0" Height="16" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50"/>
-        <Label Name="lblMensagens" FontSize="7" Foreground="White" Content="MENSSAGENS" Margin="445,230,295,181"/>
-        <Label Name="lblTextoTotalVencimentos" FontSize="5" Foreground="White" Content="Total Vencimentos" Margin="465,257,285,161"/>
-        <Label Name="lblTextoTotalDescontos" FontSize="5" Foreground="White" Content="Total Descontos" Margin="520,257,230,161"/>
-        <Label Name="lblTextoTotalLiquido" FontSize="5" Foreground="White" Content="Total Líquido" Margin="575,257,175,0" Height="16" VerticalAlignment="Top"/>
-        <Label Name="lblTotalVencimentos" FontSize="5" Foreground="White" Content="" Margin="465,273,285,138"/>
-        <Label Name="lblTotalDescontos" FontSize="5" Foreground="White" Content="" Margin="520,273,230,138"/>
-        <Label Name="lblTotalLiquido" FontSize="5" Foreground="White" Content="" Margin="575,273,175,138"/>
-        <Label Name="lblAssinatura" Width="50" FontSize="7" Foreground="White" Content="ASSINATURA" Margin="465,323,0,88" HorizontalAlignment="Left"/>
-        <Label Name="lblPagamento" FontSize="5" Foreground="White" Content="" Margin="564,310,164,107"/>
-        <Label Name="lblDataPagamento" FontSize="7" Foreground="White" Content="Data de Pagamento" Margin="564,327,162,83"/>
+        <Label Name="lblMesFechamento" FontSize="7" Foreground="White" Content="" Margin="325,185,0,226" HorizontalAlignment="Left" Width="84"/>
+        <Label Name="lblCodF" FontSize="7" Margin="69,0,0,142" Foreground="White" Content="" HorizontalAlignment="Left" Width="24" Height="19" VerticalAlignment="Bottom"/>
+        <Label Name="lblNomeF" FontSize="7" Foreground="White" Content="" Margin="98,0,0,142" HorizontalAlignment="Left" Width="97" Height="19" VerticalAlignment="Bottom"/>
+        <Label Name="lblCargo" FontSize="7" Foreground="White" Content="" Margin="200,0,0,142" HorizontalAlignment="Left" Width="121" Height="19" VerticalAlignment="Bottom"/>
+        <Label Name="lblDataAdmissao" FontSize="7" Foreground="White" Content="Data de Admissão" Margin="69,0,0,197" HorizontalAlignment="Left" Width="85" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblAdmissao" FontSize="7" Foreground="White" Content="" Margin="69,0,0,174" HorizontalAlignment="Left" Width="85" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblDescricao" Height="23" FontSize="7" Foreground="White" Content="Descrição" Margin="445,139,305,0" VerticalAlignment="Top"/>
+        <Label Name="lblSalario"  FontSize="7" Foreground="White" Content="Salário Base" Margin="445,168,315,0" Height="17" VerticalAlignment="Top"/>
+        <Label Name="lblINSS" FontSize="7" Foreground="White" Content="INSS" Margin="445,185,305,0" Height="17" VerticalAlignment="Top"/>
+        <Label Name="lblIRRF" FontSize="7" Foreground="White" Content="IRRF" Margin="445,202,305,0" Height="16" VerticalAlignment="Top"/>
+        <Label Name="lblReferencia" FontSize="7" Foreground="White" Content="Referência" Margin="495,139,260,0" Height="23" VerticalAlignment="Top"/>
+        <Label Name="lblValorSalario" FontSize="7" Foreground="White" Content="" Margin="495,168,260,0" Height="17" VerticalAlignment="Top"/>
+        <Label Name="lblVencimentos" Height="23" FontSize="7" Foreground="White" Content="Vencimentos" Margin="540,139,205,0" VerticalAlignment="Top"/>
+        <Label Name="lblValoVencimento" FontSize="7" Foreground="White" Content="" Margin="540,168,220,0" Height="17" VerticalAlignment="Top"/>
+        <Label Name="lblDescontos" Height="23" FontSize="7" Foreground="White" Content="Descontos" Margin="595,139,159,0" VerticalAlignment="Top"/>
+        <Label Name="lblVDescontoINSS" FontSize="7" Foreground="White" Content="" Margin="591,184,159,0" Height="18" VerticalAlignment="Top"/>
+        <Label Name="lblVDescontosIRRF" FontSize="7" Foreground="White" Content="" Margin="591,202,159,0" Height="16" VerticalAlignment="Top"/>
+        <Label Name="lblMensagens" FontSize="7" Foreground="White" Content="MENSSAGENS" Margin="445,0,295,181" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblTextoTotalVencimentos" FontSize="7" Foreground="White" Content="Total Vencimentos" Margin="465,0,285,161" Height="16" VerticalAlignment="Bottom"/>
+        <Label Name="lblTextoTotalDescontos" FontSize="7" Foreground="White" Content="Total Descontos" Margin="520,0,230,161" Height="16" VerticalAlignment="Bottom"/>
+        <Label Name="lblTextoTotalLiquido" FontSize="7" Foreground="White" Content="Total Líquido" Margin="575,0,175,161" Height="16" VerticalAlignment="Bottom"/>
+        <Label Name="lblTotalVencimentos" FontSize="7" Foreground="White" Content="" Margin="465,0,285,138" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblTotalDescontos" FontSize="7" Foreground="White" Content="" Margin="520,0,230,138" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblTotalLiquido" FontSize="7" Foreground="White" Content="" Margin="575,0,175,138" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblAssinatura" FontSize="7" Foreground="White" Content="ASSINATURA" Margin="465,0,285,88" Height="23" VerticalAlignment="Bottom"/>
+        <Label Name="lblPagamento" FontSize="7" Foreground="White" Content="" Margin="564,0,164,107" Height="17" VerticalAlignment="Bottom"/>
+        <Label Name="lblDataPagamento" FontSize="7" Foreground="White" Content="Data de Pagamento" Margin="564,0,162,83" Height="24" VerticalAlignment="Bottom"/>
 
-        <Rectangle Fill="#282828" Margin="69,297,0,116" HorizontalAlignment="Left" Width="194"/>
+        <Rectangle Fill="#282828" Margin="69,0,0,116" HorizontalAlignment="Left" Width="194" Height="21" VerticalAlignment="Bottom"/>
 
         <iconPacks:PackIconMaterial Kind="Numeric1Circle" Margin="195,98,0,0" Height="20" Width="20" Foreground="#282828"/>
         <Label Width="116" Height="26" Content="Informações gerais" Margin="221,95,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
