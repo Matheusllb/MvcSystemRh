@@ -189,7 +189,7 @@
 
         <Menu x:Name="menuAlterar"
               Margin="56,70,59,21"
-              Visibility="Visible"
+              Visibility="Collapsed"
               Background="#353535">
 
             <Label Name="lblDataFechamento"

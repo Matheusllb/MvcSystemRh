@@ -257,13 +257,19 @@
                      Text="{Binding ElementName=listView, Path=SelectedValue.Valor, UpdateSourceTrigger=LostFocus}"/>
 
             <Button x:Name="btnConfirmar"
-                    Content="Confirmar"
-                    FontFamily="Helvetica"
-                    FontWeight="Light"
-                    FontSize="15"
-                    Height="28"
+                    Height="50"
+                    Width="50"
                     Click="btnConfirmar_Click"
-                    Style="{DynamicResource ButtonStyle}" HorizontalAlignment="Left" Width="100"/>
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
+                <iconPacks:PackIconMaterial Kind="CheckCircle"
+                                            Height="25"
+                                            Width="25"
+                                            Foreground="White"/>
+
+            </Button>
         </Menu>
 
 
